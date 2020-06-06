@@ -4,16 +4,16 @@
   <head>
     <!-- Required meta tags -->
    <%@ include file="head.html"%>
-    <title>TP Banco - Grupo </title>
+    <title>TP Banco - Grupo 7</title>
   </head>
-  <body style="width: 100vw; height:100vh;">
+  <body style="width: 100vw; height:100vh;" class="flex d-flex justify-content-center align-items-center">
   	<%@ page import="app.*" %>
 	<%@ page import="tpbanco.*" %>
-    <container>
+    <container style="width: 100%; height: 70%;">
     <div class="container">
     <div class="row">
     	<div class="col-md-8 offset-md-2">
-    	<div class="card mt-4">
+    	<div class="card mt-4 animate__animated animate__fadeIn">
         	 <div class="card-header">
    				 Login
  			 </div>  
