@@ -17,8 +17,8 @@
   </script>
   
   <body style="width: 100vw; height:100vh;">
-  	<%@ page import="app.*" %>
-	<%@ page import="tpbanco.*" %>
+  	<%@ page import="utn.frgp.edu.ar.*" %>
+	<%@ page import="utn.frgp.edu.ar.entidad.*" %>
     <container>
     <%@ include file="nav.html"%>
     <div class="container">

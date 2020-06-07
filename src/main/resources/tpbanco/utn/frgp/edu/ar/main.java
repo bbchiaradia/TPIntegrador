@@ -198,6 +198,7 @@ public class main {
         
         
         
+        
         session.getTransaction().commit();  
         sessionFactory.close();
         

@@ -14,8 +14,8 @@
     <title>TP Banco - Grupo 7</title>
   </head>
   <body style="width: 100vw; height:100vh;" class="flex d-flex justify-content-center align-items-center">
-  	<%@ page import="app.*" %>
-	<%@ page import="tpbanco.*" %>
+  	<%@ page import="utn.frgp.edu.ar.*" %>
+	<%@ page import="utn.frgp.edu.ar.entidad.*" %>
     <container style="width: 100%; height: 70%;">
     <div class="container">
     <div class="row">
