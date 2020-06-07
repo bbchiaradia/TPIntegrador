@@ -49,6 +49,9 @@
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
+						  <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">
+						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
+						 </button>
 					</div>
 					</div>
 					<hr>				
