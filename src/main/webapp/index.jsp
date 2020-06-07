@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<html>
+<body>
+<%@ page import="utn.frgp.edu.ar.*" %>
+<%@ page import="utn.frgp.edu.ar.entidad.*" %>
+>>>>>>> adefe0792e37d5188b1db2762e8d19099159bff8
 
 <!doctype html>
 <html lang="en">
