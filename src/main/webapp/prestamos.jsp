@@ -69,7 +69,7 @@
     
     
     <div class="row mt-3 px-4 justify-content-end">
-    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Ver movimientos</button>
+    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Solicitar</button>
     </div>
     
     </div>

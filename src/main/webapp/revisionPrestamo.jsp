@@ -60,7 +60,7 @@
 					    	   <div class="col-md-12">
 					    	   <div class="card mt-4">
 					        	 <div class="card-header">
-					   				 Préstamos pendientes
+					   				 Solicitudes pendientes
 					 			 </div>  
 					 			 <div class="card-body">
 									<div class="row">
