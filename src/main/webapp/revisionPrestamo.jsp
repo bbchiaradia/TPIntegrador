@@ -24,7 +24,6 @@
     <div class="container">
     
     <!-- detalle de cuenta -->
-    <container>
     <div class="row animate__animated animate__fadeIn">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
@@ -199,11 +198,10 @@
  			 </div> 
     	   </div>
     </div>
-    </container>
-    
+    </div>
     </div>
     </container>
-
+	
 <%@ include file="foot.html"%>
   </body>
 </html>
