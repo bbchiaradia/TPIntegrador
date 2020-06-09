@@ -1,5 +1,6 @@
 package utn.frgp.edu.ar;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.hibernate.Session;
@@ -12,6 +13,7 @@ import utn.frgp.edu.ar.entidad.AdministradorBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Conceptos;
 import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Cuotas;
 import utn.frgp.edu.ar.entidad.Estados;
 import utn.frgp.edu.ar.entidad.Localidades;
 import utn.frgp.edu.ar.entidad.Movimientos;
@@ -586,7 +588,12 @@ public class main {
         session.save(cuenta8);
         Cuentas cuenta9=new Cuentas(cliente9,961661,"101010",800,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
         session.save(cuenta9);
+        Cuentas cuenta10=new Cuentas(cliente9,96166155,"1010102",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo5);
+        session.save(cuenta10);
         
+        
+        
+
         
         //Cargo datos en prestamos y movimientos
         Prestamos prestamo=new Prestamos();
@@ -598,10 +605,257 @@ public class main {
         prestamo.setImporte(15000);
         prestamo.setCuotas(6);
         Movimientos movimiento=new Movimientos(Calendar.getInstance().getTime(),con2,15000);
+        ArrayList<Movimientos> listaMov = new ArrayList<Movimientos>();
+        listaMov.add(movimiento);
+        cuenta.setListaMovimientos(listaMov);
         prestamo.setIdMovimiento(movimiento);
         session.save(movimiento);
         session.save(prestamo);
+        // cargo cuotas prestamo 1
+        Cuotas cuota1 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota2 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota3 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota4 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota5 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota6 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas = new ArrayList<Cuotas>();
+        listaCuotas.add(cuota1);
+        listaCuotas.add(cuota2);
+        listaCuotas.add(cuota3);
+        listaCuotas.add(cuota4);
+        listaCuotas.add(cuota5);
+        listaCuotas.add(cuota6);
+		prestamo.setListaCuotas(listaCuotas);
+		session.save(prestamo);
+		
+	      
+		
+		Prestamos prestamo2=new Prestamos();
+        prestamo2.setIdCliente(cliente1);
+        prestamo2.setId_estado(estado1);
+        prestamo2.setFecha(Calendar.getInstance().getTime());
+        prestamo2.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo2.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo2.setImporte(150000);
+        prestamo2.setCuotas(3);
+        Movimientos movimiento2=new Movimientos(Calendar.getInstance().getTime(),con2,150000);
+        ArrayList<Movimientos> listaMov2 = new ArrayList<Movimientos>();
+        listaMov2.add(movimiento2);
+        cuenta1.setListaMovimientos(listaMov2);
+        prestamo2.setIdMovimiento(movimiento2);
+        session.save(movimiento2);
+        session.save(prestamo2);
+        Cuotas cuota7 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota8 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota9 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas2 = new ArrayList<Cuotas>();
+        listaCuotas2.add(cuota7);
+        listaCuotas2.add(cuota8);
+        listaCuotas2.add(cuota9);
+		prestamo2.setListaCuotas(listaCuotas2);
+		session.save(prestamo2);
+		
+		
+		
+		Prestamos prestamo3=new Prestamos();
+        prestamo3.setIdCliente(cliente2);
+        prestamo3.setId_estado(estado1);
+        prestamo3.setFecha(Calendar.getInstance().getTime());
+        prestamo3.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo3.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo3.setImporte(5000);
+        prestamo3.setCuotas(4);
+        Movimientos movimiento3=new Movimientos(Calendar.getInstance().getTime(),con2,5000);
+        ArrayList<Movimientos> listaMov3 = new ArrayList<Movimientos>();
+        listaMov3.add(movimiento3);
+        cuenta2.setListaMovimientos(listaMov3);
+        prestamo3.setIdMovimiento(movimiento3);
+        session.save(movimiento3);
+        session.save(prestamo3);
+        Cuotas cuota10 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota11 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota12 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota13 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas3 = new ArrayList<Cuotas>();
+        listaCuotas3.add(cuota10);
+        listaCuotas3.add(cuota11);
+        listaCuotas3.add(cuota12);
+        listaCuotas3.add(cuota13);
+		prestamo3.setListaCuotas(listaCuotas3);
+		session.save(prestamo3);
         
+        
+		
+		Prestamos prestamo4=new Prestamos();
+        prestamo4.setIdCliente(cliente3);
+        prestamo4.setId_estado(estado1);
+        prestamo4.setFecha(Calendar.getInstance().getTime());
+        prestamo4.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo4.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo4.setImporte(25000);
+        prestamo4.setCuotas(2);
+        Movimientos movimiento4=new Movimientos(Calendar.getInstance().getTime(),con2,25000);
+        ArrayList<Movimientos> listaMov4 = new ArrayList<Movimientos>();
+        listaMov4.add(movimiento4);
+        cuenta3.setListaMovimientos(listaMov4);
+        prestamo4.setIdMovimiento(movimiento4);
+        session.save(movimiento4);
+        session.save(prestamo4);
+        Cuotas cuota14 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota15 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas4 = new ArrayList<Cuotas>();
+        listaCuotas4.add(cuota14);
+        listaCuotas4.add(cuota15);
+		prestamo4.setListaCuotas(listaCuotas4);
+		session.save(prestamo4);
+        
+		
+
+		
+		Prestamos prestamo5=new Prestamos();
+        prestamo5.setIdCliente(cliente4);
+        prestamo5.setId_estado(estado1);
+        prestamo5.setFecha(Calendar.getInstance().getTime());
+        prestamo5.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo5.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo5.setImporte(45000);
+        prestamo5.setCuotas(3);
+        Movimientos movimiento5=new Movimientos(Calendar.getInstance().getTime(),con2,45000);
+        ArrayList<Movimientos> listaMov5 = new ArrayList<Movimientos>();
+        listaMov5.add(movimiento5);
+        cuenta4.setListaMovimientos(listaMov5);
+        prestamo5.setIdMovimiento(movimiento5);
+        session.save(movimiento5);
+        session.save(prestamo5);
+        Cuotas cuota16 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota17 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota18 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas5 = new ArrayList<Cuotas>();
+        listaCuotas5.add(cuota16);
+        listaCuotas5.add(cuota17);
+        listaCuotas5.add(cuota18);
+		prestamo5.setListaCuotas(listaCuotas5);
+		session.save(prestamo5);
+		
+		
+		
+		Prestamos prestamo7=new Prestamos();
+        prestamo7.setIdCliente(cliente5);
+        prestamo7.setId_estado(estado2);
+        prestamo7.setFecha(Calendar.getInstance().getTime());
+        prestamo7.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo7.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo7.setImporte(10000);
+        prestamo7.setCuotas(2);
+        Movimientos movimiento7=new Movimientos(Calendar.getInstance().getTime(),con2,10000);
+        ArrayList<Movimientos> listaMov7 = new ArrayList<Movimientos>();
+        listaMov7.add(movimiento7);
+        cuenta5.setListaMovimientos(listaMov7);
+        prestamo7.setIdMovimiento(movimiento7);
+        session.save(movimiento7);
+        session.save(prestamo7);
+        /*Cuotas cuota21 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota22 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas7 = new ArrayList<Cuotas>();
+        listaCuotas7.add(cuota21);
+        listaCuotas7.add(cuota22);
+		prestamo7.setListaCuotas(listaCuotas7);*/
+		session.save(prestamo7);
+
+		
+		
+		
+		Prestamos prestamo8=new Prestamos();
+        prestamo8.setIdCliente(cliente6);
+        prestamo8.setId_estado(estado3);
+        prestamo8.setFecha(Calendar.getInstance().getTime());
+        prestamo8.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo8.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo8.setImporte(7800);
+        prestamo8.setCuotas(3);
+        Movimientos movimiento8=new Movimientos(Calendar.getInstance().getTime(),con2,7800);
+        ArrayList<Movimientos> listaMov8 = new ArrayList<Movimientos>();
+        listaMov8.add(movimiento8);
+        cuenta6.setListaMovimientos(listaMov8);
+        prestamo8.setIdMovimiento(movimiento8);
+        session.save(movimiento8);
+        session.save(prestamo8);
+        /* Cuotas cuota23 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota24 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota25 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas8 = new ArrayList<Cuotas>();
+        listaCuotas8.add(cuota23);
+        listaCuotas8.add(cuota24);
+        listaCuotas8.add(cuota25);
+		prestamo8.setListaCuotas(listaCuotas8); */
+		session.save(prestamo8);
+		
+		
+		Prestamos prestamo9=new Prestamos();
+        prestamo9.setIdCliente(cliente8);
+        prestamo9.setId_estado(estado1);
+        prestamo9.setFecha(Calendar.getInstance().getTime());
+        prestamo9.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo9.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo9.setImporte(7900);
+        prestamo9.setCuotas(3);
+        Movimientos movimiento9=new Movimientos(Calendar.getInstance().getTime(),con2,7900);
+        ArrayList<Movimientos> listaMov9 = new ArrayList<Movimientos>();
+        listaMov9.add(movimiento9);
+        cuenta8.setListaMovimientos(listaMov9);
+        prestamo9.setIdMovimiento(movimiento9);
+        session.save(movimiento9);
+        session.save(prestamo9);
+        Cuotas cuota26 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota27 = new Cuotas( Calendar.getInstance().getTime());
+        Cuotas cuota28 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas9 = new ArrayList<Cuotas>();
+        listaCuotas9.add(cuota26);
+        listaCuotas9.add(cuota27);
+        listaCuotas9.add(cuota28);
+		prestamo9.setListaCuotas(listaCuotas9);
+		session.save(prestamo9);
+		
+		
+		Prestamos prestamo10=new Prestamos();
+        prestamo10.setIdCliente(cliente7);
+        prestamo10.setId_estado(estado1);
+        prestamo10.setFecha(Calendar.getInstance().getTime());
+        prestamo10.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo10.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo10.setImporte(1500);
+        prestamo10.setCuotas(1);
+        Movimientos movimiento10=new Movimientos(Calendar.getInstance().getTime(),con2,1500);
+        ArrayList<Movimientos> listaMov10 = new ArrayList<Movimientos>();
+        listaMov10.add(movimiento10);
+        cuenta7.setListaMovimientos(listaMov10);
+        prestamo10.setIdMovimiento(movimiento10);
+        session.save(movimiento10);
+        session.save(prestamo10);
+        Cuotas cuota29 = new Cuotas( Calendar.getInstance().getTime());
+        ArrayList<Cuotas> listaCuotas10 = new ArrayList<Cuotas>();
+        listaCuotas10.add(cuota29);
+		prestamo10.setListaCuotas(listaCuotas10);
+		session.save(prestamo10);
+		
+		
+		Prestamos prestamo11=new Prestamos();
+        prestamo11.setIdCliente(cliente9);
+        prestamo11.setId_estado(estado1);
+        prestamo11.setFecha(Calendar.getInstance().getTime());
+        prestamo11.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo11.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo11.setImporte(100);
+        prestamo11.setCuotas(3);
+        Movimientos movimiento11=new Movimientos(Calendar.getInstance().getTime(),con2,100);
+        ArrayList<Movimientos> listaMov11 = new ArrayList<Movimientos>();
+        listaMov11.add(movimiento11);
+        cuenta10.setListaMovimientos(listaMov11);
+        prestamo11.setIdMovimiento(movimiento11);
+        session.save(movimiento11);
+        session.save(prestamo11);
+  
+		
        
         session.getTransaction().commit();  
         sessionFactory.close();
