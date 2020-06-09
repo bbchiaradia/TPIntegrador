@@ -538,7 +538,7 @@ public class main {
         tipo1.setEstado(1);
         session.save(tipo1);
         TipoCuenta tipo2=new TipoCuenta();
-        tipo2.setDescripcion("Caja de ahorro en dólares");
+        tipo2.setDescripcion("Caja de ahorro en dï¿½lares");
         tipo2.setEstado(1);
         session.save(tipo2);
         TipoCuenta tipo3=new TipoCuenta();
@@ -550,7 +550,7 @@ public class main {
         tipo4.setEstado(1);
         session.save(tipo4);
         TipoCuenta tipo5=new TipoCuenta();
-        tipo5.setDescripcion("Cuenta corriente especial en dólares");
+        tipo5.setDescripcion("Cuenta corriente especial en dï¿½lares");
         tipo5.setEstado(1);
         session.save(tipo5);
         
@@ -855,8 +855,279 @@ public class main {
         session.save(movimiento11);
         session.save(prestamo11);
   
-		
+        //Transferencias
+		Transferencia transferencia1 = new Transferencia();
+        transferencia1.setIdCliente(cliente1);
+        transferencia1.setCbu_origen( cuenta1 )
+        transferencia1.setCbu_destino( cuenta2 );
+        transferencia1.setMonto(100);
+        transferencia1.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia1.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento12=new Movimientos(Calendar.getInstance().getTime(),con4,-100);
+        ArrayList<Movimientos> listaMov12 = new ArrayList<Movimientos>();
+        listaMov12.add(movimiento12);
+        //credito a destino
+        Movimientos movimiento13=new Movimientos(Calendar.getInstance().getTime(),con4,100);
+        ArrayList<Movimientos> listaMov13 = new ArrayList<Movimientos>();
+        listaMov13.add(movimiento13);
+        cuenta1.setListaMovimientos(listaMov12);
+        cuenta2.setListaMovimientos(listaMov13);
+        Movimientos_Transferencias mov_transf_1 = new Movimientos_Transferencias(movimiento12, transferencia1 );
+        Movimientos_Transferencias mov_transf_2 = new Movimientos_Transferencias(movimiento13, transferencia1 );
+        session.save(transferencia1);
+        session.save(movimiento12);
+        session.save(movimiento13);
+        session.save(mov_transf_1);
+        session.save(mov_transf_2);
+        session.save(cuenta1);
+        session.save(cuenta2);
+
+        Transferencia transferencia2 = new Transferencia();
+        transferencia2.setIdCliente(cliente2);
+        transferencia2.setCbu_origen( cuenta2 )
+        transferencia2.setCbu_destino( cuenta3 );
+        transferencia2.setMonto(500);
+        transferencia2.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia2.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento14=new Movimientos(Calendar.getInstance().getTime(),con4,-500);
+        ArrayList<Movimientos> listaMov14 = new ArrayList<Movimientos>();
+        listaMov14.add(movimiento14);
+        //credito a destino
+        Movimientos movimiento15=new Movimientos(Calendar.getInstance().getTime(),con4,500);
+        ArrayList<Movimientos> listaMov15 = new ArrayList<Movimientos>();
+        listaMov15.add(movimiento15);
+        cuenta2.setListaMovimientos(listaMov14);
+        cuenta3.setListaMovimientos(listaMov15);
+        Movimientos_Transferencias mov_transf_3 = new Movimientos_Transferencias(movimiento14, transferencia2 );
+        Movimientos_Transferencias mov_transf_4 = new Movimientos_Transferencias(movimiento15, transferencia2 );
+        session.save(transferencia2);
+        session.save(movimiento14);
+        session.save(movimiento15);
+        session.save(mov_transf_3);
+        session.save(mov_transf_4);
+        session.save(cuenta2);
+        session.save(cuenta3);
+
+        Transferencia transferencia3 = new Transferencia();
+        transferencia3.setIdCliente(cliente3);
+        transferencia3.setCbu_origen( cuenta3 )
+        transferencia3.setCbu_destino( cuenta4 );
+        transferencia3.setMonto(3200);
+        transferencia3.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia3.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento16=new Movimientos(Calendar.getInstance().getTime(),con4,-3200);
+        ArrayList<Movimientos> listaMov16 = new ArrayList<Movimientos>();
+        listaMov16.add(movimiento16);
+        //credito a destino
+        Movimientos movimiento17=new Movimientos(Calendar.getInstance().getTime(),con4,3200);
+        ArrayList<Movimientos> listaMov17 = new ArrayList<Movimientos>();
+        listaMov17.add(movimiento17);
+        cuenta3.setListaMovimientos(listaMov16);
+        cuenta4.setListaMovimientos(listaMov17);
+        Movimientos_Transferencias mov_transf_5 = new Movimientos_Transferencias(movimiento16, transferencia3 );
+        Movimientos_Transferencias mov_transf_6 = new Movimientos_Transferencias(movimiento17, transferencia3 );
+        session.save(transferencia3);
+        session.save(movimiento16);
+        session.save(movimiento17);
+        session.save(mov_transf_5);
+        session.save(mov_transf_6);
+        session.save(cuenta3);
+        session.save(cuenta4);
+
+        Transferencia transferencia4 = new Transferencia();
+        transferencia4.setIdCliente(cliente4);
+        transferencia4.setCbu_origen( cuenta4 )
+        transferencia4.setCbu_destino( cuenta5 );
+        transferencia4.setMonto(2221);
+        transferencia4.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia4.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento18=new Movimientos(Calendar.getInstance().getTime(),con4,-2221);
+        ArrayList<Movimientos> listaMov18 = new ArrayList<Movimientos>();
+        listaMov18.add(movimiento18);
+        //credito a destino
+        Movimientos movimiento19=new Movimientos(Calendar.getInstance().getTime(),con4,2221);
+        ArrayList<Movimientos> listaMov19 = new ArrayList<Movimientos>();
+        listaMov19.add(movimiento19);
+        cuenta4.setListaMovimientos(listaMov18);
+        cuenta5.setListaMovimientos(listaMov19);
+        Movimientos_Transferencias mov_transf_7 = new Movimientos_Transferencias(movimiento18, transferencia4 );
+        Movimientos_Transferencias mov_transf_8 = new Movimientos_Transferencias(movimiento19, transferencia4 );
+        session.save(transferencia4);
+        session.save(movimiento18);
+        session.save(movimiento19);
+        session.save(mov_transf_7);
+        session.save(mov_transf_8);
+        session.save(cuenta4);
+        session.save(cuenta5);
+
+        Transferencia transferencia5 = new Transferencia();
+        transferencia5.setIdCliente(cliente5);
+        transferencia5.setCbu_origen( cuenta5 )
+        transferencia5.setCbu_destino( cuenta6 );
+        transferencia5.setMonto(4123);
+        transferencia5.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia5.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento20=new Movimientos(Calendar.getInstance().getTime(),con4,-4123);
+        ArrayList<Movimientos> listaMov20 = new ArrayList<Movimientos>();
+        listaMov20.add(movimiento20);
+        //credito a destino
+        Movimientos movimiento21=new Movimientos(Calendar.getInstance().getTime(),con4,4123);
+        ArrayList<Movimientos> listaMov21 = new ArrayList<Movimientos>();
+        listaMov21.add(movimiento21);
+        cuenta5.setListaMovimientos(listaMov20);
+        cuenta6.setListaMovimientos(listaMov21);
+        Movimientos_Transferencias mov_transf_9 = new Movimientos_Transferencias(movimiento20, transferencia5 );
+        Movimientos_Transferencias mov_transf_10 = new Movimientos_Transferencias(movimiento21, transferencia5 );
+        session.save(transferencia5);
+        session.save(movimiento20);
+        session.save(movimiento21);
+        session.save(mov_transf_9);
+        session.save(mov_transf_10);
+        session.save(cuenta5);
+        session.save(cuenta6);
+
+        Transferencia transferencia6 = new Transferencia();
+        transferencia6.setIdCliente(cliente6);
+        transferencia6.setCbu_origen( cuenta6 )
+        transferencia6.setCbu_destino( cuenta7 );
+        transferencia6.setMonto(2211);
+        transferencia6.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia6.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento22=new Movimientos(Calendar.getInstance().getTime(),con4,-2211);
+        ArrayList<Movimientos> listaMov22 = new ArrayList<Movimientos>();
+        listaMov22.add(movimiento22);
+        //credito a destino
+        Movimientos movimiento23=new Movimientos(Calendar.getInstance().getTime(),con4,2211);
+        ArrayList<Movimientos> listaMov23 = new ArrayList<Movimientos>();
+        listaMov23.add(movimiento23);
+        cuenta6.setListaMovimientos(listaMov22);
+        cuenta7.setListaMovimientos(listaMov23);
+        Movimientos_Transferencias mov_transf_11 = new Movimientos_Transferencias(movimiento22, transferencia6 );
+        Movimientos_Transferencias mov_transf_12 = new Movimientos_Transferencias(movimiento23, transferencia6 );
+        session.save(transferencia6);
+        session.save(movimiento22);
+        session.save(movimiento23);
+        session.save(mov_transf_11);
+        session.save(mov_transf_12);
+        session.save(cuenta6);
+        session.save(cuenta7);
+
+        Transferencia transferencia7 = new Transferencia();
+        transferencia7.setIdCliente(cliente7);
+        transferencia7.setCbu_origen( cuenta7 )
+        transferencia7.setCbu_destino( cuenta8 );
+        transferencia7.setMonto(85);
+        transferencia7.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia7.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento24=new Movimientos(Calendar.getInstance().getTime(),con4,-85);
+        ArrayList<Movimientos> listaMov24 = new ArrayList<Movimientos>();
+        listaMov24.add(movimiento24);
+        //credito a destino
+        Movimientos movimiento25=new Movimientos(Calendar.getInstance().getTime(),con4,85);
+        ArrayList<Movimientos> listaMov25 = new ArrayList<Movimientos>();
+        listaMov25.add(movimiento25);
+        cuenta7.setListaMovimientos(listaMov24);
+        cuenta8.setListaMovimientos(listaMov25);
+        Movimientos_Transferencias mov_transf_13 = new Movimientos_Transferencias(movimiento24, transferencia7 );
+        Movimientos_Transferencias mov_transf_14 = new Movimientos_Transferencias(movimiento25, transferencia7 );
+        session.save(transferencia7);
+        session.save(movimiento24);
+        session.save(movimiento25);
+        session.save(mov_transf_13);
+        session.save(mov_transf_14);
+        session.save(cuenta7);
+        session.save(cuenta8);
+
+        Transferencia transferencia8 = new Transferencia();
+        transferencia8.setIdCliente(cliente8);
+        transferencia8.setCbu_origen( cuenta8 )
+        transferencia8.setCbu_destino( cuenta9 );
+        transferencia8.setMonto(85);
+        transferencia8.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia8.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento26=new Movimientos(Calendar.getInstance().getTime(),con4,-85);
+        ArrayList<Movimientos> listaMov26 = new ArrayList<Movimientos>();
+        listaMov26.add(movimiento26);
+        //credito a destino
+        Movimientos movimiento27=new Movimientos(Calendar.getInstance().getTime(),con4,85);
+        ArrayList<Movimientos> listaMov27 = new ArrayList<Movimientos>();
+        listaMov27.add(movimiento27);
+        cuenta8.setListaMovimientos(listaMov26);
+        cuenta9.setListaMovimientos(listaMov27);
+        Movimientos_Transferencias mov_transf_15 = new Movimientos_Transferencias(movimiento26, transferencia8 );
+        Movimientos_Transferencias mov_transf_16 = new Movimientos_Transferencias(movimiento27, transferencia8 );
+        session.save(transferencia8);
+        session.save(movimiento26);
+        session.save(movimiento27);
+        session.save(mov_transf_15);
+        session.save(mov_transf_16);
+        session.save(cuenta8);
+        session.save(cuenta9);
        
+
+        Transferencia transferencia9 = new Transferencia();
+        transferencia9.setIdCliente(cliente8);
+        transferencia9.setCbu_origen( cuenta8 )
+        transferencia9.setCbu_destino( cuenta1 );
+        transferencia9.setMonto(3225);
+        transferencia9.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia9.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento28=new Movimientos(Calendar.getInstance().getTime(),con4,-3225);
+        ArrayList<Movimientos> listaMov28 = new ArrayList<Movimientos>();
+        listaMov28.add(movimiento28);
+        //credito a destino
+        Movimientos movimiento29=new Movimientos(Calendar.getInstance().getTime(),con4,3225);
+        ArrayList<Movimientos> listaMov29 = new ArrayList<Movimientos>();
+        listaMov29.add(movimiento29);
+        cuenta8.setListaMovimientos(listaMov28);
+        cuenta1.setListaMovimientos(listaMov29);
+        Movimientos_Transferencias mov_transf_17 = new Movimientos_Transferencias(movimiento28, transferencia9 );
+        Movimientos_Transferencias mov_transf_18 = new Movimientos_Transferencias(movimiento29, transferencia9 );
+        session.save(transferencia9);
+        session.save(movimiento28);
+        session.save(movimiento29);
+        session.save(mov_transf_17);
+        session.save(mov_transf_18);
+        session.save(cuenta8);
+        session.save(cuenta1);
+       
+
+       Transferencia transferencia10 = new Transferencia();
+        transferencia10.setIdCliente(cliente2);
+        transferencia10.setCbu_origen( cuenta2 )
+        transferencia10.setCbu_destino( cuenta5 );
+        transferencia10.setMonto(3225);
+        transferencia10.setFecha_alta(Calendar.getInstance().getTime());
+        transferencia10.setFecha_baja(Calendar.getInstance().getTime());
+        //debito de origen
+        Movimientos movimiento30=new Movimientos(Calendar.getInstance().getTime(),con4,-3225);
+        ArrayList<Movimientos> listaMov30 = new ArrayList<Movimientos>();
+        listaMov30.add(movimiento30);
+        //credito a destino
+        Movimientos movimiento31=new Movimientos(Calendar.getInstance().getTime(),con4,3225);
+        ArrayList<Movimientos> listaMov31 = new ArrayList<Movimientos>();
+        listaMov31.add(movimiento31);
+        cuenta2.setListaMovimientos(listaMov30);
+        cuenta5.setListaMovimientos(listaMov31);
+        Movimientos_Transferencias mov_transf_19 = new Movimientos_Transferencias(movimiento30, transferencia10 );
+        Movimientos_Transferencias mov_transf_20 = new Movimientos_Transferencias(movimiento31, transferencia10 );
+        session.save(transferencia10);
+        session.save(movimiento30);
+        session.save(movimiento31);
+        session.save(mov_transf_19);
+        session.save(mov_transf_20);
+        session.save(cuenta2);
+        session.save(cuenta5);
+
         session.getTransaction().commit();  
         sessionFactory.close();
         
