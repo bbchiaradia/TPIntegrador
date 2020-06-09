@@ -1,14 +1,26 @@
 package utn.frgp.edu.ar;
 
+import java.util.Calendar;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import utn.frgp.edu.ar.entidad.AdministradorBanco;
+import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Conceptos;
+import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Estados;
 import utn.frgp.edu.ar.entidad.Localidades;
+import utn.frgp.edu.ar.entidad.Movimientos;
+import utn.frgp.edu.ar.entidad.Nacionalidad;
+import utn.frgp.edu.ar.entidad.Prestamos;
 import utn.frgp.edu.ar.entidad.Provincias;
+import utn.frgp.edu.ar.entidad.Sexo;
+import utn.frgp.edu.ar.entidad.TipoCuenta;
+import utn.frgp.edu.ar.entidad.Usuarios;
 
 public class main {
 
@@ -182,7 +194,330 @@ public class main {
         session.save(localidad50);    
         session.save(localidad51);    
         session.save(localidad52); 
-
+        
+        
+        //Cargo datos en sexo
+        Sexo sexo = new Sexo();
+        sexo.setDescripcion("Femenino");
+        Sexo sexo2 = new Sexo();
+        sexo2.setDescripcion("Masculino");
+        session.save(sexo);
+        session.save(sexo2);
+        
+        
+        //Cargo datos en nacionalidad
+        Nacionalidad nac = new Nacionalidad();
+        nac.setDescripcion("Argentino");
+        Nacionalidad nac2 = new Nacionalidad();
+        nac2.setDescripcion("Extranjero");
+        session.save(nac);
+        session.save(nac2);
+        
+        
+        //Cargo datos en administradorBanco y usuarios
+        AdministradorBanco admBanco = new AdministradorBanco();
+        admBanco.setDni(35718457);
+        admBanco.setNombre("Nicolas");
+        admBanco.setApellido("Flores");
+        Usuarios usuario = new Usuarios();
+        usuario.setFecha_alta(Calendar.getInstance().getTime());
+        usuario.setNombreUsuario("nflores");
+        usuario.setContrasenia("prueba1");
+        admBanco.setIdUsuario(usuario);
+        session.save(usuario);
+        session.save(admBanco);
+        AdministradorBanco admBanco1 = new AdministradorBanco();
+        admBanco1.setDni(35718257);
+        admBanco1.setNombre("Belen");
+        admBanco1.setApellido("Chiaradia");
+        Usuarios usuario1 = new Usuarios();
+        usuario1.setFecha_alta(Calendar.getInstance().getTime());
+        usuario1.setNombreUsuario("bchiaradia");
+        usuario1.setContrasenia("prueba1");
+        admBanco1.setIdUsuario(usuario1);
+        session.save(usuario1);
+        session.save(admBanco1);
+        AdministradorBanco admBanco2 = new AdministradorBanco();
+        admBanco2.setDni(25718457);
+        admBanco2.setNombre("Ivan");
+        admBanco2.setApellido("Fernandez");
+        Usuarios usuario2 = new Usuarios();
+        usuario2.setFecha_alta(Calendar.getInstance().getTime());
+        usuario2.setNombreUsuario("ifernandez");
+        usuario2.setContrasenia("prueba1");
+        admBanco2.setIdUsuario(usuario2);
+        session.save(usuario2);
+        session.save(admBanco2);
+        AdministradorBanco admBanco3 = new AdministradorBanco();
+        admBanco3.setDni(32518457);
+        admBanco3.setNombre("Nicolas");
+        admBanco3.setApellido("Mansilla");
+        Usuarios usuario3 = new Usuarios();
+        usuario3.setFecha_alta(Calendar.getInstance().getTime());
+        usuario3.setNombreUsuario("nmansilla");
+        usuario3.setContrasenia("prueba1");
+        admBanco3.setIdUsuario(usuario3);
+        session.save(usuario3);
+        session.save(admBanco3);
+        AdministradorBanco admBanco4 = new AdministradorBanco();
+        admBanco4.setDni(35561457);
+        admBanco4.setNombre("Ezequiel");
+        admBanco4.setApellido("Gomez");
+        Usuarios usuario4 = new Usuarios();
+        usuario4.setFecha_alta(Calendar.getInstance().getTime());
+        usuario4.setNombreUsuario("egomez");
+        usuario4.setContrasenia("prueba1");
+        admBanco4.setIdUsuario(usuario4);
+        session.save(usuario4);
+        session.save(admBanco4);
+        AdministradorBanco admBanco5 = new AdministradorBanco();
+        admBanco5.setDni(35694357);
+        admBanco5.setNombre("Julian");
+        admBanco5.setApellido("Hermann");
+        Usuarios usuario5 = new Usuarios();
+        usuario5.setFecha_alta(Calendar.getInstance().getTime());
+        usuario5.setNombreUsuario("jhermann");
+        usuario5.setContrasenia("prueba1");
+        admBanco5.setIdUsuario(usuario5);
+        session.save(usuario5);
+        session.save(admBanco5);
+        AdministradorBanco admBanco6 = new AdministradorBanco();
+        admBanco6.setDni(26948457);
+        admBanco6.setNombre("Leon");
+        admBanco6.setApellido("Cuello");
+        Usuarios usuario6 = new Usuarios();
+        usuario6.setFecha_alta(Calendar.getInstance().getTime());
+        usuario6.setNombreUsuario("lcuello");
+        usuario6.setContrasenia("prueba1");
+        admBanco6.setIdUsuario(usuario6);
+        session.save(usuario6);
+        session.save(admBanco6);
+        AdministradorBanco admBanco7 = new AdministradorBanco();
+        admBanco7.setDni(11718457);
+        admBanco7.setNombre("Matias");
+        admBanco7.setApellido("Civielo");
+        Usuarios usuario7 = new Usuarios();
+        usuario7.setFecha_alta(Calendar.getInstance().getTime());
+        usuario7.setNombreUsuario("mcivielo");
+        usuario7.setContrasenia("prueba1");
+        admBanco7.setIdUsuario(usuario7);
+        session.save(usuario7);
+        session.save(admBanco7);
+        AdministradorBanco admBanco8 = new AdministradorBanco();
+        admBanco8.setDni(35796757);
+        admBanco8.setNombre("Julieta");
+        admBanco8.setApellido("Fadini");
+        Usuarios usuario8 = new Usuarios();
+        usuario8.setFecha_alta(Calendar.getInstance().getTime());
+        usuario8.setNombreUsuario("jfadini");
+        usuario8.setContrasenia("prueba1");
+        admBanco8.setIdUsuario(usuario8);
+        session.save(usuario8);
+        session.save(admBanco8);
+        AdministradorBanco admBanco9 = new AdministradorBanco();
+        admBanco9.setDni(24425457);
+        admBanco9.setNombre("Tomas");
+        admBanco9.setApellido("Hernandez");
+        Usuarios usuario9 = new Usuarios();
+        usuario9.setFecha_alta(Calendar.getInstance().getTime());
+        usuario9.setNombreUsuario("thernandez");
+        usuario9.setContrasenia("prueba1");
+        admBanco9.setIdUsuario(usuario9);
+        session.save(usuario9);
+        session.save(admBanco9);
+        
+        
+        //Cargo datos en clientes y usuarios
+        Clientes cliente = new Clientes();
+        cliente.setDni(45718457);
+        cliente.setNombre("Jazmin");
+        cliente.setApellido("Fernandez");
+        cliente.setIdSexo(sexo);
+        cliente.setIdNacionalidad(nac);
+        cliente.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente.setIdProvincia(provincia2);
+        cliente.setIdLocalidad(localidad3);
+        cliente.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario10 = new Usuarios();
+        usuario10.setFecha_alta(Calendar.getInstance().getTime());
+        usuario10.setNombreUsuario("jfernandez");
+        usuario10.setContrasenia("prueba2");
+        cliente.setIdUsuario(usuario10);
+        cliente.setIdAdmBanco(admBanco);
+        session.save(usuario10);
+        session.save(cliente);
+        
+        Clientes cliente1 = new Clientes();
+        cliente1.setDni(10718457);
+        cliente1.setNombre("Celia");
+        cliente1.setApellido("Hermann");
+        cliente1.setIdSexo(sexo);
+        cliente1.setIdNacionalidad(nac);
+        cliente1.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente1.setIdProvincia(provincia2);
+        cliente1.setIdLocalidad(localidad3);
+        cliente1.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario11 = new Usuarios();
+        usuario11.setFecha_alta(Calendar.getInstance().getTime());
+        usuario11.setNombreUsuario("chermann");
+        usuario11.setContrasenia("prueba2");
+        cliente1.setIdUsuario(usuario11);
+        cliente1.setIdAdmBanco(admBanco1);
+        session.save(usuario11);
+        session.save(cliente1);
+        
+        Clientes cliente2 = new Clientes();
+        cliente2.setDni(22718457);
+        cliente2.setNombre("Claudia");
+        cliente2.setApellido("Bastias");
+        cliente2.setIdSexo(sexo);
+        cliente2.setIdNacionalidad(nac);
+        cliente2.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente2.setIdProvincia(provincia2);
+        cliente2.setIdLocalidad(localidad3);
+        cliente2.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario12 = new Usuarios();
+        usuario12.setFecha_alta(Calendar.getInstance().getTime());
+        usuario12.setNombreUsuario("cbastias");
+        usuario12.setContrasenia("prueba2");
+        cliente2.setIdUsuario(usuario12);
+        cliente2.setIdAdmBanco(admBanco2);
+        session.save(usuario12);
+        session.save(cliente2);
+        
+        Clientes cliente3 = new Clientes();
+        cliente3.setDni(26718457);
+        cliente3.setNombre("Natalia");
+        cliente3.setApellido("Gonzalez");
+        cliente3.setIdSexo(sexo);
+        cliente3.setIdNacionalidad(nac);
+        cliente3.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente3.setIdProvincia(provincia2);
+        cliente3.setIdLocalidad(localidad3);
+        cliente3.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario13 = new Usuarios();
+        usuario13.setFecha_alta(Calendar.getInstance().getTime());
+        usuario13.setNombreUsuario("ngonzalez");
+        usuario13.setContrasenia("prueba2");
+        cliente3.setIdUsuario(usuario13);
+        cliente3.setIdAdmBanco(admBanco3);
+        session.save(usuario13);
+        session.save(cliente3);
+        
+        Clientes cliente4 = new Clientes();
+        cliente4.setDni(23718457);
+        cliente4.setNombre("Josefina");
+        cliente4.setApellido("Kinen");
+        cliente4.setIdSexo(sexo);
+        cliente4.setIdNacionalidad(nac);
+        cliente4.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente4.setIdProvincia(provincia2);
+        cliente4.setIdLocalidad(localidad3);
+        cliente4.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario14 = new Usuarios();
+        usuario14.setFecha_alta(Calendar.getInstance().getTime());
+        usuario14.setNombreUsuario("jkinen");
+        usuario14.setContrasenia("prueba2");
+        cliente4.setIdUsuario(usuario14);
+        cliente4.setIdAdmBanco(admBanco4);
+        session.save(usuario14);
+        session.save(cliente4);
+        
+        Clientes cliente5 = new Clientes();
+        cliente5.setDni(21718457);
+        cliente5.setNombre("Luca");
+        cliente5.setApellido("Kinen");
+        cliente5.setIdSexo(sexo2);
+        cliente5.setIdNacionalidad(nac);
+        cliente5.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente5.setIdProvincia(provincia2);
+        cliente5.setIdLocalidad(localidad3);
+        cliente5.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario15 = new Usuarios();
+        usuario15.setFecha_alta(Calendar.getInstance().getTime());
+        usuario15.setNombreUsuario("lkinen");
+        usuario15.setContrasenia("prueba2");
+        cliente5.setIdUsuario(usuario15);
+        cliente5.setIdAdmBanco(admBanco5);
+        session.save(usuario15);
+        session.save(cliente5);
+        
+        Clientes cliente6 = new Clientes();
+        cliente6.setDni(13718457);
+        cliente6.setNombre("Braian");
+        cliente6.setApellido("Fernandez");
+        cliente6.setIdSexo(sexo2);
+        cliente6.setIdNacionalidad(nac);
+        cliente6.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente6.setIdProvincia(provincia2);
+        cliente6.setIdLocalidad(localidad4);
+        cliente6.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario16 = new Usuarios();
+        usuario16.setFecha_alta(Calendar.getInstance().getTime());
+        usuario16.setNombreUsuario("bfernandez");
+        usuario16.setContrasenia("prueba2");
+        cliente6.setIdUsuario(usuario16);
+        cliente6.setIdAdmBanco(admBanco6);
+        session.save(usuario16);
+        session.save(cliente6);
+        
+        Clientes cliente7 = new Clientes();
+        cliente7.setDni(15718457);
+        cliente7.setNombre("Santiago");
+        cliente7.setApellido("Gonzalez");
+        cliente7.setIdSexo(sexo2);
+        cliente7.setIdNacionalidad(nac);
+        cliente7.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente7.setIdProvincia(provincia2);
+        cliente7.setIdLocalidad(localidad4);
+        cliente7.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario17 = new Usuarios();
+        usuario17.setFecha_alta(Calendar.getInstance().getTime());
+        usuario17.setNombreUsuario("sgonzalez");
+        usuario17.setContrasenia("prueba2");
+        cliente7.setIdUsuario(usuario17);
+        cliente7.setIdAdmBanco(admBanco7);
+        session.save(usuario17);
+        session.save(cliente7);
+        
+        Clientes cliente8 = new Clientes();
+        cliente8.setDni(14918457);
+        cliente8.setNombre("Luciano");
+        cliente8.setApellido("Salomon");
+        cliente8.setIdSexo(sexo2);
+        cliente8.setIdNacionalidad(nac);
+        cliente8.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente8.setIdProvincia(provincia2);
+        cliente8.setIdLocalidad(localidad4);
+        cliente8.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario18 = new Usuarios();
+        usuario18.setFecha_alta(Calendar.getInstance().getTime());
+        usuario18.setNombreUsuario("lsalomon");
+        usuario18.setContrasenia("prueba2");
+        cliente8.setIdUsuario(usuario18);
+        cliente8.setIdAdmBanco(admBanco8);
+        session.save(usuario18);
+        session.save(cliente8);
+        
+        Clientes cliente9 = new Clientes();
+        cliente9.setDni(11618457);
+        cliente9.setNombre("Marcelo");
+        cliente9.setApellido("Salomon");
+        cliente9.setIdSexo(sexo2);
+        cliente9.setIdNacionalidad(nac);
+        cliente9.setFecha_nacimiento(Calendar.getInstance().getTime());
+        cliente9.setIdProvincia(provincia2);
+        cliente9.setIdLocalidad(localidad4);
+        cliente9.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario19 = new Usuarios();
+        usuario19.setFecha_alta(Calendar.getInstance().getTime());
+        usuario19.setNombreUsuario("msalomon");
+        usuario19.setContrasenia("prueba2");
+        cliente9.setIdUsuario(usuario19);
+        cliente9.setIdAdmBanco(admBanco9);
+        session.save(usuario19);
+        session.save(cliente9);
+        
         
         // Cargo datos en Conceptos
         Conceptos con1= new Conceptos("Alta de Cuenta");
@@ -195,10 +530,79 @@ public class main {
         session.save(con4); 
         
         
+        //Cargo datos en tipo cuenta
+        TipoCuenta tipo1=new TipoCuenta();
+        tipo1.setDescripcion("Caja de ahorro en pesos");
+        tipo1.setEstado(1);
+        session.save(tipo1);
+        TipoCuenta tipo2=new TipoCuenta();
+        tipo2.setDescripcion("Caja de ahorro en dólares");
+        tipo2.setEstado(1);
+        session.save(tipo2);
+        TipoCuenta tipo3=new TipoCuenta();
+        tipo3.setDescripcion("Cuenta corriente");
+        tipo3.setEstado(1);
+        session.save(tipo3);
+        TipoCuenta tipo4=new TipoCuenta();
+        tipo4.setDescripcion("Cuenta corriente especial en pesos");
+        tipo4.setEstado(1);
+        session.save(tipo4);
+        TipoCuenta tipo5=new TipoCuenta();
+        tipo5.setDescripcion("Cuenta corriente especial en dólares");
+        tipo5.setEstado(1);
+        session.save(tipo5);
         
         
+        //Cargo datos en estados
+        Estados estado1=new Estados();
+        estado1.setDescripcion("Aprobado");
+        session.save(estado1);
+        Estados estado2=new Estados();
+        estado2.setDescripcion("Rechazado");
+        session.save(estado2);
+        Estados estado3=new Estados();
+        estado3.setDescripcion("Pendiente");
+        session.save(estado3);
         
         
+        //Cargo datos en cuentas
+        Cuentas cuenta=new Cuentas(cliente,591661,"111111",5000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        session.save(cuenta);
+        Cuentas cuenta1=new Cuentas(cliente1,561661,"222222",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo3);
+        session.save(cuenta1);
+        Cuentas cuenta2=new Cuentas(cliente2,461661,"333333",50000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        session.save(cuenta2);
+        Cuentas cuenta3=new Cuentas(cliente3,361661,"444444",1000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta3);
+        Cuentas cuenta4=new Cuentas(cliente4,261661,"555555",2000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo3);
+        session.save(cuenta4);
+        Cuentas cuenta5=new Cuentas(cliente5,161661,"666666",500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta5);
+        Cuentas cuenta6=new Cuentas(cliente6,661661,"777777",1500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta6);
+        Cuentas cuenta7=new Cuentas(cliente7,761661,"888888",5600,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        session.save(cuenta7);
+        Cuentas cuenta8=new Cuentas(cliente8,861661,"999999",6000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo5);
+        session.save(cuenta8);
+        Cuentas cuenta9=new Cuentas(cliente9,961661,"101010",800,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        session.save(cuenta9);
+        
+        
+        //Cargo datos en prestamos y movimientos
+        Prestamos prestamo=new Prestamos();
+        prestamo.setIdCliente(cliente);
+        prestamo.setId_estado(estado1);
+        prestamo.setFecha(Calendar.getInstance().getTime());
+        prestamo.setFecha_alta(Calendar.getInstance().getTime());
+        prestamo.setFecha_baja(Calendar.getInstance().getTime());
+        prestamo.setImporte(15000);
+        prestamo.setCuotas(6);
+        Movimientos movimiento=new Movimientos(Calendar.getInstance().getTime(),con2,15000);
+        prestamo.setIdMovimiento(movimiento);
+        session.save(movimiento);
+        session.save(prestamo);
+        
+       
         session.getTransaction().commit();  
         sessionFactory.close();
         

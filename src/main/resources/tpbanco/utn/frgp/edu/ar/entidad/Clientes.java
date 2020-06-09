@@ -48,9 +48,22 @@ public class Clientes implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="idNacionalidad")
 	private Nacionalidad idNacionalidad;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="idLocalidad")
+	private Localidades idLocalidad;
+	
+	
+	public Localidades getIdLocalidad() {
+		return idLocalidad;
+	}
 
-	
-	
+
+	public void setIdLocalidad(Localidades idLocalidad) {
+		this.idLocalidad = idLocalidad;
+	}
+
+
 	@Column(name="fecha_nacimiento")
     private Date fecha_nacimiento;
 	
