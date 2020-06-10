@@ -32,9 +32,6 @@ public class Movimientos {
     private Conceptos idConcepto;
 	
 	
-	/*@Column(name="idCuenta")
-	private int idCuenta;*/
-	
 	@Column(name="importe")
 	private double importe;
 	

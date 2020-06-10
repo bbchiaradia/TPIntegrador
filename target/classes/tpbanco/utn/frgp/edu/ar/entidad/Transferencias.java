@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,6 +24,7 @@ public class Transferencias implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="IdTransferencia")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTransferencia;
 	
     
@@ -34,9 +37,6 @@ public class Transferencias implements Serializable {
 	
 	@Column(name="cbu_destino")
 	private long cbu_destino;
-	
-	@Column(name="idMovimiento")
-	private int idMovimiento;
 	
 	@Column(name="monto")
 	private double monto;
@@ -81,14 +81,6 @@ public class Transferencias implements Serializable {
 		this.cbu_destino = cbu_destino;
 	}
 
-	public int getIdMovimiento() {
-		return idMovimiento;
-	}
-
-	public void setIdMovimiento(int idMovimiento) {
-		this.idMovimiento = idMovimiento;
-	}
-
 	public double getMonto() {
 		return monto;
 	}
@@ -116,7 +108,7 @@ public class Transferencias implements Serializable {
 	@Override
 	public String toString() {
 		return "Transferencias [idTransferencia=" + idTransferencia + ", idCliente=" + idCliente + ", cbu_origen="
-				+ cbu_origen + ", cbu_destino=" + cbu_destino + ", idMovimiento=" + idMovimiento + ", monto=" + monto
+				+ cbu_origen + ", cbu_destino=" + cbu_destino  + ", monto=" + monto
 				+ ", fecha_alta=" + fecha_alta + ", fecha_baja=" + fecha_baja + "]";
 	}
 	
