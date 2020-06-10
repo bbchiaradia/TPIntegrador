@@ -17,6 +17,13 @@ public class Cuotas implements Serializable{
 	
 	
 	
+	public Cuotas() {
+	
+	}
+
+
+
+
 	public Cuotas( Date fecha_pago) {
 		super();
 		this.fecha_pago = fecha_pago;

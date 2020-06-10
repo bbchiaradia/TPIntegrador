@@ -22,6 +22,12 @@ public class Movimientos_Transferencias {
 
 
 
+public Movimientos_Transferencias() {
+
+	}
+
+
+
 public Movimientos_Transferencias(Movimientos id_movimiento, Transferencias idTransferencia) {
 		super();
 		this.id_movimiento = id_movimiento;

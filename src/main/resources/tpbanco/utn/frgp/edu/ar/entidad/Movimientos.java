@@ -46,6 +46,12 @@ public class Movimientos {
 
 
 
+	public Movimientos() {
+		
+	}
+
+
+
 	public int getIdMovimiento() {
 		return idMovimiento;
 	}

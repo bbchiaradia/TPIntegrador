@@ -858,7 +858,7 @@ public class main {
         session.save(prestamo11);
   
       
-        
+
         //Transferencias
       		Transferencias transferencia1 = new Transferencias();
               transferencia1.setIdCliente(cliente1);
