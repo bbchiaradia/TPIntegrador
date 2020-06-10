@@ -592,7 +592,26 @@ public class main {
         session.save(cuenta9);
         Cuentas cuenta10=new Cuentas(cliente9,96166155,"1010102",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo5);
         session.save(cuenta10);
-        
+        Cuentas cuenta00=new Cuentas(cliente,2591661,"1111112",5000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta00);
+        Cuentas cuenta11=new Cuentas(cliente1,2561661,"1222222",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo3);
+        session.save(cuenta11);
+        Cuentas cuenta12=new Cuentas(cliente2,2461661,"3333332",50000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta12);
+        Cuentas cuenta13=new Cuentas(cliente3,2361661,"4444442",1000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta13);
+        Cuentas cuenta14=new Cuentas(cliente4,2261661,"5555552",2000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta14);
+        Cuentas cuenta15=new Cuentas(cliente5,2161661,"6666662",500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        session.save(cuenta15);
+        Cuentas cuenta16=new Cuentas(cliente6,2661661,"7777772",1500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        session.save(cuenta16);
+        Cuentas cuenta17=new Cuentas(cliente7,2761661,"8888882",5600,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta17);
+        Cuentas cuenta18=new Cuentas(cliente8,2861661,"9999992",6000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        session.save(cuenta18);
+        Cuentas cuenta19=new Cuentas(cliente9,2961661,"1010102",800,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        session.save(cuenta19);
         
         
 
@@ -857,7 +876,7 @@ public class main {
         session.save(movimiento11);
         session.save(prestamo11);
   
-      
+        
         
         //Transferencias
       		Transferencias transferencia1 = new Transferencias();
@@ -886,6 +905,38 @@ public class main {
               session.save(mov_transf_2);
               session.save(cuenta1);
               session.save(cuenta2);
+      
+        
+        /*
+        
+        //Transferencias
+      		Transferencias transferencia1 = new Transferencias();
+              transferencia1.setIdCliente(cliente1);
+              transferencia1.setCbu_origen(591661);
+              transferencia1.setCbu_destino(561661);
+              transferencia1.setMonto(100);
+              transferencia1.setFecha_alta(Calendar.getInstance().getTime());
+              transferencia1.setFecha_baja(Calendar.getInstance().getTime());
+              //debito de origen
+              Movimientos movimiento12=new Movimientos(Calendar.getInstance().getTime(),con4,-100);
+              ArrayList<Movimientos> listaMov12 = new ArrayList<Movimientos>();
+              listaMov12.add(movimiento12);
+              //credito a destino
+              Movimientos movimiento13=new Movimientos(Calendar.getInstance().getTime(),con4,100);
+              ArrayList<Movimientos> listaMov13 = new ArrayList<Movimientos>();
+              listaMov13.add(movimiento13);
+              cuenta1.setListaMovimientos(listaMov12);
+              cuenta2.setListaMovimientos(listaMov13);
+              Movimientos_Transferencias mov_transf_1 = new Movimientos_Transferencias(movimiento12, transferencia1 );
+              Movimientos_Transferencias mov_transf_2 = new Movimientos_Transferencias(movimiento13, transferencia1 );
+              session.save(transferencia1);
+              session.save(movimiento12);
+              session.save(movimiento13);
+              session.save(mov_transf_1);
+              session.save(mov_transf_2);
+              session.save(cuenta1);
+              session.save(cuenta2);
+      
 
               
            
@@ -1149,7 +1200,9 @@ public class main {
               session.save(mov_transf_19);
               session.save(mov_transf_20);
               session.save(cuenta2);
-              session.save(cuenta5);
+              session.save(cuenta5); 
+              
+              */
         
    
 

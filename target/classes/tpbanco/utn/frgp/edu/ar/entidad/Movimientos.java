@@ -26,6 +26,10 @@ public class Movimientos {
 	private Date fecha;
 	
 	
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="idcuenta")
+    private Cuentas idCuenta;
+	
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="idConcepto")

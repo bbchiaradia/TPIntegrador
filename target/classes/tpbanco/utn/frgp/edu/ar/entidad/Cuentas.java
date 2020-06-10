@@ -39,12 +39,15 @@ public class Cuentas implements Serializable{
 	public Cuentas() {
 		
 	}
+	
+	
+	/*
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="idCuenta")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCuenta;
-	
+	*/
 	
 	
 	@ManyToOne(cascade = {CascadeType.ALL})
@@ -91,9 +94,6 @@ public class Cuentas implements Serializable{
 	}
 	public void setListaMovimientos(List<Movimientos> listaMovimientos) {
 		this.listaMovimientos = listaMovimientos;
-	}
-	public int getIdCuenta() {
-		return idCuenta;
 	}
 
 
