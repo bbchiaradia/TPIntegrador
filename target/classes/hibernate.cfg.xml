@@ -26,5 +26,6 @@
 		<mapping  class="utn.frgp.edu.ar.entidad.Transferencias"/>
 		<mapping  class="utn.frgp.edu.ar.entidad.Movimientos"/>
 		<mapping  class="utn.frgp.edu.ar.entidad.Movimientos_Transferencias"/>
+		
     </session-factory>
 </hibernate-configuration>

@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-
+import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.AdministradorBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Conceptos;
@@ -20,21 +20,10 @@ import utn.frgp.edu.ar.entidad.Sexo;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
 
-
 public class App 
 {
-    public static void main( String[] args )
+    public static void main ( String[] args )
     {
-    	SessionFactory sessionFactory;
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        
-        Session session= sessionFactory.openSession();
-        session.beginTransaction();
-        
-        
         
         /*
          * 
@@ -95,7 +84,9 @@ public class App
         
           
          //* BELEN CHIARADIA
-       
+           
+        /*
+   
          //****** ---- Prueba relacion  usuario - cliente 1 a 1 
         Clientes cliente = new Clientes();
         cliente.setDni(35718457);
@@ -108,8 +99,7 @@ public class App
         cliente.setIdUsuario(usuario);
         session.save(cliente);
       
-        
-        /*
+    
         
         //****** ---- Prueba relacion  usuario - admBanco 1 a 1 
         AdministradorBanco admBanco = new AdministradorBanco();
@@ -289,19 +279,43 @@ public class App
      
         session.save(cuenta);
         
+       
         
+       
         
-        
-         */
-        
-                
+          */
+  
 
         
-        session.getTransaction().commit();
+    	Clientes cliente2 = new Clientes();
+        cliente2.setDni(35718457);
+        cliente2.setNombre("Nicolas");
+        cliente2.setApellido("Flores");
+        cliente2.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario2 = new Usuarios();
+        usuario2.setNombreUsuario("nflores");
+        usuario2.setContrasenia("prueba3");
+        cliente2.setIdUsuario(usuario2);
+        daoBanco daoBanco2 = new daoBanco(); 
+        daoBanco2.AgregarCliente(cliente2);
+
+           
+                
+      	Clientes cliente = new Clientes();
+        cliente.setDni(35718457);
+        cliente.setNombre("Belen");
+        cliente.setApellido("Chiaradia");
+        cliente.setFecha_alta(Calendar.getInstance().getTime());
+        Usuarios usuario = new Usuarios();
+        usuario.setNombreUsuario("bchiaradia2");
+        usuario.setContrasenia("prueba2");
+        cliente.setIdUsuario(usuario);
+        daoBanco daoBanco = new daoBanco(); 
+        daoBanco.AgregarCliente(cliente);
         
-        
-        sessionFactory.close();
-        
+   
         
     }
+
+
 }

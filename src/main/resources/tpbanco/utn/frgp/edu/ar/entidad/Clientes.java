@@ -13,10 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.Session;
+
+import utn.frgp.edu.ar.dao.ConfigHibernet;
+import utn.frgp.edu.ar.dao.Idao;
+
 
 @Entity
 @Table(name="Clientes")
-public class Clientes implements Serializable{
+public class Clientes implements Serializable {
 
 	private static final long serialVersionUID = 1L; 
 	@Id
@@ -90,6 +95,8 @@ public class Clientes implements Serializable{
     public Clientes() {
         
     }
+    
+  
     
 
 	public int getIdCliente() {
