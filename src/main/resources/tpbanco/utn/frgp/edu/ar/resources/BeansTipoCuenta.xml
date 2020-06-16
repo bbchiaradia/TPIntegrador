@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="TipoCuentaCAP" class="utn.frgp.edu.ar.entidad.TipoCuenta">
+   <property name="descripcion" value="Caja de ahorro en pesos"></property>
+   <property name="estado" value="1"></property>
+   </bean>
+   
+   <bean id="TipoCuentaCAD" class="utn.frgp.edu.ar.entidad.TipoCuenta">
+   <property name="descripcion" value=""></property>
+   <property name="1" value="Caja de ahorro en dólares"></property>
+   </bean>
+   
+   <bean id="TipoCuentaCC" class="utn.frgp.edu.ar.entidad.TipoCuenta">
+   <property name="descripcion" value="Cuenta corriente"></property>
+   <property name="estado" value="1"></property>
+   </bean>
+   
+   <bean id="TipoCuentaCCEspPesos" class="utn.frgp.edu.ar.entidad.TipoCuenta">
+   <property name="descripcion" value="Cuenta corriente especial en pesos"></property>
+   <property name="estado" value="1"></property>
+   </bean>
+   
+   <bean id="TipoCuentaCCEspUsd" class="utn.frgp.edu.ar.entidad.TipoCuenta">
+   <property name="descripcion" value="Cuenta corriente especial en dï¿½lares"></property>
+   <property name="estado" value="1"></property>
+   </bean>
+   
+   </beans>
+   

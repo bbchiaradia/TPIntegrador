@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="ConceptoAltaAcc" class="utn.frgp.edu.ar.entidad.Conceptos">
+   <property name="descripcion" value="Alta de Cuenta"></property>
+   </bean>
+   
+   <bean id="ConceptoAltaPres" class="utn.frgp.edu.ar.entidad.Conceptos">
+   <property name="descripcion" value="Alta de Prestamo"></property>
+   </bean>
+   
+   <bean id="ConceptoPagodePres" class="utn.frgp.edu.ar.entidad.Conceptos">
+   <property name="descripcion" value="Pago de Prestamo"></property>
+   </bean>
+   
+   <bean id="ConceptoTransferencia" class="utn.frgp.edu.ar.entidad.Conceptos">
+   <property name="descripcion" value="Transferencia"></property>
+   </bean>
+   
+   </beans>
