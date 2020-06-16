@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <!-- LOCALIDADES -->
+    
+   <bean id="LocalidadCABAPalermo" class="utn.frgp.edu.ar.entidad.Localidades">
+       <property name="descripcion" value="Palermo"></property>
+       <property name="codPostal" value="7112"></property>
+   </bean>
+    <bean id="LocalidadCABABelgrano" class="utn.frgp.edu.ar.entidad.Localidades">
+     <property name="descripcion" value="Belgrano"></property>
+       <property name="codPostal" value="7103"></property>
+   </bean>
+  
+     <bean id="LocalidadBuenosAiresCostaAzul" class="utn.frgp.edu.ar.entidad.Localidades">
+       <property name="descripcion" value="Costa Azul"></property>
+       <property name="codPostal" value="7102"></property>
+   </bean>
+    <bean id="LocalidadBuenosAiresFaroSanAntonio" class="utn.frgp.edu.ar.entidad.Localidades">
+     <property name="descripcion" value="Faro San Antonio"></property>
+       <property name="codPostal" value="7113"></property>
+   </bean>
+  
+  
+  
+  <!--  PROVINCIAS CON LISTA DE LOCALIDADES--> 
+  
+   <bean id="ProvinciaCABA" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="CABA"></property>
+    <property name="listaLocalidades">
+    	<list>
+    		<ref bean="LocalidadCABAPalermo"/>
+    		<ref bean="LocalidadCABABelgrano"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+   <bean id="ProvinciaBuenosAires" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Buenos Aires"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadBuenosAiresCostaAzul"/>
+    		<ref bean="LocalidadBuenosAiresFaroSanAntonio"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+   <!--  
+
+      <bean id="ProvinciaCatamarca" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Catamarca"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaCordoba" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Cordoba"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaCorrientes" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Corrientes"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaEntreRios" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Entre Rios"></constructor-arg>
+   </bean>   
+   <bean id="ProvinciaJujuy" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Jujuy"></constructor-arg>
+   </bean>   
+   <bean id="ProvinciaMendoza" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Mendoza"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaLaRioja" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="La Rioja"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaSalta" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Salta"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaSanJuan" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="San Juan"></constructor-arg> 
+    </bean>
+   <bean id="ProvinciaSanLuis" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="San Luis"></constructor-arg>
+   </bean>    
+   <bean id="ProvinciaSantaFe" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Santa Fe"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaSantiagodelEstero" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Santiago del Estero"></constructor-arg>
+   </bean>   
+   <bean id="ProvinciaTucuman" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Tucuman"></constructor-arg>
+   </bean>
+      <bean id="ProvinciaChaco" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Chaco"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaFormosa" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Formosa"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaMisiones" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Misiones"></constructor-arg>
+   </bean>      
+   <bean id="ProvinciaNeuquen" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Neuquen"></constructor-arg>
+   </bean>
+   <bean id="ProvinciaLaPampa" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="La Pampa"></constructor-arg>
+   </bean>      
+   <bean id="ProvinciaRioNegro" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Rio Negro"></constructor-arg>
+   </bean>   
+   <bean id="ProvinciaSantaCruz" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Santa Cruz"></constructor-arg>
+   </bean>    
+   <bean id="ProvinciaTierradelFuego" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
+    <constructor-arg index="0" type="String" value="Tierra del Fuego"></constructor-arg>
+   </bean>   
+   
+   -->
+</beans>

@@ -1,6 +1,7 @@
 package utn.frgp.edu.ar.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,11 +26,29 @@ public class Provincias implements Serializable{
         
     }
 	
-	
+	  private List<Localidades>listaLocalidades;
+
+
+	public List<Localidades> getListaLocalidades() {
+		return listaLocalidades;
+	}
+
+
+
+	public void setListaLocalidades(List<Localidades> listaLocalidades) {
+		this.listaLocalidades = listaLocalidades;
+	}
+
+
 
 	public Provincias(int idProvincia, String descripcion) {
-		super();
 		this.idProvincia = idProvincia;
+		this.descripcion = descripcion;
+	}
+
+
+
+	public Provincias(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
@@ -56,11 +75,14 @@ public class Provincias implements Serializable{
 		return serialVersionUID;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Provincias [idProvincia=" + idProvincia + ", descripcion="
-				+ descripcion + "]";
+		return "Provincias [idProvincia=" + idProvincia + ", descripcion=" + descripcion + ", listaLocalidades="
+				+ listaLocalidades + "]";
 	}
+
 	
 
     

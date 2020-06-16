@@ -45,7 +45,16 @@ public class Usuarios implements Serializable{
  
  
 
-    public int getIdUsuario() {
+    public Usuarios(String nombreUsuario, String contrasenia) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.contrasenia = contrasenia;
+	}
+
+
+
+
+	public int getIdUsuario() {
 		return idUsuario;
 	}
 
@@ -131,7 +140,14 @@ public class Usuarios implements Serializable{
 				+ ", fecha_alta=" + fecha_alta + ", fecha_baja=" + fecha_baja + "]";
 	}
     
+	
+	public void initUsuario() {
+		System.out.println("Se inicializa el usuario");
+	}
 
+	public void destroyUsuario() {
+		System.out.println("Se destruye el usuario");
+	}
  
 
 }

@@ -8,7 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.AdministradorBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
@@ -22,6 +26,9 @@ import utn.frgp.edu.ar.entidad.Usuarios;
 
 public class App 
 {
+	
+	static ApplicationContext appContext;
+	
     public static void main ( String[] args )
     {
         
@@ -283,7 +290,7 @@ public class App
         
        
         
-          */
+         
   
 
         
@@ -312,9 +319,20 @@ public class App
         cliente.setIdUsuario(usuario);
         daoBanco daoBanco = new daoBanco(); 
         daoBanco.AgregarCliente(cliente);
+         */
+    	
+    	
+    	
+    	// Prueba  provincias con lista localidades en xml
+    	ApplicationContext appContext= new ClassPathXmlApplicationContext("utn/frgp/edu/ar/resources/BeansProvinciasLocalidades.xml");
+    	Provincias p1 = (Provincias)appContext.getBean("ProvinciaCABA");
+        System.out.println(p1.toString());
+    	Provincias p2 = (Provincias)appContext.getBean("ProvinciaBuenosAires");
+        System.out.println(p2.toString());
         
-   
         
+
+        ((ConfigurableApplicationContext)(appContext)).close();
     }
 
 

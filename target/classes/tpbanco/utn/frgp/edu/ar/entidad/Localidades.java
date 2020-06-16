@@ -1,6 +1,7 @@
 package utn.frgp.edu.ar.entidad;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="Localidades")
@@ -35,14 +37,22 @@ public class Localidades implements Serializable{
     @Column(name="codPostal")
     private String codPostal;
    
+    
 
 	public Localidades() {
 	
     }
 
 
+
+	public Localidades( String descripcion, String codPostal) {
+		this.descripcion = descripcion;
+		this.codPostal = codPostal;
+	}
+
+	
+	
 	public Localidades( Provincias idProvincia, String descripcion, String codPostal) {
-		super();
 		this.idProvincia = idProvincia;
 		this.descripcion = descripcion;
 		this.codPostal = codPostal;
@@ -100,12 +110,17 @@ public class Localidades implements Serializable{
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Localidades [idLocalidad=" + idLocalidad + ", idProvincia=" + idProvincia + ", descripcion="
-				+ descripcion + "]";
+				+ descripcion + ", codPostal=" + codPostal + "]";
 	}
 
+
+	
+	
+	
 
 
 
