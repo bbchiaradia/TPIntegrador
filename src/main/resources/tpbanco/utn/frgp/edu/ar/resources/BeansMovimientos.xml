@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="movimiento" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="15000"></property>
+   </bean>
+   
+   <bean id="movimiento2" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="150000"></property>
+   </bean>
+   
+    <bean id="movimiento3" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="5000"></property>
+   </bean>
+   
+    <bean id="movimiento4" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="25000"></property>
+   </bean>
+   
+   <bean id="movimiento5" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="45000"></property>
+   </bean>
+   
+   
+   <bean id="movimiento7" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="10000"></property>
+   </bean>
+   
+   <bean id="movimiento8" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="7800"></property>
+   </bean>
+   
+   <bean id="movimiento9" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="7900"></property>
+   </bean>
+   
+   <bean id="movimiento10" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="1500"></property>
+   </bean>
+   
+   <bean id="movimiento11" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoAltaPres"></property>
+    <property name="importe" value="100"></property>
+   </bean>
+   
+   <bean id="movimiento12" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-100"></property>
+   </bean>
+   
+   <bean id="listaMov13" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="100"></property>
+   </bean>
+   
+   <bean id="movimiento14" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-500"></property>
+   </bean>
+   
+   <bean id="movimiento15" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="500"></property>
+   </bean>
+   
+   <bean id="movimiento16" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-3200"></property>
+   </bean>
+   
+   
+   <bean id="movimiento17" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="3200"></property>
+   </bean>
+   
+   <bean id="movimiento18" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-2221"></property>
+   </bean>
+   
+   <bean id="movimiento19" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="2221"></property>
+   </bean>
+   
+   <bean id="movimiento20" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-4123"></property>
+   </bean>
+   
+   <bean id="movimiento21" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="4123"></property>
+   </bean>
+   
+   <bean id="movimiento22" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-2211"></property>
+   </bean>
+   
+   <bean id="movimiento23" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="2211"></property>
+   </bean>
+   
+   <bean id="movimiento24" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-85"></property>
+   </bean>
+   
+   <bean id="movimiento25" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="85"></property>
+   </bean>
+   
+   <bean id="movimiento26" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-85"></property>
+   </bean>
+   
+   <bean id="listaMov27" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="85"></property>
+   </bean>
+   
+   <bean id="listaMov28" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-3225"></property>
+   </bean>
+   
+   <bean id="listaMov29" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="3225"></property>
+   </bean>
+   
+   <bean id="listaMov30" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="-3225"></property>
+   </bean>
+   
+   <bean id="listaMov31" class="utn.frgp.edu.ar.entidad.Movimientos">
+   <property name="fecha" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="idConcepto" ref="ConceptoTransferencia"></property>
+    <property name="importe" value="3225"></property>
+   </bean>
+   
+   
+   </beans>
