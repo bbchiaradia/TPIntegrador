@@ -23,9 +23,222 @@
      <property name="descripcion" value="Faro San Antonio"></property>
        <property name="codPostal" value="7113"></property>
    </bean>
+   
+    <bean id="LocalidadCatamarcaLaCarrera" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="La Carrera"></property>
+       <property name="codPostal" value="4711"></property>
+   </bean>
+    <bean id="LocalidadCatamarcaLaFalda" class="utn.frgp.edu.ar.entidad.Localidades">
+     <property name="descripcion" value="La Falda"></property>
+       <property name="codPostal" value="4707"></property>
+   </bean>
+   
+   
+      
+    <bean id="LocalidadCordobaLosMolinos" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Los Molinos"></property>
+       <property name="codPostal" value="5189"></property>
+   </bean>
+    <bean id="LocalidadCordobaRiodelosSauces" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Rio de los Sauces"></property>
+	     <property name="codPostal" value="5189"></property>
+   </bean>
+   
+   
+      <bean id="LocalidadCorrientesInga" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Ingas"></property>
+       <property name="codPostal" value="3196"></property>
+   </bean>
+    <bean id="LocalidadCorrientesJesusMaria" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Jesus Maria"></property>
+	     <property name="codPostal" value="3197"></property>
+   </bean>
+    
+   
+   
+<bean id="LocalidadEntreRiosSanJulian" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="San Julian"></property>
+       <property name="codPostal" value="2841"></property>
+   </bean>
+    <bean id="LocalidadEntreRiosSantaMarta" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Santa Marta"></property>
+	     <property name="codPostal" value="2840"></property>
+   </bean>
+    
+     
+  <bean id="LocalidadJujuyRedonda" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Redonda"></property>
+       <property name="codPostal" value="4644"></property>
+   </bean>
+    <bean id="LocalidadJujuyRioColorado" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Rio Colorado"></property>
+	     <property name="codPostal" value="4645"></property>
+   </bean>
+  
+  
+    <bean id="LocalidadMendozaCerroNevado" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Cerro Nevado"></property>
+       <property name="codPostal" value="5622"></property>
+   </bean>
+    <bean id="LocalidadMendozaSanRafael" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="San Rafael"></property>
+	     <property name="codPostal" value="5621"></property>
+   </bean>
   
   
   
+      <bean id="LocalidadLaRiojaSanAntonio" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="San Antonio"></property>
+       <property name="codPostal" value="5310"></property>
+   </bean>
+    <bean id="LocalidadLaRiojaTermasdeSantaTeresita" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="San Rafael"></property>
+	     <property name="codPostal" value="5313"></property>
+   </bean>
+  
+  
+  
+        <bean id="LocalidadSaltaSaladillo" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Saladillo"></property>
+       <property name="codPostal" value="4434"></property>
+   </bean>
+    <bean id="LocalidadSaltaSanGabriel" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="San Gabriel"></property>
+	     <property name="codPostal" value="4452"></property>
+   </bean>
+  
+  
+  
+  
+    <bean id="LocalidadSanJuanJuanCelani" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Juan Celani"></property>
+       <property name="codPostal" value="5427"></property>
+   </bean>
+    <bean id="LocalidadSanJuanLaCallecita" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="La Callecita"></property>
+	     <property name="codPostal" value="5421"></property>
+   </bean>
+  
+  
+  
+    <bean id="LocalidadSantaFeCabezadeChancho" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Cabeza de Chancho"></property>
+       <property name="codPostal" value="3061"></property>
+   </bean>
+    <bean id="LocalidadSantaFeCampoGaray" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Campo Garay"></property>
+	     <property name="codPostal" value="3066"></property>
+   </bean>
+  
+  
+  
+      <bean id="LocalidadSantiagodelEsteroLasOrellanas" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Las Orellanas"></property>
+       <property name="codPostal" value="4304"></property>
+   </bean>
+    <bean id="LocalidadSantiagodelEsteroPozoHondo" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Pozo Hondo"></property>
+	     <property name="codPostal" value="4184"></property>
+   </bean>
+  
+  
+        <bean id="LocalidadTucumanCampoGrande" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Campo Grande"></property>
+       <property name="codPostal" value="4159"></property>
+   </bean>
+    <bean id="LocalidadTucumanCampolaCruz" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Campo la Cruz"></property>
+	     <property name="codPostal" value="4161"></property>
+   </bean>
+
+  
+  
+  
+   <bean id="LocalidadChacoGirasol" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Girasol"></property>
+       <property name="codPostal" value="3703"></property>
+   </bean>
+    <bean id="LocalidadChacoKilometro" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Kilometro"></property>
+	     <property name="codPostal" value="3700"></property>
+   </bean>
+  
+  
+  
+     <bean id="LocalidadFormosaCasaBlanca" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Casa Blanca"></property>
+       <property name="codPostal" value="9220"></property>
+   </bean>
+    <bean id="LocalidadFormosaCerroNegro" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Cerro Negro"></property>
+	     <property name="codPostal" value="9223"></property>
+   </bean>
+   
+   
+        <bean id="LocalidadMisionesIslaGralBelgrano" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Isla Gral Belgrano"></property>
+       <property name="codPostal" value="3610"></property>
+   </bean>
+    <bean id="LocalidadMisionesPostaSantaFe" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Posta Santa Fe"></property>
+	     <property name="codPostal" value="3630"></property>
+   </bean>
+   
+   
+    <bean id="LocalidadNeuquenVillaErrecaborde" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Villa Errecaborde"></property>
+       <property name="codPostal" value="3358"></property>
+   </bean>
+    <bean id="LocalidadNeuquenVillaOrtizPereira" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Villa Ortiz Pereira"></property>
+	     <property name="codPostal" value="3350"></property>
+   </bean>
+   
+   
+   
+       <bean id="LocalidadLaPampaQuemquemtreu" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Quemquemtreu"></property>
+       <property name="codPostal" value="3358"></property>
+   </bean>
+    <bean id="LocalidadLaPampaCollonCura" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Collon Cura"></property>
+	     <property name="codPostal" value="3350"></property>
+   </bean>
+   
+   
+   
+          <bean id="LocalidadRioNegroColoniaelSauzal" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Colonia el Sauzal"></property>
+       <property name="codPostal" value="8203"></property>
+   </bean>
+    <bean id="LocalidadRioNegroCasadePiedra" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Casa de Piedra"></property>
+	     <property name="codPostal" value="8201"></property>
+   </bean>
+   
+
+
+          <bean id="LocalidadSantaCruzLaOfelia" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="La Ofelia"></property>
+       <property name="codPostal" value="8341"></property>
+   </bean>
+    <bean id="LocalidadSantaCruzLogotera" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Logotera"></property>
+	     <property name="codPostal" value="8345"></property>
+   </bean>
+
+
+
+          <bean id="LocalidadTierradelFuegoColoniaSobadell" class="utn.frgp.edu.ar.entidad.Localidades" >
+       <property name="descripcion" value="Colonia Sobadell"></property>
+       <property name="codPostal" value="6301"></property>
+   </bean>
+    <bean id="LocalidadTierradelFuegoDoblas" class="utn.frgp.edu.ar.entidad.Localidades">
+	     <property name="descripcion" value="Doblas"></property>
+	     <property name="codPostal" value="6305"></property>
+   </bean>
+
+
   <!--  PROVINCIAS CON LISTA DE LOCALIDADES--> 
   
    <bean id="ProvinciaCABA" class="utn.frgp.edu.ar.entidad.Provincias">
@@ -45,78 +258,258 @@
     <property name="listaLocalidades">
    		 <list>
     		<ref bean="LocalidadBuenosAiresCostaAzul"/>
+    		<ref bean="LocalidadCatamarcaLaFalda"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+      <bean id="ProvinciaCatamarca" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Catamarca"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadCatamarcaLaCarrera"/>
     		<ref bean="LocalidadBuenosAiresFaroSanAntonio"/>
    		</list>
     </property>   
    </bean>
    
    
-   
-   <!--  
+         <bean id="ProvinciaCordoba" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Cordoba"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadCordobaLosMolinos"/>
+    		<ref bean="LocalidadCordobaRiodelosSauces"/>
+   		</list>
+    </property>   
+   </bean>
 
-      <bean id="ProvinciaCatamarca" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Catamarca"></constructor-arg>
+
+
+   <bean id="ProvinciaCorrientes" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Corrientes"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadCorrientesInga"/>
+    		<ref bean="LocalidadCorrientesJesusMaria"/>
+   		</list>
+    </property>   
    </bean>
-   <bean id="ProvinciaCordoba" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Cordoba"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaCorrientes" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Corrientes"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaEntreRios" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Entre Rios"></constructor-arg>
-   </bean>   
-   <bean id="ProvinciaJujuy" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Jujuy"></constructor-arg>
-   </bean>   
-   <bean id="ProvinciaMendoza" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Mendoza"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaLaRioja" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="La Rioja"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaSalta" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Salta"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaSanJuan" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="San Juan"></constructor-arg> 
-    </bean>
-   <bean id="ProvinciaSanLuis" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="San Luis"></constructor-arg>
-   </bean>    
-   <bean id="ProvinciaSantaFe" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Santa Fe"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaSantiagodelEstero" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Santiago del Estero"></constructor-arg>
-   </bean>   
-   <bean id="ProvinciaTucuman" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Tucuman"></constructor-arg>
-   </bean>
-      <bean id="ProvinciaChaco" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Chaco"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaFormosa" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Formosa"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaMisiones" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Misiones"></constructor-arg>
-   </bean>      
-   <bean id="ProvinciaNeuquen" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Neuquen"></constructor-arg>
-   </bean>
-   <bean id="ProvinciaLaPampa" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="La Pampa"></constructor-arg>
-   </bean>      
-   <bean id="ProvinciaRioNegro" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Rio Negro"></constructor-arg>
-   </bean>   
-   <bean id="ProvinciaSantaCruz" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Santa Cruz"></constructor-arg>
-   </bean>    
-   <bean id="ProvinciaTierradelFuego" class="utn.frgp.edu.ar.entidad.Provincias" init-method="initProvincias" destroy-method="destroyProvincias" scope="singleton">
-    <constructor-arg index="0" type="String" value="Tierra del Fuego"></constructor-arg>
-   </bean>   
    
-   -->
+   
+   
+   <bean id="ProvinciaEntreRios" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Entre Rios"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadEntreRiosSanJulian"/>
+    		<ref bean="LocalidadEntreRiosSantaMarta"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+      <bean id="ProvinciaJujuy" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Jujuy"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadJujuyRedonda"/>
+    		<ref bean="LocalidadJujuyRioColorado"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   <bean id="ProvinciaMendoza" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Mendoza"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadMendozaCerroNevado"/>
+    		<ref bean="LocalidadMendozaSanRafael"/>
+   		</list>
+    </property>   
+   </bean>
+
+  
+   <bean id="ProvinciaLaRioja" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="La Rioja"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadLaRiojaSanAntonio"/>
+    		<ref bean="LocalidadLaRiojaTermasdeSantaTeresita"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+   <bean id="ProvinciaSalta" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Salta"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSaltaSaladillo"/>
+    		<ref bean="LocalidadSaltaSanGabriel"/>
+   		</list>
+    </property>   
+   </bean>
+  
+
+   <bean id="ProvinciaSanJuan" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="San Juan"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSanJuanJuanCelani"/>
+    		<ref bean="LocalidadSanJuanLaCallecita"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+
+   <bean id="ProvinciaSanLuis" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="San Luis"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSanLuisPasolosAlgarronos"/>
+    		<ref bean="LocalidadSanLuisPotrerodelosFunes"/>
+   		</list>
+    </property>   
+   </bean>
+   
+
+
+   <bean id="ProvinciaSantaFe" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Santa Fe"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSantaFeCabezadeChancho"/>
+    		<ref bean="LocalidadSantaFeCampoGaray"/>
+   		</list>
+    </property>   
+   </bean>
+
+
+
+     <bean id="ProvinciaSantiagodelEstero" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Santiago del Estero"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSantaFeCabezadeChancho"/>
+    		<ref bean="LocalidadSantaFeCampoGaray"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+  
+     <bean id="ProvinciaTucuman" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Tucuman"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadTucumanCampoGrande"/>
+    		<ref bean="LocalidadTucumanCampolaCruz"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+  
+       <bean id="ProvinciaChaco" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Chaco"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadChacoGirasol"/>
+    		<ref bean="LocalidadChacoKilometro"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+         <bean id="ProvinciaFormosa" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Formosa"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadFormosaCasaBlanca"/>
+    		<ref bean="LocalidadFormosaCerroNegro"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+   <bean id="ProvinciaMisiones" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Misiones"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadMisionesIslaGralBelgrano"/>
+    		<ref bean="LocalidadMisionesPostaSantaFe"/>
+   		</list>
+    </property>   
+   </bean>
+  
+  
+  
+  
+     <bean id="ProvinciaNeuquen" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Neuquen"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadNeuquenVillaErrecaborde"/>
+    		<ref bean="LocalidadNeuquenVillaOrtizPereira"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+        <bean id="ProvinciaLaPampa" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="La Pampa"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadLaPampaCollonCura"/>
+    		<ref bean="LocalidadLaPampaQuemquemtreu"/>
+   		</list>
+    </property>   
+   </bean>
+
+
+
+        <bean id="ProvinciaRioNegro" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Rio Negro"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadRioNegroColoniaelSauzal"/>
+    		<ref bean="LocalidadRioNegroCasadePiedra"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+   
+   <bean id="ProvinciaSantaCruz" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Santa Cruz"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadSantaCruzLaOfelia"/>
+    		<ref bean="LocalidadSantaCruzLogotera"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+      <bean id="ProvinciaTierradelFuego" class="utn.frgp.edu.ar.entidad.Provincias">
+    <property name="descripcion" value="Tierra del Fuego"></property>
+    <property name="listaLocalidades">
+   		 <list>
+    		<ref bean="LocalidadTierradelFuegoColoniaSobadell"/>
+    		<ref bean="LocalidadTierradelFuegoDoblas"/>
+   		</list>
+    </property>   
+   </bean>
+   
+   
+   
+
 </beans>
