@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="transferencia1" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente1"></property>
+   <property name="cbu_origen" value="591661"></property>
+   <property name="cbu_destino" value="561661"></property>
+   <property name="monto" value="100"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+     <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia2" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente2"></property>
+   <property name="cbu_origen" value="561661"></property>
+   <property name="cbu_destino" value="461661"></property>
+   <property name="monto" value="500"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia3" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente3"></property>
+   <property name="cbu_origen" value="461661"></property>
+   <property name="cbu_destino" value="361661"></property>
+   <property name="monto" value="3200"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+    <bean id="transferencia4" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente4"></property>
+   <property name="cbu_origen" value="361661"></property>
+   <property name="cbu_destino" value="261661"></property>
+   <property name="monto" value="2221"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja" >
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia5" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente5"></property>
+   <property name="cbu_origen" value="261661"></property>
+   <property name="cbu_destino" value="161661"></property>
+   <property name="monto" value="4123"></property>
+   <property name="fecha_alta" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja" >
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia6" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente6"></property>
+   <property name="cbu_origen" value="161661"></property>
+   <property name="cbu_destino" value="661661"></property>
+   <property name="monto" value="2211"></property>
+   <property name="fecha_alta" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja" >
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia7" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente7"></property>
+   <property name="cbu_origen" value="661661"></property>
+   <property name="cbu_destino" value="761661"></property>
+   <property name="monto" value="85"></property>
+   <property name="fecha_alta" >
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia8" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente8"></property>
+   <property name="cbu_origen" value="761661"></property>
+   <property name="cbu_destino" value="861661"></property>
+   <property name="monto" value="85"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia9" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente8"></property>
+   <property name="cbu_origen" value="761661"></property>
+   <property name="cbu_destino" value="591661"></property>
+   <property name="monto" value="3225"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   <bean id="transferencia9" class="utn.frgp.edu.ar.entidad.Transferencias"> 
+   <property name="idCliente" ref="cliente2"></property>
+   <property name="cbu_origen" value="561661"></property>
+   <property name="cbu_destino" value="261661"></property>
+   <property name="monto" value="3225"></property>
+   <property name="fecha_alta">
+    <bean class="java.util.Date" />
+    </property>
+    <property name="fecha_baja">
+    <bean class="java.util.Date" />
+    </property>
+   </bean>
+   
+   </beans>
