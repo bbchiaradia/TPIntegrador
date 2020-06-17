@@ -85,6 +85,85 @@
    </property>
    </bean>
    
+   <bean id="usuario10" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="jfernandez"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario11" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="chermann"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario12" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="cbastias"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario13" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="ngonzalez"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario14" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="jkinen"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario15" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="lkinen"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario16" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="bfernandez"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario17" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="sgonzalez"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario18" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="lsalomon"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="usuario19" class="utn.frgp.edu.ar.entidad.Usuarios">
+   <property name="nombreUsuario" value="msalomon"></property>
+   <property name="contrasenia" value="prueba2"></property>
+   <property name="fecha_alta" >
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
    
    </beans>
    
