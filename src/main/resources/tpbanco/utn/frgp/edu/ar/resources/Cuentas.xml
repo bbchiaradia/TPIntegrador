@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="cuenta1" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente1"></property>
+   <property name="cbu" value = "11123565486"></property>
+   <property name="nroCta" value = "1148659"></property>
+   <property name="saldo" value = "5020"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCC"></property>
+   </bean>
+   
+      <bean id="cuenta2" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente2"></property>
+   <property name="cbu" value = "22248654515"></property>
+   <property name="nroCta" value = "2246485"></property>
+   <property name="saldo" value = "8754"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCC"></property>
+   </bean>
+   
+      <bean id="cuenta3" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente3"></property>
+   <property name="cbu" value = "33354884523"></property>
+   <property name="nroCta" value = "3398115"></property>
+   <property name="saldo" value = "100"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCC"></property>
+   </bean>
+
+
+      <bean id="cuenta4" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente4"></property>
+   <property name="cbu" value = "44448818891"></property>
+   <property name="nroCta" value = "4463184"></property>
+   <property name="saldo" value = "100"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+         <bean id="cuenta5" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente5"></property>
+   <property name="cbu" value = "55568183215"></property>
+   <property name="nroCta" value = "5589874"></property>
+   <property name="saldo" value = "10154"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+         <bean id="cuenta6" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente6"></property>
+   <property name="cbu" value = "66684191535"></property>
+   <property name="nroCta" value = "6648918"></property>
+   <property name="saldo" value = "5052"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+   
+       <bean id="cuenta7" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente7"></property>
+   <property name="cbu" value = "77784935189"></property>
+   <property name="nroCta" value = "7748913"></property>
+   <property name="saldo" value = "588"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+         <bean id="cuenta8" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente8"></property>
+   <property name="cbu" value = "88868135132"></property>
+   <property name="nroCta" value = "8846815"></property>
+   <property name="saldo" value = "6874"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+         <bean id="cuenta9" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente9"></property>
+   <property name="cbu" value = "99918135489"></property>
+   <property name="nroCta" value = "9931854"></property>
+   <property name="saldo" value = "3666"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+           <bean id="cuenta10" class="utn.frgp.edu.ar.entidad.Cuentas">
+   <property name="idCliente" ref="cliente10"></property>
+   <property name="cbu" value = "10104868465"></property>
+   <property name="nroCta" value = "1010548"></property>
+   <property name="saldo" value = "7777"></property>
+   <property name="fecha_baja" ><bean class="java.util.Date" /></property>
+   <property name="fecha_alta"  ><bean class="java.util.Date" /></property>
+   <property name="id_TipoCuenta" ref="TipoCuentaCCEspPesos"></property>
+   </bean>
+   
+   </beans>
