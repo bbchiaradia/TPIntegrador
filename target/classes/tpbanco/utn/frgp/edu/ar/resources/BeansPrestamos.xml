@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <bean id="prestamo" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente"></property>
+   <property name="idMovimiento" ref="movimiento"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="15000"></property>
+   <property name="cuotas" value="6"></property>
+   <property name="Plazo_meses" value="6"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="prestamo2" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente1"></property>
+   <property name="idMovimiento" ref="movimiento2"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="150000"></property>
+   <property name="cuotas" value="3"></property>
+   <property name="Plazo_meses" value="3"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="prestamo3" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente2"></property>
+   <property name="idMovimiento" ref="movimiento3"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="5000"></property>
+   <property name="cuotas" value="4"></property>
+   <property name="Plazo_meses" value="4"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="prestamo4" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente3"></property>
+   <property name="idMovimiento" ref="movimiento4"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="25000"></property>
+   <property name="cuotas" value="2"></property>
+   <property name="Plazo_meses" value="2"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   
+   <bean id="prestamo5" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente4"></property>
+   <property name="idMovimiento" ref="movimiento5"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="45000"></property>
+   <property name="cuotas" value="3"></property>
+   <property name="Plazo_meses" value="3"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+    <bean id="prestamo7" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente5"></property>
+   <property name="idMovimiento" ref="movimiento7"></property>
+   <property name="idEstado" ref="EstadoRechazado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="10000"></property>
+   <property name="cuotas" value="2"></property>
+   <property name="Plazo_meses" value="2"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="prestamo8" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente6"></property>
+   <property name="idMovimiento" ref="movimiento8"></property>
+   <property name="idEstado" ref="EstadoPendiente"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="7800"></property>
+   <property name="cuotas" value="3"></property>
+   <property name="Plazo_meses" value="3"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+      <bean id="prestamo9" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente8"></property>
+   <property name="idMovimiento" ref="movimiento9"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="7900"></property>
+   <property name="cuotas" value="3"></property>
+   <property name="Plazo_meses" value="3"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+       <bean id="prestamo10" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente7"></property>
+   <property name="idMovimiento" ref="movimiento10"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="1500"></property>
+   <property name="cuotas" value="1"></property>
+   <property name="Plazo_meses" value="1"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   <bean id="prestamo11" class="utn.frgp.edu.ar.entidad.Prestamos">
+   <property name="idCliente" ref="cliente9"></property>
+   <property name="idMovimiento" ref="movimiento11"></property>
+   <property name="idEstado" ref="EstadoAprobado"></property>
+   <property name="fecha">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="importe" value="100"></property>
+   <property name="cuotas" value="3"></property>
+   <property name="Plazo_meses" value="3"></property>
+   <property name="fecha_alta">
+   <bean class="java.util.Date" />
+   </property>
+   <property name="fecha_baja">
+   <bean class="java.util.Date" />
+   </property>
+   </bean>
+   
+   </beans>
