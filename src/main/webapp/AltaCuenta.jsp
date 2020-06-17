@@ -121,7 +121,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Transferir</button>
+					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Dar de Baja</button>
 					 	</div>
 					  </div>
 					  
@@ -161,7 +161,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Transferir</button>
+					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Modificar</button>
 					 	</div>
 					  </div>
 					  
