@@ -28,7 +28,9 @@
 					<div class="col-md-4">Número de cuenta</div>
 					<div class="col-md-4">Tipo</div>
 					<div class="col-md-4">  
+					<a href="detalle_cuenta.jsp">
 					<button class="btn btn-sm btn-primary" role="button">Detalles</button>
+					</a>
 					</div>
 					</div>
 					<hr>
@@ -36,7 +38,9 @@
 					<div class="col-md-4">Número de cuenta</div>
 					<div class="col-md-4">Tipo</div>
 					<div class="col-md-4">  
-					<button class="btn btn-sm btn-primary" role="button">Detalles</button>
+					<a href="detalle_cuenta.jsp">
+					<button  class="btn btn-sm btn-primary" role="button">Detalles</button>
+					</a>
 					</div>
 					</div>
 					</div>

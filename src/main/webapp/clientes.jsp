@@ -16,6 +16,14 @@
     <%@ include file="nav.html"%>
     <div class="container">
     
+    <br>
+   <div class="row mt-3 px-4 justify-content-end">
+   <a href="formclientes.jsp">
+    <button class="btn btn-sm btn-info" role="button" ">Alta clientes</button>
+     </a>
+    </div>
+    
+    
     <!-- detalle de cuenta -->
     <container>
     <div class="row animate__animated animate__fadeIn">
@@ -43,13 +51,17 @@
 					<div class="col-md-3">Rainier</div>
 					<div class="col-md-3">66666666</div>
 					<div class="col-md-3">
+					    <a href="detalleCliente.jsp">
 						<button class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
 						<i class="fa fa-eye" aria-hidden="true"></i> 
 						</button>
+						</a>
+						 <a href="formclientes.jsp">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
-						  <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar">
+						  </a>
+						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="confirm( 'Desea eliminar el cliente?' )">
 						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
 						 </button>
 					</div>
@@ -65,9 +77,7 @@
     </container>
     
     
-    <div class="row mt-3 px-4 justify-content-end">
-    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Alta clientes</button>
-    </div>
+
     
     </div>
     </container>

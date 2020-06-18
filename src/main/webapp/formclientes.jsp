@@ -100,7 +100,7 @@
  				 </div>
  				 
  				 <div class="form-group row text-right justify-content-end px-4">
-    				<button class="btn btn-primary" value="Enviar" >Enviar</button>
+    				<button class="btn btn-primary" value="Enviar" >Guardar</button>
  				 </div>
  				 
  				 
