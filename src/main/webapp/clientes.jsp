@@ -19,7 +19,7 @@
     <br>
    <div class="row mt-3 px-4 justify-content-end">
    <a href="formclientes.jsp">
-    <button class="btn btn-sm btn-info" role="button" ">Alta clientes</button>
+    <button class="btn btn-sm btn-secondary" role="button" ">Alta clientes</button>
      </a>
     </div>
     
