@@ -42,15 +42,12 @@
  			 
  			 
  		        	    <br>
- 		        	    
- 	<form action="redireccionar_Index.html" method="get">    	    
-	   <div class="row mt-3 px-4 justify-content-end">
-	   <a href="Index.jsp">
-	    <button class="btn btn-sm btn-secondary" role="button" ">INGRESAR</button>
-	     </a>
-	    </div>    	 
- 	</form>	    
- 		 
+   <div class="row mt-3 px-4 justify-content-end">
+   <a href="Index.jsp">
+    <button class="btn btn-sm btn-secondary" role="button" ">INGRESAR</button>
+     </a>
+    </div>    	 
+ 			 
         </div>
         
         
