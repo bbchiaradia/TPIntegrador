@@ -15,8 +15,8 @@
 	
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-	<property name="prefix" value="WEB-INF/jsp/"></property>
-	<property name="sufix" value=".jsp/"></property>
+	<property name="prefix" value="WEB-INF/vistas/"></property>
+	<property name="suffix" value=".jsp/"></property>
 	</bean>
 	
 	
