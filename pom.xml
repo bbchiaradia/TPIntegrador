@@ -1,13 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>utn</groupId>
-  <artifactId>TPBANCO</artifactId>
-  <packaging>war</packaging>
+  <groupId>TP_L5_GRUPO_7_</groupId>
+  <artifactId>TP_L5_GRUPO_7_</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>TPBANCO Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
+  <packaging>war</packaging>
+ 
+ <dependencies>
   
     <dependency>
       <groupId>junit</groupId>
@@ -81,8 +79,28 @@
 
    
   </dependencies>
-  
+ 
+ 
+ 
+ 
   <build>
-    <finalName>TPBANCO</finalName>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
