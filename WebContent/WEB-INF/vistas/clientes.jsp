@@ -18,7 +18,7 @@
     
     <br>
    <div class="row mt-3 px-4 justify-content-end">
-   <a href="formclientes.jsp">
+   <a href="redireccionar_formclientes.html">
     <button class="btn btn-sm btn-secondary" role="button" ">Alta clientes</button>
      </a>
     </div>

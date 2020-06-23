@@ -88,10 +88,20 @@ public class PaginaController {
 	
 	
 	@RequestMapping("redireccionar_transferencias.html")
-	public ModelAndView eventoRedireccionar__trasnferencias() {
+	public ModelAndView eventoRedireccionar_trasnferencias() {
 		
 		ModelAndView MV= new ModelAndView();
 		MV.setViewName("transferencias");
+		return MV;
+		
+	}
+	
+	
+	@RequestMapping("redireccionar_formclientes.html")
+	public ModelAndView eventoRedireccionar_formclientes() {
+		
+		ModelAndView MV= new ModelAndView();
+		MV.setViewName("formclientes");
 		return MV;
 		
 	}
