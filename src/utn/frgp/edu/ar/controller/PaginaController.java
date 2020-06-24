@@ -9,13 +9,12 @@ public class PaginaController {
 	
 	
 	@RequestMapping("redireccionar_Index.html")
-	public ModelAndView eventoRedireccionar_Index() {
+	public ModelAndView eventoRedireccionar_Index(String txtNombre) {
 		ModelAndView MV= new ModelAndView();
+		MV.addObject("nombre", txtNombre);
 		MV.setViewName("Index");
-		return MV;
-		
-	}
-	
+		return MV;		
+	}	
 	
 	@RequestMapping("redireccionar_login.html")
 	public ModelAndView eventoRedireccionar_login() {
@@ -23,7 +22,6 @@ public class PaginaController {
 		ModelAndView MV= new ModelAndView();
 		MV.setViewName("login");
 		return MV;
-		
 	}
 	
 	

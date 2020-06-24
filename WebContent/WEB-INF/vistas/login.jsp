@@ -22,11 +22,14 @@
         	 <div class="card-header">
    				 Login
  			 </div>  
+ 			 
  			 <div class="card-body">
+			 <form action="redireccionar_Index.html" method="get">  
 				<div class="row">
 					<div class="col-md-12">
 					<div class="input-group mb-3">
-  					<input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario">
+  					<input type="text" name="txtNombre" class="form-control" placeholder="Usuario" aria-label="Usuario" >
+					
 					</div>
 					</div>
 				</div>
@@ -37,19 +40,21 @@
 					</div>
 					</div>
 				</div>
+				 
+				 	   <div class="row mt-3 px-4 justify-content-end">	                   
+	                   <button class="btn btn-sm btn-primary" >INGRESAR</button> 	                
+	                   </div> 
+				
+					</form>	 
 				</div>
- 			 </div>     
+ 			 </div>    
  			 
  			 
  		        	    <br>
  		        	    
- 	<form action="redireccionar_Index.html" method="get">    	    
-	   <div class="row mt-3 px-4 justify-content-end">
-	   <a href="Index.jsp">
-	    <button class="btn btn-sm btn-secondary" role="button" ">INGRESAR</button>
-	     </a>
-	    </div>    	 
- 	</form>	    
+ 	  	    
+   	 
+    
  		 
         </div>
         
