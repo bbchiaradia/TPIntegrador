@@ -1,6 +1,12 @@
 package utn.frgp.edu.ar.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
+
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
@@ -10,15 +16,25 @@ public class daoBanco implements Idao {
 	
 //-------------------------------- CLIENTES ----------------------------------
 	
-	public Clientes LeerCliente(int id) 
-	{
-		   ConfigHibernet config= new ConfigHibernet();
-	        Session session = config.abrirConexion();
-	        session.beginTransaction();
-	        Clientes cliente =(Clientes)session.get(Clientes.class, id);
-	        config.cerrarSession();
-	        return cliente;
-	}
+/*	public <List>Clientes LeerAllClientes() {
+		ConfigHibernet config= new ConfigHibernet();
+        Session session = config.abrirConexion();
+        Query q = session.createQuery("select * from Clientes");
+        ArrayList clientes = q.getResultList();
+        config.cerrarSession();
+        return clientes;
+	}*/
+	@Autowired
+    private static List<Clientes> clientes;
+	
+	public static List<Clientes> getClientes() {
+        
+        	ConfigHibernet config= new ConfigHibernet();
+        	Session session = config.abrirConexion();
+            clientes = session.createCriteria(Clientes.class).list();
+            session.getTransaction().commit();
+        return clientes;
+    }
 	 public Clientes AgregarCliente (Clientes cliente) 
 	    {
 	        ConfigHibernet config= new ConfigHibernet();
@@ -91,6 +107,11 @@ public class daoBanco implements Idao {
 		        config.cerrarSession();
 		       	
 		    }
+		@Override
+		public Clientes LeerCliente(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 		
 		

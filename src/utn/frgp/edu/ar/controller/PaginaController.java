@@ -1,8 +1,11 @@
 package utn.frgp.edu.ar.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import utn.frgp.edu.ar.dao.daoBanco;
 
 @Controller
 public class PaginaController {
@@ -31,16 +34,6 @@ public class PaginaController {
 		
 		ModelAndView MV= new ModelAndView();
 		MV.setViewName("detalle_cuenta");
-		return MV;
-		
-	}
-	
-	
-	@RequestMapping("redireccionar_clientes.html")
-	public ModelAndView eventoRedireccionar_clientes() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("clientes");
 		return MV;
 		
 	}
@@ -103,6 +96,14 @@ public class PaginaController {
 		return MV;
 		
 	}
+	
+	@RequestMapping("redireccionar_clientes_D.html")
+    public String customerList(ModelMap modelMap) {
+        modelMap.addAttribute("clientes", daoBanco.getClientes());
+
+		return "clientes";
+		
+    }
 	
 	
 }

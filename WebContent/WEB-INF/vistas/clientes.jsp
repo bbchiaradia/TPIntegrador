@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,14 +13,16 @@
   <body style="width: 100vw; height:100vh;">
   	<%@ page import="utn.frgp.edu.ar.*" %>
 		<%@ page import="utn.frgp.edu.ar.entidad.*" %>
+		<%@ page import="utn.frgp.edu.ar.dao.*" %>
+		<%@ page import="utn.frgp.edu.ar.controller.*" %>
     <container>
-    <%@ include file="nav.html"%>
+    
     <div class="container">
     
     <br>
    <div class="row mt-3 px-4 justify-content-end">
    <a href="redireccionar_formclientes.html">
-    <button class="btn btn-sm btn-secondary" role="button" ">Alta clientes</button>
+    <button class="btn btn-sm btn-secondary" role="button">Alta clientes</button>
      </a>
     </div>
     
@@ -32,6 +35,16 @@
         	 <div class="card-header">
    				 Listado de clientes
  			 </div>  
+ 			<p>sarasa extorno</p>
+ 			 <c:forEach var="cliente" items="${ clientes }">
+ 			  <p>sarasa</p>
+            <td> ${ cliente.toString() }</td>
+     		</c:forEach>
+     		
+     		<c:if test="true">
+              <span>${clientes } - clienteslksdnjkladmlaksdn</span>
+            </c:if>
+     		
  			 <div class="card-body">
 				<div class="row">
 				
