@@ -23,7 +23,7 @@ import java.util.Map;
 @Controller
 public class ClientesController{
 	
-	@RequestMapping("redireccionar_clientes_D.html")
+	@RequestMapping("redireccionar_clientes_DD.html")
     public String customerList(ModelMap modelMap) {
         modelMap.addAttribute("clientes", "loquefuera");
         System.out.println( "DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG =D" );

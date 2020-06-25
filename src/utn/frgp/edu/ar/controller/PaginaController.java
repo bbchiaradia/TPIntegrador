@@ -99,6 +99,8 @@ public class PaginaController {
 	
 	@RequestMapping("redireccionar_clientes_D.html")
     public String customerList(ModelMap modelMap) {
+		
+		 System.out.println( "DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG =D" );
         modelMap.addAttribute("clientes", daoBanco.getClientes());
 
 		return "clientes";

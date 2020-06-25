@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name="Provincias")
 public class Provincias implements Serializable{
@@ -25,8 +27,9 @@ public class Provincias implements Serializable{
 	public Provincias() {
         
     }
-	
-	  private List<Localidades>listaLocalidades;
+
+/*
+	private List<Localidades>listaLocalidades;
 
 
 	public List<Localidades> getListaLocalidades() {
@@ -39,7 +42,7 @@ public class Provincias implements Serializable{
 		this.listaLocalidades = listaLocalidades;
 	}
 
-
+*/
 
 	public Provincias(int idProvincia, String descripcion) {
 		this.idProvincia = idProvincia;

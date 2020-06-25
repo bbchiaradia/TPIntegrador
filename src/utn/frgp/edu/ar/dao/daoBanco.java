@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import utn.frgp.edu.ar.entidad.Clientes;
@@ -32,9 +35,11 @@ public class daoBanco implements Idao {
         	ConfigHibernet config= new ConfigHibernet();
         	Session session = config.abrirConexion();
             clientes = session.createCriteria(Clientes.class).list();
-            session.getTransaction().commit();
+            
         return clientes;
     }
+	
+	
 	 public Clientes AgregarCliente (Clientes cliente) 
 	    {
 	        ConfigHibernet config= new ConfigHibernet();
