@@ -50,7 +50,11 @@ public class daoBanco implements Idao {
          */
 
     		try {
-    			return (List<Clientes>) this.hibernateTemplate.findByCriteria(DetachedCriteria.forClass(Clientes.class));
+    			ConfigHibernet config= new ConfigHibernet();
+    			daoBanco dao = new daoBanco();
+    			 Session session = config.abrirConexion();
+    			 Query q = session.createQuery("FROM Clientes"); 
+    			return (List<Clientes>) q.getResultList();
     		} catch (DataAccessException e) {
     			return null;
     		}
