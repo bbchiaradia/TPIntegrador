@@ -97,6 +97,7 @@ public class PaginaController {
 		
 	}
 	
+	/*
 	@RequestMapping("redireccionar_clientes_D.html")
     public String customerList(ModelMap modelMap) {
 		
@@ -106,6 +107,6 @@ public class PaginaController {
 		return "clientes";
 		
     }
-	
+	*/
 	
 }

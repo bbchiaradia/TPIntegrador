@@ -6,16 +6,23 @@ import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 
+
+
 public class daoBanco implements Idao {
 	
+	private HibernateTemplate hibernateTemplate;
+
 	
 //-------------------------------- CLIENTES ----------------------------------
 	
@@ -30,14 +37,29 @@ public class daoBanco implements Idao {
 	@Autowired
     private static List<Clientes> clientes;
 	
-	public static List<Clientes> getClientes() {
+	@SuppressWarnings("unchecked")
+	public  List<Clientes> getClientes() {
         
+		/*
         	ConfigHibernet config= new ConfigHibernet();
         	Session session = config.abrirConexion();
             clientes = session.createCriteria(Clientes.class).list();
             
         return clientes;
+       
+         */
+
+    		try {
+    			return (List<Clientes>) this.hibernateTemplate.findByCriteria(DetachedCriteria.forClass(Clientes.class));
+    		} catch (DataAccessException e) {
+    			return null;
+    		}
+    	
+        
     }
+	
+	
+	
 	
 	
 	 public Clientes AgregarCliente (Clientes cliente) 
