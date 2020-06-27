@@ -59,10 +59,10 @@
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
 					<div class="col-md-3">
-					    <a href="detalleCliente.jsp/${cliente.getIdCliente() }">
-						<button class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
+					    <a href="redireccionar_detalleCliente.html" value="${cliente.getIdCliente()}">
+						<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
 						<i class="fa fa-eye" aria-hidden="true"></i> 
-						</button>
+						</button>	
 						</a>
 						 <a href="formclientes.jsp/${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">

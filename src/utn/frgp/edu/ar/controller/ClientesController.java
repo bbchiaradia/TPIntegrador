@@ -19,23 +19,21 @@ import java.util.List;
 public class ClientesController{
 	
 	
-	/*@RequestMapping(value = "redireccionar_clientes_D", method = RequestMethod.GET)
-	public ModelAndView list() {
-		
-		ModelAndView MV= new ModelAndView();
-		
-		//List<Clientes> list = (List<Clientes>) dao.getClientes();
-		//MV.addObject("listaClientes",list);
-		MV.setViewName("clientes");
-		return MV;
-	}*/
-	
 	@RequestMapping(value = "redireccionar_clientes_D", method = RequestMethod.GET)
 	public String list(ModelMap modelMap) {
 		System.out.println("estoe es un control");
 	    modelMap.addAttribute("clientes", daoBanco.getClientes());
 
 	    return "/clientes";
+	}
+	
+	
+	@RequestMapping(value = "redireccionar_detalleCliente", method = RequestMethod.GET)
+	public String list2(ModelMap modelMap, Integer id) {
+		System.out.println( "AcaaaaaaaaaDESPUES" +id);
+	    modelMap.addAttribute("detalleCliente", daoBanco.LeerCliente(1));		
+	    
+	    return "/detalleCliente";
 	}
 
 }

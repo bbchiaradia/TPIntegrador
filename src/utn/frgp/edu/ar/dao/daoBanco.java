@@ -1,8 +1,10 @@
 package utn.frgp.edu.ar.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,6 +36,22 @@ private static List<Clientes> clientes;
         
     }
 	
+	@SuppressWarnings("unchecked")
+	public static List<Clientes> LeerCliente(Integer id) {
+		try {
+			
+			ConfigHibernet config= new ConfigHibernet();
+			 Session session = config.abrirConexion();
+			 clientes = session.createCriteria(Clientes.class)
+					 .add(Restrictions.eq("idCliente", id))
+					 .list();
+			 System.out.println( "Acaaaaaaaaa"+ id);
+			return  clientes;
+			
+		} catch (DataAccessException e) {
+			return null;
+		}
+	}
 	
 	
 	
@@ -110,12 +128,7 @@ private static List<Clientes> clientes;
 		        config.cerrarSession();
 		       	
 		    }
-		@Override
-		public Clientes LeerCliente(int id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
+
 		
 		
 
