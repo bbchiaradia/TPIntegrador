@@ -35,15 +35,8 @@
         	 <div class="card-header">
    				 Listado de clientes
  			 </div>  
- 			<p>sarasa extorno</p>
- 			 <c:forEach var="cliente" items="${ clientes }">
- 			  <p>sarasa</p>
-            <td> ${ cliente.toString() }</td>
-     		</c:forEach>
-     		
-     		<c:if test="true">
-              <span>${clientes } - clienteslksdnjkladmlaksdn</span>
-            </c:if>
+ 			
+     	
      		
  			 <div class="card-body">
 				<div class="row">
@@ -59,27 +52,31 @@
 					</div>
 					
 					<div class="col-md-12">
+					 <c:forEach var="cliente" items="${ clientes }">
+		           <!--   <td> ${ cliente.toString() }</td> -->
 					<div class="row">
-					<div class="col-md-3">Wolfcastle</div>
-					<div class="col-md-3">Rainier</div>
-					<div class="col-md-3">66666666</div>
+					<div class="col-md-3">${ cliente.getApellido() }</div>
+					<div class="col-md-3">${ cliente.getNombre() }</div>
+					<div class="col-md-3">${ cliente.getDni() }</div>
 					<div class="col-md-3">
-					    <a href="detalleCliente.jsp">
+					    <a href="detalleCliente.jsp/${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
 						<i class="fa fa-eye" aria-hidden="true"></i> 
 						</button>
 						</a>
-						 <a href="formclientes.jsp">
+						 <a href="formclientes.jsp/${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
 						  </a>
-						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="confirm( 'Desea eliminar el cliente?' )">
+						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" 
+						  onclick="confirm( 'Desea eliminar el cliente ${ cliente.getNombre() }  ${ cliente.getApellido() }?' )">
 						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
 						 </button>
 					</div>
 					</div>
-					<hr>				
+					<hr>	
+					</c:forEach>			
 					</div>
 					
 				</div>
