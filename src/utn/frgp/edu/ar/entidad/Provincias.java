@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 @Table(name="Provincias")
 public class Provincias implements Serializable{
+
+	@Override
+	public String toString() {
+		return "Provincias [idProvincia=" + idProvincia + ", descripcion=" + descripcion + "]";
+	}
 
 	private static final long serialVersionUID = 1L; 
 	@Id
@@ -28,10 +36,11 @@ public class Provincias implements Serializable{
         
     }
 
-/*
+	/*@Column
+	@ElementCollection(targetClass=Localidades.class)
 	private List<Localidades>listaLocalidades;
-
-
+	
+	
 	public List<Localidades> getListaLocalidades() {
 		return listaLocalidades;
 	}
@@ -40,9 +49,9 @@ public class Provincias implements Serializable{
 
 	public void setListaLocalidades(List<Localidades> listaLocalidades) {
 		this.listaLocalidades = listaLocalidades;
-	}
+	}*/
 
-*/
+
 
 	public Provincias(int idProvincia, String descripcion) {
 		this.idProvincia = idProvincia;
@@ -78,13 +87,6 @@ public class Provincias implements Serializable{
 		return serialVersionUID;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Provincias [idProvincia=" + idProvincia + ", descripcion=" + descripcion + ", listaLocalidades="
-				+ listaLocalidades + "]";
-	}
 
 	
 
