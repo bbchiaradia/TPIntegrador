@@ -8,7 +8,7 @@ public interface Idao {
 
 	public Clientes AgregarCliente(Clientes cliente) ;
 	public void ModificarCliente(Clientes cliente);
-	public void EliminarCliente (Clientes cliente);
+	public boolean EliminarCliente (Integer idcliente);
 	public Cuentas LeerCuenta(int id);
 	public Cuentas AgregarCuenta(Cuentas cuenta) ;
 	public void ModificarCuenta(Cuentas cuenta);

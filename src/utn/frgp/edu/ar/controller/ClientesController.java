@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import utn.frgp.edu.ar.dao.daoBanco;
@@ -42,6 +42,17 @@ public class ClientesController{
 	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
 	    
 	    return "/formclientes";
+	}
+	
+	@RequestMapping( value= "eliminarCliente", method = RequestMethod.POST )
+	@ResponseBody
+	public String eliminarCliente( Integer id, daoBanco dao ){
+		System.out.println(id);
+		boolean cl = dao.EliminarCliente(id);
+		if( cl ) {
+			return "true";
+		}
+		return "false";
 	}
 	
 	

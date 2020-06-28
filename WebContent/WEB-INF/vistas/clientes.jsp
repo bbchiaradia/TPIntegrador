@@ -58,10 +58,10 @@
 					<div class="col-md-3">${ cliente.getApellido() }</div>
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
-					<div class="col-md-3">
+					<div class="col-md-3" style="display:flex;">
 					<!--   <a href="clientes/" name="id" value=${cliente.getIdCliente() }">-->
 					  
-					  <form method="get" action="redireccionar_detalleCliente.html">
+					  <form method="get" class="frmBoton" action="redireccionar_detalleCliente.html">
 					  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
 						<i class="fa fa-eye" aria-hidden="true"></i> 
@@ -69,7 +69,7 @@
 						</form>
 						
 						
-						 <form method="get"  action="formclientes.html">
+						 <form method="get" class="frmBoton" action="formclientes.html">
 						  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -77,7 +77,7 @@
 						  </form>
 						  
 						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" 
-						  onclick="confirm( 'Desea eliminar el cliente ${ cliente.getNombre() }  ${ cliente.getApellido() }?' )">
+						  onclick="eliminarUsuario( ${ cliente.getIdCliente() }, '${ cliente.getNombre() }', '${ cliente.getApellido() }' )">
 						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
 						 </button>
 					</div>
@@ -100,5 +100,37 @@
     </container>
 
 <%@ include file="foot.html"%>
+
+<script languaje="javascript">
+$(function() {
+	$('#example2').DataTable({
+		'paging' : true,
+		'lengthChange' : false,
+		'searching' : true,
+		'ordering' : true,
+		'info' : true,
+		'autoWidth' : true
+	})
+})
+
+function eliminarUsuario( id, nombre, apellido ){
+	let confirmacion = confirm("desea eliminar el usuario " + nombre + "  " + apellido + "?");
+	if( confirmacion ){
+		$.ajax({
+	          url: '${request.getContextPath()}/TP_L5_GRUPO_7_/eliminarCliente.html',
+	          type: 'POST',
+	          data: {
+	            id: id
+	          },
+	          success: function (data) {
+	        	  alert(data);
+	            return data && data.status ? handleSuccess(id) : handleError();
+	          }
+	        });
+	}
+}
+
+</script>
+
   </body>
 </html>

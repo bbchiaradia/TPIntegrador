@@ -1,8 +1,14 @@
 package utn.frgp.edu.ar.dao;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import org.apache.tomcat.jni.Time;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
@@ -77,16 +83,25 @@ private static List<Clientes> clientes;
 	        session.beginTransaction().commit();
 	        config.cerrarSession();
 	    }
-	 public void EliminarCliente (Clientes cliente) 
+	 public boolean EliminarCliente (Integer idcliente) 
 	    {
-	        ConfigHibernet config= new ConfigHibernet();
+		 ConfigHibernet config= new ConfigHibernet();
+	        try{
+	        	
 	        Session session = config.abrirConexion();
-	        session.beginTransaction();
-	        //por baja logica , se realiza update 
-	        session.update(cliente);
-	        session.beginTransaction().commit();
-	        config.cerrarSession();
-	       	
+	        Transaction transaction = session.beginTransaction();
+	        Clientes cli = (Clientes) session.byId(Clientes.class).getReference(idcliente);
+	        System.out.println( cli.toString() );
+	        cli.setFecha_baja( Calendar.getInstance().getTime() );
+	        session.save(cli);
+	        transaction.commit();
+	       	return true;
+	       	}catch(Exception e) {
+	       		System.out.println( e.getMessage() );
+	       		return false;
+	       	}finally{
+	       		config.cerrarSession();
+	       	}
 	    }
 
 //-------------------------------- CUENTAS ----------------------------------
