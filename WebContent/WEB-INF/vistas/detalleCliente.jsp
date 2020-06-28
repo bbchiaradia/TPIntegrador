@@ -43,17 +43,17 @@
 					</div>
 					
 					<div class="row">
-					<div class="col-md-6"><strong>Sexo : </strong>${ detalleCliente.getIdSexo() }</div>
-					<div class="col-md-6"><strong>Nacionalidad: </strong>${ detalleCliente.getIdNacionalidad() }</div>
+					<div class="col-md-6"><strong>Sexo : </strong>${ detalleCliente.getIdSexo().getDescripcion() }</div>
+					<div class="col-md-6"><strong>Nacionalidad: </strong>${ detalleCliente.getIdNacionalidad().getDescripcion() }</div>
 					</div>
 					
 					<div class="row">
 					<div class="col-md-6"><strong>Fecha de nacimiento: </strong> ${ detalleCliente.getFecha_nacimiento() }</div>
-					<div class="col-md-6"><strong>Provincia: </strong>${ detalleCliente.getIdProvincia() }</div>
+					<div class="col-md-6"><strong>Provincia: </strong>${ detalleCliente.getIdProvincia().getDescripcion() }</div>
 					</div>
 					
 					<div class="row">
-					<div class="col-md-6"><strong>Localidad: </strong>${ detalleCliente.getIdLocalidad() }</div>
+					<div class="col-md-6"><strong>Localidad: </strong>${ detalleCliente.getIdLocalidad().getDescripcion() }</div>
 					</div>
 					
 					<div class="row">
