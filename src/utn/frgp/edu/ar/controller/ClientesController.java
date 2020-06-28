@@ -40,7 +40,10 @@ public class ClientesController{
 	@RequestMapping(value = "formclientes" , method = RequestMethod.GET)
 	public String list3(ModelMap modelMap, Integer id) {
 	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
-	    
+	    modelMap.addAttribute("listaProvincias", daoBanco.getProvincias());		
+	    modelMap.addAttribute("listaLocalidades", daoBanco.getLocalidades());		
+	    modelMap.addAttribute("listaSexo", daoBanco.getSexo());	
+	    modelMap.addAttribute("listaNacionalidades", daoBanco.getNacionalidad());	
 	    return "/formclientes";
 	}
 	

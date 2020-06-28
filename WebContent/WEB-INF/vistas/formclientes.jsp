@@ -1,4 +1,4 @@
-
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,7 +31,7 @@
 				 <div class="form-group row">
     				<label for=""nombre"" class="col-sm-2 col-form-label">Nombre:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" id="nombre" required name="nombre" maxlength="50"
+     			 	<input type="text" value= "${ formclientes.getNombre() }" class="form-control" id="nombre" required name="nombre" maxlength="50"
      			 	placeholder=" Ingrese el/los nombre/s del cliente"> 
     				</div>
  				 </div>
@@ -39,7 +39,7 @@
  				 <div class="form-group row">
     				<label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" value= "${ formclientes.getApellido() }" class="form-control" id="apellido" required name="apellido" maxlength="50"
+     			 	<input type="text"  value= "${ formclientes.getApellido() }" class="form-control" id="apellido" required name="apellido" maxlength="50"
      			 	placeholder=" Ingrese el/los apellido/s del cliente">
     				</div>
  				 </div>
@@ -47,7 +47,7 @@
  				 <div class="form-group row">
     				<label for="dni" class="col-sm-2 col-form-label">DNI:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
+     			 	<input type="text" readonly value= "${ formclientes.getDni() }" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
      			 	placeholder=" Documento del cliente, solo números">
     				</div>
  				 </div>
@@ -55,9 +55,13 @@
  				 <div class="form-group row">
     				<label for="sexo" class="col-sm-2 col-form-label">Sexo:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control" id="sexo" required name="sexo">
-  					<option>Masculino</option>
-  					<option>Femenino</option>>
+     			 	<select class="form-control" value= "${ formclientes.getIdSexo().getDescripcion() }" id="sexo" required name="sexo">
+  					
+  					 <c:forEach var="sexo" items="${ listaSexo }">
+  					<option>${ sexo.getDescripcion() }</option>
+					 </c:forEach>		
+					
+					
 					</select>
     				</div>
  				 </div>
@@ -65,33 +69,48 @@
  				 <div class="form-group row">
     				<label for="datepicker" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" id="datepicker" required name="fnac">
+     			 	<input type="text"  value= " ${ formclientes.getFecha_nacimiento() }" id="datepicker" required name="fnac">
     				</div>
  				 </div>
  				 
  				 <div class="form-group row">
     				<label for="nacionalidad" class="col-sm-2 col-form-label">Nacionalidad:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" required id="nacionalidad" name="nacionalidad" maxlength="50"
-     			 	placeholder="Nacionalidad del cliente">
+     			 	<select class="form-control"  value="${ formclientes.getIdNacionalidad().getDescripcion()}" id="provincia" required name="provincia">
+  					 <c:forEach var="nacionalidad" items="${ listaNacionalidades }">
+  					<option>${ nacionalidad.getDescripcion() }</option>
+					 </c:forEach>		
+					</select>
     				</div>
  				 </div>
  				 
  				 <div class="form-group row">
     				<label for="provincia" class="col-sm-2 col-form-label">Provincia:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control" id="provincia" required name="provincia">
-  					<option>Provincia 1</option>
-  					<option>Provincia 2</option>
-  					<option>Provincia 3</option>
+     			 	<select class="form-control"  value="${ formclientes.getIdProvincia().getDescripcion() }" id="provincia" required name="provincia">
+  					 <c:forEach var="provincias" items="${ listaProvincias }">
+  					<option>${ provincias.getDescripcion() }</option>
+					 </c:forEach>		
 					</select>
     				</div>
  				 </div>
  				 
- 				 <div class="form-group row">
-    				<label for=""nombre"" class="col-sm-2 col-form-label">Dirección:</label>
+ 				  <div class="form-group row">
+    				<label for="provincia" class="col-sm-2 col-form-label">Localidad:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" required id="nombre" maxlength="70"
+     			 	<select class="form-control"  value="${ formclientes.getIdLocalidad().getDescripcion() }" id="provincia" required name="provincia">
+  					 <c:forEach var="localidades" items="${ listaLocalidades }">
+  					<option>${ localidades.getDescripcion() }</option>
+					 </c:forEach>		
+					</select>
+    				</div>
+ 				 </div>
+ 				 
+ 				 
+ 				 <div class="form-group row">
+    				<label for=""nombre"" class="col-sm-2 col-form-label">Usuario:</label>
+    				<div class="col-sm-10">
+     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" required id="nombre" maxlength="70"
      			 	placeholder=" Calle y número">
     				</div>
  				 </div>

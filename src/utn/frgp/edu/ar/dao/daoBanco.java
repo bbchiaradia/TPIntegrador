@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Localidades;
+import utn.frgp.edu.ar.entidad.Nacionalidad;
+import utn.frgp.edu.ar.entidad.Provincias;
+import utn.frgp.edu.ar.entidad.Sexo;
 
 
 
@@ -134,10 +138,85 @@ private static List<Clientes> clientes;
 		
 		
 
-	
+//--------------------- Provincias
+		 
+		 private static List<Provincias> prov;
+			
+			@SuppressWarnings("unchecked")
+			public static List<Provincias> getProvincias() {
+		        
+		    		try {
+		    			ConfigHibernet config= new ConfigHibernet();
+		    			 Session session = config.abrirConexion();
+		    			 prov = session.createCriteria(Provincias.class) .list();
+		    			return prov;
+		    		} catch (DataAccessException e) {
+		    			return null;
+		    		}
+		    	
+		        
+		    }
 		
-
-		
-	 
+			
+//--------------------- Localidades
+			 
+			 private static List<Localidades> loc;
+				
+				@SuppressWarnings("unchecked")
+				public static List<Localidades> getLocalidades() {
+			        
+			    		try {
+			    			ConfigHibernet config= new ConfigHibernet();
+			    			 Session session = config.abrirConexion();
+			    			 loc = session.createCriteria(Localidades.class) .list();
+			    			return loc;
+			    		} catch (DataAccessException e) {
+			    			return null;
+			    		}
+			    	
+			        
+			    }
+						
+//-------------------- Sexo
+			
+			 private static List<Sexo> sexo;
+				
+				@SuppressWarnings("unchecked")
+				public static List<Sexo> getSexo() {
+			        
+			    		try {
+			    			ConfigHibernet config= new ConfigHibernet();
+			    			 Session session = config.abrirConexion();
+			    			 sexo = session.createCriteria(Sexo.class) .list();
+			    			return sexo;
+			    		} catch (DataAccessException e) {
+			    			return null;
+			    		}
+			    	
+			        
+			    }
+			
+			
+//-------------------- Nacionalidad 
+				
+				
+				 private static List<Nacionalidad> nac;
+					
+					@SuppressWarnings("unchecked")
+					public static List<Nacionalidad> getNacionalidad() {
+				        
+				    		try {
+				    			ConfigHibernet config= new ConfigHibernet();
+				    			 Session session = config.abrirConexion();
+				    			 nac = session.createCriteria(Nacionalidad.class) .list();
+				    			return nac;
+				    		} catch (DataAccessException e) {
+				    			return null;
+				    		}
+				    	
+				        
+				    }
+				
+				
 	
 }
