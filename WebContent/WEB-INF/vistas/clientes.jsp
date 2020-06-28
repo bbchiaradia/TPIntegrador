@@ -54,7 +54,7 @@
 					<div class="col-md-12 tarjeta">
 					 <c:forEach var="cliente" items="${ clientes }">
 		           <!--   <td> ${ cliente.toString() }</td> -->
-					<div class="row">
+					<div class="row my-1 py-1" id="cliente_${cliente.getIdCliente()}" style="border-bottom: 1px solid lightgrey;">
 					<div class="col-md-3">${ cliente.getApellido() }</div>
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
@@ -82,7 +82,6 @@
 						 </button>
 					</div>
 					</div>
-					<hr>	
 					</c:forEach>			
 					</div>
 					
@@ -123,7 +122,12 @@ function eliminarUsuario( id, nombre, apellido ){
 	            id: id
 	          },
 	          success: function (data) {
-	        	  alert(data);
+	        	  if( data.indexOf("true") > -1 ){
+	        		  $("#cliente_"+id).remove();
+	        		  alert("El usuario ha sido eliminado correctamente");
+	        	  }else{
+	        		  alert("Ocurrió un error al eliminar el usuario");
+	        	  }
 	            return data && data.status ? handleSuccess(id) : handleError();
 	          }
 	        });
