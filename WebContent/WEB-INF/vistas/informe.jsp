@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.jsp"%>
+   <%@ include file="head.html"%>
     <title>Hello, world!</title>
   </head>
   <body style="width: 100vw; height:100vh;">

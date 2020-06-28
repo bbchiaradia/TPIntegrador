@@ -4,7 +4,7 @@
 <html>
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.jsp"%>
+   <%@ include file="head.html"%>
     <title>TP Banco - Grupo 7</title>
   </head>
       <script>

@@ -5,18 +5,18 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.jsp"%>
+   <%@ include file="head.html"%>
     <title>TP Banco - Grupo 7</title>
   </head>
   
   
-  <body style="width: 100vw; height:100vh">
+  <body style="width: 100vw; height:100vh;">
   	<%@ page import="utn.frgp.edu.ar.*" %>
 		<%@ page import="utn.frgp.edu.ar.entidad.*" %>
 		<%@ page import="utn.frgp.edu.ar.dao.*" %>
 		<%@ page import="utn.frgp.edu.ar.controller.*" %>
-
-    <%@ include file="nav.html"%>
+    <container>
+    
     <div class="container">
     
     <br>
@@ -28,8 +28,8 @@
     
     
     <!-- detalle de cuenta -->
-
-    <div class="row animate__animated animate__fadeIn ">
+    <container>
+    <div class="row animate__animated animate__fadeIn">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
@@ -38,7 +38,7 @@
  			
      	
      		
- 			 <div class="card-body tarjeta">
+ 			 <div class="card-body">
 				<div class="row">
 				
 					<div class="col-md-12">
@@ -59,24 +59,27 @@
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
 					<div class="col-md-3">
-
-						<!-- 
-						
-					    <a href="redireccionar_detalleCliente.html" value="${cliente.getIdCliente()}">
+					<!--   <a href="clientes/" name="id" value=${cliente.getIdCliente() }">-->
+					  
+					  <form method="get" action="redireccionar_detalleCliente.html">
+					  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
-	
-						 -->
-					    <a href="clientes/${cliente.getIdCliente() }">
-						<button class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
-
 						<i class="fa fa-eye" aria-hidden="true"></i> 
 						</button>	
-						</a>
-						 <a href="redireccionar_detalleCliente.html/${cliente.getIdCliente()}">
+						</form>
+						
+						
+						 <form method="get">
+						
+						
+						<!--</a>-->
+						 <a href="formclientes.jsp/${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
 						  </a>
+						  </form>
+						  
 						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" 
 						  onclick="confirm( 'Desea eliminar el cliente ${ cliente.getNombre() }  ${ cliente.getApellido() }?' )">
 						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
@@ -92,9 +95,13 @@
  			 </div> 
     	   </div>
     </div>
+    </container>
+    
+    
 
+    
     </div>
-
+    </container>
 
 <%@ include file="foot.html"%>
   </body>
