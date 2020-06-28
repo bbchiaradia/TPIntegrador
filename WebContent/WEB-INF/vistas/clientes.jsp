@@ -5,7 +5,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.html"%>
+   <%@ include file="head.jsp"%>
     <title>TP Banco - Grupo 7</title>
   </head>
   
@@ -16,7 +16,7 @@
 		<%@ page import="utn.frgp.edu.ar.dao.*" %>
 		<%@ page import="utn.frgp.edu.ar.controller.*" %>
     <container>
-    
+    <%@ include file="nav.html"%>
     <div class="container">
     
     <br>
@@ -51,7 +51,7 @@
 					<hr>
 					</div>
 					
-					<div class="col-md-12">
+					<div class="col-md-12 tarjeta">
 					 <c:forEach var="cliente" items="${ clientes }">
 		           <!--   <td> ${ cliente.toString() }</td> -->
 					<div class="row">

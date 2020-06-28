@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.html"%>
+   <%@ include file="head.jsp"%>
     <title>TP Banco - Grupo 7</title>
   </head>
   <body style="width: 100vw; height:100vh;" class="flex d-flex justify-content-center align-items-center">
