@@ -11,7 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 
@@ -47,6 +51,38 @@ public class ClientesController{
 	    return "/formclientes";
 	}
 	
+	
+	@RequestMapping(value = "formclientesPost" , method = RequestMethod.POST)
+	public String list4(ModelMap modelMap, Integer id , HttpServletRequest request) {
+	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
+	    modelMap.addAttribute("listaProvincias", daoBanco.getProvincias());		
+	    modelMap.addAttribute("listaLocalidades", daoBanco.getLocalidades());		
+	    modelMap.addAttribute("listaSexo", daoBanco.getSexo());	
+	    modelMap.addAttribute("listaNacionalidades", daoBanco.getNacionalidad());
+	    Clientes cli= new Clientes ();
+	    cli.setNombre(request.getParameter("nombre"));
+	    cli.setApellido(request.getParameter("apellido"));
+	    cli.setDni(Integer.parseInt(request.getParameter("dni")));
+	    cli.setIdSexo(daoBanco.getSexoId(request.getParameter("sexo")));
+	    
+	    String sDate1=request.getParameter("fnac");  
+	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
+	    Date date = (Date) date1.parse(sDate1);
+	    cli.setFecha_nacimiento(date);
+	    
+	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(request.getParameter("nacionalidad")));
+	    cli.setIdLocalidad(daoBanco.getLocalidadesId(request.getParameter("localidad")));
+
+	    
+	    cli.setIdProvincia(daoBanco.getProvinciasId(request.getParameter("provincia")));
+	    cli.setIdUsuario(daoBanco.getNombreUsuarioId(request.getParameter("nombreUser")));
+	    
+
+	    
+	    modelMap.addAttribute("cliente", cli);
+	    
+	    return "/formclientes";
+	}
 	
 	
 }

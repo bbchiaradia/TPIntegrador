@@ -20,18 +20,24 @@
  			 </div>  
  			 
  			 
+ 			 
+ 			 
  			
- 			  <c:forEach var="formclientes" items="${ formclientes }">
+ 			  <c:forEach var="formclientes" items="${ formclientesPost }">
+ 		
  			 
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
 				<div class="row">
 				<div class="col-md-12">
-				<form method="POST" action="formclientes.jsp">
+				<form method="POST" action="formclientes.html">
+				
+				
+				
 				 <div class="form-group row">
-    				<label for=""nombre"" class="col-sm-2 col-form-label">Nombre:</label>
+    				<label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" value= "${ formclientes.getNombre() }" class="form-control" id="nombre" required name="nombre" maxlength="50"
+     			 	<input type="text" required value= "${ formclientes.getNombre() }" class="form-control" id="nombre"  name="nombre" maxlength="50"
      			 	placeholder=" Ingrese el/los nombre/s del cliente"> 
     				</div>
  				 </div>
@@ -39,7 +45,7 @@
  				 <div class="form-group row">
     				<label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
     				<div class="col-sm-10">
-     			 	<input type="text"  value= "${ formclientes.getApellido() }" class="form-control" id="apellido" required name="apellido" maxlength="50"
+     			 	<input type="text" required value= "${ formclientes.getApellido() }" class="form-control" id="apellido"  name="apellido" maxlength="50"
      			 	placeholder=" Ingrese el/los apellido/s del cliente">
     				</div>
  				 </div>
@@ -47,7 +53,7 @@
  				 <div class="form-group row">
     				<label for="dni" class="col-sm-2 col-form-label">DNI:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" readonly value= "${ formclientes.getDni() }" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
+     			 	<input type="text" required readonly value= "${ formclientes.getDni() }" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
      			 	placeholder=" Documento del cliente, solo números">
     				</div>
  				 </div>
@@ -55,13 +61,10 @@
  				 <div class="form-group row">
     				<label for="sexo" class="col-sm-2 col-form-label">Sexo:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control" value= "${ formclientes.getIdSexo().getDescripcion() }" id="sexo" required name="sexo">
-  					
+     			 	<select required class="form-control"  id="sexo" required name="sexo">
   					 <c:forEach var="sexo" items="${ listaSexo }">
-  					<option>${ sexo.getDescripcion() }</option>
+  					<option value= "${ formclientes.getIdSexo().getDescripcion() }">${ sexo.getDescripcion() }</option>
 					 </c:forEach>		
-					
-					
 					</select>
     				</div>
  				 </div>
@@ -69,16 +72,16 @@
  				 <div class="form-group row">
     				<label for="datepicker" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
     				<div class="col-sm-10">
-     			 	<input type="text"  value= " ${ formclientes.getFecha_nacimiento() }" id="datepicker" required name="fnac">
+     			 	<input type="text" required value= " ${ formclientes.getFecha_nacimiento() }" id="datepicker" required name="fnac">
     				</div>
  				 </div>
  				 
  				 <div class="form-group row">
     				<label for="nacionalidad" class="col-sm-2 col-form-label">Nacionalidad:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control"  value="${ formclientes.getIdNacionalidad().getDescripcion()}" id="provincia" required name="provincia">
+     			 	<select class="form-control"   id="nacionalidad" required name="nacionalidad">
   					 <c:forEach var="nacionalidad" items="${ listaNacionalidades }">
-  					<option>${ nacionalidad.getDescripcion() }</option>
+  					<option value="${ formclientes.getIdNacionalidad().getDescripcion()}">${ nacionalidad.getDescripcion() }</option>
 					 </c:forEach>		
 					</select>
     				</div>
@@ -87,20 +90,20 @@
  				 <div class="form-group row">
     				<label for="provincia" class="col-sm-2 col-form-label">Provincia:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control"  value="${ formclientes.getIdProvincia().getDescripcion() }" id="provincia" required name="provincia">
+     			 	<select class="form-control" required  id="provincia" required name="provincia">
   					 <c:forEach var="provincias" items="${ listaProvincias }">
-  					<option>${ provincias.getDescripcion() }</option>
+  					<option value="${ formclientes.getIdProvincia().getDescripcion() }">${ provincias.getDescripcion() }</option>
 					 </c:forEach>		
 					</select>
     				</div>
  				 </div>
  				 
  				  <div class="form-group row">
-    				<label for="provincia" class="col-sm-2 col-form-label">Localidad:</label>
+    				<label for="localidad" class="col-sm-2 col-form-label">Localidad:</label>
     				<div class="col-sm-10">
-     			 	<select class="form-control"  value="${ formclientes.getIdLocalidad().getDescripcion() }" id="provincia" required name="provincia">
+     			 	<select class="form-control" required   id="localidad" required name="localidad">
   					 <c:forEach var="localidades" items="${ listaLocalidades }">
-  					<option>${ localidades.getDescripcion() }</option>
+  					<option value="${ formclientes.getIdLocalidad().getDescripcion() }">${ localidades.getDescripcion() }</option>
 					 </c:forEach>		
 					</select>
     				</div>
@@ -108,17 +111,19 @@
  				 
  				 
  				 <div class="form-group row">
-    				<label for=""nombre"" class="col-sm-2 col-form-label">Usuario:</label>
+    				<label for="" class="col-sm-2 col-form-label">Usuario:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" required id="nombre" maxlength="70"
+     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" required id="nombreUser" maxlength="70"
      			 	placeholder=" Calle y número">
     				</div>
  				 </div>
  				 
- 				 
- 				 <div class="form-group row text-right justify-content-end px-4">
+ 				
+
+					 <div class="form-group row text-right justify-content-end px-4">
     				<button class="btn btn-primary" value="Enviar" >Guardar</button>
- 				 </div>
+ 				 </div>					 
+	
  				 
  				 
 				</form>						
