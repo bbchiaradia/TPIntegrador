@@ -19,6 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Localidades;
+import utn.frgp.edu.ar.entidad.Nacionalidad;
+import utn.frgp.edu.ar.entidad.Provincias;
+import utn.frgp.edu.ar.entidad.Sexo;
+import utn.frgp.edu.ar.entidad.Usuarios;
 
 
 
@@ -149,10 +154,182 @@ private static List<Clientes> clientes;
 		
 		
 
-	
+//--------------------- Provincias
+		 
+		 private static List<Provincias> prov;
+			
+			@SuppressWarnings("unchecked")
+			public static List<Provincias> getProvincias() {
+		        
+		    		try {
+		    			ConfigHibernet config= new ConfigHibernet();
+		    			 Session session = config.abrirConexion();
+		    			 prov = session.createCriteria(Provincias.class) .list();
+		    			return prov;
+		    		} catch (DataAccessException e) {
+		    			return null;
+		    		}
+		    	
+		        
+		    }
+			
+			
+			
+			
+			@SuppressWarnings("unchecked")
+			public static Provincias getProvinciasId(String id) {
+		        
+		    		try {
+		    			ConfigHibernet config= new ConfigHibernet();
+		    			 Session session = config.abrirConexion();
+		    			 
+		    			 Provincias prov = (Provincias) session.byId(Provincias.class).getReference(id);
+		    			return prov;
+		    		} catch (DataAccessException e) {
+		    			return null;
+		    		}
+		    	
+		        
+		    }
+			
 		
-
-		
-	 
+			
+//--------------------- Localidades
+			 
+			 private static List<Localidades> loc;
+				
+				@SuppressWarnings("unchecked")
+				public static List<Localidades> getLocalidades() {
+			        
+			    		try {
+			    			ConfigHibernet config= new ConfigHibernet();
+			    			 Session session = config.abrirConexion();
+			    			 loc = session.createCriteria(Localidades.class) .list();
+			    			return loc;
+			    		} catch (DataAccessException e) {
+			    			return null;
+			    		}
+			    	
+			        
+			    }
+				
+				
+				@SuppressWarnings("unchecked")
+				public static Localidades getLocalidadesId(String id) {
+			        
+			    		try {
+			    			ConfigHibernet config= new ConfigHibernet();
+			    			 Session session = config.abrirConexion();
+			    			 
+			    			 Localidades loc = (Localidades) session.byId(Localidades.class).getReference(id);
+			    			return loc;
+			    		} catch (DataAccessException e) {
+			    			return null;
+			    		}
+			    	
+			        
+			    }
+				
+						
+//-------------------- Sexo
+			
+			 private static List<Sexo> sexo;
+				
+				@SuppressWarnings("unchecked")
+				public static List<Sexo> getSexo() {
+			        
+			    		try {
+			    			ConfigHibernet config= new ConfigHibernet();
+			    			 Session session = config.abrirConexion();
+			    			 sexo = session.createCriteria(Sexo.class) .list();
+			    			return sexo;
+			    		} catch (DataAccessException e) {
+			    			return null;
+			    		}
+			    	
+			        
+			    }
+			
+				
+			
+					
+					@SuppressWarnings("unchecked")
+					public static Sexo getSexoId(String id) {
+				        
+				    		try {
+				    			ConfigHibernet config= new ConfigHibernet();
+				    			 Session session = config.abrirConexion();
+				    			 
+				    			 Sexo sexo = (Sexo) session.byId(Sexo.class).getReference(id);
+				    			return sexo;
+				    		} catch (DataAccessException e) {
+				    			return null;
+				    		}
+				    	
+				        
+				    }
+				
+				
+			
+//-------------------- Nacionalidad 
+				
+				
+				 private static List<Nacionalidad> nac;
+					
+					@SuppressWarnings("unchecked")
+					public static List<Nacionalidad> getNacionalidad() {
+				        
+				    		try {
+				    			ConfigHibernet config= new ConfigHibernet();
+				    			 Session session = config.abrirConexion();
+				    			 nac = session.createCriteria(Nacionalidad.class) .list();
+				    			return nac;
+				    		} catch (DataAccessException e) {
+				    			return null;
+				    		}
+				    	
+				        
+				    }
+					
+					@SuppressWarnings("unchecked")
+					public static Nacionalidad getNacionalidadId(String id) {
+				        
+				    		try {
+				    			ConfigHibernet config= new ConfigHibernet();
+				    			 Session session = config.abrirConexion();
+				    			 
+				    			 Nacionalidad nac = (Nacionalidad) session.byId(Nacionalidad.class).getReference(id);
+				    			return nac;
+				    		} catch (DataAccessException e) {
+				    			return null;
+				    		}
+				    	
+				        
+				    }
+					
+					
+//----------------------------- NOMBRE USUARIO
+					
+					
+					@SuppressWarnings("unchecked")
+					public static Usuarios getNombreUsuarioId(String id) {
+				        
+				    		try {
+				    			ConfigHibernet config= new ConfigHibernet();
+				    			 Session session = config.abrirConexion();
+				    			 
+				    			 Usuarios usu = (Usuarios) session.byId(Usuarios.class).getReference(id);
+				    			return usu;
+				    		} catch (DataAccessException e) {
+				    			return null;
+				    		}
+				    	
+				        
+				    }
+					
+				
+					
+				
+				
 	
 }

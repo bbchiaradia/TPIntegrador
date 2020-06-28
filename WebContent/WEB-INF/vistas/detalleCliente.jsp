@@ -39,7 +39,6 @@
 					
 					<div class="row">
 					<div class="col-md-6"><strong>Dni : </strong>${ detalleCliente.getDni() }</div>
-					<div class="col-md-6"><strong>Cuit: </strong>20334455668</div>
 					</div>
 					
 					<div class="row">
@@ -57,7 +56,7 @@
 					</div>
 					
 					<div class="row">
-					<div class="col-md-6"><strong>Nombre de usuario: </strong> AquilesVaesa</div>
+					<div class="col-md-6"><strong>Nombre de usuario: </strong> ${ detalleCliente.getIdUsuario().getNombreUsuario() }</div>
 					<div class="col-md-6"><strong>Fecha de alta: </strong> ${ detalleCliente.getFecha_alta() }</div>
 					</div>
 					<hr>
