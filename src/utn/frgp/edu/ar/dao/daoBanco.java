@@ -27,7 +27,9 @@ private static List<Clientes> clientes;
     		try {
     			ConfigHibernet config= new ConfigHibernet();
     			 Session session = config.abrirConexion();
-    			 clientes = session.createCriteria(Clientes.class).list();
+    			 clientes = session.createCriteria(Clientes.class)
+    					 .add(Restrictions.isNull("fecha_baja"))
+    					 .list();
     			return clientes;
     		} catch (DataAccessException e) {
     			return null;
