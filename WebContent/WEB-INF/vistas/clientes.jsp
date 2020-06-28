@@ -69,15 +69,11 @@
 						</form>
 						
 						
-						 <form method="get">
-						
-						
-						<!--</a>-->
-						 <a href="formclientes.jsp/${cliente.getIdCliente() }">
+						 <form method="get"  action="formclientes.html">
+						  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
-						  </a>
 						  </form>
 						  
 						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" 

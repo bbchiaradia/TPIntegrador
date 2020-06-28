@@ -21,7 +21,6 @@ public class ClientesController{
 	
 	@RequestMapping(value = "redireccionar_clientes_D", method = RequestMethod.GET)
 	public String list(ModelMap modelMap) {
-		System.out.println("estoe es un control");
 	    modelMap.addAttribute("clientes", daoBanco.getClientes());
 
 	    return "/clientes";
@@ -30,10 +29,21 @@ public class ClientesController{
 	
 	@RequestMapping(value = "redireccionar_detalleCliente" , method = RequestMethod.GET)
 	public String list2(ModelMap modelMap, Integer id) {
-		System.out.println( "AcaaaaaaaaaDESPUES" +id);
 	    modelMap.addAttribute("detalleCliente", daoBanco.LeerCliente(id));		
 	    
 	    return "/detalleCliente";
 	}
-
+	
+	
+	
+	
+	@RequestMapping(value = "formclientes" , method = RequestMethod.GET)
+	public String list3(ModelMap modelMap, Integer id) {
+	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
+	    
+	    return "/formclientes";
+	}
+	
+	
+	
 }

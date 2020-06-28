@@ -16,8 +16,13 @@
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
-   				 Clientes <span> Este span se muestra si es edición </span>
+   				 Detalle de Cliente
  			 </div>  
+ 			 
+ 			 
+ 			
+ 			  <c:forEach var="formclientes" items="${ formclientes }">
+ 			 
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
 				<div class="row">
@@ -27,14 +32,14 @@
     				<label for=""nombre"" class="col-sm-2 col-form-label">Nombre:</label>
     				<div class="col-sm-10">
      			 	<input type="text" class="form-control" id="nombre" required name="nombre" maxlength="50"
-     			 	placeholder=" Ingrese el/los nombre/s del cliente">
+     			 	placeholder=" Ingrese el/los nombre/s del cliente"> 
     				</div>
  				 </div>
  				 
  				 <div class="form-group row">
     				<label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" id="apellido" required name="apellido" maxlength="50"
+     			 	<input type="text" value= "${ formclientes.getApellido() }" class="form-control" id="apellido" required name="apellido" maxlength="50"
      			 	placeholder=" Ingrese el/los apellido/s del cliente">
     				</div>
  				 </div>
@@ -91,13 +96,6 @@
     				</div>
  				 </div>
  				 
- 				  <div class="form-group row">
-    				<label for="username" class="col-sm-2 col-form-label">Nombre de usuario:</label>
-    				<div class="col-sm-10">
-     			 	<input type="text" class="form-control" required id="username" name="username" maxlength="70"
-     			 	placeholder="Usuario con el que hará login">
-    				</div>
- 				 </div>
  				 
  				 <div class="form-group row text-right justify-content-end px-4">
     				<button class="btn btn-primary" value="Enviar" >Guardar</button>
@@ -108,6 +106,9 @@
 				</div>
 				</div>
 				</div>
+				
+				 </c:forEach>	
+				
  			 </div> 
     	   </div>
     </div>
