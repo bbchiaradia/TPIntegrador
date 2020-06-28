@@ -16,7 +16,7 @@
     <%@ include file="nav.html"%>
     <div class="container">
     
-    <!-- detalle de cuenta -->
+    <!-- solicitud de prestamos -->
     <container>
     <div class="row animate__animated animate__fadeIn">
     	   <div class="col-md-12">
@@ -39,7 +39,14 @@
 					<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaOrigen">Plazo:</label>
-						   <input type="number" min="1" max="60" class="form-control" id="montoTransfer" placeholder="En meses...">
+						   <select class="form-control" id="plazoPrestamo">
+						      <option value="3">3 meses</option>
+						      <option value="6">6 meses</option>
+						      <option value="9">9 meses</option>
+						      <option value="12">12 meses</option>
+						      <option value="18">18 meses</option>
+						      <option value="24">24 meses</option>
+						    </select>
 						  </div>
 					 	</div>
 
@@ -65,12 +72,60 @@
  			 </div> 
     	   </div>
     </div>
+    <div class="row mt-3 px-4 justify-content-end">
+    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Solicitar préstamo</button>
+    </div>
     </container>
     
+	    <!-- historial de prestamos -->
+	    <container>
+	    <div class="row animate__animated animate__fadeIn">
+	    	   <div class="col-md-12">
+	    	   <div class="card mt-4">
+	        	 <div class="card-header">
+	   				 Estado de préstamos
+	 			 </div>  
+	 			 <div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+						<div class="row">
+	
+							<table class="table">
+							  <thead>
+							    <tr>
+							      <th scope="col">Solicitado</th>
+							      <th scope="col">Monto</th>
+							      <th scope="col">Cuenta destino</th>
+							      <th scope="col">Estado</th>
+							      <th scope="col">Detalle</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <td>27/06/2020</td>
+							      <td>$15</td>
+							      <td>$CA-123456789</td>
+							      <td>Aprobado</td>
+							      <td>
+							      <button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver préstamo"> 
+									<i class="fa fa-eye" aria-hidden="true"></i> 
+									</button>	
+							      </td>
+							    </tr>
+							  </tbody>
+							</table>
+	
+						</div>			
+						
+						</div>
+					</div>
+					</div>
+	 			 </div> 
+	    	   </div>
+	    </div>
+
+	    </container>
     
-    <div class="row mt-3 px-4 justify-content-end">
-    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Solicitar</button>
-    </div>
     
     </div>
     </container>

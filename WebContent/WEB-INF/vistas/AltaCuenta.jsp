@@ -79,7 +79,7 @@
 						   	  <option value="1" >Nicolas Flores</option>
 						      <option value="2">Belen Chiaradia</option>
 						       </select>
-						     <input type='button' value='Selected option' id='but_read'>  
+						     <!--<input type='button' value='Selected option' id='but_read'>  -->  
 						     <!-- <div id="result"></div>  -->
 						  </div>
 					 	</div>
