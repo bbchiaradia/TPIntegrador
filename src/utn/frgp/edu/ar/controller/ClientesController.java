@@ -12,6 +12,7 @@ import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -78,8 +79,14 @@ public class ClientesController{
 	    
 	    String sDate1=request.getParameter("fnac");  
 	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
-	    Date date = (Date) date1.parse(sDate1);
-	    cli.setFecha_nacimiento(date);
+	    Date date;
+		try {
+			date = (Date) date1.parse(sDate1);
+			cli.setFecha_nacimiento(date);
+		} catch (ParseException e) {
+			System.out.println("rompe aca");
+			e.printStackTrace();
+		}
 	    
 	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(request.getParameter("nacionalidad")));
 	    cli.setIdLocalidad(daoBanco.getLocalidadesId(request.getParameter("localidad")));

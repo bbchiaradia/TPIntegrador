@@ -6,6 +6,7 @@
     <!-- Required meta tags -->
    <%@ include file="head.jsp"%>
     <title>TP Banco - Grupo 7</title>
+	
   </head>
       <script>
   	function verMovimientos(){
@@ -65,8 +66,8 @@
 					 	<div class="form-group">
 						    <label for="tipoCuenta">Tipo de cuenta:</label>
 						    <select class="form-control" id="tipoCuenta">
-						      <option>Caja de ahorro</option>
-						      <option>Cuenta corriente</option>
+						      <option value="1">Caja de ahorro</option>
+						      <option value="2">Cuenta corriente</option>
 						    </select>
 						  </div>
 					 	</div>
@@ -74,10 +75,12 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="clienteCuenta">Cliente:</label>
-						   <select class="form-control" id="tipoCuenta">
-						   	  <option>Nicolas Flores</option>
-						      <option>Belen Chiaradia</option>
+						   <select class="form-control" id="clientePropietario">
+						   	  <option value="1" >Nicolas Flores</option>
+						      <option value="2">Belen Chiaradia</option>
 						       </select>
+						     <input type='button' value='Selected option' id='but_read'>  
+						     <!-- <div id="result"></div>  -->
 						  </div>
 					 	</div>
 					 	</div>
@@ -182,5 +185,24 @@
     </container>
 
 <%@ include file="foot.html"%>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script languaje="javascript">
+$(document).ready(function(){
+	// Inicializa select2
+	$("#clientePropietario").select2();
+
+	// Read selected option
+	$('#but_read').click(function(){
+	  var username = $('#clientePropietario option:selected').text();
+	  var userid = $('#clientePropietario').val();
+
+	  //$('#result').html("id : " + userid + ", name : " + username);
+
+	});
+});
+
+</script>
+
   </body>
 </html>
