@@ -95,7 +95,11 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaDestino">Cuenta de destino:</label>
-						    <input type="number" class="form-control" id="montoTransfer" placeholder="Ingrese el CBU o Alias">
+						    <input type="text" class="form-control" id="montoTransfer" placeholder="Ingrese el CBU o Alias">
+						  </div>
+						  <div id="detCtaDestino" style="">
+						  <p>Titular: Bojack Horseman</p>
+						  <p>CUIT: 20223344558</p>
 						  </div>
 					 	</div>
 					 	

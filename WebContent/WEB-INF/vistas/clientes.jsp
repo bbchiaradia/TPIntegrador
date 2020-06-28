@@ -76,7 +76,7 @@
 						  </button>
 						  </form>
 						  
-						  <button  class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar" 
+						  <button  class="btn btn-sm btn-danger ml-1" data-toggle="tooltip" data-placement="top" title="Eliminar" 
 						  onclick="eliminarUsuario( ${ cliente.getIdCliente() }, '${ cliente.getNombre() }', '${ cliente.getApellido() }' )">
 						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
 						 </button>
