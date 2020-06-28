@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.html"%>
+   <%@ include file="head.jsp"%>
     <title>Hello, world!</title>
   </head>
   <body style="width: 100vw; height:100vh;">

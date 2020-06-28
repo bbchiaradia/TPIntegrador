@@ -9,6 +9,10 @@
 	border-top: 1px solid #673ab7;
 }
 
+.tarjeta{
+	height:60vh;
+	overflow-y: scroll;
+}
 
 #btn_grupo{
 color: #673ab7 !important;

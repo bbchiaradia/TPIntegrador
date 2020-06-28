@@ -5,18 +5,18 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-   <%@ include file="head.html"%>
+   <%@ include file="head.jsp"%>
     <title>TP Banco - Grupo 7</title>
   </head>
   
   
-  <body style="width: 100vw; height:100vh;">
+  <body style="width: 100vw; height:100vh">
   	<%@ page import="utn.frgp.edu.ar.*" %>
 		<%@ page import="utn.frgp.edu.ar.entidad.*" %>
 		<%@ page import="utn.frgp.edu.ar.dao.*" %>
 		<%@ page import="utn.frgp.edu.ar.controller.*" %>
-    <container>
-    
+
+    <%@ include file="nav.html"%>
     <div class="container">
     
     <br>
@@ -28,8 +28,8 @@
     
     
     <!-- detalle de cuenta -->
-    <container>
-    <div class="row animate__animated animate__fadeIn">
+
+    <div class="row animate__animated animate__fadeIn ">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
@@ -38,7 +38,7 @@
  			
      	
      		
- 			 <div class="card-body">
+ 			 <div class="card-body tarjeta">
 				<div class="row">
 				
 					<div class="col-md-12">
@@ -59,12 +59,20 @@
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
 					<div class="col-md-3">
+
+						<!-- 
+						
 					    <a href="redireccionar_detalleCliente.html" value="${cliente.getIdCliente()}">
 						<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
+	
+						 -->
+					    <a href="clientes/${cliente.getIdCliente() }">
+						<button class="btn btn-sm btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
+
 						<i class="fa fa-eye" aria-hidden="true"></i> 
 						</button>	
 						</a>
-						 <a href="formclientes.jsp/${cliente.getIdCliente() }">
+						 <a href="redireccionar_detalleCliente.html/${cliente.getIdCliente()}">
 						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
 						 <i class="fa fa-pencil" aria-hidden="true"></i>
 						  </button>
@@ -84,13 +92,9 @@
  			 </div> 
     	   </div>
     </div>
-    </container>
-    
-    
 
-    
     </div>
-    </container>
+
 
 <%@ include file="foot.html"%>
   </body>

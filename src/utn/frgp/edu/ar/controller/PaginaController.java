@@ -3,13 +3,22 @@ package utn.frgp.edu.ar.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import utn.frgp.edu.ar.dao.daoBanco;
 
+@RequestMapping("/")
 @Controller
 public class PaginaController {
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView eventoRedireccionar_login() {
+		
+		ModelAndView MV= new ModelAndView();
+		MV.setViewName("login");
+		return MV;
+	}
 	
 	@RequestMapping("redireccionar_Index.html")
 	public ModelAndView eventoRedireccionar_Index(String txtNombre) {
@@ -19,13 +28,7 @@ public class PaginaController {
 		return MV;		
 	}	
 	
-	@RequestMapping("redireccionar_login.html")
-	public ModelAndView eventoRedireccionar_login() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("login");
-		return MV;
-	}
+
 	
 	
 	
