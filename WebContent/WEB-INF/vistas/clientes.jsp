@@ -39,7 +39,7 @@
      	
      		
  			 <div class="card-body">
-				<div class="row">
+				<!--  <div class="row">
 				
 					<div class="col-md-12">
 					<div class="row header_detalle">
@@ -53,13 +53,13 @@
 					
 					<div class="col-md-12 tarjeta">
 					 <c:forEach var="cliente" items="${ clientes }">
-		           <!--   <td> ${ cliente.toString() }</td> -->
+
 					<div class="row my-1 py-1" id="cliente_${cliente.getIdCliente()}" style="border-bottom: 1px solid lightgrey;">
 					<div class="col-md-3">${ cliente.getApellido() }</div>
 					<div class="col-md-3">${ cliente.getNombre() }</div>
 					<div class="col-md-3">${ cliente.getDni() }</div>
 					<div class="col-md-3" style="display:flex;">
-					<!--   <a href="clientes/" name="id" value=${cliente.getIdCliente() }">-->
+	
 					  
 					  <form method="get" class="frmBoton" action="redireccionar_detalleCliente.html">
 					  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
@@ -85,7 +85,51 @@
 					</c:forEach>			
 					</div>
 					
-				</div>
+				</div>-->
+				
+				<table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Apellido</th>
+                  <th>Nombre</th>
+                  <th>DNI</th>
+                  <th>Operaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="cliente" items="${ clientes }">
+                  <tr id="cliente_${ cliente.getIdCliente() }">
+                    <td>${ cliente.getApellido() }</td>
+                    <td>${ cliente.getNombre() }</td>
+                    <td>${ cliente.getDni()}</td>
+                    <td style="display:inline-flex">
+
+						 <form method="get" class="frmBoton" action="redireccionar_detalleCliente.html">
+					  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
+						<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver cliente"> 
+						<i class="fa fa-eye" aria-hidden="true"></i> 
+						</button>	
+						</form>
+						
+						
+						 <form method="get" class="frmBoton" action="formclientes.html">
+						  <input type="hidden" name="id" value="${cliente.getIdCliente() }">
+						<button class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente">
+						 <i class="fa fa-pencil" aria-hidden="true"></i>
+						  </button>
+						  </form>
+						  
+						  <button  class="btn btn-sm btn-danger ml-1" data-toggle="tooltip" data-placement="top" title="Eliminar" 
+						  onclick="eliminarUsuario( ${ cliente.getIdCliente() }, '${ cliente.getNombre() }', '${ cliente.getApellido() }' )">
+						   <i class="fa fa-trash-o" aria-hidden="true" ></i>
+						 </button>
+
+					</td>          
+                  </tr>
+                </c:forEach>
+                </tbody>
+              </table>
+				
 				</div>
  			 </div> 
     	   </div>
@@ -102,7 +146,7 @@
 
 <script languaje="javascript">
 $(function() {
-	$('#example2').DataTable({
+	$('#datatables').DataTable({
 		'paging' : true,
 		'lengthChange' : false,
 		'searching' : true,
