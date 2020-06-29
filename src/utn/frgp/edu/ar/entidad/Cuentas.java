@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -73,6 +74,13 @@ public class Cuentas implements Serializable{
     private Date fecha_alta;
 	
 	///
+	private Clientes getIdCliente() {
+		return this.idCliente;
+	}
+	
+	private void setIdCliente(Clientes cli) {
+		this.idCliente = cli;
+	}
     
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="id_TipoCuenta")
@@ -148,7 +156,9 @@ public class Cuentas implements Serializable{
 	public static List<Cuentas> cuentasByClientId(Integer id){
 		ConfigHibernet config= new ConfigHibernet();
 		 Session session = config.abrirConexion();
-		List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
+		//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
+		 Query q = session.createQuery("from Cuentas where idCliente = " + id + " and fecha_baja is null");
+		 List<Cuentas> cuentas = q.list();
 		 return cuentas;
 	}
 	

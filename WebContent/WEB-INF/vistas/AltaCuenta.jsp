@@ -73,6 +73,7 @@
 					 	<div class="form-group">
 						    <label for="tipoCuenta">Tipo de cuenta:</label>
 						    <select class="form-control" name="tipoCuenta" id="tipoCuenta">
+						    <option readonly value="-1" >[seleccione tipo de cuenta]</option>
 						    <c:forEach var="tipocuenta" items="${ tiposcuenta }">
 						      <option value="${tipocuenta.getId_TipoCuenta()}">${tipocuenta.getDescripcion()} </option>
 						    </c:forEach>
@@ -84,6 +85,7 @@
 					 	<div class="form-group">
 						    <label for="clienteCuenta">Cliente:</label>
 						   <select class="form-control" name="clientePropietario" id="clientePropietario">
+						   <option readonly value="-1" >[seleccione cliente asociado]</option>
 						   <c:forEach var="cliente" items="${ clientes }">
 						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
 						      </c:forEach>
@@ -95,7 +97,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="crearCuenta();">Crear Cuenta</button>
+					 	onclick="crearCuenta( event);">Crear Cuenta</button>
 					 	</div>
 					 	</form>
 					 	
@@ -110,7 +112,7 @@
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						   <select class="form-control clientePropietario" name="clientePropietario" id="clientePropietario">
+						   <select class="form-control clientePropietario" name="clientePropietario" id="cliente_Propietario">
 						   <c:forEach var="cliente" items="${ clientes }">
 						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
 						      </c:forEach>
@@ -120,30 +122,16 @@
 					 	
 					 	<div class="col-md-8">
 					 	<div class="form-group">
-						    <label for="titular">Titular:</label>
-						    <input type="number" class="form-control" id="titular" placeholder="">
+						    <label for="titular">Cuenta:</label>
+						    <select class="form-control cuentaUsuario" name="cuentaUsuario" id="cuenta_Usuario">
+						       </select>
 						  </div>
 					 	</div>
-					 	
-					 	<div class="col-md-7">
-					 	<div class="form-group">
-						    <label for="saldo">Saldo:</label>
-						   <input type="number" class="form-control" id="saldo" placeholder="">
-						  </div>
-					 	</div>
-					 	
-					 	 	<div class="col-md-6">
-					 	<div class="form-group">
-						    <label for="tipoCuenta">Tipo Cuenta:</label>
-						   <input type="number" class="form-control" id="tipoCuenta" placeholder="">
-						  </div>
-					 	</div>
-					 	
 					 	
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea dar de baja la cuenta?' );">Dar de Baja</button>
+					 	onclick="bajarCuenta();">Dar de Baja</button>
 					 	</div>
 					  </div>
 					  
@@ -152,31 +140,31 @@
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						    <label for="cuentaBaja">Cuenta a modificar:</label>
-						    <select class="form-control" id="cuentaBaja">
-						      <option>386-254454-9</option>
-						    </select>
+						    <label for="cuentaBaja">Cliente de la cuenta a modificar:</label>
+						    <select class="form-control cliente_Propietario_M" name="cliente_Propietario_M" id="cliente_Propietario_M">
+						   <c:forEach var="cliente" items="${ clientes }">
+						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
+						      </c:forEach>
+						       </select>
 						  </div>
 					 	</div>
 					 	
 					 	<div class="col-md-8">
 					 	<div class="form-group">
-						    <label for="titular">Titular:</label>
-						    <input type="number" class="form-control" id="titular" placeholder="">
-						  </div>
-					 	</div>
-					 	
-					 	<div class="col-md-7">
-					 	<div class="form-group">
-						    <label for="saldo">Saldo:</label>
-						   <input type="number" class="form-control" id="saldo" placeholder="">
+						    <label for="titular">Cuenta a modificar:</label>
+						     <select class="form-control cuenta_Usuario_M" name="cuenta_Usuario_M" id="cuenta_Usuario_M">
+						       </select>
 						  </div>
 					 	</div>
 					 	
 					 	 	<div class="col-md-6">
 					 	<div class="form-group">
 						    <label for="tipoCuenta">Tipo Cuenta:</label>
-						   <input type="number" class="form-control" id="tipoCuenta" placeholder="">
+						   <select class="form-control tipoCuenta_M" name="tipoCuenta_M" id="tipoCuenta_M">
+						    <c:forEach var="tipocuenta" items="${ tiposcuenta }">
+						      <option id="tipoc_${tipocuenta.getId_TipoCuenta()}" value="${tipocuenta.getId_TipoCuenta()}">${tipocuenta.getDescripcion()} </option>
+						    </c:forEach>
+						    </select>
 						  </div>
 					 	</div>
 					 	
@@ -184,7 +172,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea modificar la cuenta?' );">Modificar</button>
+					 	onclick="modificarCuenta();">Modificar</button>
 					 	</div>
 					  </div>
 					  
@@ -209,33 +197,26 @@
 $(document).ready(function(){
 	// Inicializa select2
 	$("#clientePropietario").select2();
-
+	$("#cliente_Propietario").select2();
+	$("#cliente_Propietario_M").select2();
+	
 	// Read selected option
 	$('#but_read').click(function(){
 	  var username = $('#clientePropietario option:selected').text();
 	  var userid = $('#clientePropietario').val();
-
-	  //$('#result').html("id : " + userid + ", name : " + username);
-
 	});
 	
-	function crearCuenta(){
-		let n = confirm("Proceder a crear la cuenta?");
-		if (n){
-			document.all.formu.submit();
-		}
-		return;
-	}
-	
+	/*
 	function cuentas(){
 		let x = document.getElementsByName("clientePropietario").value();
 		alert(x);
 		return;
-	}
+	}*/
 
-	
+	//Obtiene las cuentas del usuario seleccionado
 	$(document).on('change', '.clientePropietario', function(){
-		let x = $("[name=clientePropietario]").val()
+		document.getElementById("cuenta_Usuario").innerHTML = "";
+		let x = $("#cliente_Propietario option:selected").val()
 		$.ajax({
 	          url: '${request.getContextPath()}/TP_L5_GRUPO_7_/cuentascliente.html',
 	          type: 'POST',
@@ -243,19 +224,125 @@ $(document).ready(function(){
 	            id: x
 	          },
 	          success: function (data) {
-	        	  alert(data);
-	        	  if( data.indexOf("true") > -1 ){
-	        		  $("#cliente_"+id).remove();
-	        		  alert("El usuario ha sido eliminado correctamente");
+	        	  console.log(data);
+	        	  if( data != false ){
+	        		  data = JSON.parse(data);
+	        		  data.forEach( item => {
+	        			  $("#cuenta_Usuario").append( 
+	        					  "<option value= " + item.idCuenta  + "> " + item.id_TipoCuenta.descripcion + " - Num: " + item.nroCta +"</option>");
+	        		  } );
 	        	  }else{
-	        		  alert("Ocurrió un error al eliminar el usuario");
+	        		  alert("Ocurrió un error al obtener las cuentas del usuario");
 	        	  }
-	            return data && data.status ? handleSuccess(id) : handleError();
+	            return false;
 	          }
 	        });
 	});
+	
+	
+	//Obtiene las cuentas del usuario seleccionado para modificacion de cuentas
+	$(document).on('change', '.cliente_Propietario_M', function(){
+		document.getElementById("cuenta_Usuario_M").innerHTML = "";
+		let x = $("#cliente_Propietario_M option:selected").val()
+		$.ajax({
+	          url: '${request.getContextPath()}/TP_L5_GRUPO_7_/cuentascliente.html',
+	          type: 'POST',
+	          data: {
+	            id: x
+	          },
+	          success: function (data) {
+	        	  console.log(data);
+	        	  if( data != false ){
+	        		  data = JSON.parse(data);
+	        		  data.forEach( item => {
+	        			  $("#cuenta_Usuario_M").append( 
+	        					  "<option  id=cid_"+item.idCuenta+" attr-tid='"+item.id_TipoCuenta.id_TipoCuenta+"' value= " + item.idCuenta  + "> " + item.id_TipoCuenta.descripcion + " - Num: " + item.nroCta + " - Saldo: $" + item.saldo +  "</option>");
+	        		  } );
+	        	  }else{
+	        		  alert("Ocurrió un error al obtener las cuentas del usuario");
+	        	  }
+	            return false;
+	          }
+	        });
+	});
+	
+	$(document).on('change', '#cuenta_Usuario_M', function(){
+		let x = $("#cuenta_Usuario_M option:selected").val()
+		let tid = document.getElementById("cid_"+x).getAttribute("attr-tid");
+		$("#tipoCuenta_M").val(tid);
+		console.log(tid);
+		console.log(x);
+	});
+	
+	
 });
 
+function bajarCuenta(){
+	let c = confirm("Realmente desea dar de baja la cuenta seleccionada?");
+	if(c){
+		let ctaABajar = $("#cuenta_Usuario option:selected").val();
+		$.ajax({
+	        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/darDeBajaCuenta.html',
+	        type: 'POST',
+	        data: {
+	          id: ctaABajar
+	        },
+	        success: function (data) {
+	      	  if( data.indexOf("true") > -1  ){
+	      		alert("La cuenta ha sido dada de baja correctamente");
+	      		$("#cuenta_Usuario option:selected").remove();
+	      	  }else{
+	      		  alert("Ocurrió un error al eliminar la cuenta");
+	      	  }
+	          return false;
+	        }
+	      });
+	}
+	return;
+}
+
+//Submitea el formulario
+function crearCuenta(e){
+	e.stopPropagation();
+	e.preventDefault();
+	let n = confirm("Proceder a crear la cuenta?");
+	if (n){
+		document.all.formu.submit();
+		document.all.formu.reset();
+	}
+	document.all.formu.reset();
+	return;
+}
+
+function modificarCuenta(){
+	let x = confirm( "Confirma la modificación del tipo de cuenta?" );
+	if(x){
+		let cuentaAModificar = $("#cuenta_Usuario_M option:selected").val()
+		let tipoQueTieneQueSer = $("#tipoCuenta_M option:selected").val()
+		if( cuentaAModificar && tipoQueTieneQueSer){
+			$.ajax({
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/modificarCuenta.html',
+		        type: 'POST',
+		        data: {
+		        	id: cuentaAModificar,
+		        	tipo: tipoQueTieneQueSer
+		        },
+		        success: function (data) {
+		      	  if( data.indexOf("true") > -1  ){
+		      		alert("La cuenta ha sido modificada correctamente");
+		      		window.location.reload();
+		      	  }else{
+		      		  alert("Ocurrió un error al eliminar la cuenta");
+		      	  }
+		          return false;
+		        }
+		      });
+		}
+		return false;
+	}
+	return false;
+	
+}
 
 </script>
 

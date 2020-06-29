@@ -7,6 +7,10 @@
 	border-top: 1px solid #673ab7;
 }
 
+.select2{
+	width: 100% !important;
+}
+
 .tarjeta{
 	height:60vh;
 	overflow-y: scroll;
