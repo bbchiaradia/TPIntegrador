@@ -17,6 +17,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
+import utn.frgp.edu.ar.dao.ConfigHibernet;
+
 @Entity
 @Table(name="Cuentas")
 public class Cuentas implements Serializable{ 
@@ -139,8 +144,13 @@ public class Cuentas implements Serializable{
 	}
 	
 	
-
-	
+	 @SuppressWarnings("unchecked")
+	public static List<Cuentas> cuentasByClientId(Integer id){
+		ConfigHibernet config= new ConfigHibernet();
+		 Session session = config.abrirConexion();
+		List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
+		 return cuentas;
+	}
 	
 	
 

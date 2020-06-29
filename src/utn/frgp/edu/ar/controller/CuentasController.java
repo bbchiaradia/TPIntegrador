@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.Gson;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.daoBanco;
@@ -71,6 +74,14 @@ public class CuentasController {
 		return MV;}
 		
 	}
+	
+	@RequestMapping( value= "cuentascliente", method = RequestMethod.POST )
+	@ResponseBody
+	public String cuentasClienteById( Integer id, daoBanco dao ){
+		List<Cuentas> ctas = Cuentas.cuentasByClientId(id);
+		return new Gson().toJson(ctas);
+	}
+	
 	
 	
 }

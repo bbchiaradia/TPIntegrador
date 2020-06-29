@@ -105,14 +105,16 @@
 					 	</div>-->
 					  </div>
 					  
+					  <!-- baja de cuentas -->
 					  <div class="tab-pane fade" id="otras" role="tabpanel" aria-labelledby="otras-tab">
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						    <label for="cuentaBaja">Cuenta a dar de baja:</label>
-						    <select class="form-control" id="cuentaBaja">
-						      <option>386-254454-9</option>
-						    </select>
+						   <select class="form-control clientePropietario" name="clientePropietario" id="clientePropietario">
+						   <c:forEach var="cliente" items="${ clientes }">
+						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
+						      </c:forEach>
+						       </select>
 						  </div>
 					 	</div>
 					 	
@@ -145,6 +147,7 @@
 					 	</div>
 					  </div>
 					  
+					  <!-- modificacion de cuentas -->
 					   <div class="tab-pane fade" id="modificacion" role="tabpanel" aria-labelledby="otras-tab">
 					  	<div class="row">
 					 	<div class="col-md-9">
@@ -223,7 +226,34 @@ $(document).ready(function(){
 		}
 		return;
 	}
+	
+	function cuentas(){
+		let x = document.getElementsByName("clientePropietario").value();
+		alert(x);
+		return;
+	}
 
+	
+	$(document).on('change', '.clientePropietario', function(){
+		let x = $("[name=clientePropietario]").val()
+		$.ajax({
+	          url: '${request.getContextPath()}/TP_L5_GRUPO_7_/cuentascliente.html',
+	          type: 'POST',
+	          data: {
+	            id: x
+	          },
+	          success: function (data) {
+	        	  alert(data);
+	        	  if( data.indexOf("true") > -1 ){
+	        		  $("#cliente_"+id).remove();
+	        		  alert("El usuario ha sido eliminado correctamente");
+	        	  }else{
+	        		  alert("Ocurrió un error al eliminar el usuario");
+	        	  }
+	            return data && data.status ? handleSuccess(id) : handleError();
+	          }
+	        });
+	});
 });
 
 
