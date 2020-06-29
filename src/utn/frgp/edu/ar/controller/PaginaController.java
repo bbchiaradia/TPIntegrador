@@ -39,15 +39,6 @@ public class PaginaController {
 	}
 	
 	
-	@RequestMapping("redireccionar_AltaCuenta.html")
-	public ModelAndView eventoRedireccionar_AltaCuenta() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("AltaCuenta");
-		return MV;
-		
-	}
-	
 	@RequestMapping("redireccionar_prestamos.html")
 	public ModelAndView eventoRedireccionar_prestamos() {
 		

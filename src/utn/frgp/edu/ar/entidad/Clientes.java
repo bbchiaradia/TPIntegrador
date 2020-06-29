@@ -215,6 +215,13 @@ public class Clientes implements Serializable {
 		return serialVersionUID;
 	}
 
+	public static Clientes getClienteById(Integer id) {
+		ConfigHibernet config= new ConfigHibernet();
+		 Session session = config.abrirConexion();
+		Clientes cli = (Clientes) session.byId(Clientes.class).getReference(id);
+		session.close();
+		return cli;
+	}
 
 	@Override
 	public String toString() {

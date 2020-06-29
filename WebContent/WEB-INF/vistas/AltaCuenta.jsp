@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,7 +25,11 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
-    
+    <c:if test="${status != null }">
+    <script>
+    alert( "${status}" );
+    </script>
+    </c:if>
     <!-- detalle de cuenta -->
     <container>
     <div class="row animate__animated animate__fadeIn">
@@ -52,32 +57,36 @@
 					<div class="tab-content py-2 mt-2" id="myTabContent">
 					  <div class="tab-pane fade show active" id="propias" role="tabpanel" aria-labelledby="propias-tab">
 					 	
+					 	
+					 	<form id="formu" method="POST" action="nuevacuenta.html">
 					 	<div class="row">
-					 	<div class="col-md-4">
+					 	<!-- <div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="numeroCuenta">Numero de cuenta:</label>
 						      <input type="number" class="form-control" min="1" max="60" id="numeroCuenta" placeholder="se auto-genera">
 
 						    </select>
 						  </div>
-					 	</div>
+					 	</div>  -->
 	
-					 	<div class="col-md-4">
+					 	<div class="col-md-6">
 					 	<div class="form-group">
 						    <label for="tipoCuenta">Tipo de cuenta:</label>
-						    <select class="form-control" id="tipoCuenta">
-						      <option value="1">Caja de ahorro</option>
-						      <option value="2">Cuenta corriente</option>
+						    <select class="form-control" name="tipoCuenta" id="tipoCuenta">
+						    <c:forEach var="tipocuenta" items="${ tiposcuenta }">
+						      <option value="${tipocuenta.getId_TipoCuenta()}">${tipocuenta.getDescripcion()} </option>
+						    </c:forEach>
 						    </select>
 						  </div>
 					 	</div>
 					 	
-					 	<div class="col-md-4">
+					 	<div class="col-md-6">
 					 	<div class="form-group">
 						    <label for="clienteCuenta">Cliente:</label>
-						   <select class="form-control" id="clientePropietario">
-						   	  <option value="1" >Nicolas Flores</option>
-						      <option value="2">Belen Chiaradia</option>
+						   <select class="form-control" name="clientePropietario" id="clientePropietario">
+						   <c:forEach var="cliente" items="${ clientes }">
+						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
+						      </c:forEach>
 						       </select>
 						     <!--<input type='button' value='Selected option' id='but_read'>  -->  
 						     <!-- <div id="result"></div>  -->
@@ -86,15 +95,21 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea crear la cuenta?' );">Crear Cuenta</button>
+					 	onclick="crearCuenta();">Crear Cuenta</button>
 					 	</div>
+					 	</form>
+					 	
+					 	<!--<div class="row justify-content-end px-4">
+					 	<button class="btn btn-sm btn-primary" role="button" 
+					 	onclick="confirm( 'Desea crear la cuenta?' );">Crear Cuenta</button>
+					 	</div>-->
 					  </div>
 					  
 					  <div class="tab-pane fade" id="otras" role="tabpanel" aria-labelledby="otras-tab">
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						    <label for=""cuentaBaja"">Cuenta a dar de baja:</label>
+						    <label for="cuentaBaja">Cuenta a dar de baja:</label>
 						    <select class="form-control" id="cuentaBaja">
 						      <option>386-254454-9</option>
 						    </select>
@@ -134,7 +149,7 @@
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						    <label for=""cuentaBaja"">Cuenta a modificar:</label>
+						    <label for="cuentaBaja">Cuenta a modificar:</label>
 						    <select class="form-control" id="cuentaBaja">
 						      <option>386-254454-9</option>
 						    </select>
@@ -200,7 +215,17 @@ $(document).ready(function(){
 	  //$('#result').html("id : " + userid + ", name : " + username);
 
 	});
+	
+	function crearCuenta(){
+		let n = confirm("Proceder a crear la cuenta?");
+		if (n){
+			document.all.formu.submit();
+		}
+		return;
+	}
+
 });
+
 
 </script>
 
