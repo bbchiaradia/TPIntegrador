@@ -38,9 +38,12 @@ private static List<Clientes> clientes;
     		try {
     			ConfigHibernet config= new ConfigHibernet();
     			 Session session = config.abrirConexion();
+    			 session.beginTransaction();
     			 clientes = session.createCriteria(Clientes.class)
     					 .add(Restrictions.isNull("fecha_baja"))
     					 .list();
+    			 
+    			
     			return clientes;
     		} catch (DataAccessException e) {
     			return null;
@@ -55,10 +58,12 @@ private static List<Clientes> clientes;
 			
 			ConfigHibernet config= new ConfigHibernet();
 			 Session session = config.abrirConexion();
+			 session.beginTransaction();
 			 clientes = session.createCriteria(Clientes.class)
 					 .add(Restrictions.eq("idCliente", id))
 					 .list();
 			 System.out.println( "Acaaaaaaaaa"+ id);
+			
 			return  clientes;
 			
 		} catch (DataAccessException e) {
@@ -67,39 +72,76 @@ private static List<Clientes> clientes;
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	public static Clientes getClienteId(Integer id) {
+        
+    		try {
+    			ConfigHibernet config= new ConfigHibernet();
+    			 Session session = config.abrirConexion();
+    			  Transaction transaction = session.beginTransaction();
+    			 Clientes cli = (Clientes) session.byId(Clientes.class).getReference(id);
+    			 transaction.commit();
+    			
+    			return cli;
+    		} catch (DataAccessException e) {
+    			return null;
+    		}    
+    }
+	
+	
 	
 	
 	 public Clientes AgregarCliente (Clientes cliente) 
 	    {
 	        ConfigHibernet config= new ConfigHibernet();
 	        Session session = config.abrirConexion();
+	        session.beginTransaction().commit();
 	        session.beginTransaction();
 	        session.save(cliente);
 	        session.beginTransaction().commit();
 	        config.cerrarSession(); 
 	        return cliente;
 	    }
+	 
 	 public void ModificarCliente (Clientes cliente) 
 	    {
-	        ConfigHibernet config= new ConfigHibernet();
-	        Session session = config.abrirConexion();
-	        session.beginTransaction();
-	        session.update(cliente);
-	        session.beginTransaction().commit();
-	        config.cerrarSession();
+		 
+		
+		  System.out.println( "ACA UPDATEEEEEEE 108"+cliente.toString() );
+		  ConfigHibernet config= new ConfigHibernet();   
+		  try {
+		    Session session = config.abrirConexion();
+	        Transaction transaction = session.beginTransaction();
+	        session.save(cliente);
+	        System.out.println( "ACA UPDATEEEEEEE 114"+cliente.toString() );
+	        transaction.commit();
+	        config.cerrarSession(); 
+		   }catch(Exception e) {
+			   System.out.println( "ACA UPDATEEEEEEE 119" );
+			   System.out.println( e.getMessage() );
+	       		
+	       	}finally{
+	       		config.cerrarSession();
+	       	}
+
 	    }
+	 
+	
+	 
 	 public boolean EliminarCliente (Integer idcliente) 
 	    {
 		 ConfigHibernet config= new ConfigHibernet();
-	        try{
-	        	
+	      
+	        	try {
 	        Session session = config.abrirConexion();
 	        Transaction transaction = session.beginTransaction();
+	        session.beginTransaction();
 	        Clientes cli = (Clientes) session.byId(Clientes.class).getReference(idcliente);
 	        System.out.println( cli.toString() );
 	        cli.setFecha_baja( Calendar.getInstance().getTime() );
 	        session.save(cli);
 	        transaction.commit();
+	        config.cerrarSession(); 
 	       	return true;
 	       	}catch(Exception e) {
 	       		System.out.println( e.getMessage() );
@@ -115,6 +157,7 @@ private static List<Clientes> clientes;
 		{
 			   ConfigHibernet config= new ConfigHibernet();
 		        Session session = config.abrirConexion();
+		        session.beginTransaction().commit();
 		        session.beginTransaction();
 		        Cuentas cuenta =(Cuentas)session.get(Cuentas.class, id);
 		        config.cerrarSession();
@@ -124,6 +167,7 @@ private static List<Clientes> clientes;
 		    {
 		        ConfigHibernet config= new ConfigHibernet();
 		        Session session = config.abrirConexion();
+		        session.beginTransaction().commit();
 		        session.beginTransaction();
 		        session.save(cuenta);
 		        session.beginTransaction().commit();
@@ -164,7 +208,9 @@ private static List<Clientes> clientes;
 		    		try {
 		    			ConfigHibernet config= new ConfigHibernet();
 		    			 Session session = config.abrirConexion();
+		    			 session.beginTransaction();
 		    			 prov = session.createCriteria(Provincias.class) .list();
+		    		
 		    			return prov;
 		    		} catch (DataAccessException e) {
 		    			return null;
@@ -177,13 +223,14 @@ private static List<Clientes> clientes;
 			
 			
 			@SuppressWarnings("unchecked")
-			public static Provincias getProvinciasId(String id) {
+			public static Provincias getProvinciasId(Integer id) {
 		        
 		    		try {
 		    			ConfigHibernet config= new ConfigHibernet();
 		    			 Session session = config.abrirConexion();
-		    			 
+		    			 session.beginTransaction();
 		    			 Provincias prov = (Provincias) session.byId(Provincias.class).getReference(id);
+		    			
 		    			return prov;
 		    		} catch (DataAccessException e) {
 		    			return null;
@@ -204,7 +251,9 @@ private static List<Clientes> clientes;
 			    		try {
 			    			ConfigHibernet config= new ConfigHibernet();
 			    			 Session session = config.abrirConexion();
+			    			 session.beginTransaction();
 			    			 loc = session.createCriteria(Localidades.class) .list();
+			    			
 			    			return loc;
 			    		} catch (DataAccessException e) {
 			    			return null;
@@ -215,13 +264,14 @@ private static List<Clientes> clientes;
 				
 				
 				@SuppressWarnings("unchecked")
-				public static Localidades getLocalidadesId(String id) {
+				public static Localidades getLocalidadesId(Integer id) {
 			        
 			    		try {
 			    			ConfigHibernet config= new ConfigHibernet();
 			    			 Session session = config.abrirConexion();
-			    			 
+			    			 session.beginTransaction();
 			    			 Localidades loc = (Localidades) session.byId(Localidades.class).getReference(id);
+			    			
 			    			return loc;
 			    		} catch (DataAccessException e) {
 			    			return null;
@@ -241,7 +291,9 @@ private static List<Clientes> clientes;
 			    		try {
 			    			ConfigHibernet config= new ConfigHibernet();
 			    			 Session session = config.abrirConexion();
+			    			 session.beginTransaction();
 			    			 sexo = session.createCriteria(Sexo.class) .list();
+			    			
 			    			return sexo;
 			    		} catch (DataAccessException e) {
 			    			return null;
@@ -254,13 +306,14 @@ private static List<Clientes> clientes;
 			
 					
 					@SuppressWarnings("unchecked")
-					public static Sexo getSexoId(String id) {
-				        
+					public static Sexo getSexoId(Integer id) {
+
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
 				    			 Session session = config.abrirConexion();
-				    			 
+				    			 session.beginTransaction();
 				    			 Sexo sexo = (Sexo) session.byId(Sexo.class).getReference(id);
+				    			
 				    			return sexo;
 				    		} catch (DataAccessException e) {
 				    			return null;
@@ -282,7 +335,9 @@ private static List<Clientes> clientes;
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
 				    			 Session session = config.abrirConexion();
+				    			 session.beginTransaction();
 				    			 nac = session.createCriteria(Nacionalidad.class) .list();
+				    			
 				    			return nac;
 				    		} catch (DataAccessException e) {
 				    			return null;
@@ -292,13 +347,14 @@ private static List<Clientes> clientes;
 				    }
 					
 					@SuppressWarnings("unchecked")
-					public static Nacionalidad getNacionalidadId(String id) {
+					public static Nacionalidad getNacionalidadId(Integer id) {
 				        
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
 				    			 Session session = config.abrirConexion();
-				    			 
+				    			 session.beginTransaction();
 				    			 Nacionalidad nac = (Nacionalidad) session.byId(Nacionalidad.class).getReference(id);
+				    			config.cerrarSession();
 				    			return nac;
 				    		} catch (DataAccessException e) {
 				    			return null;
@@ -312,13 +368,14 @@ private static List<Clientes> clientes;
 					
 					
 					@SuppressWarnings("unchecked")
-					public static Usuarios getNombreUsuarioId(String id) {
+					public static Usuarios getNombreUsuarioId(Integer id) {
 				        
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
 				    			 Session session = config.abrirConexion();
-				    			 
+				    			 session.beginTransaction();
 				    			 Usuarios usu = (Usuarios) session.byId(Usuarios.class).getReference(id);
+				    			
 				    			return usu;
 				    		} catch (DataAccessException e) {
 				    			return null;

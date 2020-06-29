@@ -1,3 +1,5 @@
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
@@ -23,14 +25,15 @@
  			 
  			 
  			
- 			  <c:forEach var="formclientes" items="${ formclientesPost }">
+ 			  <c:forEach var="formclientes" items="${ formclientes }">
  		
  			 
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
 				<div class="row">
 				<div class="col-md-12">
-				<form method="POST" action="formclientes.html">
+				<form method="POST" action="formclientesPost.html">
+				<input hidden name="idCliente" value="${ formclientes.getIdCliente() }">
 				
 				
 				
@@ -62,9 +65,10 @@
     				<label for="sexo" class="col-sm-2 col-form-label">Sexo:</label>
     				<div class="col-sm-10">
      			 	<select required class="form-control"  id="sexo" required name="sexo">
+
   					 <c:forEach var="sexo" items="${ listaSexo }">
-  					<option value= "${ formclientes.getIdSexo().getDescripcion() }">${ sexo.getDescripcion() }</option>
-					 </c:forEach>		
+  					<option value= "${ sexo.getIdSexo() }">${ sexo.getDescripcion() }</option>
+					 </c:forEach>	
 					</select>
     				</div>
  				 </div>
@@ -80,9 +84,10 @@
     				<label for="nacionalidad" class="col-sm-2 col-form-label">Nacionalidad:</label>
     				<div class="col-sm-10">
      			 	<select class="form-control"   id="nacionalidad" required name="nacionalidad">
+  					
   					 <c:forEach var="nacionalidad" items="${ listaNacionalidades }">
-  					<option value="${ formclientes.getIdNacionalidad().getDescripcion()}">${ nacionalidad.getDescripcion() }</option>
-					 </c:forEach>		
+  					<option value="${ nacionalidad.getIdNacionalidad()}">${ nacionalidad.getDescripcion() }</option>
+					 </c:forEach> 
 					</select>
     				</div>
  				 </div>
@@ -91,9 +96,10 @@
     				<label for="provincia" class="col-sm-2 col-form-label">Provincia:</label>
     				<div class="col-sm-10">
      			 	<select class="form-control" required  id="provincia" required name="provincia">
+  					
   					 <c:forEach var="provincias" items="${ listaProvincias }">
-  					<option value="${ formclientes.getIdProvincia().getDescripcion() }">${ provincias.getDescripcion() }</option>
-					 </c:forEach>		
+  					<option value="${ provincias.getIdProvincia() }">${ provincias.getDescripcion() }</option>
+					 </c:forEach>
 					</select>
     				</div>
  				 </div>
@@ -102,9 +108,10 @@
     				<label for="localidad" class="col-sm-2 col-form-label">Localidad:</label>
     				<div class="col-sm-10">
      			 	<select class="form-control" required   id="localidad" required name="localidad">
+  					
   					 <c:forEach var="localidades" items="${ listaLocalidades }">
-  					<option value="${ formclientes.getIdLocalidad().getDescripcion() }">${ localidades.getDescripcion() }</option>
-					 </c:forEach>		
+  					<option value="${ localidades.getIdLocalidad() }">${ localidades.getDescripcion() }</option>
+					 </c:forEach>
 					</select>
     				</div>
  				 </div>
@@ -113,14 +120,15 @@
  				 <div class="form-group row">
     				<label for="" class="col-sm-2 col-form-label">Usuario:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" required id="nombreUser" maxlength="70"
+     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" name="nombreUser" required id="nombreUser" maxlength="70"
      			 	placeholder=" Calle y número">
+    				<input hidden name="idUsuario" value="${ formclientes.getIdUsuario().getIdUsuario() }">
     				</div>
  				 </div>
  				 
  				
 
-					 <div class="form-group row text-right justify-content-end px-4">
+			     <div class="form-group row text-right justify-content-end px-4">
     				<button class="btn btn-primary" value="Enviar" >Guardar</button>
  				 </div>					 
 	

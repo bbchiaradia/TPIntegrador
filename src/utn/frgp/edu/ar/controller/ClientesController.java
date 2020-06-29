@@ -10,10 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Sexo;
 
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,17 +68,21 @@ public class ClientesController{
 	
 	@RequestMapping(value = "formclientesPost" , method = RequestMethod.POST)
 	public String list4(ModelMap modelMap, Integer id , HttpServletRequest request) {
-	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
 	    modelMap.addAttribute("listaProvincias", daoBanco.getProvincias());		
 	    modelMap.addAttribute("listaLocalidades", daoBanco.getLocalidades());		
 	    modelMap.addAttribute("listaSexo", daoBanco.getSexo());	
 	    modelMap.addAttribute("listaNacionalidades", daoBanco.getNacionalidad());
-	    Clientes cli= new Clientes ();
+	    Clientes cli= daoBanco.getClienteId(Integer.parseInt(request.getParameter("idCliente")));
+	    
 	    cli.setNombre(request.getParameter("nombre"));
 	    cli.setApellido(request.getParameter("apellido"));
 	    cli.setDni(Integer.parseInt(request.getParameter("dni")));
-	    cli.setIdSexo(daoBanco.getSexoId(request.getParameter("sexo")));
 	    
+	    System.out.println( "ACA UPDATEEEEEEE 81"+ cli.toString());
+	    
+	    cli.setIdSexo(daoBanco.getSexoId(Integer.parseInt(request.getParameter("sexo"))));
+	   
+	    System.out.println( "ACA UPDATEEEEEEE 85"+ cli.toString());
 	    String sDate1=request.getParameter("fnac");  
 	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
 	    Date date;
@@ -84,20 +90,27 @@ public class ClientesController{
 			date = (Date) date1.parse(sDate1);
 			cli.setFecha_nacimiento(date);
 		} catch (ParseException e) {
-			System.out.println("rompe aca");
 			e.printStackTrace();
 		}
-	    
-	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(request.getParameter("nacionalidad")));
-	    cli.setIdLocalidad(daoBanco.getLocalidadesId(request.getParameter("localidad")));
 
+	    System.out.println( "ACA UPDATEEEEEEE 96"+ cli.toString());
+	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
+	    cli.setIdLocalidad(daoBanco.getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
+	    cli.setIdProvincia(daoBanco.getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
+	  
+	    System.out.println( "ACA UPDATEEEEEEE "+ daoBanco.getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))) );
 	    
-	    cli.setIdProvincia(daoBanco.getProvinciasId(request.getParameter("provincia")));
-	    cli.setIdUsuario(daoBanco.getNombreUsuarioId(request.getParameter("nombreUser")));
+	    daoBanco dao = new daoBanco();
+	    dao.ModificarCliente(cli);		
+	  
+	    List<Clientes> list = new ArrayList();
+	    list.add(cli); 
 	    
-
+	  
 	    
-	    modelMap.addAttribute("cliente", cli);
+	    modelMap.addAttribute("formclientes", list);
+	    
+	    
 	    
 	    return "/formclientes";
 	}
