@@ -67,6 +67,23 @@ private static List<Clientes> clientes;
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	public static Clientes getClienteId(Integer id) {
+        
+    		try {
+    			ConfigHibernet config= new ConfigHibernet();
+    			 Session session = config.abrirConexion();
+    			 
+    			 Clientes cli = (Clientes) session.byId(Clientes.class).getReference(id);
+    			return cli;
+    		} catch (DataAccessException e) {
+    			return null;
+    		}
+    	
+        
+    }
+	
+	
 	
 	
 	 public Clientes AgregarCliente (Clientes cliente) 
@@ -177,7 +194,7 @@ private static List<Clientes> clientes;
 			
 			
 			@SuppressWarnings("unchecked")
-			public static Provincias getProvinciasId(String id) {
+			public static Provincias getProvinciasId(Integer id) {
 		        
 		    		try {
 		    			ConfigHibernet config= new ConfigHibernet();
@@ -215,7 +232,7 @@ private static List<Clientes> clientes;
 				
 				
 				@SuppressWarnings("unchecked")
-				public static Localidades getLocalidadesId(String id) {
+				public static Localidades getLocalidadesId(Integer id) {
 			        
 			    		try {
 			    			ConfigHibernet config= new ConfigHibernet();
@@ -254,13 +271,15 @@ private static List<Clientes> clientes;
 			
 					
 					@SuppressWarnings("unchecked")
-					public static Sexo getSexoId(String id) {
-				        
+					public static Sexo getSexoId(Integer id) {
+
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
 				    			 Session session = config.abrirConexion();
-				    			 
+		
 				    			 Sexo sexo = (Sexo) session.byId(Sexo.class).getReference(id);
+				    			 
+				   
 				    			return sexo;
 				    		} catch (DataAccessException e) {
 				    			return null;
@@ -292,7 +311,7 @@ private static List<Clientes> clientes;
 				    }
 					
 					@SuppressWarnings("unchecked")
-					public static Nacionalidad getNacionalidadId(String id) {
+					public static Nacionalidad getNacionalidadId(Integer id) {
 				        
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();
@@ -312,7 +331,7 @@ private static List<Clientes> clientes;
 					
 					
 					@SuppressWarnings("unchecked")
-					public static Usuarios getNombreUsuarioId(String id) {
+					public static Usuarios getNombreUsuarioId(Integer id) {
 				        
 				    		try {
 				    			ConfigHibernet config= new ConfigHibernet();

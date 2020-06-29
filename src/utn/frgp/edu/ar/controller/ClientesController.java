@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Sexo;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -66,16 +67,35 @@ public class ClientesController{
 	
 	@RequestMapping(value = "formclientesPost" , method = RequestMethod.POST)
 	public String list4(ModelMap modelMap, Integer id , HttpServletRequest request) {
-	    modelMap.addAttribute("formclientes", daoBanco.LeerCliente(id));		
+	    
+	    
 	    modelMap.addAttribute("listaProvincias", daoBanco.getProvincias());		
 	    modelMap.addAttribute("listaLocalidades", daoBanco.getLocalidades());		
 	    modelMap.addAttribute("listaSexo", daoBanco.getSexo());	
 	    modelMap.addAttribute("listaNacionalidades", daoBanco.getNacionalidad());
-	    Clientes cli= new Clientes ();
+	    
+	    
+	    Clientes cli= daoBanco.getClienteId(Integer.parseInt(request.getParameter("idCliente")));
+	    
+	    
 	    cli.setNombre(request.getParameter("nombre"));
 	    cli.setApellido(request.getParameter("apellido"));
 	    cli.setDni(Integer.parseInt(request.getParameter("dni")));
-	    cli.setIdSexo(daoBanco.getSexoId(request.getParameter("sexo")));
+	    
+	    System.out.println("ACA CONTROLLER LINEA 81- idCliente " + request.getParameter("idCliente"));
+	    System.out.println("ACA CONTROLLER LINEA 81- sexo " + request.getParameter("sexo"));
+	    System.out.println("ACA CONTROLLER LINEA 82- nacionalidad " + request.getParameter("nacionalidad"));
+	    System.out.println("ACA CONTROLLER LINEA 83- localidad " + request.getParameter("localidad"));
+	    System.out.println("ACA CONTROLLER LINEA 84- provincia " + request.getParameter("provincia"));
+	    System.out.println("ACA CONTROLLER LINEA 85- fnac " + request.getParameter("fnac"));
+	    System.out.println("ACA CONTROLLER LINEA 87- idUsuario " + request.getParameter("idUsuario"));
+	    
+	    
+	  //  cli.setIdCliente(daoBanco.getClienteId(Integer.parseInt(request.getParameter("idCliente"))));
+	    
+	    cli.setIdSexo(daoBanco.getSexoId(Integer.parseInt(request.getParameter("sexo"))));
+	    
+	    
 	    
 	    String sDate1=request.getParameter("fnac");  
 	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
@@ -87,17 +107,26 @@ public class ClientesController{
 			System.out.println("rompe aca");
 			e.printStackTrace();
 		}
+		
+	  
+		
 	    
-	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(request.getParameter("nacionalidad")));
-	    cli.setIdLocalidad(daoBanco.getLocalidadesId(request.getParameter("localidad")));
-
+	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
+	    cli.setIdLocalidad(daoBanco.getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
+	    cli.setIdProvincia(daoBanco.getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
 	    
-	    cli.setIdProvincia(daoBanco.getProvinciasId(request.getParameter("provincia")));
-	    cli.setIdUsuario(daoBanco.getNombreUsuarioId(request.getParameter("nombreUser")));
+	  //  System.out.println("ACA CONTROLLER LINEA 100" + request.getParameter("nombreUser"));
+	   // cli.setIdUsuario(daoBanco.getNombreUsuarioId(Integer.parseInt(request.getParameter("nombreUser"))));
+	   
+	 //   modelMap.addAttribute("formclientes", daoBanco.LeerCliente(Integer.parseInt(request.getParameter("id"))));		
 	    
-
 	    
-	    modelMap.addAttribute("cliente", cli);
+	    System.out.println("ACA CLI" + cli.toString());
+	    
+	    
+	    modelMap.addAttribute("formclientes", cli);
+	    
+	    
 	    
 	    return "/formclientes";
 	}
