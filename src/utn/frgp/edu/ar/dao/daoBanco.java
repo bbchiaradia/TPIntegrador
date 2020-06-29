@@ -139,7 +139,7 @@ private static List<Clientes> clientes;
 	        Clientes cli = (Clientes) session.byId(Clientes.class).getReference(idcliente);
 	        System.out.println( cli.toString() );
 	        cli.setFecha_baja( Calendar.getInstance().getTime() );
-	        session.save(cli);
+	        session.update(cli);
 	        transaction.commit();
 	        config.cerrarSession(); 
 	       	return true;

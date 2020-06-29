@@ -116,7 +116,7 @@ public class CuentasController {
 		try {
 			Session session = config.abrirConexion();
 	        Transaction transaction = session.beginTransaction();
-	        session.save(ctas);
+	        session.update(ctas);
 	        transaction.commit();
 	        session.close();
 	       	return "true";
@@ -134,13 +134,13 @@ public class CuentasController {
 		System.out.println( id );
 		System.out.println( tipo );
 		Cuentas ctas = this.cuentaById(id);
-		TipoCuenta tipocta = new TipoCuenta();
-		//ctas.setTipocuenta();
+		TipoCuenta tipocta = TipoCuenta.tipoCuentaById(tipo);
+		ctas.setTipocuenta(tipocta);
 		ConfigHibernet config= new ConfigHibernet();
 		try {
 			Session session = config.abrirConexion();
 	        Transaction transaction = session.beginTransaction();
-	        session.save(ctas);
+	        session.update(ctas);
 	        transaction.commit();
 	        session.close();
 	       	return "true";
