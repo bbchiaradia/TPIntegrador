@@ -1,5 +1,4 @@
 Manifest-Version: 1.0
-Built-By: Nicolas Flores
-Build-Jdk: 1.8.0_171
+Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
 
