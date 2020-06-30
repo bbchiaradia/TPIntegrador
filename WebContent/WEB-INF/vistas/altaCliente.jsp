@@ -1,7 +1,7 @@
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
+<!doctype html5>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -46,9 +46,11 @@
 	 				 <div class="form-group row">
 	    				<label for="dni" class="col-sm-2 col-form-label">DNI:</label>
 	    				<div class="col-sm-10">
-	     			 	<input type="text" required  class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
+	     			 	<input type="text" required onkeyup="validaDNI(event);"  class="form-control" id="dni" name="dni" required maxlength="8"
 	     			 	placeholder=" Documento del cliente, solo números">
+	     			 	<span id="errdni" style="display: none; color:red;font-size:1rem"></span>
 	    				</div>
+	    				
 	 				 </div>
 	 				 
 	 				 <div class="form-group row">
@@ -110,9 +112,9 @@
 	 			    <div class="form-group row">
 	    				<label for="" class="col-sm-2 col-form-label">Usuario:</label>
 	    				<div class="col-sm-10">
-	     			 	<input type="text"   class="form-control" name="nombreUser" required id="nombreUser" maxlength="70"
+	     			 	<input type="text" onkeyup="validaUser(event);"  class="form-control"  minlength="5" maxlength="20" name="nombreUser" required id="nombreUser" maxlength="70"
 	     			 	placeholder=" Ingrese el nombre usuario">
-	    				
+	    				<span id="erruser" style="display: none; color:red;font-size:1rem"></span>
 	    				</div>
                     </div>
  	
@@ -120,7 +122,7 @@
  				
 
 			     <div class="form-group row text-right justify-content-end px-4">
-    				<button class="btn btn-primary" value="Enviar" >Guardar</button>
+    				<button class="btn btn-primary" id="btnSubmit" value="Enviar" >Guardar</button>
  				 </div>					 
 	
  				 
@@ -140,9 +142,80 @@
 
 <%@ include file="foot.html"%>
     <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
+    $(document).ready(function() {
+
+        $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy'
+        });
+        
+        
+    });
+    
+    function validaDNI(e){
+    	console.log(e);
+    	if( e.target.value.length < 7 ){
+    		$("#btnSubmit").prop("disabled", true);
+    		document.getElementById("errdni").innerText = "el número de dni debe tener al menos 7 caracteres";
+    		document.getElementById("errdni").style.display = "block"; 
+    	}else{
+    		$("#btnSubmit").prop("disabled", false);
+    		document.getElementById("errdni").innerText = "";
+    		document.getElementById("errdni").style.display = "none"; 
+    		let dni = document.getElementById("dni").value;
+    		$.ajax({
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validaDNI.html',
+		        type: 'POST',
+		        data: {
+		        	dni: dni,
+		        },
+		        success: function (data) {
+		      	  if( data.indexOf("false") > -1  ){
+		      		$("#btnSubmit").prop("disabled", true);
+		      		document.getElementById("errdni").innerText = "el dni ya se encuentra registrado en el sistema";
+		    		document.getElementById("errdni").style.display = "block"; 
+		      	  }else{
+		      		$("#btnSubmit").prop("disabled", false);
+		    		document.getElementById("errdni").innerText = "";
+		    		document.getElementById("errdni").style.display = "none"; 
+		      	  }
+		          return false;
+		        }
+		      });
+    	}
+    }
+    
+    function validaUser(e){
+    	console.log(e);
+    	if( e.target.value.length < 5 ){
+    		$("#btnSubmit").prop("disabled", true);
+    		document.getElementById("erruser").innerText = "el nombre de usuario debe tener al menos 5 caracteres";
+    		document.getElementById("erruser").style.display = "block"; 
+    	}else{
+    		$("#btnSubmit").prop("disabled", false);
+    		document.getElementById("erruser").innerText = "";
+    		document.getElementById("erruser").style.display = "none"; 
+    		let nombreUser = document.getElementById("nombreUser").value;
+    		$.ajax({
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validaUsuario.html',
+		        type: 'POST',
+		        data: {
+		        	usuario: nombreUser,
+		        },
+		        success: function (data) {
+		      	  if( data.indexOf("false") > -1  ){
+		      		$("#btnSubmit").prop("disabled", true);
+		      		document.getElementById("erruser").innerText = "el nombre de usuario ya se encuentra registrado en el sistema";
+		    		document.getElementById("erruser").style.display = "block"; 
+		      	  }else{
+		      		$("#btnSubmit").prop("disabled", false);
+		    		document.getElementById("erruser").innerText = "";
+		    		document.getElementById("erruser").style.display = "none"; 
+		      	  }
+		          return false;
+		        }
+		      });
+    	}
+    }
   </script>
   </body>
 </html>

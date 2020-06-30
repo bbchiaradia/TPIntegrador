@@ -52,23 +52,19 @@ public class daoBanco implements Idao {
 	    {
 		 
 		 ConfigHibernet config= new ConfigHibernet();
-		 config.cerrarSession(); 
+
 	        	try {
 	        Session session = config.abrirConexion();
 	        Transaction transaction = session.beginTransaction();
-	        session.beginTransaction();
 	        Clientes cli = (Clientes) session.byId(Clientes.class).getReference(idcliente);
 	        System.out.println( cli.toString() );
 	        cli.setFecha_baja( Calendar.getInstance().getTime() );
 	        session.update(cli);
 	        transaction.commit();
-	        config.cerrarSession(); 
 	       	return true;
 	       	}catch(Exception e) {
 	       		System.out.println( e.getMessage() );
 	       		return false;
-	       	}finally{
-	       		config.cerrarSession();
 	       	}
 	    }
 

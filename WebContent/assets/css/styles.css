@@ -5,6 +5,8 @@
 	width:100vw;
 	background-color: #fff;
 	border-top: 1px solid #673ab7;
+	position:fixed;
+	bottom: 0;
 }
 
 .select2{
