@@ -87,6 +87,14 @@ public class PaginaController {
 		return MV;
 		
 	}
+	@RequestMapping("alta_cliente.html")
+	public ModelAndView eventoRedireccionar_alta_cliente() {
+		
+		ModelAndView MV= new ModelAndView();
+		MV.setViewName("altaCliente");
+		return MV;
+		
+	}
 	
 	/*
 	@RequestMapping("redireccionar_clientes_D.html")

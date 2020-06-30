@@ -64,6 +64,92 @@ public class ClientesController{
 	    return "/formclientes";
 	}
 	
+	
+	//////
+	@RequestMapping(value = "altaCliente" , method = RequestMethod.GET)
+	public String lista4(ModelMap modelMap) {
+	    modelMap.addAttribute("listaProvincias", getProvincias());
+	    modelMap.addAttribute("listaLocalidades", getLocalidades());		
+	    modelMap.addAttribute("listaSexo", getSexo());	
+	    modelMap.addAttribute("listaNacionalidades", getNacionalidad());	
+	    return "/altaCliente";
+	}
+	
+	
+	@RequestMapping(value = "altaClientePOST" , method = RequestMethod.POST)
+	public String lista4(ModelMap modelMap, HttpServletRequest request) {
+	    modelMap.addAttribute("listaProvincias", getProvincias());	    
+	    modelMap.addAttribute("listaLocalidades", getLocalidades());		
+	    modelMap.addAttribute("listaSexo", getSexo());	
+	    modelMap.addAttribute("listaNacionalidades",getNacionalidad());
+	    Clientes cli= new Clientes();
+	    
+	    cli.setNombre(request.getParameter("nombre"));
+	    cli.setApellido(request.getParameter("apellido"));
+	    cli.setDni(Integer.parseInt(request.getParameter("dni")));
+	    
+	    cli.setIdSexo(getSexoId(Integer.parseInt(request.getParameter("sexo"))));
+	   
+	    String sDate1=request.getParameter("fnac");  
+	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
+	    Date date;
+		try {
+			cli.setFecha_nacimiento(Calendar.getInstance().getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	    cli.setIdNacionalidad(getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
+	    cli.setIdLocalidad(getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
+	    cli.setIdProvincia(getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
+	  
+	    
+	    Usuarios usu = new Usuarios();
+	    usu.setContrasenia(request.getParameter("dni"));
+	    usu.setNombreUsuario(request.getParameter("nombreUser"));
+	    usu.setFecha_alta(Calendar.getInstance().getTime());
+	    usu.setFecha_baja(null);
+	    cli.setIdUsuario(usu);
+	        
+	    CrearCliente(cli);		
+	  
+	    List<Clientes> list = new ArrayList();
+	    list.add(cli);  
+	    
+	    modelMap.addAttribute("formclientes", list);    
+	    
+	    return "/formclientes";
+	}
+	
+	
+	 public void CrearCliente (Clientes cliente) 
+	    {
+		 
+		
+		  System.out.println( "ACA CREAR 128");
+		  
+		  ConfigHibernet config= new ConfigHibernet();   
+		  
+		  try {
+		    Session session = config.abrirConexion();
+	        Transaction transaction = session.beginTransaction();
+	        session.save(cliente);
+	        System.out.println( "ACA CREAR 136" );
+	        transaction.commit();
+	        System.out.println( "ACA CREAR 138");
+	        config.cerrarSession(); 
+	        System.out.println( "ACA CREAR 1401" );
+		   }catch(Exception e) {
+			   System.out.println( "ACA CREAR 142" );
+			   System.out.println( e.getMessage() );	
+	       	}
+
+	    }
+	
+	
+	
+	///nico//////////////////////////////////////////////////
+	
 	@RequestMapping( value= "eliminarCliente", method = RequestMethod.POST )
 	@ResponseBody
 	public String eliminarCliente( Integer id, daoBanco dao ){
@@ -78,7 +164,8 @@ public class ClientesController{
 	
 	@RequestMapping(value = "formclientesPost" , method = RequestMethod.POST)
 	public String list4(ModelMap modelMap, Integer id , HttpServletRequest request) {
-	    modelMap.addAttribute("listaProvincias", getProvincias());		
+	    modelMap.addAttribute("listaProvincias", getProvincias());	
+	    
 	    modelMap.addAttribute("listaLocalidades", getLocalidades());		
 	    modelMap.addAttribute("listaSexo", getSexo());	
 	    modelMap.addAttribute("listaNacionalidades",getNacionalidad());
