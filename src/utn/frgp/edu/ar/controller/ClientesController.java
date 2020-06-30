@@ -245,7 +245,11 @@ public class ClientesController{
 	  
 	    
 	   
-	    ModificarCliente(cli);		
+	    if( ModificarCliente(cli) ) {
+	    	modelMap.addAttribute("status", "El cliente ha sido modificado correctamente.");
+	    }else {
+	    	modelMap.addAttribute("status", "Ocurrió un error al actualizar el cliente.");
+	    }
 	  
 	    List<Clientes> list = new ArrayList();
 	    list.add(cli); 
@@ -329,7 +333,7 @@ public class ClientesController{
 	
 	
 	
-	 public void ModificarCliente (Clientes cliente) 
+	 public boolean ModificarCliente (Clientes cliente) 
 	    {
 		 
 		
@@ -346,11 +350,13 @@ public class ClientesController{
 	        System.out.println( "ACA UPDATEEEEEEE 129");
 	        config.cerrarSession(); 
 	        System.out.println( "ACA UPDATEEEEEEE 131" );
+	        return true;
 		   }catch(Exception e) {
 			   System.out.println( "ACA UPDATEEEEEEE 133" );
 			   System.out.println( e.getMessage() );	
+			   return false;
 	       	}
-
+	
 	    }
 	 
 
