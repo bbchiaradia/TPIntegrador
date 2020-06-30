@@ -163,7 +163,7 @@
     		document.getElementById("errdni").style.display = "none"; 
     		let dni = document.getElementById("dni").value;
     		$.ajax({
-		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validaDNI.html',
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validarNumeroDocumento.html',
 		        type: 'POST',
 		        data: {
 		        	dni: dni,
@@ -196,10 +196,10 @@
     		document.getElementById("erruser").style.display = "none"; 
     		let nombreUser = document.getElementById("nombreUser").value;
     		$.ajax({
-		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validaUsuario.html',
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validarNombreUsuario.html',
 		        type: 'POST',
 		        data: {
-		        	usuario: nombreUser,
+		        	nombre: nombreUser,
 		        },
 		        success: function (data) {
 		      	  if( data.indexOf("false") > -1  ){

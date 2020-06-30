@@ -154,7 +154,7 @@ public class ClientesController{
 			System.out.println(nombre);
 			List<Usuarios> usuario = UsuarioByNombre(nombre);
 			System.out.println( usuario );
-			if( usuario != null ) {
+			if( usuario.size() == 0 ) {
 				return "true";			
 			}else{
 				return "false";
@@ -167,8 +167,9 @@ public class ClientesController{
 				ConfigHibernet config= new ConfigHibernet();
 				 Session session = config.abrirConexion();
 				//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
-				 Query q = session.createQuery("from Usuarios where nombreUsuario = " + nombre + " and fecha_baja is null");
+				 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"'" );
 				 List<Usuarios> usuario = q.list();
+				 System.out.println(q);
 				 return usuario;
 		}
 		 
@@ -177,10 +178,10 @@ public class ClientesController{
 			@RequestMapping( value= "validarNumeroDocumento", method = RequestMethod.POST )
 			@ResponseBody
 			public String validarDniUsuario( String dni){
-				System.out.println(dni);
+				System.out.println("dni es " + dni);
 				List<Clientes> clientes = ClienteByDni(dni);
-				System.out.println( clientes );
-				if( clientes != null ) {
+				System.out.println("array cli " + clientes );
+				if( clientes.size() == 0 ) {
 					return "true";			
 				}else{
 					return "false";
@@ -191,7 +192,7 @@ public class ClientesController{
 				public static List<Clientes> ClienteByDni(String dni){
 					ConfigHibernet config= new ConfigHibernet();
 					 Session session = config.abrirConexion();
-					 Query q = session.createQuery("from clientes where dni = " + dni + " and fecha_baja is null");
+					 Query q = session.createQuery("from Clientes where dni = " + Integer.parseInt(dni));
 					 List<Clientes> clientes = q.list();
 					 return clientes;
 			}
