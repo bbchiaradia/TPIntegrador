@@ -348,7 +348,7 @@ public class ClientesController{
 	        System.out.println( "ACA UPDATEEEEEEE 127" );
 	        transaction.commit();
 	        System.out.println( "ACA UPDATEEEEEEE 129");
-	        config.cerrarSession(); 
+	        //config.cerrarSession(); 
 	        System.out.println( "ACA UPDATEEEEEEE 131" );
 	        return true;
 		   }catch(Exception e) {

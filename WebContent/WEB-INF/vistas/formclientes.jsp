@@ -30,10 +30,8 @@
  			 
  			 
  			 
- 			 
  			
  			  <c:forEach var="formclientes" items="${ formclientes }">
- 		
  			 
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
@@ -71,10 +69,10 @@
  				 <div class="form-group row">
     				<label for="sexo" class="col-sm-2 col-form-label">Sexo:</label>
     				<div class="col-sm-10">
-     			 	<select required class="form-control"  id="sexo" required name="sexo">
-
+     			 	<select required class="form-control"  id="sexo" required name="sexo">					
   					 <c:forEach var="sexo" items="${ listaSexo }">
-  					<option value= "${ sexo.getIdSexo() }">${ sexo.getDescripcion() }</option>
+  					<option <c:if test="${sexo.idSexo == formclientes.idSexo.idSexo  }"> selected </c:if>
+  					 value= "${ sexo.getIdSexo() }">${ sexo.getDescripcion() }</option>
 					 </c:forEach>	
 					</select>
     				</div>
@@ -93,7 +91,8 @@
      			 	<select class="form-control"   id="nacionalidad" required name="nacionalidad">
   					
   					 <c:forEach var="nacionalidad" items="${ listaNacionalidades }">
-  					<option value="${ nacionalidad.getIdNacionalidad()}">${ nacionalidad.getDescripcion() }</option>
+  					<option <c:if test="${nacionalidad.idNacionalidad == formclientes.idNacionalidad.idNacionalidad  }"> selected </c:if>
+  					value="${ nacionalidad.getIdNacionalidad()}">${ nacionalidad.getDescripcion() }</option>
 					 </c:forEach> 
 					</select>
     				</div>
@@ -105,7 +104,8 @@
      			 	<select class="form-control" required  id="provincia" required name="provincia">
   					
   					 <c:forEach var="provincias" items="${ listaProvincias }">
-  					<option value="${ provincias.getIdProvincia() }">${ provincias.getDescripcion() }</option>
+  					<option <c:if test="${provincias.idProvincia == formclientes.idProvincia.idProvincia  }"> selected </c:if>
+  					value="${ provincias.getIdProvincia() }">${ provincias.getDescripcion() }</option>
 					 </c:forEach>
 					</select>
     				</div>
@@ -117,12 +117,12 @@
      			 	<select class="form-control" required   id="localidad" required name="localidad">
   					
   					 <c:forEach var="localidades" items="${ listaLocalidades }">
-  					<option value="${ localidades.getIdLocalidad() }">${ localidades.getDescripcion() }</option>
+  					<option 
+  					value="${ localidades.getIdLocalidad() }">${ localidades.getDescripcion() }</option>
 					 </c:forEach>
 					</select>
     				</div>
  				 </div>
- 				 
  				 
  				 <div class="form-group row">
     				<label for="" class="col-sm-2 col-form-label">Usuario:</label>
