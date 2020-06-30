@@ -84,7 +84,8 @@ public class CuentasController {
 			MV.addObject("status", "Ocurrió un error al crear la cuenta");
 		}finally {
 		List<TipoCuenta> tiposcuenta = TipoCuenta.listarTipoCuentas();
-		List<Clientes> clientes = daoBanco.getClientes();
+		ClientesController cc = new ClientesController();
+		List<Clientes> clientes = cc.getClientes();
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
 		MV.setViewName("AltaCuenta");
