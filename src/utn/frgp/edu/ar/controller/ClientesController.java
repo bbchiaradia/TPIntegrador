@@ -78,8 +78,6 @@ public class ClientesController{
 	    cli.setApellido(request.getParameter("apellido"));
 	    cli.setDni(Integer.parseInt(request.getParameter("dni")));
 	    
-	    System.out.println( "ACA UPDATEEEEEEE 81"+ cli.toString());
-	    
 	    cli.setIdSexo(daoBanco.getSexoId(Integer.parseInt(request.getParameter("sexo"))));
 	   
 	    System.out.println( "ACA UPDATEEEEEEE 85"+ cli.toString());
@@ -93,12 +91,10 @@ public class ClientesController{
 			e.printStackTrace();
 		}
 
-	    System.out.println( "ACA UPDATEEEEEEE 96"+ cli.toString());
 	    cli.setIdNacionalidad(daoBanco.getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
 	    cli.setIdLocalidad(daoBanco.getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
 	    cli.setIdProvincia(daoBanco.getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
 	  
-	    System.out.println( "ACA UPDATEEEEEEE "+ daoBanco.getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))) );
 	    
 	    daoBanco dao = new daoBanco();
 	    dao.ModificarCliente(cli);		

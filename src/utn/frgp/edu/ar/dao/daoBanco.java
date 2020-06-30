@@ -354,7 +354,7 @@ private static List<Clientes> clientes;
 				    			 Session session = config.abrirConexion();
 				    			 session.beginTransaction();
 				    			 Nacionalidad nac = (Nacionalidad) session.byId(Nacionalidad.class).getReference(id);
-				    			config.cerrarSession();
+				    			session.getTransaction().commit();
 				    			return nac;
 				    		} catch (DataAccessException e) {
 				    			return null;
