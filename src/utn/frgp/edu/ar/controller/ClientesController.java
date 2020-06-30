@@ -1,6 +1,7 @@
 package utn.frgp.edu.ar.controller;
 
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -110,7 +111,7 @@ public class ClientesController{
 	    usu.setFecha_alta(Calendar.getInstance().getTime());
 	    usu.setFecha_baja(null);
 	    cli.setIdUsuario(usu);
-	        
+	    System.out.println(" NICOSSSSSSSSSSS  aca a a a a a a a a a a" + nombreUsuarioByNombre("nombreUser"));
 	    CrearCliente(cli);		
 	  
 	    List<Clientes> list = new ArrayList();
@@ -145,6 +146,56 @@ public class ClientesController{
 	       	}
 
 	    }
+	    //////////////valido el nombre usuario en la tabla Usuario///////
+	    
+		@RequestMapping( value= "validarNombreUsuario", method = RequestMethod.POST )
+		@ResponseBody
+		public String nombreUsuarioByNombre( String nombre){
+			System.out.println(nombre);
+			List<Usuarios> usuario = UsuarioByNombre(nombre);
+			System.out.println( usuario );
+			if( usuario != null ) {
+				return "true";			
+			}else{
+				return "false";
+			}
+			
+		}
+		
+		 @SuppressWarnings("unchecked")
+			public static List<Usuarios> UsuarioByNombre(String nombre){
+				ConfigHibernet config= new ConfigHibernet();
+				 Session session = config.abrirConexion();
+				//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
+				 Query q = session.createQuery("from Usuarios where nombreUsuario = " + nombre + " and fecha_baja is null");
+				 List<Usuarios> usuario = q.list();
+				 return usuario;
+		}
+		 
+		  ///////valido el Dni que no este duplicado//////////
+		 
+			@RequestMapping( value= "validarNumeroDocumento", method = RequestMethod.POST )
+			@ResponseBody
+			public String validarDniUsuario( String dni){
+				System.out.println(dni);
+				List<Clientes> clientes = ClienteByDni(dni);
+				System.out.println( clientes );
+				if( clientes != null ) {
+					return "true";			
+				}else{
+					return "false";
+				}				
+			}
+			
+			 @SuppressWarnings("unchecked")
+				public static List<Clientes> ClienteByDni(String dni){
+					ConfigHibernet config= new ConfigHibernet();
+					 Session session = config.abrirConexion();
+					 Query q = session.createQuery("from clientes where dni = " + dni + " and fecha_baja is null");
+					 List<Clientes> clientes = q.list();
+					 return clientes;
+			}
+	 
 	
 	
 	
