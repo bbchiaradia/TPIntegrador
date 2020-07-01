@@ -112,18 +112,27 @@ public class ClientesController{
 	    usu.setFecha_baja(null);
 	    cli.setIdUsuario(usu);
 	    System.out.println(" NICOSSSSSSSSSSS  aca a a a a a a a a a a" + nombreUsuarioByNombre("nombreUser"));
-	    CrearCliente(cli);		
+	
+	    if( CrearCliente(cli)) {
+	    	modelMap.addAttribute("status", "El cliente ha sido creado correctamente.");
+	    }else {
+	    	modelMap.addAttribute("status", "Ocurrió un error al crear el cliente.");
+	    }
+	    
 	  
 	    List<Clientes> list = new ArrayList();
 	    list.add(cli);  
 	    
-	    modelMap.addAttribute("formclientes", list);    
 	    
-	    return "/formclientes";
+	    
+	    
+	    modelMap.addAttribute("altaCliente", list);    
+	    
+	    return "/altaCliente";
 	}
 	
 	
-	 public void CrearCliente (Clientes cliente) 
+	 public boolean CrearCliente (Clientes cliente) 
 	    {
 		 
 		
@@ -140,9 +149,11 @@ public class ClientesController{
 	        System.out.println( "ACA CREAR 138");
 	        config.cerrarSession(); 
 	        System.out.println( "ACA CREAR 1401" );
+	        return true;
 		   }catch(Exception e) {
 			   System.out.println( "ACA CREAR 142" );
 			   System.out.println( e.getMessage() );	
+			   return false;
 	       	}
 
 	    }

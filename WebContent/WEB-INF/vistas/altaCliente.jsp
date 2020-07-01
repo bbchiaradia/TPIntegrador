@@ -14,6 +14,14 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
+    
+    
+      <c:if test="${status != null }">
+	    <script>
+	    alert( "${status}" );
+	    </script>
+    </c:if>
+    
     <div class="row">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
