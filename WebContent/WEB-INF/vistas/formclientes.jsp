@@ -157,7 +157,7 @@
 <%@ include file="foot.html"%>
     <script>
   $( function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
   } );
   </script>
   </body>
