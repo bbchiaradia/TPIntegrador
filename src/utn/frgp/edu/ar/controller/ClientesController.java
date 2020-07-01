@@ -91,15 +91,33 @@ public class ClientesController{
 	    
 	    cli.setIdSexo(getSexoId(Integer.parseInt(request.getParameter("sexo"))));
 	   
-	    String sDate1=request.getParameter("fnac");  
+	   /* String sDate1=request.getParameter("fnac");  
 	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
 	    Date date;
 		try {
 			cli.setFecha_nacimiento(Calendar.getInstance().getTime());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}*/
+	    
+	    String sDate1=request.getParameter("fnac");  
+	    cli.setFecha_alta(Calendar.getInstance().getTime());
+	    System.out.println("sDate1--------------------------" + sDate1);
+	    SimpleDateFormat formato =new SimpleDateFormat("dd/MM/yyyy");
+	    System.out.println("formato-------------------" + formato);
+	    java.util.Date fechaDate = null;
+	    System.out.println("null-------------------" );
+        try {
+        	System.out.println("try-------------------" );
+			fechaDate = formato.parse(sDate1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-
+	    
+        cli.setFecha_nacimiento(fechaDate);        
+        cli.setFecha_alta(Calendar.getInstance().getTime());
+        
 	    cli.setIdNacionalidad(getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
 	    cli.setIdLocalidad(getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
 	    cli.setIdProvincia(getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
@@ -241,14 +259,21 @@ public class ClientesController{
 	    cli.setIdSexo(getSexoId(Integer.parseInt(request.getParameter("sexo"))));
 	   
 	    String sDate1=request.getParameter("fnac");  
-	    SimpleDateFormat date1=new SimpleDateFormat("dd/MM/yyyy");
-	    Date date;
-		try {
-			//date = (Date) date1.parse(sDate1);
-			cli.setFecha_nacimiento(Calendar.getInstance().getTime());
-		} catch (Exception e) {
-			e.printStackTrace();
+	    cli.setFecha_alta(Calendar.getInstance().getTime());
+	    System.out.println("sDate1--------------------------" + sDate1);
+	    SimpleDateFormat formato =new SimpleDateFormat("dd/MM/yyyy");
+	    System.out.println("formato-------------------" + formato);
+	    java.util.Date fechaDate = null;
+	    System.out.println("null-------------------" );
+        try {
+        	System.out.println("try-------------------" );
+			fechaDate = formato.parse(sDate1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+	    
+        cli.setFecha_nacimiento(fechaDate);    
 
 	    cli.setIdNacionalidad(getNacionalidadId(Integer.parseInt(request.getParameter("nacionalidad"))));
 	    cli.setIdLocalidad(getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
