@@ -28,7 +28,7 @@
  			 </div>  
  			 
  			 <div class="card-body">
-			 <form action="redireccionar_Index.html" method="get">  
+			 <!-- <form action="redireccionar_Index.html" method="get"> -->  
 				
 				<div class="row">					
 					
@@ -51,7 +51,7 @@
 
 				
 				<div class="input-group mb-3">
-				    <input type="password" onkeyup="validaPass(event);"  class="form-control"  minlength="5" maxlength="20" name="contrasenia" required id="contrasenia" maxlength="70"
+				    <input type="password" class="form-control"  minlength="5" maxlength="20" name="contrasenia" required id="contrasenia" maxlength="70"
 	     			 	placeholder=" Ingrese el nombre usuario">
 	    				<span id="errpass" style="display: none; color:red;font-size:1rem"></span>
 					</div>
@@ -59,10 +59,10 @@
 				</div>
 				 
 				 	   <div class="row mt-3 px-4 justify-content-end">	                   
-	                   <button class="btn btn-sm btn-primary" >INGRESAR</button> 	                
+	                   <button class="btn btn-sm btn-primary" onclick="validaPass(event);" >INGRESAR</button> 	                
 	                   </div> 
 				
-					</form>	 
+					<!--  </form> -->	 
 				</div>
  			 </div>    
  			 
@@ -100,13 +100,13 @@ function validaUser(e){
 		document.getElementById("erruser").style.display = "none"; 
 		let nombreUser = document.getElementById("nombreUser").value;
 		$.ajax({
-	        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validarNombreUsuario.html',
+	        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validarNombreUsuarioAcceso.html',
 	        type: 'POST',
 	        data: {
 	        	nombre: nombreUser,
 	        },
 	        success: function (data) {
-	      	  if( data.indexOf("true") > -1  ){
+	      	  if( data.indexOf("false") > -1  ){
 	      		//$("#btnSubmit").prop("disabled", true);
 	      		document.getElementById("erruser").innerText = "el usuario no existe en el sistema";
 	    		document.getElementById("erruser").style.display = "block"; 
@@ -127,8 +127,8 @@ function validaPass(e){
 		$("#btnSubmit").prop("disabled", false);
 		document.getElementById("errpass").innerText = "";
 		document.getElementById("errpass").style.display = "none"; 
-		let1 nombreUser = document.getElementById("nombreUser").value;
-		let2 contrasenia = document.getElementById("contrasenia").value;
+		let nombreUser = document.getElementById("nombreUser").value;
+		let contrasenia = document.getElementById("contrasenia").value;
 		$.ajax({
 	        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/validarContraseniaAcceso.html',
 	        type: 'POST',
@@ -137,7 +137,7 @@ function validaPass(e){
 	        	passsword: contrasenia,
 	        },
 	        success: function (data) {
-	      	  if( data.indexOf("true") > -1  ){
+	      	  if( data.indexOf("false") > -1  ){
 	      		//$("#btnSubmit").prop("disabled", true);
 	      		document.getElementById("errpass").innerText = "La contraseña no es valida";
 	    		document.getElementById("errpass").style.display = "block"; 
