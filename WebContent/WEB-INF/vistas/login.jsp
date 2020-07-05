@@ -134,7 +134,7 @@ function validaPass(e){
 	        type: 'POST',
 	        data: {
 	        	nombre: nombreUser,
-	        	passsword: contrasenia,
+	        	contrasenia: contrasenia,
 	        },
 	        success: function (data) {
 	      	  if( data.indexOf("false") > -1  ){
