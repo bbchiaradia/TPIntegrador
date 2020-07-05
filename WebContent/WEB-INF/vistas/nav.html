@@ -6,35 +6,55 @@
     <div class=" header navbar-collapse" id="navbarNav">
       
       <ul class="navbar-nav">
+     
+     
+ <c:if test="${rol == 'ADMIN' }">
       <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
                     <a href="redireccionar_clientes_D.html" class="nav-link">
                       <span>Clientes</span>
                     </a> 
              </li>
-             <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
-                    <a href="redireccionar_AltaCuenta.html" class="nav-link">
+     
+      </c:if>
+     
+             <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer; display:none" id="link_cuentas">
+                 
+                    <a href="redireccionar_AltaCuenta.html" class="nav-link" >
                       <span>Cuentas</span>
                     </a> 
+         
              </li>
            <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
-                    <a href="redireccionar_prestamos.html" class="nav-link">
-                      <span>Préstamos</span>
-                    </a> 
+                
+                    <a href=""  class="nav-link" id="prestamos">
+                   <span>Préstamos</span> </a> 
+                 
+                       <a href="" class="nav-link"  id="prestamosAdmin">
+                      <span>Préstamos Admin</span> </a> 
+           
+                      
+                    
              </li>
             <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
+                   <c:if test="${rol == 'ADMIN' }"> 
                     <a href="redireccionar_informe.html" class="nav-link">
                       <span>Informes</span>
                     </a> 
+                     </c:if>
              </li>
             <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
+                   <c:if test="${rol == 'CLIENTE' }"> 
                     <a href="redireccionar_cuentascl.html" class="nav-link">
                       <span>Mis cuentas</span>
                     </a> 
+                      </c:if>
              </li>
             <li class="nav-item" style="padding: 3px; color:#fff;cursor:pointer">
+                    <c:if test="${rol == 'CLIENTE' }"> 
                     <a href="redireccionar_transferencias.html" class="nav-link">
                       <span>Transferencias</span>
                     </a> 
+                      </c:if>
              </li>
       </ul>
       <ul class="navbar-nav" id="navEnd">
@@ -55,3 +75,13 @@
 
     </div>
   </nav>
+  
+  <script>
+  let rol= sessionStorage.getItem('rol');
+  
+  if (rol=="ADMIN"){
+	  $.("#link_cuentas").show();
+	  
+  }
+ 
+  </script>

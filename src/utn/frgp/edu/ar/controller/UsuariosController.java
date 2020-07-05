@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.Localidades;
 import utn.frgp.edu.ar.entidad.Nacionalidad;
 import utn.frgp.edu.ar.entidad.Provincias;
@@ -38,11 +39,20 @@ public class UsuariosController {
 	public String lista1(ModelMap modelMap, HttpServletRequest request) {
     Usuarios usu= new Usuarios();
 	    
-	    usu.setNombreUsuario(request.getParameter("txtnombre"));
+	    usu.setNombreUsuario(request.getParameter("nombreUser"));
 	    usu.setContrasenia(request.getParameter("contrasenia"));
 		 
 	    
-	    
+  
+	    if( esAdminBanco(usu.getNombreUsuario())) {
+	    	modelMap.addAttribute("rol", "ADMIN");
+	    	 System.out.println( "Acaaaaaaaaa 48"+ "ADMIN");
+	    }else {
+	    	modelMap.addAttribute("rol", "CLIENTE");
+	    	 System.out.println( "Acaaaaaaaaa 51"+ "CLIENTE");
+	    }
+	
+
 	    
 	    return "/Index";
 		
@@ -121,6 +131,36 @@ public class UsuariosController {
 				 
 		}
 	
+		 
+			private static List<Usuarios> usuarios; 
+			@SuppressWarnings("unchecked")
+			public boolean esAdminBanco(String nombreUsuario) {
+		        ConfigHibernet config= new ConfigHibernet();
+		    			 	Session session = config.abrirConexion();
+			    	        Transaction transaction = session.beginTransaction();
+			    	        System.out.println( "Acaaaaaaaaa 145"+ nombreUsuario);
+			    			 Query q = session.createQuery("FROM Usuarios WHERE nombreUsuario='"+ nombreUsuario +"' and idUsuario IN (SELECT idUsuario FROM AdministradorBanco ) ");
+			    		   
+			    		//	 Usuarios usuarios = (Usuarios) q.uniqueResult();		    	        
+						
+			    			if (q.uniqueResult()==null) {
+			    				 session.close(); 
+			    				 System.out.println( "Acaaaaaaaaa 153 CLIENTE"+ nombreUsuario);
+				    				return false;
+			    				
+			    			}else {
+			    				 session.close();
+			    				 
+			    				 System.out.println( "Acaaaaaaaaa 148 ADMIN"+ nombreUsuario);
+				    				return true;
+			    				
+			    			}
+                     
+			    	        
+					 
+				 
+		    }
+			
 	
 	
 	

@@ -48,6 +48,15 @@ public class PaginaController {
 		
 	}
 	
+	@RequestMapping("redireccionar_prestamosAdmin.html")
+	public ModelAndView eventoRedireccionar_prestamosAdmin() {
+		
+		ModelAndView MV= new ModelAndView();
+		MV.setViewName("prestamosAdmin");
+		return MV;
+		
+	}
+	
 	
 	@RequestMapping("redireccionar_informe.html")
 	public ModelAndView eventoRedireccionar_informe() {
