@@ -8,35 +8,46 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 public class ConfigHibernet {
 
-	private SessionFactory sessionFactory;
-	private Session session;
+	private static SessionFactory sessionFactory = null;
+	//private Session session;
 	
-	public ConfigHibernet() 
+	static
 	{
-		 Configuration configuration = new Configuration();
-	        configuration.configure();
+			Configuration configuration = new Configuration().configure();
 	        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-	        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		
+	        ConfigHibernet.sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
 	
+	public static Session abrirConexion() {
+        Session session = ConfigHibernet.sessionFactory.openSession();
+        session.beginTransaction();
+        return session;
+    }
 	
-	public Session abrirConexion() 
+	/*public Session abrirConexion() 
 	{
 		session = sessionFactory.openSession();
 		return session;
-	}
+	}*/
 	
+	public static void commitSession(Session session) {
+        session.getTransaction().commit();
+        session.close();
+    }
 	
-	public void cerrarSession() {
+	/*public void cerrarSession() {
 		
 		session.close();
 		cerrarSessionFactory();
-	}
+	}*/
+	
+	public static void rollbackSession(Session session) {
+        session.getTransaction().rollback();
+        session.close();
+    }
 	
 	public void cerrarSessionFactory() {
-		 
-		sessionFactory.close();
+		ConfigHibernet.sessionFactory.close();
 	}
 	
 }

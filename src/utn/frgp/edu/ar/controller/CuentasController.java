@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
-import utn.frgp.edu.ar.dao.daoBanco;
+import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
@@ -85,7 +85,7 @@ public class CuentasController {
 		}finally {
 		List<TipoCuenta> tiposcuenta = TipoCuenta.listarTipoCuentas();
 		ClientesController cc = new ClientesController();
-		List<Clientes> clientes = cc.getClientes();
+		List<Clientes> clientes = clientesService.getClientes();
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
 		MV.setViewName("AltaCuenta");
@@ -95,7 +95,7 @@ public class CuentasController {
 	
 	@RequestMapping( value= "cuentascliente", method = RequestMethod.POST )
 	@ResponseBody
-	public String cuentasClienteById( Integer id, daoBanco dao ){
+	public String cuentasClienteById( Integer id){
 		System.out.println( id );
 		List<Cuentas> ctas = Cuentas.cuentasByClientId(id);
 		System.out.println( ctas );
@@ -109,7 +109,7 @@ public class CuentasController {
 	
 	@RequestMapping( value= "darDeBajaCuenta", method = RequestMethod.POST )
 	@ResponseBody
-	public String darDeBajaCuentaPorId( Integer id, daoBanco dao ){
+	public String darDeBajaCuentaPorId( Integer id){
 		System.out.println( id );
 		Cuentas ctas = this.cuentaById(id);
 		ctas.setFecha_baja( Calendar.getInstance().getTime() );
@@ -131,7 +131,7 @@ public class CuentasController {
 	
 	@RequestMapping( value= "modificarCuenta", method = RequestMethod.POST )
 	@ResponseBody
-	public String modificarCuenta( Integer id, Integer tipo, daoBanco dao ){
+	public String modificarCuenta( Integer id, Integer tipo){
 		System.out.println( id );
 		System.out.println( tipo );
 		Cuentas ctas = this.cuentaById(id);

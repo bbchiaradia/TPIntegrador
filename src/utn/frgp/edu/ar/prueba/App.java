@@ -13,7 +13,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
-import utn.frgp.edu.ar.dao.daoBanco;
 import utn.frgp.edu.ar.entidad.AdministradorBanco;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Conceptos;
