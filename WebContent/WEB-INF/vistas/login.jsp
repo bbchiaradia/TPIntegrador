@@ -28,7 +28,7 @@
  			 </div>  
  			 
  			 <div class="card-body">
-			 <!-- <form action="redireccionar_Index.html" method="get"> -->  
+			 <form id="formlogin" action="redireccionar_Index.html" method="post"> 
 				
 				<div class="row">					
 					
@@ -62,7 +62,7 @@
 	                   <button class="btn btn-sm btn-primary" onclick="validaPass(event);" >INGRESAR</button> 	                
 	                   </div> 
 				
-					<!--  </form> -->	 
+					 </form>	 
 				</div>
  			 </div>    
  			 
@@ -94,7 +94,7 @@
 
 function validaUser(e){
 	console.log(e);
-
+		
 		$("#btnSubmit").prop("disabled", false);
 		document.getElementById("erruser").innerText = "";
 		document.getElementById("erruser").style.display = "none"; 
@@ -122,8 +122,9 @@ function validaUser(e){
 }
 
 function validaPass(e){
-	console.log(e);
-
+	e.stopPropagation();
+	e.preventDefault();
+		
 		$("#btnSubmit").prop("disabled", false);
 		document.getElementById("errpass").innerText = "";
 		document.getElementById("errpass").style.display = "none"; 
@@ -142,9 +143,12 @@ function validaPass(e){
 	      		document.getElementById("errpass").innerText = "La contraseña no es valida";
 	    		document.getElementById("errpass").style.display = "block"; 
 	      	  }else{
+	      		  
 	      		//$("#btnSubmit").prop("disabled", false);
 	    		document.getElementById("errpass").innerText = "";
 	    		document.getElementById("errpass").style.display = "none"; 
+	    		$("#formlogin").submit();
+	    		
 	      	  }
 	          return false;
 	        }
