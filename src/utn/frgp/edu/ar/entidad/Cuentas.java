@@ -152,20 +152,4 @@ public class Cuentas implements Serializable{
 	}
 	
 	
-	 @SuppressWarnings("unchecked")
-	public static List<Cuentas> cuentasByClientId(Integer id){
-		ConfigHibernet config= new ConfigHibernet();
-		 Session session = config.abrirConexion();
-		//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
-		 Query q = session.createQuery("from Cuentas where idCliente = " + id + " and fecha_baja is null");
-		 List<Cuentas> cuentas = q.list();
-		 return cuentas;
-	}
-	
-	
-
-
-	
-
-	
 }

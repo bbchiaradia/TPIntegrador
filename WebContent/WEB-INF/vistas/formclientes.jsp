@@ -32,20 +32,20 @@
  			 
  			
  			  <c:forEach var="formclientes" items="${ formclientes }">
- 			 
+
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
 				<div class="row">
 				<div class="col-md-12">
 				<form method="POST" action="formclientesPost.html">
-				<input hidden name="idCliente" value="${ formclientes.getIdCliente() }">
+				<input hidden name="idCliente" value="${ formclientes.idCliente }">
 				
 				
 				
 				 <div class="form-group row">
     				<label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" required value= "${ formclientes.getNombre() }" class="form-control" id="nombre"  name="nombre" maxlength="50"
+     			 	<input type="text" required value= "${ formclientes.nombre }" class="form-control" id="nombre"  name="nombre" maxlength="50"
      			 	placeholder=" Ingrese el/los nombre/s del cliente"> 
     				</div>
  				 </div>
@@ -53,7 +53,7 @@
  				 <div class="form-group row">
     				<label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" required value= "${ formclientes.getApellido() }" class="form-control" id="apellido"  name="apellido" maxlength="50"
+     			 	<input type="text" required value= "${ formclientes.apellido }" class="form-control" id="apellido"  name="apellido" maxlength="50"
      			 	placeholder=" Ingrese el/los apellido/s del cliente">
     				</div>
  				 </div>
@@ -61,7 +61,7 @@
  				 <div class="form-group row">
     				<label for="dni" class="col-sm-2 col-form-label">DNI:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" required readonly value= "${ formclientes.getDni() }" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
+     			 	<input type="text" required readonly value= "${ formclientes.dni }" class="form-control" id="dni" name="dni" required maxlength="8" pattern="\d*"
      			 	placeholder=" Documento del cliente, solo números">
     				</div>
  				 </div>
@@ -72,7 +72,7 @@
      			 	<select required class="form-control"  id="sexo" required name="sexo">					
   					 <c:forEach var="sexo" items="${ listaSexo }">
   					<option <c:if test="${sexo.idSexo == formclientes.idSexo.idSexo  }"> selected </c:if>
-  					 value= "${ sexo.getIdSexo() }">${ sexo.getDescripcion() }</option>
+  					 value= "${ sexo.idSexo }">${ sexo.descripcion }</option>
 					 </c:forEach>	
 					</select>
     				</div>
@@ -81,7 +81,7 @@
  				 <div class="form-group row">
     				<label for="datepicker" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" required value= " ${ formclientes.getFecha_nacimiento() }" id="datepicker" required name="fnac">
+     			 	<input type="text" required value= " ${ formclientes.fecha_nacimiento }" id="datepicker" required name="fnac">
     				</div>
  				 </div>
  				 
@@ -92,7 +92,7 @@
   					
   					 <c:forEach var="nacionalidad" items="${ listaNacionalidades }">
   					<option <c:if test="${nacionalidad.idNacionalidad == formclientes.idNacionalidad.idNacionalidad  }"> selected </c:if>
-  					value="${ nacionalidad.getIdNacionalidad()}">${ nacionalidad.getDescripcion() }</option>
+  					value="${ nacionalidad.idNacionalidad}">${ nacionalidad.descripcion }</option>
 					 </c:forEach> 
 					</select>
     				</div>
@@ -105,7 +105,7 @@
   					
   					 <c:forEach var="provincias" items="${ listaProvincias }">
   					<option <c:if test="${provincias.idProvincia == formclientes.idProvincia.idProvincia  }"> selected </c:if>
-  					value="${ provincias.getIdProvincia() }">${ provincias.getDescripcion() }</option>
+  					value="${ provincias.idProvincia }">${ provincias.descripcion }</option>
 					 </c:forEach>
 					</select>
     				</div>
@@ -118,7 +118,7 @@
   					
   					 <c:forEach var="localidades" items="${ listaLocalidades }">
   					<option 
-  					value="${ localidades.getIdLocalidad() }">${ localidades.getDescripcion() }</option>
+  					value="${ localidades.idLocalidad }">${ localidades.descripcion }</option>
 					 </c:forEach>
 					</select>
     				</div>
@@ -127,9 +127,9 @@
  				 <div class="form-group row">
     				<label for="" class="col-sm-2 col-form-label">Usuario:</label>
     				<div class="col-sm-10">
-     			 	<input type="text" readonly value="${ formclientes.getIdUsuario().getNombreUsuario() }"  class="form-control" name="nombreUser" required id="nombreUser" maxlength="70"
+     			 	<input type="text" readonly value="${ formclientes.idUsuario.nombreUsuario }"  class="form-control" name="nombreUser" required id="nombreUser" maxlength="70"
      			 	placeholder=" Calle y número">
-    				<input hidden name="idUsuario" value="${ formclientes.getIdUsuario().getIdUsuario() }">
+    				<input hidden name="idUsuario" value="${ formclientes.idUsuario.idUsuario }">
     				</div>
  				 </div>
  				 

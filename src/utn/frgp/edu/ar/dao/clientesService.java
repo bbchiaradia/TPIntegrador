@@ -75,8 +75,9 @@ public class clientesService {
 		  try {
 			session = ConfigHibernet.abrirConexion();
 	        session.update(cliente);
-	        session.flush();;
-	        ConfigHibernet.commitSession(session);
+	        session.flush();
+	        session.getTransaction().commit();
+	        session.flush();
 	        return true;
 		   }catch(Exception e) {
 			   ConfigHibernet.rollbackSession(session);		
@@ -86,8 +87,6 @@ public class clientesService {
 	 
 	 public static boolean EliminarCliente (Integer idcliente) {
 		 
-		 ConfigHibernet config= new ConfigHibernet();
-
 	        	try {
 	        		session = ConfigHibernet.abrirConexion();
 	         cliente = (Clientes) session.byId(Clientes.class).getReference(idcliente);
@@ -134,4 +133,5 @@ public class clientesService {
 	    			return null;
 	    		}    
 	    }
+	
 }

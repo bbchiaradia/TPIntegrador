@@ -57,25 +57,6 @@ public class TipoCuenta implements Serializable {
 		this.estado = estado;
 	}
 	
-	//////
-
-	@SuppressWarnings("unchecked")
-	public static List<TipoCuenta> listarTipoCuentas(){
-		ConfigHibernet config= new ConfigHibernet();
-		 Session session = config.abrirConexion();
-		 List<TipoCuenta> tiposcuenta = session.createCriteria(TipoCuenta.class).list();
-		return  tiposcuenta;
-	}
-	
-	public static TipoCuenta tipoCuentaById( Integer id  ) {
-		ConfigHibernet config= new ConfigHibernet();
-		 Session session = config.abrirConexion();
-		TipoCuenta tipocuenta = (TipoCuenta) session.createCriteria(TipoCuenta.class)
-				 .add(Restrictions.eq("id_TipoCuenta", id)).uniqueResult();
-		return tipocuenta;
-	}
-	
-	
 	
 
 }

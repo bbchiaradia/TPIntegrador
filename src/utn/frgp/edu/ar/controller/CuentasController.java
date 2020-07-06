@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
+import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
@@ -32,13 +33,9 @@ public class CuentasController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("redireccionar_AltaCuenta.html")
 	public ModelAndView eventoRedireccionar_AltaCuenta( ModelAndView MV ) {
-		List<TipoCuenta> tiposcuenta = TipoCuenta.listarTipoCuentas();
+		List<TipoCuenta> tiposcuenta = cuentasService.listarTipoCuentas();
 		//List<Clientes> clientes = daoBanco.getClientes();
-		
-		 ConfigHibernet config= new ConfigHibernet();
-		 Session session = config.abrirConexion();
-		 Query q = session.createQuery("from Clientes where fecha_baja is null	");
-		 List<Clientes> clientes = q.list();
+		 List<Clientes> clientes = clientesService.getClientes();
 		
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
@@ -52,19 +49,16 @@ public class CuentasController {
 	@RequestMapping( value= "nuevacuenta", method = RequestMethod.POST )
 	public ModelAndView nuevaCuenta( ModelAndView MV , HttpServletRequest request) {
 		
-		List<Cuentas> aux2 = Cuentas.cuentasByClientId(Integer.parseInt(request.getParameter("clientePropietario")));
+		List<Cuentas> aux2 = cuentasService.cuentasByClientId(Integer.parseInt(request.getParameter("clientePropietario")));
 		if( aux2.size() >= 4 ) {
 			MV.addObject("status", "El cliente no puede poseer mas de 4 cuentas activas");
 			MV.setViewName("AltaCuenta");
 			return MV;
 		}
-		TipoCuenta tipocuenta = TipoCuenta.tipoCuentaById( Integer.parseInt(request.getParameter("tipoCuenta")) );
-		Clientes cli = Clientes.getClienteById(Integer.parseInt(request.getParameter("clientePropietario")));
-		ConfigHibernet config= new ConfigHibernet();
+		TipoCuenta tipocuenta = cuentasService.tipoCuentaById( Integer.parseInt(request.getParameter("tipoCuenta")) );
+		Clientes cli = clientesService.getClienteId(Integer.parseInt(request.getParameter("clientePropietario")));
+		Session session = ConfigHibernet.abrirConexion();
 		try {
-		 Session session = config.abrirConexion();
-		 session.beginTransaction();
-		//max cbu
 		Criteria criteria = session.createCriteria(Cuentas.class).setProjection(Projections.max("cbu"));
 		long maxCbu = (long)criteria.uniqueResult();
 		maxCbu = maxCbu+1;
@@ -77,14 +71,13 @@ public class CuentasController {
 		
 		Cuentas account = new Cuentas(cli, maxCbu,  maxNroCta, 10000, null, Calendar.getInstance().getTime(), tipocuenta );
 		session.save(account);
-		session.getTransaction().commit();
-		session.close();
+		ConfigHibernet.commitSession(session);
 		MV.addObject("status", "La cuenta ha sido creada correctamente");
 		}catch(Exception e) {
 			MV.addObject("status", "Ocurrió un error al crear la cuenta");
+			ConfigHibernet.rollbackSession(session);
 		}finally {
-		List<TipoCuenta> tiposcuenta = TipoCuenta.listarTipoCuentas();
-		ClientesController cc = new ClientesController();
+		List<TipoCuenta> tiposcuenta = cuentasService.listarTipoCuentas();
 		List<Clientes> clientes = clientesService.getClientes();
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
@@ -97,7 +90,7 @@ public class CuentasController {
 	@ResponseBody
 	public String cuentasClienteById( Integer id){
 		System.out.println( id );
-		List<Cuentas> ctas = Cuentas.cuentasByClientId(id);
+		List<Cuentas> ctas = cuentasService.cuentasByClientId(id);
 		System.out.println( ctas );
 		if( ctas != null ) {
 			return new Gson().toJson(ctas);			
@@ -111,57 +104,22 @@ public class CuentasController {
 	@ResponseBody
 	public String darDeBajaCuentaPorId( Integer id){
 		System.out.println( id );
-		Cuentas ctas = this.cuentaById(id);
-		ctas.setFecha_baja( Calendar.getInstance().getTime() );
-		ConfigHibernet config= new ConfigHibernet();
-		try {
-			Session session = config.abrirConexion();
-	        Transaction transaction = session.beginTransaction();
-	        session.update(ctas);
-	        transaction.commit();
-	        session.close();
-	       	return "true";
-		}catch(Exception E) {
-			System.out.println( E.getMessage() );
-			return "false";
-		}
-		
-		
+		Cuentas ctas = cuentasService.cuentaById(id);	
+		boolean result = cuentasService.darDeBajaCuentaPorId(ctas);
+		if(result) { return "true"; }
+		else{ return "false"; }
 	}
 	
 	@RequestMapping( value= "modificarCuenta", method = RequestMethod.POST )
 	@ResponseBody
 	public String modificarCuenta( Integer id, Integer tipo){
-		System.out.println( id );
-		System.out.println( tipo );
-		Cuentas ctas = this.cuentaById(id);
-		TipoCuenta tipocta = TipoCuenta.tipoCuentaById(tipo);
-		ctas.setTipocuenta(tipocta);
-		ConfigHibernet config= new ConfigHibernet();
-		try {
-			Session session = config.abrirConexion();
-	        Transaction transaction = session.beginTransaction();
-	        session.update(ctas);
-	        transaction.commit();
-	        session.close();
-	       	return "true";
-		}catch(Exception E) {
-			System.out.println( E.getMessage() );
-			return "false";
-		}
-		
-		
-	}
 	
-	@SuppressWarnings("unchecked")
-	public static Cuentas cuentaById(Integer id){
-		ConfigHibernet config= new ConfigHibernet();
-		 Session session = config.abrirConexion();
-		//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
-		 Query q = session.createQuery("from Cuentas where idCuenta = " + id);
-		 Cuentas cuentas = (Cuentas) q.uniqueResult();
-		 session.close();
-		 return cuentas;
+		Cuentas ctas = cuentasService.cuentaById(id);
+		TipoCuenta tipocta = cuentasService.tipoCuentaById(tipo);
+		ctas.setTipocuenta(tipocta);
+		boolean result = cuentasService.modificarCuenta(ctas);
+		if(result) { return "true"; }
+		else{ return "false"; }
 	}
 	
 }
