@@ -22,22 +22,25 @@
  			 <div class="card-body">
 				<div class="row">
 				<div class="col-md-12">
-				<form method="POST" action="formclientes.jsp" >
+				<form method="POST" action="informePOST.html" >
 				<div class="row">
 					<div class="col-md-12">
 					<div class="row" >
-						<div class="col-md-6">
-							<div class="form-group row  w-85">
+				
+				
+				<div class="col-md-6">
+					<div class="form-group row  w-85">
     				<label for="concepto" class="pr-2">Concepto: </label>
-
-     			 	<select class="form-control" id="concepto" required style="width:90%;" name="concepto">
-  					<option value="1" default>Alta cuentas</option>
-  					<option value="2">Préstamos</option>
-  					<option value="3">Transferencias</option>
+     			 	<select required class="form-control" id="concepto" required style="width:90%;" name="concepto">
+                      <c:forEach var="concepto" items="${ listaconcepto }">
+	  					<option value= "${ concepto.idConcepto }">${ concepto.descripcion }</option>
+					</c:forEach>
 					</select>
-
- 				 </div>
-						</div>
+ 				   </div>
+				</div>				
+						
+						
+						
 						
 						<div class="col-md-6">
 							 <div class="form-group row  w-85" >
@@ -61,9 +64,9 @@
     				<label for="concepto" class="pr-2">Tipo cuenta: </label>
 
      			 	<select class="form-control" id="tcuenta" required style="width:90%;" name="tcuenta">
-  					<option value="1" default>Tipo 1</option>
-  					<option value="2">Tipo 2</option>
-  					<option value="3">Tipo 3</option>
+                        <c:forEach var="tcuenta" items="${ listatcuenta }">
+	  					<option value= "${ tcuenta.id_TipoCuenta }">${ tcuenta.descripcion }</option>
+					</c:forEach>
 					</select>
 
  				 </div>
