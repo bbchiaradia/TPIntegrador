@@ -38,16 +38,6 @@ public class PaginaController {
 	}
 	
 	
-	@RequestMapping("redireccionar_prestamos.html")
-	public ModelAndView eventoRedireccionar_prestamos() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("prestamos");
-		return MV;
-		
-	}
-	
-	
 	@RequestMapping("redireccionar_informe.html")
 	public ModelAndView eventoRedireccionar_informe() {
 		

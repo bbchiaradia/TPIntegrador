@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
 @Service
@@ -18,6 +19,7 @@ public class usuariosService {
 	@Autowired
 	 private static List<Usuarios> usuario;
 	@Autowired
+
 	private static Usuarios usuarioLogin = null;
 	@Autowired
 	private static String rol = null;
@@ -34,6 +36,9 @@ public class usuariosService {
 			return rol;
 	}
 	
+
+	 private static Usuarios user;
+
 	
 	
 	@SuppressWarnings("unchecked")
@@ -68,6 +73,7 @@ public class usuariosService {
 			 
 	}
 	 
+
 	 
 	 @SuppressWarnings("unchecked")
 		public static boolean esAdminBanco(String nombreUsuario) {
@@ -99,6 +105,20 @@ public class usuariosService {
 
 	    }
 	
+
+	 public static Usuarios getUsuarioById(Integer id) {
+		 try {
+			 session = ConfigHibernet.abrirConexion();
+			 user = (Usuarios) session.byId(Usuarios.class).getReference(id);
+			 return user;
+		 }catch(Exception e){
+			 ConfigHibernet.rollbackSession(session);
+			 return null;
+		 }
+		 
+	 }
+	 
+
 	
 	
 }
