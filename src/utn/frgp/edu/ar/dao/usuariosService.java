@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
 @Service
@@ -91,6 +90,12 @@ public class usuariosService {
 	    				 rol= "CLIENTE";
 	    				 System.out.println( "Acaaaaaaaaa 84 "+ 	rol	);
 	    				  ConfigHibernet.commitSession(session);
+	    				  
+	    				  clientesService.setClienteLogueado(
+	    						  clientesService.getClienteByUserId(usuarioLogin.getIdUsuario())
+	    						  );
+	    				  
+	    				  
 		    				return false;
 	    			 }else {
 	    				 rol= "ADMIN";

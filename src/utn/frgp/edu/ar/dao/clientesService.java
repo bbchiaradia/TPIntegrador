@@ -23,6 +23,8 @@ public class clientesService {
     private static List<Clientes> clientes;
     @Autowired
     private static Clientes cliente;
+    @Autowired
+    private static Clientes clienteLogueado;
 	
 	@SuppressWarnings("unchecked")
 	public static List<Clientes> getClientes() {
@@ -40,6 +42,14 @@ public class clientesService {
     	
         
     }
+	
+	public static Clientes getClienteLogueado() {
+		return clienteLogueado;
+	}
+	
+	public static void setClienteLogueado(Clientes cliente) {
+		clienteLogueado = cliente;
+	}
 	
 	
 	@SuppressWarnings("unchecked")
@@ -120,6 +130,14 @@ public class clientesService {
 			 ConfigHibernet.commitSession(session);
 			 return clientes;
 	}
+	 
+	 public static Clientes getClienteByUserId(Integer id) {
+		 session = ConfigHibernet.abrirConexion();
+		 Query q = session.createQuery("from Clientes where idUsuario = " + id + " and fecha_baja is null");
+		 Clientes cli = (Clientes) q.uniqueResult();
+		 ConfigHibernet.commitSession(session);
+		 return cli;
+	 }
 	
 	 
 		public static Clientes getClienteId(Integer id) {
