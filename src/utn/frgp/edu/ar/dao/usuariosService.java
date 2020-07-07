@@ -17,13 +17,30 @@ public class usuariosService {
 	 private static Session session;
 	@Autowired
 	 private static List<Usuarios> usuario;
+	@Autowired
+	private static Usuarios usuarioLogin = null;
+	@Autowired
+	private static String rol = null;
+	
+	
+	@SuppressWarnings("unchecked")
+	public static Usuarios UsuarioLogueado() {
+			return usuarioLogin;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public static String RolUsuarioLogueado() {
+			return rol;
+	}
+	
 	
 	
 	@SuppressWarnings("unchecked")
 	public static List<Usuarios> UsuarioByNombrePass(String nombre){
 		 try {
 			 session = ConfigHibernet.abrirConexion();
-			 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"'" );
+			 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"'  and fecha_baja is null" );
 			 usuario = q.list();
 			 ConfigHibernet.commitSession(session);
 			 return usuario;
@@ -39,7 +56,7 @@ public class usuariosService {
 		public static List<Usuarios> UsuarioByPass(String nombre ,String contrasenia){;
 			 try {
 				 session = ConfigHibernet.abrirConexion();
-				 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"' and contrasenia= '" +contrasenia+"'" );
+				 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"' and contrasenia= '" +contrasenia+"' and fecha_baja is null" );
 				 usuario = q.list();
 				 ConfigHibernet.commitSession(session);
 				 return usuario;
@@ -50,6 +67,38 @@ public class usuariosService {
 	    		}
 			 
 	}
+	 
+	 
+	 @SuppressWarnings("unchecked")
+		public static boolean esAdminBanco(String nombreUsuario) {
+	        
+			 try {
+				 session = ConfigHibernet.abrirConexion();
+	    		    Query q = session.createQuery("FROM Usuarios WHERE nombreUsuario='"+ nombreUsuario +"' and idUsuario IN (SELECT idUsuario FROM AdministradorBanco ) and fecha_baja is null");
+	    		   
+	
+   				   usuarioLogin = (Usuarios) q.uniqueResult();
+   				 System.out.println( "Acaaaaaaaaa 81 "+ 	usuarioLogin	);
+	    			 if (usuarioLogin==null) {
+	    				 Query q2 = session.createQuery("FROM Usuarios WHERE nombreUsuario='"+ nombreUsuario +"' and idUsuario IN (SELECT idUsuario FROM Clientes ) and fecha_baja is null");
+	    				 usuarioLogin =(Usuarios) q2.uniqueResult();
+	    				 rol= "CLIENTE";
+	    				 System.out.println( "Acaaaaaaaaa 84 "+ 	rol	);
+	    				  ConfigHibernet.commitSession(session);
+		    				return false;
+	    			 }else {
+	    				 rol= "ADMIN";
+	    				 ConfigHibernet.commitSession(session);
+		    				return true;	
+	    			}
+	    			 
+			 } catch (DataAccessException e) {
+	    			ConfigHibernet.rollbackSession(session);
+	    			return false;
+	    		}
+
+	    }
+	
 	
 	
 }

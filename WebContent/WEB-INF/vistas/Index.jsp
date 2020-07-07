@@ -9,6 +9,16 @@
   	<%@ page import="utn.frgp.edu.ar.*" %>
 	<%@ page import="utn.frgp.edu.ar.entidad.*" %>
     <container>
+    
+      <script>
+   sessionStorage.setItem('rol', '${rol}');
+  
+   </script>
+    <p>
+   ${rol}
+   </p>
+   
+   
     <%@ include file="nav.html"%>
     <div class="container">
     <div class="row">

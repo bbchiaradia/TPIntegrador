@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.cuentasService;
+import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
@@ -39,6 +40,8 @@ public class CuentasController {
 		
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
+		MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		MV.addObject("rol", usuariosService.RolUsuarioLogueado());
 		MV.setViewName("AltaCuenta");
 		return MV;
 		
@@ -81,6 +84,8 @@ public class CuentasController {
 		List<Clientes> clientes = clientesService.getClientes();
 		MV.addObject("tiposcuenta", tiposcuenta);
 		MV.addObject("clientes", clientes);
+		MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		MV.addObject("rol", usuariosService.RolUsuarioLogueado());
 		MV.setViewName("AltaCuenta");
 		return MV;}
 		

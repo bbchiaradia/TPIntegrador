@@ -11,6 +11,7 @@ import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.nacionalidadService;
 import utn.frgp.edu.ar.dao.sexoService;
 import utn.frgp.edu.ar.dao.ubicacionService;
+import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
@@ -31,6 +32,8 @@ public class ClientesController{
 	@RequestMapping(value = "redireccionar_clientes_D", method = RequestMethod.GET)
 	public String list(ModelMap modelMap) {
 	    modelMap.addAttribute("clientes", clientesService.getClientes());
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    return "/clientes";
 	}
 	
@@ -38,6 +41,8 @@ public class ClientesController{
 	@RequestMapping(value = "redireccionar_detalleCliente" , method = RequestMethod.GET)
 	public String list2(ModelMap modelMap, Integer id) {
 	    modelMap.addAttribute("detalleCliente", clientesService.LeerCliente(id));		
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    return "/detalleCliente";
 	}
 	
@@ -51,6 +56,8 @@ public class ClientesController{
 	    modelMap.addAttribute("listaLocalidades", ubicacionService.getLocalidades());		
 	    modelMap.addAttribute("listaSexo", sexoService.getSexo());	
 	    modelMap.addAttribute("listaNacionalidades", nacionalidadService.getNacionalidad());	
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    return "/formclientes";
 	}
 	
@@ -62,6 +69,8 @@ public class ClientesController{
 	    modelMap.addAttribute("listaLocalidades", ubicacionService.getLocalidades());		
 	    modelMap.addAttribute("listaSexo", sexoService.getSexo());	
 	    modelMap.addAttribute("listaNacionalidades", nacionalidadService.getNacionalidad());	
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    return "/altaCliente";
 	}
 	
@@ -120,6 +129,8 @@ public class ClientesController{
 		List<Clientes> list = new ArrayList();
 	    list.add(cli);  
 	    
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    modelMap.addAttribute("altaCliente", list);    
 	    
 	    return "/altaCliente";

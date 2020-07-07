@@ -106,7 +106,7 @@ public class clientesService {
 		public static List<Usuarios> UsuarioByNombre(String nombre){
 		 	session = ConfigHibernet.abrirConexion();
 			//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
-			 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"'" );
+			 Query q = session.createQuery("from Usuarios where nombreUsuario = '" + nombre +"' and fecha_baja is null" );
 			 List<Usuarios> usuario = q.list();
 			 ConfigHibernet.commitSession(session);
 			 return usuario;
@@ -115,7 +115,7 @@ public class clientesService {
 	 @SuppressWarnings("unchecked")
 		public static List<Clientes> ClienteByDni(String dni){
 		 	session = ConfigHibernet.abrirConexion();
-			 Query q = session.createQuery("from Clientes where dni = " + Integer.parseInt(dni));
+			 Query q = session.createQuery("from Clientes where dni = " + Integer.parseInt(dni)+ " and fecha_baja is null");
 			 clientes = q.list();
 			 ConfigHibernet.commitSession(session);
 			 return clientes;

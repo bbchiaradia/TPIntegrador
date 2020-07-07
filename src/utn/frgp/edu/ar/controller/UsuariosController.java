@@ -24,9 +24,14 @@ public class UsuariosController {
 	public String lista1(ModelMap modelMap, HttpServletRequest request) {
 		Usuarios usu= new Usuarios();
 	    
-	    usu.setNombreUsuario(request.getParameter("txtnombre"));
+	    usu.setNombreUsuario(request.getParameter("nombreUser"));
 	    usu.setContrasenia(request.getParameter("contrasenia"));
-
+	    
+	    usuariosService.esAdminBanco(usu.getNombreUsuario());
+	    
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    
 	    return "/Index";
 		
 		
