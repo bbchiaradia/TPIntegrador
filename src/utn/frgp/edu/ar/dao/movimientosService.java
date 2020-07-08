@@ -29,7 +29,6 @@ public class movimientosService {
 		movimiento.setFecha(Calendar.getInstance().getTime());
 		movimiento.setIdConcepto( conceptosService.getConceptosById(idConcepto) );
 		movimiento.setImporte( monto );
-
 		movimiento.setIdCuenta( cuentasService.cuentaById(idCuenta));
 		System.out.println(movimiento);
 
