@@ -91,13 +91,31 @@ public class Movimientos {
 		this.importe = importe;
 	}
 	
-	public Cuentas get_idCuenta() {
+
+
+	public Cuentas getIdCuenta() {
 		return idCuenta;
 	}
 
-	public void set_idCuenta(Cuentas cuenta) {
-		this.idCuenta = cuenta;
+
+
+	public void setIdCuenta(Cuentas idCuenta) {
+		this.idCuenta = idCuenta;
 	}
+
+
+
+	public void setIdMovimiento(int idMovimiento) {
+		this.idMovimiento = idMovimiento;
+	}
+
+
+
+	public void setImporte(double importe) {
+		this.importe = importe;
+	}
+
+
 
 	@Override
 	public String toString() {

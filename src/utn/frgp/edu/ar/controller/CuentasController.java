@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.cuentasService;
+import utn.frgp.edu.ar.dao.movimientosService;
 import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
@@ -54,7 +55,11 @@ public class CuentasController {
       modelMap.addAttribute("detalleCuenta", cuentasService.cuentaById(id));		   
       List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
       modelMap.addAttribute("tiposcuenta",tp);
-  
+      
+      modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
+      modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+      
 		return "/detalle_cuenta";
 		
 	}

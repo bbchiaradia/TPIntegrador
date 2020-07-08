@@ -3,6 +3,7 @@ package utn.frgp.edu.ar.dao;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Movimientos;
+import utn.frgp.edu.ar.entidad.Usuarios;
 
 
 @Service
@@ -28,7 +30,7 @@ public class movimientosService {
 		movimiento.setFecha(Calendar.getInstance().getTime());
 		movimiento.setIdConcepto( conceptosService.getConceptosById(idConcepto) );
 		movimiento.setImporte( monto );
-		movimiento.set_idCuenta( cuentasService.cuentaById(idCuenta));
+		movimiento.setIdCuenta( cuentasService.cuentaById(idCuenta));
 		
 		try {
 			session = ConfigHibernet.abrirConexion();
@@ -43,21 +45,17 @@ public class movimientosService {
 	}
 	
 	
+
 	
-	@SuppressWarnings("unchecked")
-	public static List<Movimientos> MovimientoByIdCuenta(Integer id) {
-		try {
-			 session = ConfigHibernet.abrirConexion();
-			 movimientos = session.createCriteria(Movimientos.class)
-						 .add(Restrictions.eq("idCuenta", id))
-						 .list();
-				 System.out.println( "Acaaaaaaaaa 55"+ id);
-				 ConfigHibernet.commitSession(session);
-				 return  movimientos;
-		} catch (DataAccessException e) {
-			ConfigHibernet.rollbackSession(session);
-			return null;
-		}
+	
+	 @SuppressWarnings("unchecked")
+		public static List<Movimientos> MovimientoByIdCuenta(Integer id){
+		 	session = ConfigHibernet.abrirConexion();
+			 Query q = session.createQuery("FROM Movimientos where idCuenta = '" + id +"'" );
+			 movimientos = q.list();
+			 System.out.println("MOVIMIENTOS-------------------" + movimientos);
+			 ConfigHibernet.commitSession(session);
+			 return movimientos;
 	}
 	
 	

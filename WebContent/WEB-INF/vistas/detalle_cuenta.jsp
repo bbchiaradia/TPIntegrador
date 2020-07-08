@@ -88,63 +88,37 @@
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
-   				 Movimientos de la cuenta $123XYZ
+   				 Movimientos de la cuenta
  			 </div>  
+ 			 
+ 			
+ 			
+ 			 
  			 <div class="card-body">
 				<div class="row text-center">
 					<div class="col-md-12">
 					<div class="row header_detalle">
 					<div class="col-md-3">Fecha</div>
-					<div class="col-md-3">Descripción</div>
+					<div class="col-md-3">Concepto</div>
 					<div class="col-md-3">Importe</div>
-					<div class="col-md-3">Saldo</div>
 					</div>
 					<hr>
+					
+					 <c:forEach var="movimientos" items="${ movimientos }"> 
 					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
+					<div class="col-md-3">${ movimientos.fecha }</div>
+					<div class="col-md-3">CONCEPTO</div>
+					<div class="col-md-3">${ movimientos.importe }</div>
 					</div>
 					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
+					</c:forEach>
 					
 					</div>
 				</div>
 				</div>
+		     
+				
+				
  			 </div> 
     	   </div>
     </div>
