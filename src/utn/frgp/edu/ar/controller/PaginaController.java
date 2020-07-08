@@ -38,15 +38,7 @@ public class PaginaController {
 	}
 	
 	
-	@RequestMapping("redireccionar_informe.html")
-	public ModelAndView eventoRedireccionar_informe() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("informe");
-		return MV;
-		
-	}
-	
+
 	
 	@RequestMapping("redireccionar_cuentascl.html")
 	public ModelAndView eventoRedireccionar_cuentascl() {

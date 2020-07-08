@@ -20,10 +20,13 @@ public class cuentasService {
 	@Autowired
 	 private static List<Cuentas> cuentas;
 	
+	@Autowired
+	private static List<TipoCuenta> tiposcuenta;
+	
 	@SuppressWarnings("unchecked")
 	public static List<TipoCuenta> listarTipoCuentas(){
 		session = ConfigHibernet.abrirConexion();
-		List<TipoCuenta> tiposcuenta = session.createCriteria(TipoCuenta.class).list();
+		tiposcuenta = session.createCriteria(TipoCuenta.class).list();
 		ConfigHibernet.commitSession(session);
 		return  tiposcuenta;
 	}
