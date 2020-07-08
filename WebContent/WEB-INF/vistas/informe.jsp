@@ -20,95 +20,23 @@
  			 </div>  
  			 <!-- Si quiere ver el cliente, se  pondrían los campos como solo lectura -->
  			 <div class="card-body">
-				<div class="row">
-				<div class="col-md-12">
-				<form method="POST" action="informePOST.html" >
+	           <div class="card-body">
 				<div class="row">
 					<div class="col-md-12">
-					<div class="row" >
+					 <c:forEach var="conceptos" items="${ listaconcepto }">
+					<div class="row">
+					<div class="col-md-4">${conceptos.descripcion}</div>					
+					
 				
-				
-				<div class="col-md-6">
-					<div class="form-group row  w-85">
-    				<label for="concepto" class="pr-2">Concepto: </label>
-     			 	<select required class="form-control" id="concepto" required style="width:90%;" name="concepto">
-                      <c:forEach var="concepto" items="${ listaconcepto }">
-	  					<option value= "${ concepto.idConcepto }">${ concepto.descripcion }</option>
-					</c:forEach>
-					</select>
- 				   </div>
-				</div>				
-						
-						
-						
-						
-						<div class="col-md-6">
-							 <div class="form-group row  w-85" >
-		    				<label for="txtbusqueda" class="pr-2">Búsqueda: </label>
-
-		     			 	<input type="text" value = txtbusqueda class="form-control" id="txtbusqueda" required name="txtbusqueda" maxlength="50"
-		     			 	style="width:90%;"
-		     			 	placeholder="Nombre - dni del cliente">
-                            
-		 				 </div>
-						</div>
+					<div class="col-md-4">  
+					<a href="redireccionar_detalle_cuenta.html">
+					<button class="btn btn-sm btn-primary" role="button">Detalles</button>
+					</a>
 					</div>
 					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-12">
-					<div class="row" >
-						<div class="col-md-6">
-							<div class="form-group row  w-85">
-    				<label for="concepto" class="pr-2">Tipo cuenta: </label>
-
-     			 	<select class="form-control" id="tcuenta" required style="width:90%;" name="tcuenta">
-                        <c:forEach var="tcuenta" items="${ listatcuenta }">
-	  					<option value= "${ tcuenta.id_TipoCuenta }">${ tcuenta.descripcion }</option>
-					</c:forEach>
-					</select>
-
- 				 </div>
-						</div>
-						
-						<div class="col-md-6">
-							 <div class="form-group row  w-85" >
-		    				<label for="datepicker" class="pr-2">Fecha inicio: </label>
-		     			 	<input class="form-control" type="text" style="width:90%;" id="datepicker" name="fdesde">
-
-		 				 </div>
-						</div>
+					<hr>
+					 </c:forEach>
 					</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-12">
-					<div class="row" >
-						<div class="col-md-6">
-							<div class="form-group row  w-85">
-    				<label for="datepicker2" class="pr-2">Fecha fin: </label>
-     			 	<input class="form-control" type="text"  style="width:90%;"  id="datepicker2"   name="fhasta">
-     			 	
-
-
- 				 </div>
-						</div>
-						
-						
-						
-						  <div class="form-group row text-right justify-content-end px-4" >
-    				        <button class="btn btn-primary" id="btnSubmit" value="Enviar" >Guardar</button>
- 				          </div>
-						
-					</div>
-					</div>
-				</div>
-				 
- 				 
-				</form>						
-				</div>
 				</div>
 				</div>
  			 </div> 
