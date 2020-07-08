@@ -46,10 +46,10 @@
 							 <div class="form-group row  w-85" >
 		    				<label for="txtbusqueda" class="pr-2">Búsqueda: </label>
 
-		     			 	<input type="text" class="form-control" id="txtbusqueda" required name="txtbusqueda" maxlength="50"
+		     			 	<input type="text" value = txtbusqueda class="form-control" id="txtbusqueda" required name="txtbusqueda" maxlength="50"
 		     			 	style="width:90%;"
 		     			 	placeholder="Nombre - dni del cliente">
-
+                            
 		 				 </div>
 						</div>
 					</div>
@@ -74,9 +74,8 @@
 						
 						<div class="col-md-6">
 							 <div class="form-group row  w-85" >
-		    				<label for="fdesde" class="pr-2">Fecha inicio: </label>
-
-		     			 	<input class="form-control" type="date" value="" style="width:90%;" id="fdesde">
+		    				<label for="datepicker" class="pr-2">Fecha inicio: </label>
+		     			 	<input class="form-control" type="text" style="width:90%;" id="datepicker" name="fdesde">
 
 		 				 </div>
 						</div>
@@ -89,16 +88,19 @@
 					<div class="row" >
 						<div class="col-md-6">
 							<div class="form-group row  w-85">
-    				<label for="fhasta" class="pr-2">Fecha fin: </label>
+    				<label for="datepicker2" class="pr-2">Fecha fin: </label>
+     			 	<input class="form-control" type="text"  style="width:90%;"  id="datepicker2"   name="fhasta">
+     			 	
 
-     			 	<input class="form-control" type="date" value="" style="width:90%;" id="fhasta">
 
  				 </div>
 						</div>
 						
-						<div class="col-md-6 align-items-center flex d-flex" style="display:flex !important;	">
-						<button class="btn btn-sm btn-primary">Buscar</button>
-						</div>
+						
+						
+						  <div class="form-group row text-right justify-content-end px-4" >
+    				        <button class="btn btn-primary" id="btnSubmit" value="Enviar" >Guardar</button>
+ 				          </div>
 						
 					</div>
 					</div>
@@ -116,6 +118,21 @@
     </container>
 
 <%@ include file="foot.html"%>
+<script>
+    $(document).ready(function() {
 
+        $('#datepicker').datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+        
+        $('#datepicker2').datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+        
+        
+    });
+
+    
+    </script>
   </body>
 </html>

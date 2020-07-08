@@ -40,9 +40,19 @@ public class informeController {
 		
 	}
 	*/
-	@RequestMapping(value = "informePOST" , method = RequestMethod.GET)
-	public String lista59(ModelMap modelMap) {
-		modelMap.addAttribute("listaSexo", sexoService.getSexo());			
+	
+	@RequestMapping(value = "informePOST" , method = RequestMethod.POST)
+	public String lista59(ModelMap modelMap, HttpServletRequest request) {
+	//@RequestMapping(value = "informePOST" , method = RequestMethod.GET)
+	//public String lista59(ModelMap modelMap) {
+		modelMap.addAttribute("listaconcepto", conceptoService.getConceptos());
+		modelMap.addAttribute("listatcuenta", cuentasService.listarTipoCuentas());
+		modelMap.addAttribute("txtbusqueda", "565");
+		System.out.println("Tipo de cuenta: " + request.getParameter("tcuenta"));
+		System.out.println("Fecha Desde: " + request.getParameter("fdesde"));	
+		System.out.println("Fecha Hasta: " + request.getParameter("fhasta"));	
+		System.out.println("Concepto: " + request.getParameter("concepto"));	
+
 		return "/informe";		
 	}
 	
