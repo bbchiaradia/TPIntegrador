@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Table(name="Prestamos")
 public class Prestamos implements Serializable {  // Recordar agregar en el Hibernate.cfg.xml --> <mapping  class="frgp.utn.edu.ar.entidad.Prestamos"/>
 	
-    public Prestamos() {    	
+    public Prestamos() {
     }
 
 	private static final long serialVersionUID = 1L; 

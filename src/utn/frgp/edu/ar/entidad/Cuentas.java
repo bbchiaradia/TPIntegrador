@@ -95,7 +95,7 @@ public class Cuentas implements Serializable{
     
 	
 	 @OneToMany(cascade= {CascadeType.ALL})
-	 @JoinColumn(name = "id_cuenta")
+	 @JoinColumn(name = "idCuenta")
 	 private List<Movimientos> listaMovimientos = new ArrayList<Movimientos>();
 	 	 
 	

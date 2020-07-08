@@ -168,15 +168,7 @@
 		          },
 		          success: function (data) {
 		        	  console.log(data);
-		        	  if( data != false ){
-		        		  data = JSON.parse(data);
-		        		  data.forEach( item => {
-		        			  $("#cuenta_Usuario").append( 
-		        					  "<option value= " + item.idCuenta  + "> " + item.id_TipoCuenta.descripcion + " - Num: " + item.nroCta +"</option>");
-		        		  } );
-		        	  }else{
-		        		  alert("Ocurrió un error al obtener las cuentas del usuario");
-		        	  }
+		        	  
 		            return false;
 		          }
 		        });

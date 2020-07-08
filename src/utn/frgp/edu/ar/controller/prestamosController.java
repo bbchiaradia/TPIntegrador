@@ -32,7 +32,6 @@ public class prestamosController {
 	@RequestMapping( value= "pedirprestamo", method = RequestMethod.POST )
 	@ResponseBody
 	public String pedirPrestamo(HttpServletRequest request) {
-		
 		 boolean flag = prestamosService.setPrestamo(
 				 Integer.parseInt(request.getParameter("id")), 
 				Integer.parseInt(request.getParameter("plazo")),

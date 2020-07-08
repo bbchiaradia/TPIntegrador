@@ -45,7 +45,7 @@ public class cuentasService {
 			//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
 			 Query q = session.createQuery("from Cuentas where idCliente = " + id + " and fecha_baja is null");
 			 cuentas = q.list();
-			 //ConfigHibernet.commitSession(session);
+			 ConfigHibernet.commitSession(session);
 			 return cuentas;
 		}
 	 
