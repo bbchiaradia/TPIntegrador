@@ -33,9 +33,9 @@
 					
 					
 					 <c:forEach var="tipocuenta" items="${ tiposcuenta }">
-				  
-				    <div class="col-md-4">${cuentas_cliente.getTipocuenta().getDescripcion()} </div>
-				    
+				     <c:if test="${cuentas_cliente.getTipocuenta().getId_TipoCuenta() == tipocuenta.id_TipoCuenta }">
+				     <div class="col-md-4">${tipocuenta.descripcion}</div>
+				     </c:if>
 				     </c:forEach>
 					
 				
