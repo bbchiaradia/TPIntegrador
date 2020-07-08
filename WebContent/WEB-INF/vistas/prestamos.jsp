@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,6 +16,7 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
+    <p>${cuentas}</p>
     
     <!-- solicitud de prestamos -->
     <container>
@@ -33,6 +35,7 @@
 					 	<div class="form-group">
 						    <label for="montoPrestamo">Monto:</label>
 						   <input type="number" min="5000" max="1000000" class="form-control" id="montoTransfer" placeholder="Monto a solicitar">
+						   <input hidden name="idCliente" id="idCliente" value="${idlogin}"  >
 						  </div>
 					 	</div>
 
@@ -40,7 +43,7 @@
 					 	<div class="form-group">
 						    <label for="cuentaOrigen">Plazo:</label>
 						   <select class="form-control" id="plazoPrestamo">
-						      <option value="3">3 meses</option>
+						      <option value="3" selected>3 meses</option>
 						      <option value="6">6 meses</option>
 						      <option value="9">9 meses</option>
 						      <option value="12">12 meses</option>
@@ -57,8 +60,10 @@
 					<div class="form-group">
 						    <label for="cuentaDestino">Cuenta de destino:</label>
 						    <select class="form-control" id="cuentaDestino">
-						      <option>1</option>
-						      <option>2</option>
+						      <option value='-1'>[ Seleccione una cuenta de destino ]</option>
+						     <c:forEach var="cuenta" items="${ cuentas }">
+						      <option value="${cuenta.idCuenta}">  ${cuenta.nroCta} - Saldo: $ ${cuenta.saldo} </option>
+						    </c:forEach>
 						    </select>
 						  </div>
 					</div>
@@ -73,7 +78,7 @@
     	   </div>
     </div>
     <div class="row mt-3 px-4 justify-content-end">
-    <button class="btn btn-sm btn-primary" role="button" onclick="alert('mensaje de alerta')">Solicitar préstamo</button>
+    <button id="btnSubmit" class="btn btn-sm btn-primary" onclick="pedirPrestamo();" disabled role="button">Solicitar préstamo</button>
     </div>
     </container>
     
@@ -131,5 +136,55 @@
     </container>
 
 <%@ include file="foot.html"%>
+	<script>
+	$(document).ready(function(){
+		$(document).on('change', '#cuentaDestino', function(e){
+			console.log(e);
+			if(e.target.value < 0 ){
+				$("#btnSubmit").prop('disabled', true);
+			}else{
+				$("#btnSubmit").prop('disabled', false);
+			}
+			
+		});
+	});
+	
+	function pedirPrestamo(){
+		let monto = document.getElementById("montoTransfer").value;
+		let idCliente = document.getElementById("idCliente").value;
+		let plazo = document.getElementById("plazoPrestamo").value;
+		let cuentaDestino = document.getElementById("cuentaDestino").value;
+		console.log(monto);
+		console.log(idCliente);
+		if( monto > 0 ){ 
+			$.ajax({
+		          url: '${request.getContextPath()}/TP_L5_GRUPO_7_/pedirprestamo.html',
+		          type: 'POST',
+		          data: {
+		            id: idCliente,
+		            monto: monto,
+		            plazo:plazo,
+		            cuentadestino :cuentaDestino
+		          },
+		          success: function (data) {
+		        	  console.log(data);
+		        	  if( data != false ){
+		        		  data = JSON.parse(data);
+		        		  data.forEach( item => {
+		        			  $("#cuenta_Usuario").append( 
+		        					  "<option value= " + item.idCuenta  + "> " + item.id_TipoCuenta.descripcion + " - Num: " + item.nroCta +"</option>");
+		        		  } );
+		        	  }else{
+		        		  alert("Ocurrió un error al obtener las cuentas del usuario");
+		        	  }
+		            return false;
+		          }
+		        });
+		}else{
+			alert('El préstamo no puede ser de monto negativo')
+			return;
+		}
+	}
+	</script>
   </body>
 </html>
