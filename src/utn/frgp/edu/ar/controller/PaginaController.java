@@ -32,14 +32,7 @@ public class PaginaController {
 	
 
 	
-	@RequestMapping("redireccionar_cuentascl.html")
-	public ModelAndView eventoRedireccionar_cuentascl() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("cuentascl");
-		return MV;
-		
-	}
+
 	
 	
 	@RequestMapping("redireccionar_transferencias.html")

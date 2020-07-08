@@ -39,7 +39,6 @@ public class CuentasController {
 	@RequestMapping("redireccionar_AltaCuenta.html")
 	public ModelAndView eventoRedireccionar_AltaCuenta( ModelAndView MV ) {
 		List<TipoCuenta> tiposcuenta = cuentasService.listarTipoCuentas();
-		//List<Clientes> clientes = daoBanco.getClientes();
 		 List<Clientes> clientes = clientesService.getClientes();
 		
 		MV.addObject("tiposcuenta", tiposcuenta);
@@ -66,6 +65,27 @@ public class CuentasController {
 	    modelMap.addAttribute("conceptos",cp);
 	  
 		return "/detalle_cuenta";
+		
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("redireccionar_cuentascl.html")
+	public String eventoRedireccionar_cuentascl(ModelMap modelMap) {
+		
+		System.out.println("LINEA 77 ACAAA  CLIENTE  "+ clientesService.getClienteLogueado().getIdCliente());
+		
+		 List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
+		 List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
+
+		  System.out.println("LINEA 81 ACAAA  CUENTAS "+ cuentas);
+		 
+		    modelMap.addAttribute("tiposcuentacl",tp);
+		    modelMap.addAttribute("cuentas_clientecl",cuentas);
+		
+		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		return "/cuentascl";
 		
 	}
 	

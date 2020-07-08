@@ -68,6 +68,25 @@
     </div>
     </container>
    </c:if>  
+   
+    <c:if test="${rol == 'ADMIN' }"> 
+   <div class="container">
+       <div class="row">
+    	   <div class="col-md-12">
+    	   <div class="card mt-4">
+        	 <div class="card-header">
+   				 Bienvenido <b> ${nombreLogin} </b>
+ 			 </div>  
+
+ 			 </div> 
+    	   </div>
+    </div>
+    </div>
+      
+      
+      
+       </container>
+   </c:if>  
 
 <%@ include file="foot.html"%>
   </body>

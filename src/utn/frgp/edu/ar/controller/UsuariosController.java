@@ -25,6 +25,8 @@ public class UsuariosController {
 	
 	@RequestMapping(value = "redireccionar_Index.html" , method = RequestMethod.POST)
 	public String lista1(ModelMap modelMap, HttpServletRequest request) {
+		
+		  
 		Usuarios usu= new Usuarios();
 	    
 	    usu.setNombreUsuario(request.getParameter("nombreUser"));
@@ -37,17 +39,14 @@ public class UsuariosController {
 	    List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
 	    List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
 	    
-	    System.out.println("LINEA 39 ACAAA TIPOO CUENTAS "+ cuentasService.listarTipoCuentas());
-	    
 	    modelMap.addAttribute("tiposcuenta",tp);
 	    modelMap.addAttribute("cuentas_cliente",cuentas);
 	    }
 	    
+	  
 	    
-	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+	        modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
-	    
-	    
 	    
 	    
 	    return "/Index";

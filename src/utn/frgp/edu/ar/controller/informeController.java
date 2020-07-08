@@ -53,6 +53,9 @@ public class informeController {
 		System.out.println("Fecha Hasta: " + request.getParameter("fhasta"));	
 		System.out.println("Concepto: " + request.getParameter("concepto"));	
 
+		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+		
 		return "/informe";		
 	}
 	
@@ -62,6 +65,10 @@ public class informeController {
 		MV.setViewName("informe");
 		MV.addObject("listaconcepto", conceptoService.getConceptos());
 		MV.addObject("listatcuenta", cuentasService.listarTipoCuentas());
+		
+		MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		MV.addObject("rol", usuariosService.RolUsuarioLogueado());
+		
 		return MV;
 		
 	}

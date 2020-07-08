@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.dao.prestamosService;
+import utn.frgp.edu.ar.dao.usuariosService;
 
 @Controller
 public class prestamosController {
@@ -25,6 +26,10 @@ public class prestamosController {
 		MV.addObject("idlogin", clientesService.getClienteLogueado().getIdCliente());
 		MV.addObject("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
 		MV.setViewName("prestamos");
+		
+		  MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		  MV.addObject("rol", usuariosService.RolUsuarioLogueado());
+		
 		return MV;
 		
 	}
