@@ -28,14 +28,6 @@ public class PaginaController {
 	
 	
 	
-	@RequestMapping("redireccionar_detalle_cuenta.html")
-	public ModelAndView eventoRedireccionar_detalle_cuenta() {
-		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("detalle_cuenta");
-		return MV;
-		
-	}
 	
 	
 

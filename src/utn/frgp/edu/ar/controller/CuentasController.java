@@ -22,11 +22,15 @@ import com.google.gson.Gson;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
+import utn.frgp.edu.ar.dao.conceptosService;
 import utn.frgp.edu.ar.dao.cuentasService;
+import utn.frgp.edu.ar.dao.movimientosService;
 import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Conceptos;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
+import utn.frgp.edu.ar.entidad.Usuarios;
 
 @Controller
 public class CuentasController {
@@ -46,6 +50,25 @@ public class CuentasController {
 		return MV;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("redireccionar_detalle_cuenta.html")
+	public String eventoRedireccionar_detalle_cuenta(ModelMap modelMap, Integer id) {
+      modelMap.addAttribute("detalleCuenta", cuentasService.cuentaById(id));		   
+      List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
+      modelMap.addAttribute("tiposcuenta",tp);
+      
+      modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
+      modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+      
+	  List <Conceptos> cp = conceptosService.getConceptos();
+	    modelMap.addAttribute("conceptos",cp);
+	  
+		return "/detalle_cuenta";
+		
+	}
+	
 	
 	
 	@SuppressWarnings("finally")

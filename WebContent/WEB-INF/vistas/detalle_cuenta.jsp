@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,29 +29,50 @@
     <div class="row animate__animated animate__fadeIn">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
+    	   
+    	  
+    	   
         	 <div class="card-header">
-   				 Detalle de la cuenta $123XYZ
+   				 Detalle de la cuenta <b> ${ detalleCuenta.nroCta } </b>
  			 </div>  
+ 			 
+
+ 			   
  			 <div class="card-body">
 				<div class="row text-center">
+				
 					<div class="col-md-12">
 					<div class="row header_detalle">
 					<div class="col-md-3">Número de cuenta</div>
 					<div class="col-md-3">Tipo</div>
-					<div class="col-md-3">ALIAS</div>
+					<div class="col-md-3">CBU</div>
 					<div class="col-md-3">Saldo</div>
 					</div>
-					<hr>
+					
 					<div class="row">
-					<div class="col-md-3">$123XYZ</div>
-					<div class="col-md-3">Caja de ahorro $</div>
-					<div class="col-md-3">CEBADA.MALTA.LUPULO</div>
-					<div class="col-md-3">-$35748</div>
+					<div class="col-md-3">${ detalleCuenta.nroCta }</div>
+					
+					
+					 <c:forEach var="tipocuenta" items="${ tiposcuenta }">
+				     <c:if test="${detalleCuenta.getTipocuenta().getId_TipoCuenta() == tipocuenta.id_TipoCuenta }">
+				     <div class="col-md-3">${tipocuenta.descripcion}</div>
+				     </c:if>
+				     </c:forEach>
+					
+					
+					
+					<div class="col-md-3">${ detalleCuenta.cbu }</div>
+					<div class="col-md-3">${ detalleCuenta.saldo }</div>
 					</div>
 					</div>
 				</div>
 				</div>
+					
+				
  			 </div> 
+ 			 
+ 			 
+ 			 
     	   </div>
     </div>
     </container>
@@ -66,63 +88,48 @@
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
-   				 Movimientos de la cuenta $123XYZ
+   				 Movimientos de la cuenta
  			 </div>  
+ 			 
+ 			
+ 			
+ 			 
  			 <div class="card-body">
 				<div class="row text-center">
 					<div class="col-md-12">
 					<div class="row header_detalle">
 					<div class="col-md-3">Fecha</div>
-					<div class="col-md-3">Descripción</div>
+					<div class="col-md-3">Concepto</div>
 					<div class="col-md-3">Importe</div>
-					<div class="col-md-3">Saldo</div>
 					</div>
 					<hr>
+					
+					 <c:forEach var="movimientos" items="${ movimientos }"> 
 					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
+					<div class="col-md-3">${ movimientos.fecha }</div>
+					
+					
+					
+					<c:forEach var="conceptos" items="${ conceptos }">
+				     <c:if test="${movimientos.getIdConcepto().getIdConcepto() == conceptos.idConcepto }">
+				     <div class="col-md-4">${conceptos.descripcion}</div>
+				     </c:if>
+				     </c:forEach>
+					
+					
+					
+					
+					<div class="col-md-3">${ movimientos.importe }</div>
 					</div>
 					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
-					<hr>
-					<div class="row">
-					<div class="col-md-3">27/06/2020</div>
-					<div class="col-md-3">Ferretería La Bisabra</div>
-					<div class="col-md-3">$-456</div>
-					<div class="col-md-3">-$35748</div>
-					</div>
+					</c:forEach>
 					
 					</div>
 				</div>
 				</div>
+		     
+				
+				
  			 </div> 
     	   </div>
     </div>
