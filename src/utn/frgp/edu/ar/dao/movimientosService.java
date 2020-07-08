@@ -4,9 +4,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Movimientos;
 
 
@@ -38,5 +41,24 @@ public class movimientosService {
 		}
 		
 	}
+	
+	
+	
+	@SuppressWarnings("unchecked")
+	public static List<Movimientos> MovimientoByIdCuenta(Integer id) {
+		try {
+			 session = ConfigHibernet.abrirConexion();
+			 movimientos = session.createCriteria(Movimientos.class)
+						 .add(Restrictions.eq("idCuenta", id))
+						 .list();
+				 System.out.println( "Acaaaaaaaaa 55"+ id);
+				 ConfigHibernet.commitSession(session);
+				 return  movimientos;
+		} catch (DataAccessException e) {
+			ConfigHibernet.rollbackSession(session);
+			return null;
+		}
+	}
+	
 	
 }

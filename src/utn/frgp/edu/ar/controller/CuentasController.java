@@ -27,6 +27,7 @@ import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
+import utn.frgp.edu.ar.entidad.Usuarios;
 
 @Controller
 public class CuentasController {
@@ -46,6 +47,18 @@ public class CuentasController {
 		return MV;
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("redireccionar_detalle_cuenta.html")
+	public String eventoRedireccionar_detalle_cuenta(ModelMap modelMap, Integer id) {
+      modelMap.addAttribute("detalleCuenta", cuentasService.cuentaById(id));		   
+      List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
+      modelMap.addAttribute("tiposcuenta",tp);
+  
+		return "/detalle_cuenta";
+		
+	}
+	
 	
 	
 	@SuppressWarnings("finally")
