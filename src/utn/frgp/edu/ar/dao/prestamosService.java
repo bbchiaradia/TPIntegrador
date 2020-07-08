@@ -18,15 +18,19 @@ public class prestamosService {
 	@Autowired
 	 private static List<Prestamos> prestamos;
 	@Autowired
-	 private static Prestamos prestamo;
+	 private static Prestamos prestamo = null;
 	
 	public static boolean setPrestamo(Integer idcliente, Integer plazo, Integer importe, String cuentaDestino) {
-		prestamo.setPlazo_meses(plazo);
+		System.out.println( idcliente);
+		System.out.println( plazo);
+		System.out.println( importe);
+		System.out.println( cuentaDestino);
+		
 		prestamo.setIdCliente( clientesService.getClienteId(idcliente) );
 		prestamo.setImporte(importe);
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
 		prestamo.setId_estado(estadosService.getEstadoById(3));
-		
+		prestamo.setPlazo_meses(plazo);
 		
 		if(movimientosService.saveMovimiento(2, importe, Integer.parseInt(cuentaDestino))) {
 			try {

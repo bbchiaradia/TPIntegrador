@@ -159,7 +159,7 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 	}
 
 	public void setPlazo_meses(int plazo_meses) {
-		Plazo_meses = plazo_meses;
+		this.Plazo_meses = plazo_meses;
 	}
 
 	public Date getFecha_alta() {

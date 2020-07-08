@@ -33,7 +33,7 @@ public class prestamosController {
 	@ResponseBody
 	public String pedirPrestamo(HttpServletRequest request) {
 		
-		 prestamosService.setPrestamo(
+		 boolean flag = prestamosService.setPrestamo(
 				 Integer.parseInt(request.getParameter("id")), 
 				Integer.parseInt(request.getParameter("plazo")),
 				Integer.parseInt(request.getParameter("monto")), 
@@ -42,7 +42,7 @@ public class prestamosController {
 			
 		
 		
-		return request.getParameter("monto");
+		return String.valueOf(flag);
 		
 	}
 
