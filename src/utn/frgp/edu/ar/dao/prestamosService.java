@@ -20,20 +20,25 @@ public class prestamosService {
 	@Autowired
 	 private static Prestamos prestamo;
 	
-	public static boolean setPrestamo(Integer idcliente, Integer plazo, double importe) {
+	public static boolean setPrestamo(Integer idcliente, Integer plazo, Integer importe, String cuentaDestino) {
 		prestamo.setPlazo_meses(plazo);
 		prestamo.setIdCliente( clientesService.getClienteId(idcliente) );
 		prestamo.setImporte(importe);
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
 		prestamo.setId_estado(estadosService.getEstadoById(3));
 		
-		try {
-			session = ConfigHibernet.abrirConexion();
-			session.save(prestamo);
-			ConfigHibernet.commitSession(session);
-			return true;
-		}catch(Exception e) {
-			ConfigHibernet.rollbackSession(session);
+		
+		if(movimientosService.saveMovimiento(2, importe, Integer.parseInt(cuentaDestino))) {
+			try {
+				session = ConfigHibernet.abrirConexion();
+				session.save(prestamo);
+				ConfigHibernet.commitSession(session);
+				return true;
+			}catch(Exception e) {
+				ConfigHibernet.rollbackSession(session);
+				return false;
+			}
+		}else {
 			return false;
 		}
 		

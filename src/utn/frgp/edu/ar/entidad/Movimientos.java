@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +36,9 @@ public class Movimientos {
 	@Column(name="importe")
 	private double importe;
 	
+	@ManyToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name="idCuenta")
+	private Cuentas idCuenta;
 
 	
 	public Movimientos(Date fecha, Conceptos idConcepto, double importe) {
@@ -85,6 +89,14 @@ public class Movimientos {
 
 	public void setImporte(int importe) {
 		this.importe = importe;
+	}
+	
+	public Cuentas get_idCuenta() {
+		return idCuenta;
+	}
+
+	public void set_idCuenta(Cuentas cuenta) {
+		this.idCuenta = cuenta;
 	}
 
 	@Override

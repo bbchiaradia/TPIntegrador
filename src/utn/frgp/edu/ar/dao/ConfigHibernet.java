@@ -13,9 +13,14 @@ public class ConfigHibernet {
 	
 	static
 	{
+		try {
 			Configuration configuration = new Configuration().configure();
 	        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
 	        ConfigHibernet.sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+			
 	}
 	
 	public static Session abrirConexion() {

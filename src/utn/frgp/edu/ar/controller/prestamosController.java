@@ -33,11 +33,14 @@ public class prestamosController {
 	@ResponseBody
 	public String pedirPrestamo(HttpServletRequest request) {
 		
-		if( prestamosService.setPrestamo(Integer.parseInt(request.getParameter("idCliente")), Integer.parseInt(request.getParameter("plazo")), Double.parseDouble(request.getParameter("monto")) ) {}
-		id: idCliente,
-        monto: monto,
-        plazo:plazoPrestamo,
-        cuentadestino :cuentaDestino
+		 prestamosService.setPrestamo(
+				 Integer.parseInt(request.getParameter("id")), 
+				Integer.parseInt(request.getParameter("plazo")),
+				Integer.parseInt(request.getParameter("monto")), 
+				request.getParameter("cuentadestino")
+				);  
+			
+		
 		
 		return request.getParameter("monto");
 		
