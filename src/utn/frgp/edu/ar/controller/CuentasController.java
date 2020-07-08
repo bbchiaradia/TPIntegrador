@@ -22,10 +22,12 @@ import com.google.gson.Gson;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
+import utn.frgp.edu.ar.dao.conceptosService;
 import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.dao.movimientosService;
 import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Conceptos;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
 import utn.frgp.edu.ar.entidad.Usuarios;
@@ -60,6 +62,9 @@ public class CuentasController {
       modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
       
+	  List <Conceptos> cp = conceptosService.getConceptos();
+	    modelMap.addAttribute("conceptos",cp);
+	  
 		return "/detalle_cuenta";
 		
 	}

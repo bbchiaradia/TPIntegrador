@@ -107,7 +107,18 @@
 					 <c:forEach var="movimientos" items="${ movimientos }"> 
 					<div class="row">
 					<div class="col-md-3">${ movimientos.fecha }</div>
-					<div class="col-md-3">CONCEPTO</div>
+					
+					
+					
+					<c:forEach var="conceptos" items="${ conceptos }">
+				     <c:if test="${movimientos.getIdConcepto().getIdConcepto() == conceptos.idConcepto }">
+				     <div class="col-md-4">${conceptos.descripcion}</div>
+				     </c:if>
+				     </c:forEach>
+					
+					
+					
+					
 					<div class="col-md-3">${ movimientos.importe }</div>
 					</div>
 					<hr>
