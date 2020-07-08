@@ -29,13 +29,10 @@ public class movimientosService {
 		movimiento.setFecha(Calendar.getInstance().getTime());
 		movimiento.setIdConcepto( conceptosService.getConceptosById(idConcepto) );
 		movimiento.setImporte( monto );
-<<<<<<< HEAD
-		movimiento.set_idCuenta( cuentasService.cuentaById(idCuenta));
-		System.out.println(movimiento);
-=======
+
 		movimiento.setIdCuenta( cuentasService.cuentaById(idCuenta));
-		
->>>>>>> d5cde57fa821b74a71a918da893e04b682cbc2c1
+		System.out.println(movimiento);
+
 		try {
 			session = ConfigHibernet.abrirConexion();
 			System.out.println("31 mov service");
