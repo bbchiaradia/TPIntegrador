@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import utn.frgp.edu.ar.dao.clientesService;
+import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.dao.usuariosService;
-
+import utn.frgp.edu.ar.entidad.Clientes;
+import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.TipoCuenta;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
 import java.util.List;
@@ -29,8 +32,23 @@ public class UsuariosController {
 	    
 	    usuariosService.esAdminBanco(usu.getNombreUsuario());
 	    
+	    
+	    if (usuariosService.esAdminBanco(usu.getNombreUsuario()) == false) {
+	    List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
+	    List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
+	    
+	    System.out.println("LINEA 39 ACAAA TIPOO CUENTAS "+ cuentasService.listarTipoCuentas());
+	    
+	    modelMap.addAttribute("tiposcuenta",tp);
+	    modelMap.addAttribute("cuentas_cliente",cuentas);
+	    }
+	    
+	    
 	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+	    
+	    
+	    
 	    
 	    return "/Index";
 		
