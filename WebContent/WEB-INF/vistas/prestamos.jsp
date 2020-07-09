@@ -102,7 +102,7 @@
 							      <th scope="col">Monto</th>
 							      <th scope="col">Cuenta destino</th>
 							      <th scope="col">Estado</th>
-							      <th scope="col">Detalle</th>
+							     
 							    </tr>
 							  </thead>
 							  
@@ -112,7 +112,7 @@
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
 							    <tr>
 							      <td>${prestamos_cliente.fecha}</td>
-							      <td>${prestamos_cliente.importe}</td>
+							      <td>$ ${prestamos_cliente.importe}</td>
 
 									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
 								     <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
@@ -134,7 +134,7 @@
 
 							      <td>
 							     <form method="get" class="frmBoton" action="redireccionar_cuotas_detalle.html">
-						 			 <input type="hidden" name="id" >
+						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
 										<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Revisar Cuotas">
 										<i class="fa fa-eye" aria-hidden="true"> </i> Cuotas
 										</button>

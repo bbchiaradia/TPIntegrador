@@ -81,7 +81,7 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 
 	////
 	 @OneToMany(cascade= {CascadeType.ALL})
-	 @JoinColumn(name = "id_prestamo")
+	 @JoinColumn(name = "idPrestamo")
 	 private List<Cuotas> listaCuotas = new ArrayList<Cuotas>();
 	 
 	 

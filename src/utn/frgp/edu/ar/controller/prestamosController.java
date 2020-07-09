@@ -66,29 +66,6 @@ public class prestamosController {
 	
 	
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping("redireccionar_cuotas_detalle.html")
-	public String eventoRedireccionar_cuentascl(ModelMap modelMap) {
-		
-		System.out.println("LINEA 77 ACAAA  CLIENTE  "+ clientesService.getClienteLogueado().getIdCliente());
-	/*	
-		 List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
-		 List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
-
-		  System.out.println("LINEA 81 ACAAA  CUENTAS "+ cuentas);
-		 
-		    modelMap.addAttribute("tiposcuentacl",tp);
-		    modelMap.addAttribute("cuentas_clientecl",cuentas);
-		
-		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
-	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
-	    */
-	    
-		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
-		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
-		
-		return "/cuotas_detalle";
-		
-	}
+	
 
 }

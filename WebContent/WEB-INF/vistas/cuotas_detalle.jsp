@@ -23,6 +23,21 @@
    				 Detalle de Cuotas <b>  </b>
  			 </div>  
  			 
+					<div class="row">
+					<div class="col-md-8 offset-md-2">
+					<div class="form-group">
+						    <label for="cuentaDestino"></label>
+						    <select class="form-control" id="cuentaDestino">
+						      <option value='-1'>[ Seleccione desde donde pagar:  ]</option>
+						     <c:forEach var="cuenta" items="${ cuentas }">
+						      <option value="${cuenta.idCuenta}">  ${cuenta.nroCta} - Saldo: $ ${cuenta.saldo} </option>
+						    </c:forEach>
+						    </select>
+						  </div>
+					</div>
+					</div>
+					<hr>
+
 
  			<div class="card-body">
 			    	<div class="row">
@@ -35,24 +50,42 @@
 					 </div>
 					 <hr>
 				
-					<div class="row">
 				
-				     <div class="col-md-4">PAGADO</div>
-                     <div class="col-md-4">1000</div>
-                    <button class="btn btn-sm btn-danger mr-1"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
+				    <c:forEach var="cuotas" items="${ cuotas }">
+					<div class="row">
+				     
+				     
+				     <c:if test="${cuotas.fecha_pago == null }">
+				     <div class="col-md-4 " style="background: rgb(239, 196, 200);">PENDIENTE</div>
+                     </c:if>
+                      <c:if test="${cuotas.fecha_pago != null}">
+				     <div class="col-md-4" style="background: rgba( 24,124,78,0.20);">PAGÓ</div>
+                     </c:if>
+                     
+                     
+                      <c:if test="${cuotas.fecha_pago == null }">
+				     <div class="col-md-4 " style="background: rgb(239, 196, 200);">$ ${monto_cuota}</div>
+                     </c:if>
+                      <c:if test="${cuotas.fecha_pago != null}">
+				     <div class="col-md-4" style="background: rgba( 24,124,78,0.20);">$ ${monto_cuota}</div>
+                     </c:if>
+                     
+            
+                     <c:if test="${cuotas.fecha_pago == null }">
+				     <button class="btn btn-sm btn-danger mr-1 ml-3"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
 					<i class="fa fa-money" aria-hidden="true"> </i> Pagar Cuota
 					</button>
-     
+                     </c:if>
+
+                   
+                   
+                    
+				    
+				    
 				     </div>
 				      <hr>
-				     <div class="row">
-				     <div class="col-md-4">DEBE</div>
-                     <div class="col-md-4">1000</div>
-                     <button class="btn btn-sm btn-danger mr-1"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
-					<i class="fa fa-money" aria-hidden="true"> </i> Pagar Cuota
-					</button>
-					</div>
-					<hr>
+				
+				     </c:forEach>
 				
 					</div>
 					
