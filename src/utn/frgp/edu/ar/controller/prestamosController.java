@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.cuentasService;
+import utn.frgp.edu.ar.dao.estadosService;
+import utn.frgp.edu.ar.dao.movimientosService;
 import utn.frgp.edu.ar.dao.prestamosService;
 import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Cuentas;
@@ -30,6 +32,11 @@ public class prestamosController {
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
 		MV.addObject("idlogin", clientesService.getClienteLogueado().getIdCliente());
 		MV.addObject("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
+		MV.addObject("prestamos_cliente", prestamosService.PrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		MV.addObject("movimientos_prestamos_cliente", movimientosService.MovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		MV.addObject("cuenta_movimientos_prestamos_cliente", cuentasService.CuentasMovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		
+		MV.addObject("estado_prestamo", estadosService.getEstados());
 		MV.setViewName("prestamos");
 		
 		

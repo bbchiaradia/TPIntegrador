@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Movimientos;
+import utn.frgp.edu.ar.entidad.Prestamos;
 import utn.frgp.edu.ar.entidad.Usuarios;
 
 
@@ -62,5 +63,18 @@ public class movimientosService {
 			 return movimientos;
 	}
 	
+	 
+	 
+	 @SuppressWarnings("unchecked")
+		public static List<Movimientos> MovimientosPrestamosByIdCliente(Integer id){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("select m FROM Prestamos as p, Movimientos as m where p.idCliente ='" + id +"' and p.idMovimiento = m.idMovimiento" );		 	  
+		 	  movimientos = q.list();
+			 System.out.println("movimientos-------------------" + movimientos);
+			 ConfigHibernet.commitSession(session);
+			 return movimientos;
+	}
+	
+	 
 	
 }

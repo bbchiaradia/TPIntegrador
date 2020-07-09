@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Movimientos;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
 
 @Service
@@ -86,5 +87,18 @@ public class cuentasService {
 				return false;
 	        }
 		}
+		
+		
+		
+		 @SuppressWarnings("unchecked")
+			public static List<Cuentas> CuentasMovimientosPrestamosByIdCliente(Integer id){
+			 	session = ConfigHibernet.abrirConexion(); 	
+			 	Query q = session.createQuery("SELECT c FROM Prestamos as p, Movimientos as m , Cuentas as c where p.idCliente ='" + id +"' and p.idMovimiento = m.idMovimiento and m.idCuenta = c.idCuenta" );		 	  
+			 	  cuentas = q.list();
+				 System.out.println("cuentas-------------------" + cuentas);
+				 ConfigHibernet.commitSession(session);
+				 return cuentas;
+		}
+		
 	
 }

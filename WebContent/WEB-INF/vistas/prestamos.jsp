@@ -105,28 +105,49 @@
 							      <th scope="col">Detalle</th>
 							    </tr>
 							  </thead>
+							  
+							  
+							  
 							  <tbody>
+							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
 							    <tr>
-							      <td>27/06/2020</td>
-							      <td>$15</td>
-							      <td>$CA-123456789</td>
-							      <td>Aprobado</td>
-							      <td>
-							      
+							      <td>${prestamos_cliente.fecha}</td>
+							      <td>${prestamos_cliente.importe}</td>
+
+									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
+								     <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
+								    		<c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }">
+								            <c:if test="${movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta }">
+								    		   <td>${cuenta_movimientos_prestamos_cliente.nroCta}</td>
+										    </c:if>
+										    </c:forEach>
+								     </c:if>
+								     </c:forEach>
+		
+		
+								 <c:forEach var="estado_prestamo" items="${ estado_prestamo }">
+							     <c:if test="${prestamos_cliente.getIdEstado().getIdEstado() == estado_prestamo.idEstado }">
+							      <td>${estado_prestamo.getDescripcion()}</td>
+							     </c:if>
+							     </c:forEach>
 							     
+
+							      <td>
 							     <form method="get" class="frmBoton" action="redireccionar_cuotas_detalle.html">
 						 			 <input type="hidden" name="id" >
 										<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Revisar Cuotas">
 										<i class="fa fa-eye" aria-hidden="true"> </i> Cuotas
 										</button>
 								</form>
-								
-							 
-							     
-							     
 							      </td>
 							    </tr>
+							    
+							      </c:forEach>
 							  </tbody>
+							
+							  
+							  
+							  
 							</table>
 	
 						</div>			

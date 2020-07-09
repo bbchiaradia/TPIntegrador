@@ -71,6 +71,10 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 
 
 	
+	public Estados getIdEstado() {
+		return idEstado;
+	}
+
 	public void setIdEstado(Estados idEstado) {
 		this.idEstado = idEstado;
 	}

@@ -3,6 +3,7 @@ package utn.frgp.edu.ar.dao;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class prestamosService {
 	 private static Session session;
 	@Autowired
 	 private static List<Prestamos> prestamos;
+	
+
 	
 	@Autowired
 	 private static Prestamos prestamo = new Prestamos();
@@ -49,5 +52,22 @@ public class prestamosService {
 		}
 			
 	}
+	
+	
+	 @SuppressWarnings("unchecked")
+		public static List<Prestamos> PrestamosByIdCliente(Integer id){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("FROM Prestamos where idCliente ='" + id +"' and fecha_baja is null order by fecha desc" );		 	  
+		 	  prestamos = q.list();
+			 System.out.println("PRESTAMOS-------------------" + prestamos);
+			 ConfigHibernet.commitSession(session);
+			 return prestamos;
+	}
+	 
+	 
+	 
+	 
+	 
+	
 	
 }
