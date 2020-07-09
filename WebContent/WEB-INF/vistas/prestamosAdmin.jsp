@@ -35,6 +35,7 @@
 							<table class="table">
 							  <thead>
 							    <tr>
+							    <th scope="col">Cliente</th>
 							      <th scope="col">Solicitado</th>
 							      <th scope="col">Monto</th>
 							      <th scope="col">Cuotas</th>
@@ -50,6 +51,17 @@
 							  <tbody>
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
 							    <tr>
+							      
+							      
+							       <c:forEach var="cliente" items="${ cliente }">
+								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
+								     <td>${cliente.nombre}  ${cliente.apellido}</td>
+								     </c:if>
+								     </c:forEach>
+					
+							   
+							      
+							      
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
  									<td> ${prestamos_cliente.cuotas}</td>

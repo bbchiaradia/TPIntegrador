@@ -68,7 +68,7 @@ public class prestamosController {
 		
 		*/
 		
-		
+		MV.addObject("cliente",clientesService.getClientes());
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
 		MV.addObject("prestamos_cliente", prestamosService.PrestamosAll());
 		MV.addObject("estado_prestamo", estadosService.getEstados());
