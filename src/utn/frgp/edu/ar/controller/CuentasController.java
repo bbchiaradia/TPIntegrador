@@ -53,11 +53,15 @@ public class CuentasController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("redireccionar_detalle_cuenta.html")
 	public String eventoRedireccionar_detalle_cuenta(ModelMap modelMap, Integer id) {
-      modelMap.addAttribute("detalleCuenta", cuentasService.cuentaById(id));		   
+      
+		modelMap.addAttribute("detalleCuenta", cuentasService.cuentaById(id));		   
+       
       List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
       modelMap.addAttribute("tiposcuenta",tp);
       
       modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
+      
+      
       modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
       

@@ -112,9 +112,18 @@
 							      <td>$CA-123456789</td>
 							      <td>Aprobado</td>
 							      <td>
-							      <button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Ver préstamo"> 
-									<i class="fa fa-eye" aria-hidden="true"></i> 
-									</button>	
+							      
+							     
+							     <form method="get" class="frmBoton" action="redireccionar_cuotas_detalle.html">
+						 			 <input type="hidden" name="id" >
+										<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Revisar Cuotas">
+										<i class="fa fa-eye" aria-hidden="true"> </i> Cuotas
+										</button>
+								</form>
+								
+							 
+							     
+							     
 							      </td>
 							    </tr>
 							  </tbody>
