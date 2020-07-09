@@ -17,70 +17,7 @@
     <%@ include file="nav.html"%>
     <div class="container">
     <p>${cuentas}</p>
-    
-    <!-- solicitud de prestamos -->
-    <container>
-    <div class="row animate__animated animate__fadeIn">
-    	   <div class="col-md-12">
-    	   <div class="card mt-4">
-        	 <div class="card-header">
-   				 Solicitudes de préstamos
- 			 </div>  
- 			 <div class="card-body">
-				<div class="row">
-					<div class="col-md-12">
-					<div class="row">
-
-						<div class="col-md-4 offset-md-2">
-					 	<div class="form-group">
-						    <label for="montoPrestamo">Monto:</label>
-						   <input type="number" min="5000" max="1000000" class="form-control" id="montoTransfer" placeholder="Monto a solicitar">
-						   <input hidden name="idCliente" id="idCliente" value="${idlogin}"  >
-						  </div>
-					 	</div>
-
-					<div class="col-md-4">
-					 	<div class="form-group">
-						    <label for="cuentaOrigen">Plazo:</label>
-						   <select class="form-control" id="plazoPrestamo">
-						      <option value="3" selected>3 meses</option>
-						      <option value="6">6 meses</option>
-						      <option value="9">9 meses</option>
-						      <option value="12">12 meses</option>
-						      <option value="18">18 meses</option>
-						      <option value="24">24 meses</option>
-						    </select>
-						  </div>
-					 	</div>
-
-					</div>
-					
-					<div class="row">
-					<div class="col-md-8 offset-md-2">
-					<div class="form-group">
-						    <label for="cuentaDestino">Cuenta de destino:</label>
-						    <select class="form-control" id="cuentaDestino">
-						      <option value='-1'>[ Seleccione una cuenta de destino ]</option>
-						     <c:forEach var="cuenta" items="${ cuentas }">
-						      <option value="${cuenta.idCuenta}">  ${cuenta.nroCta} - Saldo: $ ${cuenta.saldo} </option>
-						    </c:forEach>
-						    </select>
-						  </div>
-					</div>
-					</div>
-					<hr>
-					
-					
-					</div>
-				</div>
-				</div>
- 			 </div> 
-    	   </div>
-    </div>
-    <div class="row mt-3 px-4 justify-content-end">
-    <button id="btnSubmit" class="btn btn-sm btn-primary" onclick="pedirPrestamo();" disabled role="button">Solicitar préstamo</button>
-    </div>
-    </container>
+   
     
 	    <!-- historial de prestamos -->
 	    <container>
@@ -98,10 +35,13 @@
 							<table class="table">
 							  <thead>
 							    <tr>
+							    <th scope="col">Cliente</th>
 							      <th scope="col">Solicitado</th>
 							      <th scope="col">Monto</th>
-							      <th scope="col">Cuenta destino</th>
+							      <th scope="col">Cuotas</th>
+							     <th scope="col">Cuenta destino</th>
 							      <th scope="col">Estado</th>
+							       <th scope="col" class="text-center">Accion</th>
 							     
 							    </tr>
 							  </thead>
@@ -111,19 +51,45 @@
 							  <tbody>
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
 							    <tr>
-							      <td>${prestamos_cliente.fecha}</td>
-							      <td>$ ${prestamos_cliente.importe}</td>
-
-									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
-								     <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
-								    		<c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }">
-								            <c:if test="${movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta }">
-								    		   <td>${cuenta_movimientos_prestamos_cliente.nroCta}</td>
-										    </c:if>
-										    </c:forEach>
+							      
+							       <c:forEach var="cliente" items="${ cliente }">
+								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
+								     <td>${cliente.nombre}  ${cliente.apellido}</td>
 								     </c:if>
 								     </c:forEach>
-		
+					
+							   
+							      
+							      
+							      <td>${prestamos_cliente.fecha}</td>
+							      <td>$ ${prestamos_cliente.importe}</td>
+ 									<td> ${prestamos_cliente.cuotas}</td>
+ 									
+ 									
+ 									 <c:forEach var="cliente" items="${ cliente }">
+								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
+								    
+								     <td>
+								     <select class="form-control" id="cuentaDestino" required name="cuentaDestino">
+								     <c:forEach var="cuentas" items="${ cuentas }">
+				  					
+				  					
+				  					<option value="${cuentas.idCuenta}">  ${cuentas.nroCta} - Saldo: $ ${cuentas.saldo} </option>
+				  					
+				 
+									
+									 </c:forEach> 
+								    </select>
+								    </td>
+								    
+								    
+								     </c:if>
+								     </c:forEach>
+ 									
+ 									
+ 							
+						    
+						    
 		
 								 <c:forEach var="estado_prestamo" items="${ estado_prestamo }">
 							     <c:if test="${prestamos_cliente.getIdEstado().getIdEstado() == estado_prestamo.idEstado }">
@@ -133,10 +99,19 @@
 							     
 
 							      <td>
-							     <form method="get" class="frmBoton" action="redireccionar_cuotas_detalle.html">
-						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
-										<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Revisar Cuotas">
-										<i class="fa fa-eye" aria-hidden="true"> </i> Cuotas
+							     <form method="get" class="frmBoton" >
+						 			 <input type="hidden" name="idCuota" ">
+										<button class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="top" title="Aprobar">
+										<i class="fas fa-thumbs-up" aria-hidden="true"> </i> Aprobar
+										</button>
+								</form>
+							      </td>
+							      
+							        <td>
+							     <form method="get" class="frmBoton" >
+						 			 <input type="hidden" name="idCuota" ">
+										<button class="btn btn-sm btn-danger mr-1"  data-toggle="tooltip" data-placement="top" title="Rechazar">
+										<i class="fas fa-thumbs-down" aria-hidden="true"> </i> Rechazar
 										</button>
 								</form>
 							      </td>

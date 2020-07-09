@@ -42,9 +42,7 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 	@JoinColumn(name="idMovimiento")
     private Movimientos idMovimiento;
 	
-    
-    @Column(name="idEstado")
-   	private int idEstado;
+ 
     
     @Column(name="fecha")
    	private Date fecha;
@@ -68,20 +66,22 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
     
     ////////
 	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="id_estado")
-	private Estados id_estado;
+	@JoinColumn(name="idEstado")
+	private Estados idEstado;
 
-	public Estados getId_estado() {
-		return id_estado;
-	}
+
 	
-	public void setId_estado(Estados estado) {
-		this.id_estado = estado;
+	public Estados getIdEstado() {
+		return idEstado;
 	}
-	
+
+	public void setIdEstado(Estados idEstado) {
+		this.idEstado = idEstado;
+	}
+
 	////
 	 @OneToMany(cascade= {CascadeType.ALL})
-	 @JoinColumn(name = "id_prestamo")
+	 @JoinColumn(name = "idPrestamo")
 	 private List<Cuotas> listaCuotas = new ArrayList<Cuotas>();
 	 
 	 
@@ -122,13 +122,7 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 		this.idMovimiento = idMovimiento;
 	}
 
-	public int getIdEstado() {
-		return idEstado;
-	}
-
-	public void setIdEstado(int idEstado) {
-		this.idEstado = idEstado;
-	}
+	
 
 	public Date getFecha() {
 		return fecha;

@@ -81,7 +81,12 @@ public class Cuentas implements Serializable{
 	private void setIdCliente(Clientes cli) {
 		this.idCliente = cli;
 	}
+	
+	
     
+	public void setIdCuenta(int idCuenta) {
+		this.idCuenta = idCuenta;
+	}
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="id_TipoCuenta")
 	private TipoCuenta id_TipoCuenta;

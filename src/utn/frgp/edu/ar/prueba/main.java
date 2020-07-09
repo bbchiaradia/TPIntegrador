@@ -42,12 +42,12 @@ public class main {
        
         
         // carga provincias
-        Provincias provincia1  = new Provincias(1,"Ciudad Autónoma de Buenos Aires (CABA)");
+        Provincias provincia1  = new Provincias(1,"Ciudad Autonoma de Buenos Aires (CABA)");
         Provincias provincia2  = new Provincias(2,"Buenos Aires");
         Provincias provincia3  = new Provincias(3,"Catamarca");
-        Provincias provincia4  = new Provincias(4,"Córdoba");
+        Provincias provincia4  = new Provincias(4,"Cordoba");
         Provincias provincia5  = new Provincias(5,"Corrientes");
-        Provincias provincia6  = new Provincias(6,"Entre Ríos");
+        Provincias provincia6  = new Provincias(6,"Entre Rios");
         Provincias provincia7  = new Provincias(7,"Jujuy");
         Provincias provincia8  = new Provincias(8,"Mendoza");
         Provincias provincia9  = new Provincias(9,"La Rioja");
@@ -56,14 +56,14 @@ public class main {
         Provincias provincia12 = new Provincias(12,"San Luis");
         Provincias provincia13 = new Provincias(13,"Santa Fe");
         Provincias provincia14 = new Provincias(14,"Santiago del Estero");
-        Provincias provincia15 = new Provincias(15,"Tucumán");
+        Provincias provincia15 = new Provincias(15,"Tucuman");
         Provincias provincia16 = new Provincias(16,"Chaco");
         Provincias provincia17 = new Provincias(17,"Chubut");
         Provincias provincia18 = new Provincias(18,"Formosa");
         Provincias provincia19 = new Provincias(19,"Misiones");
-        Provincias provincia20 = new Provincias(20,"Neuquén");
+        Provincias provincia20 = new Provincias(20,"Neuquen");
         Provincias provincia21 = new Provincias(21,"La Pampa");
-        Provincias provincia22 = new Provincias(22,"Río Negro");
+        Provincias provincia22 = new Provincias(22,"Rio Negro");
         Provincias provincia23 = new Provincias(23,"Santa Cruz");
         Provincias provincia24 = new Provincias(24,"Tierra del Fuego");
         session.save(provincia1); 
@@ -540,7 +540,7 @@ public class main {
         tipo1.setEstado(1);
         session.save(tipo1);
         TipoCuenta tipo2=new TipoCuenta();
-        tipo2.setDescripcion("Caja de ahorro en d�lares");
+        tipo2.setDescripcion("Caja de ahorro en dolares");
         tipo2.setEstado(1);
         session.save(tipo2);
         TipoCuenta tipo3=new TipoCuenta();
@@ -552,7 +552,7 @@ public class main {
         tipo4.setEstado(1);
         session.save(tipo4);
         TipoCuenta tipo5=new TipoCuenta();
-        tipo5.setDescripcion("Cuenta corriente especial en d�lares");
+        tipo5.setDescripcion("Cuenta corriente especial en dolares");
         tipo5.setEstado(1);
         session.save(tipo5);
         
@@ -570,46 +570,46 @@ public class main {
         
         
         //Cargo datos en cuentas
-        Cuentas cuenta=new Cuentas(cliente,591661,"111111",5000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        Cuentas cuenta=new Cuentas(cliente,591661,"111111",5000,null,Calendar.getInstance().getTime(),tipo1);
         session.save(cuenta);
-        Cuentas cuenta1=new Cuentas(cliente1,561661,"222222",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo3);
+        Cuentas cuenta1=new Cuentas(cliente1,561661,"222222",10000,null,Calendar.getInstance().getTime(),tipo3);
         session.save(cuenta1);
-        Cuentas cuenta2=new Cuentas(cliente2,461661,"333333",50000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        Cuentas cuenta2=new Cuentas(cliente2,461661,"333333",50000,null,Calendar.getInstance().getTime(),tipo1);
         session.save(cuenta2);
-        Cuentas cuenta3=new Cuentas(cliente3,361661,"444444",1000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta3=new Cuentas(cliente3,361661,"444444",1000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta3);
-        Cuentas cuenta4=new Cuentas(cliente4,261661,"555555",2000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo3);
+        Cuentas cuenta4=new Cuentas(cliente4,261661,"555555",2000,null,Calendar.getInstance().getTime(),tipo3);
         session.save(cuenta4);
-        Cuentas cuenta5=new Cuentas(cliente5,161661,"666666",500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta5=new Cuentas(cliente5,161661,"666666",500,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta5);
-        Cuentas cuenta6=new Cuentas(cliente6,661661,"777777",1500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta6=new Cuentas(cliente6,661661,"777777",1500,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta6);
-        Cuentas cuenta7=new Cuentas(cliente7,761661,"888888",5600,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        Cuentas cuenta7=new Cuentas(cliente7,761661,"888888",5600,null,Calendar.getInstance().getTime(),tipo4);
         session.save(cuenta7);
-        Cuentas cuenta8=new Cuentas(cliente8,861661,"999999",6000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo5);
+        Cuentas cuenta8=new Cuentas(cliente8,861661,"999999",6000,null,Calendar.getInstance().getTime(),tipo5);
         session.save(cuenta8);
-        Cuentas cuenta9=new Cuentas(cliente9,961661,"101010",800,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo4);
+        Cuentas cuenta9=new Cuentas(cliente9,961661,"101010",800,null,Calendar.getInstance().getTime(),tipo4);
         session.save(cuenta9);
        
-        Cuentas cuenta10=new Cuentas(cliente9,296166155,"1010102",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta10=new Cuentas(cliente9,296166155,"1010102",10000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta10);
-        Cuentas cuenta11=new Cuentas(cliente1,2561661,"1222222",10000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta11=new Cuentas(cliente1,2561661,"1222222",10000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta11);
-        Cuentas cuenta12=new Cuentas(cliente2,2461661,"3333332",50000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta12=new Cuentas(cliente2,2461661,"3333332",50000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta12);
-        Cuentas cuenta13=new Cuentas(cliente3,2361661,"4444442",1000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        Cuentas cuenta13=new Cuentas(cliente3,2361661,"4444442",1000,null,Calendar.getInstance().getTime(),tipo1);
         session.save(cuenta13);
-        Cuentas cuenta14=new Cuentas(cliente4,2261661,"5555552",2000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta14=new Cuentas(cliente4,2261661,"5555552",2000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta14);
-        Cuentas cuenta15=new Cuentas(cliente5,2161661,"6666662",500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        Cuentas cuenta15=new Cuentas(cliente5,2161661,"6666662",500,null,Calendar.getInstance().getTime(),tipo1);
         session.save(cuenta15);
-        Cuentas cuenta16=new Cuentas(cliente6,2661661,"7777772",1500,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo1);
+        Cuentas cuenta16=new Cuentas(cliente6,2661661,"7777772",1500,null,Calendar.getInstance().getTime(),tipo1);
         session.save(cuenta16);
-        Cuentas cuenta17=new Cuentas(cliente7,2761661,"8888882",5600,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta17=new Cuentas(cliente7,2761661,"8888882",5600,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta17);
-        Cuentas cuenta18=new Cuentas(cliente8,2861661,"9999992",6000,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta18=new Cuentas(cliente8,2861661,"9999992",6000,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta18);
-        Cuentas cuenta19=new Cuentas(cliente9,2961661,"1010102",800,Calendar.getInstance().getTime(),Calendar.getInstance().getTime(),tipo2);
+        Cuentas cuenta19=new Cuentas(cliente9,2961661,"1010102",800,null,Calendar.getInstance().getTime(),tipo2);
         session.save(cuenta19);
         
         
@@ -619,10 +619,9 @@ public class main {
         //Cargo datos en prestamos y movimientos
         Prestamos prestamo=new Prestamos();
         prestamo.setIdCliente(cliente);
-        prestamo.setId_estado(estado1);
+        prestamo.setIdEstado(estado1);
         prestamo.setFecha(Calendar.getInstance().getTime());
         prestamo.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo.setFecha_baja(Calendar.getInstance().getTime());
         prestamo.setImporte(15000);
         prestamo.setCuotas(6);
         Movimientos movimiento=new Movimientos(Calendar.getInstance().getTime(),con2,15000);
@@ -653,10 +652,9 @@ public class main {
 		
 		Prestamos prestamo2=new Prestamos();
         prestamo2.setIdCliente(cliente1);
-        prestamo2.setId_estado(estado1);
+        prestamo2.setIdEstado(estado1);
         prestamo2.setFecha(Calendar.getInstance().getTime());
         prestamo2.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo2.setFecha_baja(Calendar.getInstance().getTime());
         prestamo2.setImporte(150000);
         prestamo2.setCuotas(3);
         Movimientos movimiento2=new Movimientos(Calendar.getInstance().getTime(),con2,150000);
@@ -680,10 +678,9 @@ public class main {
 		
 		Prestamos prestamo3=new Prestamos();
         prestamo3.setIdCliente(cliente2);
-        prestamo3.setId_estado(estado1);
+        prestamo3.setIdEstado(estado1);
         prestamo3.setFecha(Calendar.getInstance().getTime());
         prestamo3.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo3.setFecha_baja(Calendar.getInstance().getTime());
         prestamo3.setImporte(5000);
         prestamo3.setCuotas(4);
         Movimientos movimiento3=new Movimientos(Calendar.getInstance().getTime(),con2,5000);
@@ -709,10 +706,9 @@ public class main {
 		
 		Prestamos prestamo4=new Prestamos();
         prestamo4.setIdCliente(cliente3);
-        prestamo4.setId_estado(estado1);
+        prestamo4.setIdEstado(estado1);
         prestamo4.setFecha(Calendar.getInstance().getTime());
         prestamo4.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo4.setFecha_baja(Calendar.getInstance().getTime());
         prestamo4.setImporte(25000);
         prestamo4.setCuotas(2);
         Movimientos movimiento4=new Movimientos(Calendar.getInstance().getTime(),con2,25000);
@@ -735,10 +731,9 @@ public class main {
 		
 		Prestamos prestamo5=new Prestamos();
         prestamo5.setIdCliente(cliente4);
-        prestamo5.setId_estado(estado1);
+        prestamo5.setIdEstado(estado1);
         prestamo5.setFecha(Calendar.getInstance().getTime());
         prestamo5.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo5.setFecha_baja(Calendar.getInstance().getTime());
         prestamo5.setImporte(45000);
         prestamo5.setCuotas(3);
         Movimientos movimiento5=new Movimientos(Calendar.getInstance().getTime(),con2,45000);
@@ -762,10 +757,9 @@ public class main {
 		
 		Prestamos prestamo7=new Prestamos();
         prestamo7.setIdCliente(cliente5);
-        prestamo7.setId_estado(estado2);
+        prestamo7.setIdEstado(estado2);
         prestamo7.setFecha(Calendar.getInstance().getTime());
         prestamo7.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo7.setFecha_baja(Calendar.getInstance().getTime());
         prestamo7.setImporte(10000);
         prestamo7.setCuotas(2);
         Movimientos movimiento7=new Movimientos(Calendar.getInstance().getTime(),con2,10000);
@@ -788,10 +782,9 @@ public class main {
 		
 		Prestamos prestamo8=new Prestamos();
         prestamo8.setIdCliente(cliente6);
-        prestamo8.setId_estado(estado3);
+        prestamo8.setIdEstado(estado3);
         prestamo8.setFecha(Calendar.getInstance().getTime());
         prestamo8.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo8.setFecha_baja(Calendar.getInstance().getTime());
         prestamo8.setImporte(7800);
         prestamo8.setCuotas(3);
         Movimientos movimiento8=new Movimientos(Calendar.getInstance().getTime(),con2,7800);
@@ -814,10 +807,9 @@ public class main {
 		
 		Prestamos prestamo9=new Prestamos();
         prestamo9.setIdCliente(cliente8);
-        prestamo9.setId_estado(estado1);
+        prestamo9.setIdEstado(estado1);
         prestamo9.setFecha(Calendar.getInstance().getTime());
         prestamo9.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo9.setFecha_baja(Calendar.getInstance().getTime());
         prestamo9.setImporte(7900);
         prestamo9.setCuotas(3);
         Movimientos movimiento9=new Movimientos(Calendar.getInstance().getTime(),con2,7900);
@@ -840,10 +832,9 @@ public class main {
 		
 		Prestamos prestamo10=new Prestamos();
         prestamo10.setIdCliente(cliente7);
-        prestamo10.setId_estado(estado1);
+        prestamo10.setIdEstado(estado1);
         prestamo10.setFecha(Calendar.getInstance().getTime());
         prestamo10.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo10.setFecha_baja(Calendar.getInstance().getTime());
         prestamo10.setImporte(1500);
         prestamo10.setCuotas(1);
         Movimientos movimiento10=new Movimientos(Calendar.getInstance().getTime(),con2,1500);
@@ -864,10 +855,9 @@ public class main {
 		
 		Prestamos prestamo11=new Prestamos();
         prestamo11.setIdCliente(cliente9);
-        prestamo11.setId_estado(estado1);
+        prestamo11.setIdEstado(estado1);
         prestamo11.setFecha(Calendar.getInstance().getTime());
         prestamo11.setFecha_alta(Calendar.getInstance().getTime());
-        prestamo11.setFecha_baja(Calendar.getInstance().getTime());
         prestamo11.setImporte(100);
         prestamo11.setCuotas(3);
         
@@ -879,8 +869,7 @@ public class main {
         prestamo11.setIdMovimiento(movimiento11);
         session.save(movimiento11);
         session.save(prestamo11);
-        
-
+       
       
 
         //Transferencias
@@ -890,7 +879,6 @@ public class main {
               transferencia1.setCbu_destino(561661);
               transferencia1.setMonto(100);
               transferencia1.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia1.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento12=new Movimientos(Calendar.getInstance().getTime(),con4,-100);
               ArrayList<Movimientos> listaMov12 = new ArrayList<Movimientos>();
@@ -919,7 +907,6 @@ public class main {
               transferencia2.setCbu_destino( 461661 );
               transferencia2.setMonto(500);
               transferencia2.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia2.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento14=new Movimientos(Calendar.getInstance().getTime(),con4,-500);
               ArrayList<Movimientos> listaMov14 = new ArrayList<Movimientos>();
@@ -948,7 +935,6 @@ public class main {
               transferencia3.setCbu_destino( 361661 );
               transferencia3.setMonto(3200);
               transferencia3.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia3.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento16=new Movimientos(Calendar.getInstance().getTime(),con4,-3200);
               ArrayList<Movimientos> listaMov16 = new ArrayList<Movimientos>();
@@ -977,7 +963,6 @@ public class main {
               transferencia4.setCbu_destino( 261661 );
               transferencia4.setMonto(2221);
               transferencia4.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia4.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento18=new Movimientos(Calendar.getInstance().getTime(),con4,-2221);
               ArrayList<Movimientos> listaMov18 = new ArrayList<Movimientos>();
@@ -1008,7 +993,6 @@ public class main {
               transferencia5.setCbu_destino( 161661 );
               transferencia5.setMonto(4123);
               transferencia5.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia5.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento20=new Movimientos(Calendar.getInstance().getTime(),con4,-4123);
               ArrayList<Movimientos> listaMov20 = new ArrayList<Movimientos>();
@@ -1038,7 +1022,6 @@ public class main {
               transferencia6.setCbu_destino( 661661 );
               transferencia6.setMonto(2211);
               transferencia6.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia6.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento22=new Movimientos(Calendar.getInstance().getTime(),con4,-2211);
               ArrayList<Movimientos> listaMov22 = new ArrayList<Movimientos>();
@@ -1067,7 +1050,6 @@ public class main {
               transferencia7.setCbu_destino( 761661 );
               transferencia7.setMonto(85);
               transferencia7.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia7.setFecha_baja(Calendar.getInstance().getTime());
               //debito de origen
               Movimientos movimiento24=new Movimientos(Calendar.getInstance().getTime(),con4,-85);
               ArrayList<Movimientos> listaMov24 = new ArrayList<Movimientos>();
@@ -1097,7 +1079,7 @@ public class main {
               transferencia8.setCbu_destino( 861661 );
               transferencia8.setMonto(85);
               transferencia8.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia8.setFecha_baja(Calendar.getInstance().getTime());
+ 
               //debito de origen
               Movimientos movimiento26=new Movimientos(Calendar.getInstance().getTime(),con4,-85);
               ArrayList<Movimientos> listaMov26 = new ArrayList<Movimientos>();
@@ -1126,7 +1108,7 @@ public class main {
               transferencia9.setCbu_destino(591661);
               transferencia9.setMonto(3225);
               transferencia9.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia9.setFecha_baja(Calendar.getInstance().getTime());
+    
               //debito de origen
               Movimientos movimiento28=new Movimientos(Calendar.getInstance().getTime(),con4,-3225);
               ArrayList<Movimientos> listaMov28 = new ArrayList<Movimientos>();
@@ -1154,7 +1136,7 @@ public class main {
               transferencia10.setCbu_destino( 261661 );
               transferencia10.setMonto(3225);
               transferencia10.setFecha_alta(Calendar.getInstance().getTime());
-              transferencia10.setFecha_baja(Calendar.getInstance().getTime());
+
               //debito de origen
               Movimientos movimiento30=new Movimientos(Calendar.getInstance().getTime(),con4,-3225);
               ArrayList<Movimientos> listaMov30 = new ArrayList<Movimientos>();

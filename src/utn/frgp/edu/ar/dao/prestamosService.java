@@ -3,6 +3,7 @@ package utn.frgp.edu.ar.dao;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class prestamosService {
 	@Autowired
 	 private static List<Prestamos> prestamos;
 	
+
+	
 	@Autowired
 	 private static Prestamos prestamo = new Prestamos();
 	
@@ -26,7 +29,7 @@ public class prestamosService {
 		prestamo.setIdCliente( clientesService.getClienteId(idcliente) );
 		prestamo.setImporte(importe);
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
-		prestamo.setId_estado(estadosService.getEstadoById(3));
+		prestamo.setIdEstado(estadosService.getEstadoById(3));
 		prestamo.setPlazo_meses(plazo);
 
 		Movimientos movimiento = new Movimientos();
@@ -49,5 +52,32 @@ public class prestamosService {
 		}
 			
 	}
+	
+	
+	 @SuppressWarnings("unchecked")
+		public static List<Prestamos> PrestamosByIdCliente(Integer id){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("FROM Prestamos where idCliente ='" + id +"' and fecha_baja is null order by fecha desc" );		 	  
+		 	  prestamos = q.list();
+			 System.out.println("PRESTAMOS-------------------" + prestamos);
+			 ConfigHibernet.commitSession(session);
+			 return prestamos;
+	}
+	 
+	 
+	 
+	 
+	 
+	 @SuppressWarnings("unchecked")
+		public static List<Prestamos> PrestamosAll(){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("FROM Prestamos where fecha_baja is null and idEstado= 3 order by fecha desc" );		 	  
+		 	  prestamos = q.list();
+			 System.out.println("PRESTAMOS-------------------" + prestamos);
+			 ConfigHibernet.commitSession(session);
+			 return prestamos;
+	}
+	 
+	
 	
 }
