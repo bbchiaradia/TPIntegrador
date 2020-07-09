@@ -48,6 +48,40 @@ public class prestamosController {
 		
 	}
 	
+	
+	
+	@RequestMapping("redireccionar_prestamos_admin.html")
+	public ModelAndView eventoRedireccionar_prestamos_admin() {
+		
+		
+		ModelAndView MV= new ModelAndView();
+		
+		/*
+		System.out.println( "linea 18" + clientesService.getClienteLogueado());
+		
+		MV.addObject("idlogin", clientesService.getClienteLogueado().getIdCliente());
+		
+	
+		MV.addObject("movimientos_prestamos_cliente", movimientosService.MovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		MV.addObject("cuenta_movimientos_prestamos_cliente", cuentasService.CuentasMovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		
+		
+		*/
+		
+		
+		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
+		MV.addObject("prestamos_cliente", prestamosService.PrestamosAll());
+		MV.addObject("estado_prestamo", estadosService.getEstados());
+		
+		  MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		  MV.addObject("rol", usuariosService.RolUsuarioLogueado());
+		
+		  MV.setViewName("prestamosAdmin");
+		return MV;
+		
+	}
+	
+	
 	@RequestMapping( value= "pedirprestamo", method = RequestMethod.POST )
 	@ResponseBody
 	public String pedirPrestamo(HttpServletRequest request) {

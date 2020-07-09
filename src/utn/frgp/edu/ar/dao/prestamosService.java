@@ -68,6 +68,16 @@ public class prestamosService {
 	 
 	 
 	 
+	 @SuppressWarnings("unchecked")
+		public static List<Prestamos> PrestamosAll(){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("FROM Prestamos where fecha_baja is null and idEstado= 3 order by fecha desc" );		 	  
+		 	  prestamos = q.list();
+			 System.out.println("PRESTAMOS-------------------" + prestamos);
+			 ConfigHibernet.commitSession(session);
+			 return prestamos;
+	}
+	 
 	
 	
 }
