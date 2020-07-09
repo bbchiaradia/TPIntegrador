@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,6 +23,10 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
+    
+    <p> cuentas
+    ${ cuentascliente }
+    </p>
     
     <!-- detalle de cuenta -->
     <container>
@@ -50,9 +55,12 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaOrigen">Cuenta de origen:</label>
-						    <select class="form-control" id="cuentaOrigen">
-						      <option>1</option>
-						      <option>2</option>
+						    <select class="form-control" id="cuentaOrigenProp">
+						      <c:forEach var="cuenta" items="${ cuentascliente }">
+			  					<option id="cta_op_${cuenta.idCuenta} " attr-monto="${cuenta.saldo}"  value= "${ cuenta.idCuenta }">
+			  					${ cuenta.getTipocuenta().descripcion } - $${cuenta.saldo} 
+			  					</option>
+								</c:forEach>	
 						    </select>
 						  </div>
 					 	</div>
@@ -60,9 +68,10 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaDestino">Cuenta de destino:</label>
-						    <select class="form-control" id="cuentaDestino">
-						      <option>1</option>
-						      <option>2</option>
+						    <select class="form-control" id="cuentaDestinoProp">
+						      <c:forEach var="cuenta" items="${ cuentascliente }">
+			  					<option id="cta_dp_${cuenta.idCuenta} "  value= "${ cuenta.idCuenta }">${ cuenta.getTipocuenta().descripcion } - $${cuenta.saldo} </option>
+								</c:forEach>
 						    </select>
 						  </div>
 					 	</div>
@@ -76,7 +85,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Transferir</button>
+					 	onclick="confirmarTransferencia();">Transferir</button>
 					 	</div>
 					  </div>
 					  
@@ -129,5 +138,43 @@
     </container>
 
 <%@ include file="foot.html"%>
+    <script>
+    $(document).ready(function() {
+
+        
+    	
+    });
+    
+
+    function confirmarTransferencia(  ){
+    	if(document.getElementById('montoTransfer').value == null || document.getElementById('montoTransfer').value =='' || document.getElementById('montoTransfer').value == 0){
+    		alert('Indique el monto a transferir');
+    		return;
+    	}
+    	else if(document.getElementById('montoTransfer').value < 0 ){
+    		alert('El monto no puede ser negativo');
+    		return;
+    	}
+ 	   let c = confirm(" Desea realizar la transferencia por el monto de $"+ document.getElementById('montoTransfer').value +"? ");
+ 	   
+ 	   if(c){
+ 			
+ 		  $.ajax({
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/transferCuentasPropias.html',
+		        type: 'POST',
+		        data: {
+		        	ctaorigen: document.getElementById('cuentaOrigenProp').value,
+		        	ctadestino: document.getElementById('cuentaDestinoProp').value,
+		        	monto: document.getElementById('montoTransfer').value
+		        },
+		        success: function (data) {
+					console.log(data);
+		        }
+		      });
+ 		   
+ 	   }
+ 	   return;
+    }
+  </script>
   </body>
 </html>

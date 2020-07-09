@@ -25,25 +25,7 @@ public class PaginaController {
 		MV.setViewName("login");
 		return MV;
 	}
-	
-	
-	
-	
-	
-
-	
-
-	
-	
-	@RequestMapping("redireccionar_transferencias.html")
-	public ModelAndView eventoRedireccionar_trasnferencias() {
 		
-		ModelAndView MV= new ModelAndView();
-		MV.setViewName("transferencias");
-		return MV;
-		
-	}
-	
 	
 	@RequestMapping("redireccionar_formclientes.html")
 	public ModelAndView eventoRedireccionar_formclientes() {
