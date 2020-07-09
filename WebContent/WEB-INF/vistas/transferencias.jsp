@@ -94,9 +94,12 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaOrigen">Cuenta de origen:</label>
-						    <select class="form-control" id="cuentaOrigen">
-						      <option>1</option>
-						      <option>2</option>
+						    <select class="form-control" id="cuentaOrigenOtros">
+						       <c:forEach var="cuenta" items="${ cuentascliente }">
+			  					<option id="cta_od_${cuenta.idCuenta} " attr-monto="${cuenta.saldo}"  value= "${ cuenta.idCuenta }">
+			  					${ cuenta.getTipocuenta().descripcion } - $${cuenta.saldo} 
+			  					</option>
+								</c:forEach>
 						    </select>
 						  </div>
 					 	</div>
@@ -104,24 +107,27 @@
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="cuentaDestino">Cuenta de destino:</label>
-						    <input type="text" class="form-control" id="montoTransfer" placeholder="Ingrese el CBU o Alias">
+						    <input type="text" class="form-control" onkeyup="buscarCuenta(event);" id="cuentaDestinoOtros" placeholder="Ingrese el CBU o Alias">
 						  </div>
-						  <div id="detCtaDestino" style="">
-						  <p>Titular: Bojack Horseman</p>
-						  <p>CUIT: 20223344558</p>
+						  
+						  <div id="detCtaDestino" style="border-radius:10px;background: rgba(10,135,22,0.2);padding: 1%; display:none">
+							  <p id="det_nom_dest"></p>
+							  <p id="det_tc_dest"></p>
+							  <p id="det_doc_dest"></p>
 						  </div>
+
 					 	</div>
 					 	
 					 	<div class="col-md-4">
 					 	<div class="form-group">
 						    <label for="montoTransfer">Monto:</label>
-						   <input type="number" class="form-control" id="montoTransfer" placeholder="Monto a transferir">
+						   <input type="number" class="form-control" id="montoTransferOtros" placeholder="Monto a transferir">
 						  </div>
 					 	</div>
 					 	</div>
 					 	<div class="row justify-content-end px-4">
-					 	<button class="btn btn-sm btn-primary" role="button" 
-					 	onclick="confirm( 'Desea realizar la transferencia por $129?' );">Transferir</button>
+					 	<button class="btn btn-sm btn-primary" role="button" id="btn-transfer-otras"
+					 	onclick="confirmarTransferenciaOtros();">Transferir</button>
 					 	</div>
 					  </div>
 					</div>
@@ -174,6 +180,70 @@
  		   
  	   }
  	   return;
+    }
+    
+    function confirmarTransferenciaOtros(  ){
+    	if(document.getElementById('montoTransferOtros').value == null || document.getElementById('montoTransferOtros').value =='' || document.getElementById('montoTransferOtros').value == 0){
+    		alert('Indique el monto a transferir');
+    		return;
+    	}
+    	else if(document.getElementById('montoTransferOtros').value < 0 ){
+    		alert('El monto no puede ser negativo');
+    		return;
+    	}
+ 	   let c = confirm(" Desea realizar la transferencia por el monto de $"+ document.getElementById('montoTransferOtros').value +"? ");
+ 	   
+ 	   if(c){
+ 			
+ 		  $.ajax({
+		        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/transferOtrasCuentas.html',
+		        type: 'POST',
+		        data: {
+		        	ctaorigen: document.getElementById('cuentaOrigenOtros').value,
+		        	cbudestino: document.getElementById('cuentaDestinoOtros').value,
+		        	monto: document.getElementById('montoTransferOtros').value
+		        },
+		        success: function (data) {
+					console.log(data);
+		        }
+		      });
+ 		   
+ 	   }
+ 	   return;
+    }
+    
+    function buscarCuenta(e){
+    	let cbu = e.target.value;
+    	if( cbu.length > 5 ){
+    		$.ajax({
+    	        url: '${request.getContextPath()}/TP_L5_GRUPO_7_/detallesByCbu.html',
+    	        type: 'POST',
+    	        data: {
+    	        	cbu: cbu
+    	        },
+    	        success: function (data) {
+    	        	data = JSON.parse(data);
+    	        	console.log(data);
+    	        	console.log(data.nombre_tit);
+    	      	  if( data.status.indexOf("error") > -1  ){
+    	      		document.getElementById('detCtaDestino').style.background = 'rgba(200,10,10,0.25)';
+    	      		document.getElementById('detCtaDestino').style.display = 'block';
+    	      		document.getElementById('det_nom_dest').innerText = "El cbu ingresado no existe";
+    	      		document.getElementById('det_tc_dest').innerText = "";
+    	      		document.getElementById('det_doc_dest').innerText = "";
+    	      		document.getElementById("btn-transfer-otras").disabled = true;
+    	      	  }else{
+    	      		document.getElementById("btn-transfer-otras").disabled = false; 
+    	      		document.getElementById('detCtaDestino').style.background = 'rgba(10,135,22,0.2)';
+    	      		document.getElementById('detCtaDestino').style.display = 'block';
+    	      		document.getElementById('det_nom_dest').innerText = "Titular: " + data.nombre_tit + " " + data.apellido_tit;
+    	      		document.getElementById('det_tc_dest').innerText = data.desc_cuenta;
+    	      		document.getElementById('det_doc_dest').innerText = "DNI: " + data.dni_tit;
+    	      	  }
+    	        }
+    	      });
+    	}
+    	
     }
   </script>
   </body>

@@ -1,7 +1,9 @@
 package utn.frgp.edu.ar.dao;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -22,6 +24,9 @@ public class cuentasService {
 	 private static Session session;
 	@Autowired
 	 private static List<Cuentas> cuentas;
+	
+	@Autowired
+	 private static Cuentas cuenta;
 	
 	@Autowired
 	private static List<TipoCuenta> tiposcuenta;
@@ -119,6 +124,48 @@ public class cuentasService {
 				 ConfigHibernet.commitSession(session);
 				 return cuentas;
 		}
+		 
+		 public static Map<String, String> datosByCbu( String cbu ){
+			 Map<String, String> datos = new HashMap<String, String>();
+			 Cuentas ctad= cuentasService.cuentaByCbu(cbu);
+			 
+			 if(ctad != null) {
+				 datos.put("status", "ok" );
+				 datos.put("nombre_tit", ctad.getIdCliente().getNombre() );
+				 datos.put("apellido_tit", ctad.getIdCliente().getApellido() );
+				 datos.put("dni_tit", String.valueOf(ctad.getIdCliente().getDni()) );
+				 datos.put("desc_cuenta", ctad.getTipocuenta().getDescripcion() );
+			 }else {
+				 datos.put("status", "error" );
+			 }
+			
+			 return datos;
+		 }
+		 
+		 public static String idCtaByCbu( String cbu ){
+			
+			 Cuentas ctad= cuentasService.cuentaByCbu(cbu);
+			 
+			 if(ctad != null) {
+				 return String.valueOf(ctad.getIdCuenta());
+			 }else {
+				return null;
+			 }
+			
+		 }
+		 
+		 public static Cuentas cuentaByCbu( String cbu ) {
+			 try {
+				 session = ConfigHibernet.abrirConexion();
+				 Query q = session.createQuery("from Cuentas where cbu =" + cbu);
+				 cuenta = (Cuentas) q.uniqueResult();
+				 ConfigHibernet.commitSession(session);
+				 return cuenta;
+			 }catch(Exception e) {
+				 ConfigHibernet.rollbackSession(session);
+				 return null;
+			 }
+		 }
 		
 	
 }

@@ -74,11 +74,11 @@ public class Cuentas implements Serializable{
     private Date fecha_alta;
 	
 	///
-	private Clientes getIdCliente() {
+	public Clientes getIdCliente() {
 		return this.idCliente;
 	}
 	
-	private void setIdCliente(Clientes cli) {
+	public void setIdCliente(Clientes cli) {
 		this.idCliente = cli;
 	}
 	
