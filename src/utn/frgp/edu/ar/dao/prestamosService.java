@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Movimientos;
 import utn.frgp.edu.ar.entidad.Prestamos;
 
 @Service
@@ -21,36 +22,32 @@ public class prestamosService {
 	 private static Prestamos prestamo = new Prestamos();
 	
 	public static boolean setPrestamo(Integer idcliente, Integer plazo, Integer importe, String cuentaDestino) {
-		System.out.println( idcliente);
-		System.out.println( plazo);
-		System.out.println( importe);
-		System.out.println( cuentaDestino);
 		
 		prestamo.setIdCliente( clientesService.getClienteId(idcliente) );
 		prestamo.setImporte(importe);
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
 		prestamo.setId_estado(estadosService.getEstadoById(3));
 		prestamo.setPlazo_meses(plazo);
-		System.out.println( prestamo);
-		System.out.println( session);
-		boolean flag = movimientosService.saveMovimiento(2, importe, Integer.parseInt(cuentaDestino));
-		if(flag) {
-			try {
-				session = ConfigHibernet.abrirConexion();
-				session.save(prestamo);
-				session.flush();
-				ConfigHibernet.commitSession(session);
-				return true;
-			}catch(Exception e) {
-				ConfigHibernet.rollbackSession(session);
-				System.out.println("44 prest service");
-				System.out.println(e.getMessage());
-				return false;
-			}
-		}else {
+
+		Movimientos movimiento = new Movimientos();
+		movimiento.setFecha(Calendar.getInstance().getTime());
+		movimiento.setIdConcepto( conceptosService.getConceptosById(2) );
+		movimiento.setImporte( importe );
+		movimiento.setIdCuenta( cuentasService.cuentaById(Integer.parseInt(cuentaDestino)));
+		
+		try {
+			session = ConfigHibernet.abrirConexion();
+			prestamo.setIdMovimiento(movimiento);
+			session.merge(prestamo);
+			session.getTransaction().commit();
+			session.flush();
+			session.close();
+			return true;
+		}catch(Exception e) {
+			ConfigHibernet.rollbackSession(session);
 			return false;
 		}
-		
+			
 	}
 	
 }
