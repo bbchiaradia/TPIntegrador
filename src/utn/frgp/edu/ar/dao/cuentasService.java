@@ -7,8 +7,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Clientes;
 import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.Movimientos;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
@@ -49,6 +51,24 @@ public class cuentasService {
 			 ConfigHibernet.commitSession(session);
 			 return cuentas;
 		}
+
+	 
+		@SuppressWarnings("unchecked")
+		public static List<Cuentas> getCuentas() {
+	    		try {
+	    			session = ConfigHibernet.abrirConexion();
+	 		        cuentas = session.createCriteria(Cuentas.class)
+	  					 .add(Restrictions.isNull("fecha_baja"))
+	  					 .list();
+	 		        ConfigHibernet.commitSession(session);
+	    			return cuentas;
+	    		} catch (DataAccessException e) {
+	    			ConfigHibernet.rollbackSession(session);
+	    			return null;
+	    		}
+	    	
+	        
+	    }
 	 
 
 		public static Cuentas cuentaById(Integer id){

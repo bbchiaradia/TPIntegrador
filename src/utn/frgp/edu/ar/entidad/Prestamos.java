@@ -122,6 +122,7 @@ public class Prestamos implements Serializable {  // Recordar agregar en el Hibe
 		this.idMovimiento = idMovimiento;
 	}
 
+	
 
 	public Date getFecha() {
 		return fecha;

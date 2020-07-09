@@ -52,7 +52,6 @@
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
 							    <tr>
 							      
-							      
 							       <c:forEach var="cliente" items="${ cliente }">
 								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
 								     <td>${cliente.nombre}  ${cliente.apellido}</td>
@@ -65,19 +64,33 @@
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
  									<td> ${prestamos_cliente.cuotas}</td>
-									<td> ${prestamos_cliente.cuotas}</td>
-<!--  
-									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
-								     <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
-								    		<c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }">
-								            <c:if test="${movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta }">
-								    		   <td>${cuenta_movimientos_prestamos_cliente.nroCta}</td>
-										    </c:if>
-										    </c:forEach>
+ 									
+ 									
+ 									 <c:forEach var="cliente" items="${ cliente }">
+								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
+								    
+								     <td>
+								     <select class="form-control" id="cuentaDestino" required name="cuentaDestino">
+								     <c:forEach var="cuentas" items="${ cuentas }">
+				  					
+				  					
+				  					<option value="${cuentas.idCuenta}">  ${cuentas.nroCta} - Saldo: $ ${cuentas.saldo} </option>
+				  					
+				 
+									
+									 </c:forEach> 
+								    </select>
+								    </td>
+								    
+								    
 								     </c:if>
 								     </c:forEach>
+ 									
+ 									
+ 							
+						    
+						    
 		
--->		
 								 <c:forEach var="estado_prestamo" items="${ estado_prestamo }">
 							     <c:if test="${prestamos_cliente.getIdEstado().getIdEstado() == estado_prestamo.idEstado }">
 							      <td>${estado_prestamo.getDescripcion()}</td>

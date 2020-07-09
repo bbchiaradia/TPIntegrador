@@ -54,6 +54,7 @@ public class prestamosController {
 	public ModelAndView eventoRedireccionar_prestamos_admin() {
 		
 		
+		
 		ModelAndView MV= new ModelAndView();
 		
 		/*
@@ -67,7 +68,7 @@ public class prestamosController {
 		
 		
 		*/
-		
+		MV.addObject("cuentas", cuentasService.getCuentas());
 		MV.addObject("cliente",clientesService.getClientes());
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
 		MV.addObject("prestamos_cliente", prestamosService.PrestamosAll());
