@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Cuotas")
@@ -34,7 +36,9 @@ public class Cuotas implements Serializable{
 	@ManyToOne
 	private Prestamos idPrestamo;
 	
+
 	@Column(name="fecha_pago")
+	@Temporal(TemporalType.DATE)
 	private Date fecha_pago;
 
 	public int getIdCuota() {
