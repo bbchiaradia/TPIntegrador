@@ -50,13 +50,42 @@ public class cuentasService {
 	 @SuppressWarnings("unchecked")
 		public static List<Cuentas> cuentasByClientId(Integer id){
 		 session = ConfigHibernet.abrirConexion();
-			//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
 			 Query q = session.createQuery("from Cuentas where idCliente = " + id + " and fecha_baja is null");
 			 cuentas = q.list();
 			 //ConfigHibernet.commitSession(session);
 			 return cuentas;
 		}
+	 
+	 
+	 @SuppressWarnings("unchecked")
+		public static Boolean verificaMontoCuenta(Integer idCuenta, Double monto){
+		 session = ConfigHibernet.abrirConexion();
+		 
+		 System.out.println("ANTES CONSULTA ----------- "+ monto);
+			
+		    Query q = session.createQuery("from Cuentas where idCuenta = " + idCuenta + " and fecha_baja is null");
+			cuentas = q.list();
+			session.getTransaction().commit();
+			 System.out.println("CONSULTA ----------- "+ cuenta);
+			 
+			 if(cuenta.size() == 0) {
+				 return false;
+			 }else {
+				 return true;
+			 }
 
+		}
+
+	 
+	 @SuppressWarnings("unchecked")
+		public static Cuentas cuentasByPrestamoId(Integer id){
+		 session = ConfigHibernet.abrirConexion();
+			 Query q = session.createQuery("SELECT c FROM Prestamos as p, Movimientos as m , Cuentas as c where p.idPrestamo ='" + id +"' and p.idMovimiento = m.idMovimiento and m.idCuenta = c.idCuenta");
+			 cuenta = (Cuentas) q.uniqueResult();
+			 ConfigHibernet.commitSession(session);
+			 return cuenta;
+		}
+	 
 	 
 		@SuppressWarnings("unchecked")
 		public static List<Cuentas> getCuentas() {

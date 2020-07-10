@@ -15,6 +15,7 @@ import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.dao.cuotasService;
 import utn.frgp.edu.ar.dao.prestamosService;
 import utn.frgp.edu.ar.dao.usuariosService;
+import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.Cuotas;
 
 @Controller
@@ -38,6 +39,7 @@ public class CuotasController {
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 	    */
+		modelMap.addAttribute("idPrestamo",idPrestamo);
 		modelMap.addAttribute("cuotas", cuotasService.CuotasByIdPrestamo(idPrestamo));
 		
 		modelMap.addAttribute("monto_cuota", cuotasService.MontoCuotasByIdPrestamo(idPrestamo));
@@ -54,24 +56,35 @@ public class CuotasController {
 	
 	
 	
-	@RequestMapping( value= "redireccionar_pagoCuota", method = RequestMethod.POST )
-	@ResponseBody
-	public String pedirPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idCuota) {
-
-	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("redireccionar_pagoCuota.html")
+	public String redireccionar_pagoCuota(ModelMap modelMap, Integer idCuota, Integer PagarDesde, Double montoCuota ) {
+		
+		Cuentas cuenta= cuentasService.cuentaById(PagarDesde);
+		System.out.println("ANTES IF ----------- "+ montoCuota);
+		
+		if(cuentasService.verificaMontoCuenta(PagarDesde, montoCuota)) {
+			System.out.println("ENTRO AL 1 IF 66 ----------- ");
+			
+			if (cuotasService.PagarCuota(cuenta, montoCuota, idCuota)){
+				System.out.println("ENTRO AL IF 68 ----------- ");
+			 modelMap.addAttribute("msjCuota", "Su pago se registró satisfactoriamente.");
+		    }else {
+		    	System.out.println("NO ENTRO AL IF 72 ----------- ");
+			 modelMap.addAttribute("msjCuota", "Su pago no ha podido ser registrado");
+		    }
+			
+			
+		}
+		
+				
 		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 		System.out.println("CUOTA A PAGAR ----------- "+ idCuota);
 		
-		if (idCuota != 0) {
-			// ACA GUARDAR PAGO DE CUOTA
-			return "true";
-		}
-		else {
-			return "false";
-			}
+        
 
-
+		return "/cuotas_detalle";
 		
 	}
 	
