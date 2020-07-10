@@ -13,7 +13,7 @@
     <container>
    
  <c:if test="${msjCuota != null}">
-<script>alert("${msjCuota}");window.location.replace("redireccionar_cuotas_detalle.html");
+<script>alert("${msjCuota}");window.location.replace("redireccionar_cuotas_detalle.html?idPrestamo=${idPrestamo}");
 </script>
  </c:if>  
    

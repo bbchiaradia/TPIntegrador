@@ -24,7 +24,7 @@ public class CuotasController {
 
 
 	@RequestMapping("redireccionar_cuotas_detalle.html")
-	public ModelAndView eventoRedireccionar_cuotas_detalle(ModelMap modelMap, Integer idPrestamo) {
+	public ModelAndView eventoRedireccionar_cuotas_detalle(Integer idPrestamo) {
 		ModelAndView MV= new ModelAndView();
 		System.out.println("LINEA 18 ACAAA  PRESTAMOS id "+ idPrestamo);
 		MV.addObject("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
