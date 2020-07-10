@@ -66,7 +66,7 @@ public class cuotasService {
 		 	session = ConfigHibernet.abrirConexion(); 	
 		 	Query q = session.createQuery("select importe/cuotas FROM Prestamos where idPrestamo ='" + idPrestamo +"' " );		 	  
 		 	Double valor = (Double) q.uniqueResult();
-			 System.out.println("CUOTASS-------------------" + cuotas);
+			 System.out.println("CUOTASS-------------------" + cuotas + " " + valor);
 			 ConfigHibernet.commitSession(session);
 			 return valor;
 	}
@@ -116,16 +116,23 @@ public class cuotasService {
 
 	 public static boolean setCuotas( Prestamos prestamo ) {
 		 Integer plazo = prestamo.getPlazo_meses();
+		 List<Cuotas> nl = new ArrayList<>(); 
 		 try {
-			 session = ConfigHibernet.abrirConexion();
+			// session = ConfigHibernet.abrirConexion();
 			 for(Integer i = 0; i<plazo ; i++) {
-				 System.out.println(i);
+				 /*System.out.println(i);
 				 Cuotas cta = cuota;
 				 cta.setPrestamo(prestamo);
 				 System.out.println(cta);
 				 session.merge(cta);
-				 session.flush();
+				 session.flush();*/
+				 Cuotas ctas = new Cuotas();
+				 ctas.setPrestamo(prestamo.getIdPrestamo());
+				 nl.add(ctas);
 			 }
+			 session = ConfigHibernet.abrirConexion();
+			 prestamo.setListaCuotas(nl);
+			 session.merge(prestamo);
 			 ConfigHibernet.commitSession(session);
 			 return true;
 		 }catch(Exception e) {

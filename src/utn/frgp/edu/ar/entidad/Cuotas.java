@@ -33,8 +33,8 @@ public class Cuotas implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCuota;
 	
-	@ManyToOne
-	private Prestamos idPrestamo;
+
+	private Integer idPrestamo;
 	
 
 	@Column(name="fecha_pago")
@@ -48,7 +48,7 @@ public class Cuotas implements Serializable{
 
 	
 
-	public void setPrestamo(Prestamos Prestamo) {
+	public void setPrestamo(Integer Prestamo) {
 		this.idPrestamo = Prestamo;
 	}
 
