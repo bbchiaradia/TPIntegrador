@@ -213,14 +213,19 @@
 		        	monto: document.getElementById('montoTransferOtros').value
 		        },
 		        success: function (data) {
-		        	data = JSON.parse(data);
-					if(data == true){
-						alert("La transferencia se ha efectuado satisfactoriamente.");
-						location.reload();
-					}else{
-						alert("Ha ocurrido un error al realizar la transferencia. Intente nuevamente en unos minutos.");
-						location.reload();
-					}
+		        	if(data == "Fondos insuficientes"){
+		        		alert("Fondos insuficientes");
+		        	}else{
+		        		data = JSON.parse(data);
+						if(data == true){
+							alert("La transferencia se ha efectuado satisfactoriamente.");
+							location.reload();
+						}else{
+							alert("Ha ocurrido un error al realizar la transferencia. Intente nuevamente en unos minutos.");
+							location.reload();
+						}
+		        	}
+		        	
 		        }
 		      });
  		   

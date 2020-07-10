@@ -79,10 +79,10 @@ public class transferenciasService {
 			
 			session.merge(movtrans1);
 			System.out.println("81");
-
+			session.getTransaction().commit();session.flush();session.beginTransaction();
 			//session.merge(mov2);
 			System.out.println("84");
-			
+
 			session.merge(movtrans2);
 			System.out.println("87");
 
