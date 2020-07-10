@@ -121,7 +121,9 @@ public class prestamosController {
 			modelMap.addAttribute("msj", "Ocurrió un error al aprobar el préstamo");
 			System.out.println("PRESTAMO DENEGADO");
 		}
-		return "prestamosAdmin";
+		
+		
+		return "/prestamosAdmin";
 		
 	}
 	
@@ -141,7 +143,7 @@ public class prestamosController {
 			System.out.println("PRESTAMO DENEGADO");
 		}
 		
-		return "prestamosAdmin";
+		return "/prestamosAdmin";
 		
 	}
 	
