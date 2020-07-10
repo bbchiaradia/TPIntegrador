@@ -217,7 +217,7 @@ public class ClientesController{
 	    cli.setIdLocalidad(ubicacionService.getLocalidadesId(Integer.parseInt(request.getParameter("localidad"))));
 	    cli.setIdProvincia(ubicacionService.getProvinciasId(Integer.parseInt(request.getParameter("provincia"))));
 	  
-	    
+	    modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	   
 	    if( clientesService.ModificarCliente(cli) ) {
 	    	modelMap.addAttribute("status", "El cliente ha sido modificado correctamente.");
