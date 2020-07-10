@@ -112,7 +112,8 @@
 					  	<div class="row">
 					 	<div class="col-md-9">
 					 	<div class="form-group">
-						   <select class="form-control clientePropietario" name="clientePropietario" id="cliente_Propietario">
+						   <select class="form-control clientePropietario" name="clientePropietario" id="cliente_Propietario" >
+						   <option readonly value="-1" >[seleccione cliente]</option>
 						   <c:forEach var="cliente" items="${ clientes }">
 						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
 						      </c:forEach>
@@ -130,7 +131,7 @@
 					 	
 					 	</div>
 					 	<div class="row justify-content-end px-4">
-					 	<button class="btn btn-sm btn-primary" role="button" 
+					 	<button class="btn btn-sm btn-primary" role="button"  id="btn_baja"
 					 	onclick="bajarCuenta();">Dar de Baja</button>
 					 	</div>
 					  </div>
@@ -142,6 +143,7 @@
 					 	<div class="form-group">
 						    <label for="cuentaBaja">Cliente de la cuenta a modificar:</label>
 						    <select class="form-control cliente_Propietario_M" name="cliente_Propietario_M" id="cliente_Propietario_M">
+						    <option readonly value="-1" >[seleccione cliente]</option>
 						   <c:forEach var="cliente" items="${ clientes }">
 						   	  <option value="${cliente.getIdCliente()}" > ${cliente.getNombre()} ${cliente.getApellido()}  </option>
 						      </c:forEach>
@@ -224,7 +226,6 @@ $(document).ready(function(){
 	            id: x
 	          },
 	          success: function (data) {
-	        	  console.log(data);
 	        	  if( data != false ){
 	        		  data = JSON.parse(data);
 	        		  data.forEach( item => {
@@ -251,7 +252,6 @@ $(document).ready(function(){
 	            id: x
 	          },
 	          success: function (data) {
-	        	  console.log(data);
 	        	  if( data != false ){
 	        		  data = JSON.parse(data);
 	        		  data.forEach( item => {
@@ -270,14 +270,16 @@ $(document).ready(function(){
 		let x = $("#cuenta_Usuario_M option:selected").val()
 		let tid = document.getElementById("cid_"+x).getAttribute("attr-tid");
 		$("#tipoCuenta_M").val(tid);
-		console.log(tid);
-		console.log(x);
 	});
 	
 	
 });
 
 function bajarCuenta(){
+	let ctrlABajar = $("#cuenta_Usuario option:selected").val();
+	if(ctrlABajar < 1 || ctrlABajar == undefined){
+		alert("Debe seleccionar una cuenta");return;
+	}
 	let c = confirm("Realmente desea dar de baja la cuenta seleccionada?");
 	if(c){
 		let ctaABajar = $("#cuenta_Usuario option:selected").val();
@@ -315,6 +317,10 @@ function crearCuenta(e){
 }
 
 function modificarCuenta(){
+	let ctrlABajar = $("#cuenta_Usuario_M option:selected").val();
+	if(ctrlABajar < 1 || ctrlABajar == undefined){
+		alert("Debe seleccionar una cuenta");return;
+	}
 	let x = confirm( "Confirma la modificación del tipo de cuenta?" );
 	if(x){
 		let cuentaAModificar = $("#cuenta_Usuario_M option:selected").val()
