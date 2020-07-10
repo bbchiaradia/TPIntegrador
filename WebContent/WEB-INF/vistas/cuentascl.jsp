@@ -28,29 +28,29 @@
 			    	<div class="row">
 					<div class="col-md-12">
 					<div class="row header_detalle">
-					<div class="col-md-5">Número de cuenta</div>
-					<div class="col-md-5">Tipo</div>
-					<div class="col-md-5">CBU</div>
-					<div class="col-md-5">Saldo</div>
-					<div class="col-md-5"></div>
+					<div class="col-md-3">Número de cuenta</div>
+					<div class="col-md-3">Tipo</div>
+					<div class="col-md-2">CBU</div>
+					<div class="col-md-2">Saldo</div>
+					<div class="col-md-2"></div>
 					</div>
 					<hr>
 					
 					 <c:forEach var="cuentas_cliente" items="${ cuentas_clientecl }">
 					<div class="row">
-					<div class="col-md-5">${cuentas_cliente.nroCta}</div>
+					<div class="col-md-3">${cuentas_cliente.nroCta}</div>
 					
 					
 					 <c:forEach var="tipocuenta" items="${ tiposcuentacl }">
 				     <c:if test="${cuentas_cliente.getTipocuenta().getId_TipoCuenta() == tipocuenta.id_TipoCuenta }">
-				     <div class="col-md-5">${tipocuenta.descripcion}</div>
+				     <div class="col-md-3">${tipocuenta.descripcion}</div>
 				     </c:if>
 				     </c:forEach>
 					
-				     <div class="col-md-5">${cuentas_cliente.cbu}</div>
-					 <div class="col-md-5">${cuentas_cliente.saldo}</div>
+				     <div class="col-md-2">${cuentas_cliente.cbu}</div>
+					 <div class="col-md-2">${cuentas_cliente.saldo}</div>
 					
-					<div class="col-md-5">
+					<div class="col-md-2">
 					<form method="get" class="frmBoton" action="redireccionar_detalle_cuenta.html">
 						  <input type="hidden" name="id" value="${cuentas_cliente.idCuenta}">
 						<button class="btn btn-sm btn-primary" role="button">Detalles</button>

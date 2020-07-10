@@ -73,6 +73,7 @@ public class CuotasController {
 			 modelMap.addAttribute("msjCuota", "Su pago no ha podido ser registrado");
 		    }
 			
+			return "/cuotas_detalle";
 			
 		}
 		

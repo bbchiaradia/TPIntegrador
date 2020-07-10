@@ -18,7 +18,7 @@
     <div class="container">
    
  <c:if test="${msj != null}">
-<script>alert("${msj}");
+<script>alert("${msj}"); window.location.replace("redireccionar_prestamos_admin.html");
 </script>
  </c:if>  
 
