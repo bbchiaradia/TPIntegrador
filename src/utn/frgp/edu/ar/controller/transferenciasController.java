@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import utn.frgp.edu.ar.dao.clientesService;
 import utn.frgp.edu.ar.dao.cuentasService;
 import utn.frgp.edu.ar.dao.transferenciasService;
+import utn.frgp.edu.ar.dao.usuariosService;
 
 
 @Controller
@@ -25,6 +26,9 @@ public class transferenciasController {
 		ModelAndView MV= new ModelAndView();
 		MV.addObject("cuentascliente", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() )  );
 		System.out.println( cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ) );
+		
+		 MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		 MV.addObject("rol", usuariosService.RolUsuarioLogueado());
 		MV.setViewName("transferencias");
 		return MV;
 		

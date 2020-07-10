@@ -93,9 +93,8 @@ public class cuotasService {
 				System.out.println("LINEA 80 ENTRO AL TRY ");
 				session = ConfigHibernet.abrirConexion();
 
-				darDeBajaCuotaPorId(idCuota);
-				
-			
+				session.merge(cuota1);
+				session.flush();
 				
 				session.merge(mov);
 				

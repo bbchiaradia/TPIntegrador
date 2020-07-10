@@ -24,9 +24,6 @@
     <%@ include file="nav.html"%>
     <div class="container">
     
-    <p> cuentas
-    ${ cuentascliente }
-    </p>
     
     <!-- detalle de cuenta -->
     <container>
