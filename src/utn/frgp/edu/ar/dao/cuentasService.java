@@ -68,7 +68,7 @@ public class cuentasService {
 			session.getTransaction().commit();
 			 System.out.println("CONSULTA ----------- "+ cuenta);
 			 
-			 if(cuenta.size() == 0) {
+			 if(cuentas.size() == 0) {
 				 return false;
 			 }else {
 				 return true;
