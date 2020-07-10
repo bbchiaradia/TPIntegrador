@@ -46,10 +46,7 @@
 				
 				<div class="row">
 				<div class="col-md-12">
-				
-				
 
-				
 				<div class="input-group mb-3">
 				    <input type="password" class="form-control"  minlength="5" maxlength="20" name="contrasenia" required id="contrasenia" maxlength="70"
 	     			 	placeholder=" Ingrese la contraseña">
@@ -65,26 +62,12 @@
 					 </form>	 
 				</div>
  			 </div>    
- 			 
- 			 
- 		        	    <br>
- 		        	    
- 	  	    
-   	 
-    
- 		 
+ 			 		 
+ 		        	    <br>	        	     
         </div>
-        
-        
-
-        
-        
+    
     	</div>
-    	
-    	
-
-    	
-    	
+    		
     </div>
     </div>
     </container>
@@ -93,7 +76,6 @@
 <script>
 
 function validaUser(e){
-	console.log(e);
 		
 		$("#btnSubmit").prop("disabled", false);
 		document.getElementById("erruser").innerText = "";

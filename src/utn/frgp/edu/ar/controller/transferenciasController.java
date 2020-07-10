@@ -37,8 +37,14 @@ public class transferenciasController {
 	@RequestMapping("transferCuentasPropias.html")
 	@ResponseBody
 	public String transferCuentasPropias( HttpServletRequest request ) {
-		
-		boolean status = transferenciasService.saveTransferencia(request.getParameter("ctaorigen"), request.getParameter("ctadestino"), request.getParameter("monto"));
+		boolean status;
+		boolean montok = cuentasService.verificaMontoCuenta( Integer.parseInt(request.getParameter("ctaorigen")) , Double.parseDouble(request.getParameter("monto")));
+		if(montok) {
+			 status = transferenciasService.saveTransferencia(request.getParameter("ctaorigen"), request.getParameter("ctadestino"), request.getParameter("monto"));
+		}
+		else {
+			return  "Fondos insuficientes";
+		}
 
 		return String.valueOf(status) ;
 		
@@ -47,8 +53,16 @@ public class transferenciasController {
 	@RequestMapping("transferOtrasCuentas.html")
 	@ResponseBody
 	public String transferOtrasCuentas( HttpServletRequest request ) {
+		boolean status;
 		String idcta = cuentasService.idCtaByCbu(request.getParameter("cbudestino"));
-		boolean status = transferenciasService.saveTransferencia(request.getParameter("ctaorigen"), idcta, request.getParameter("monto"));
+		
+		boolean montok = cuentasService.verificaMontoCuenta( Integer.parseInt(request.getParameter("ctaorigen")) , Double.parseDouble(request.getParameter("monto")));
+		if(montok) {
+			status = transferenciasService.saveTransferencia(request.getParameter("ctaorigen"), idcta, request.getParameter("monto"));
+		}else {
+			return  "Fondos insuficientes";
+		}
+		 
 
 		return String.valueOf(status) ;
 		
