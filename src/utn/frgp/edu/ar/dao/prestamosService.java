@@ -110,10 +110,11 @@ public class prestamosService {
 			        session.flush();
 			        ConfigHibernet.commitSession(session);
 			        Cuentas ctad = cuentasService.cuentaById(cuentaDestino);
-			        ctad.setSaldo( ctad.getSaldo() + prestamo.getImporte() );
-			        cuentasService.modificarCuenta(ctad);
+			        Double saldo  = ctad.getSaldo() + prestamo.getImporte() ;
+			        ctad.setSaldo( saldo );
+			        System.out.println( "114 prestamos service" + ctad.getSaldo() + " - " + prestamo.getImporte() + " - " + saldo);
 			        cuotasService.setCuotas(prestamo);
-			        
+			        cuentasService.modificarCuenta(ctad);
 			        
 			       	return true;
 				}catch(Exception E) {

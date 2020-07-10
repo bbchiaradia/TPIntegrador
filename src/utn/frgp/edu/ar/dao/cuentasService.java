@@ -134,11 +134,15 @@ public class cuentasService {
 		public static boolean modificarCuenta(Cuentas cuenta) {
 			try {
 			session = ConfigHibernet.abrirConexion();
-			session.update(cuenta);
-			session.flush();
-	        ConfigHibernet.commitSession(session);
+			System.out.println("cuentasService 137 " + cuenta.getSaldo()  + " id:  " + cuenta.getIdCuenta());
+			String q = "update Cuentas c set c.saldo= " + cuenta.getSaldo() + " where c.idCuenta= " + cuenta.getIdCuenta();
+	        Query query = session.createQuery(q);
+	        query.executeUpdate();
+	        session.getTransaction().commit();
+	        session.close();
 	        return true;
 	        }catch(Exception e) {
+	        	System.out.println("cuentasService 142" + e.getMessage());
 	        	ConfigHibernet.rollbackSession(session);
 				return false;
 	        }
