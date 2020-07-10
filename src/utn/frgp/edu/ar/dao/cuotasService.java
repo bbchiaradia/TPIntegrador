@@ -1,6 +1,5 @@
 package utn.frgp.edu.ar.dao;
 
-
 import java.util.ArrayList;
 
 import java.sql.Date;
@@ -79,9 +78,6 @@ public class cuotasService {
 		 
 		 
 		
-	        //Aquí obtienes el formato que deseas
-	
-		 
 		 
 			System.out.println("ID CUOTA "+ idCuota);
 		 Cuotas cuota1 = CuotasByIdCuota(idCuota);

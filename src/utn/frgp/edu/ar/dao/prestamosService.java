@@ -31,6 +31,7 @@ public class prestamosService {
 		
 		prestamo.setIdCliente( clientesService.getClienteId(idcliente) );
 		prestamo.setImporte(importe);
+		prestamo.setFecha(Calendar.getInstance().getTime());
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
 		prestamo.setIdEstado(estadosService.getEstadoById(3));
 		prestamo.setPlazo_meses(plazo);

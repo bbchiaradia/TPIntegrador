@@ -17,6 +17,8 @@
     
     
       <c:if test="${rol == 'CLIENTE' }"> 
+   
+   <c:if test="${NOCUENTAS == null }"> 
     <div class="container">
     <div class="row">
     	   <div class="col-md-12">
@@ -66,9 +68,14 @@
     	   </div>
     </div>
     </div>
-    </container>
+  </c:if>  
+   <c:if test="${NOCUENTAS != null }"> 
+      <div class="col-md-4">${NOCUENTAS}</div>
+  </c:if> 
    </c:if>  
-   
+     </container>
+     
+     
     <c:if test="${rol == 'ADMIN' }"> 
    <div class="container">
        <div class="row">
