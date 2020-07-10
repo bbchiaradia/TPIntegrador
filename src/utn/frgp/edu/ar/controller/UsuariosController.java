@@ -39,8 +39,16 @@ public class UsuariosController {
 	    List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
 	    List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
 	    
-	    modelMap.addAttribute("tiposcuenta",tp);
-	    modelMap.addAttribute("cuentas_cliente",cuentas);
+	    if (cuentas.size()==0) {
+	    	 modelMap.addAttribute("NOCUENTAS","Bienvenido! Aún no posee cuentas");
+	    }else {
+	    	 modelMap.addAttribute("tiposcuenta",tp);
+	         modelMap.addAttribute("cuentas_cliente",cuentas);
+	    }
+	    
+	    
+	   
+	    
 	    }
 	    
 	  
