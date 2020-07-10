@@ -8,20 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Cuotas")
 public class Cuotas implements Serializable{
     
-	
-	
-	
 	public Cuotas() {
 	
 	}
-
-
 
 
 	public Cuotas( Date fecha_pago) {
@@ -35,7 +31,8 @@ public class Cuotas implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCuota;
 	
-
+	@ManyToOne
+	private Prestamos idPrestamo;
 	
 	@Column(name="fecha_pago")
 	private Date fecha_pago;
@@ -47,8 +44,8 @@ public class Cuotas implements Serializable{
 
 	
 
-	public void setIdPrestamo(int idPrestamo) {
-		idPrestamo = idPrestamo;
+	public void setPrestamo(Prestamos Prestamo) {
+		this.idPrestamo = Prestamo;
 	}
 
 	public Date getFecha_pago() {
@@ -56,7 +53,7 @@ public class Cuotas implements Serializable{
 	}
 
 	public void setFecha_pago(Date fecha_pago) {
-		fecha_pago = fecha_pago;
+		this.fecha_pago = fecha_pago;
 	}
 
 		

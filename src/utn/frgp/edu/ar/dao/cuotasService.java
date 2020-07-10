@@ -1,5 +1,6 @@
 package utn.frgp.edu.ar.dao;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -93,5 +94,27 @@ public class cuotasService {
 				return false;
 			}
 	}
+	 
+	 public static boolean setCuotas( Prestamos prestamo ) {
+		 Integer plazo = prestamo.getPlazo_meses();
+		 try {
+			 session = ConfigHibernet.abrirConexion();
+			 for(Integer i = 0; i<plazo ; i++) {
+				 System.out.println(i);
+				 Cuotas cta = cuota;
+				 cta.setPrestamo(prestamo);
+				 System.out.println(cta);
+				 session.merge(cta);
+				 session.flush();
+			 }
+			 ConfigHibernet.commitSession(session);
+			 return true;
+		 }catch(Exception e) {
+			 System.out.println(e.getMessage());
+				ConfigHibernet.rollbackSession(session);
+				return false;
+		 }
+
+	 }
 
 }

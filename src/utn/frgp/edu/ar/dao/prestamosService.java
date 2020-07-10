@@ -104,7 +104,6 @@ public class prestamosService {
 				estado = estadosService.getEstadoById(1);
 				prestamo.setIdEstado(estado);
 				try {
-					//FALTA GENERAR MOVIMIENTOY ACREDITAR PLATA EN LA CUENTA
 					session = ConfigHibernet.abrirConexion();
 			        session.update(prestamo);
 			        session.flush();
@@ -112,7 +111,9 @@ public class prestamosService {
 			        Cuentas ctad = cuentasService.cuentaById(cuentaDestino);
 			        ctad.setSaldo( ctad.getSaldo() + prestamo.getImporte() );
 			        cuentasService.modificarCuenta(ctad);
-
+			        cuotasService.setCuotas(prestamo);
+			        
+			        
 			       	return true;
 				}catch(Exception E) {
 					System.out.println( E.getMessage() );
