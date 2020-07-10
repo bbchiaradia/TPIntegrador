@@ -22,8 +22,10 @@
         	        	 <div class="card-header">
    				 Detalle de la cuenta <b> ${ detalleCuenta2.nroCta } </b>
  			 </div>  
- 			 
-
+ 		<c:if test="${NOCUENTAS != null }"> 
+         <div class="col-md-4">${NOCUENTAS}</div>
+         </c:if> 	 
+        <c:if test="${NOCUENTAS == null }"> 
  			<div class="card-body">
 			    	<div class="row">
 					<div class="col-md-12">
@@ -63,7 +65,7 @@
 					</div>
 				</div>
 				</div>
-				
+				</c:if>
 				
 				
 				

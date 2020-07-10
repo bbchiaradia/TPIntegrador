@@ -86,10 +86,17 @@ public class CuentasController {
 		 List <Cuentas> cuentas= cuentasService.cuentasByClientId(clientesService.getClienteLogueado().getIdCliente());
 		 List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
 
-		  System.out.println("LINEA 81 ACAAA  CUENTAS "+ cuentas);
-		 
-		    modelMap.addAttribute("tiposcuentacl",tp);
-		    modelMap.addAttribute("cuentas_clientecl",cuentas);
+		  
+		  if (cuentas.size()==0) {
+		    	 modelMap.addAttribute("NOCUENTAS","Bienvenido! Aún no posee cuentas");
+		    }else {
+		    	modelMap.addAttribute("tiposcuentacl",tp);
+			    modelMap.addAttribute("cuentas_clientecl",cuentas);
+		    }
+		    
+		    
+		    
+		    
 		
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
