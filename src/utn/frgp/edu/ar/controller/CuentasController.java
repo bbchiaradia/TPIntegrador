@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import utn.frgp.edu.ar.dao.ConfigHibernet;
 import utn.frgp.edu.ar.dao.clientesService;
@@ -148,7 +149,7 @@ public class CuentasController {
 		List<Cuentas> ctas = cuentasService.cuentasByClientId(id);
 		System.out.println( ctas );
 		if( ctas != null ) {
-			return new Gson().toJson(ctas);			
+			return  new Gson().toJson(ctas);			
 		}else{
 			return null;
 		}
@@ -172,7 +173,7 @@ public class CuentasController {
 		Cuentas ctas = cuentasService.cuentaById(id);
 		TipoCuenta tipocta = cuentasService.tipoCuentaById(tipo);
 		ctas.setTipocuenta(tipocta);
-		boolean result = cuentasService.modificarCuenta(ctas);
+		boolean result = cuentasService.modificarTipoCuenta(ctas);
 		if(result) { return "true"; }
 		else{ return "false"; }
 	}

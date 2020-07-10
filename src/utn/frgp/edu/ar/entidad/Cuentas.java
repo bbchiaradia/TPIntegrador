@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -68,9 +70,11 @@ public class Cuentas implements Serializable{
 	private double saldo;
 	
 	@Column(name="fecha_baja")
+	@Temporal(TemporalType.DATE)   
 	private Date fecha_baja;
 	
 	@Column(name="fecha_alta")
+	@Temporal(TemporalType.DATE)   
     private Date fecha_alta;
 	
 	///
@@ -101,7 +105,7 @@ public class Cuentas implements Serializable{
 	
 	 @OneToMany(cascade= {CascadeType.ALL})
 	 @JoinColumn(name = "idCuenta")
-	 private List<Movimientos> listaMovimientos = new ArrayList<Movimientos>();
+	 private transient List<Movimientos> listaMovimientos = new ArrayList<Movimientos>();
 	 	 
 	
 	public List<Movimientos> getListaMovimientos() {

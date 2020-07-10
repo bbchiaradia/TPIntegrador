@@ -148,6 +148,19 @@ public class cuentasService {
 	        }
 		}
 		
+		public static boolean modificarTipoCuenta(Cuentas cuenta) {
+			try {
+			session = ConfigHibernet.abrirConexion();
+	        session.update(cuenta);
+	        ConfigHibernet.commitSession(session);
+	        return true;
+	        }catch(Exception e) {
+	        	System.out.println("cuentasService 142" + e.getMessage());
+	        	ConfigHibernet.rollbackSession(session);
+				return false;
+	        }
+		}
+		
 		
 		
 		 @SuppressWarnings("unchecked")

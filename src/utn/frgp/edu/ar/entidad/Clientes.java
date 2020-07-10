@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.Session;
 
@@ -70,6 +72,7 @@ public class Clientes implements Serializable {
 
 
 	@Column(name="fecha_nacimiento")
+	@Temporal(TemporalType.DATE)   
     private Date fecha_nacimiento;
 	
 	
@@ -86,9 +89,11 @@ public class Clientes implements Serializable {
 
 	
 	@Column(name="fecha_alta")
+	@Temporal(TemporalType.DATE)   
     private Date fecha_alta;
     
     @Column(name="fecha_baja")
+    @Temporal(TemporalType.DATE)   
     private Date fecha_baja;
     
     

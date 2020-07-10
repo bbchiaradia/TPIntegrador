@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Movimientos")
@@ -24,6 +26,7 @@ public class Movimientos {
 	private int idMovimiento;
 	
 	@Column(name="fecha")
+	@Temporal(TemporalType.DATE)   
 	private Date fecha;
 	
 	

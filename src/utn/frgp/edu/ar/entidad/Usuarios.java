@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
  
 @Entity
@@ -31,9 +33,11 @@ public class Usuarios implements Serializable{
     
     
     @Column(name="fecha_alta")
+    @Temporal(TemporalType.DATE)   
     private Date fecha_alta;
     
     @Column(name="fecha_baja")
+    @Temporal(TemporalType.DATE)   
     private Date fecha_baja;
     
     
