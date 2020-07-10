@@ -63,17 +63,20 @@ public class cuentasService {
 		 
 		 System.out.println("ANTES CONSULTA ----------- "+ monto);
 			
-		    Query q = session.createQuery("from Cuentas where idCuenta = " + idCuenta + " and fecha_baja is null");
+		    Query q = session.createQuery("from Cuentas where idCuenta = " + idCuenta + " and saldo >= "+ monto +" and fecha_baja is null");
 			cuentas = q.list();
-			session.getTransaction().commit();
-			 System.out.println("CONSULTA ----------- "+ cuenta);
-			 
+			
+
 			 if(cuentas.size() == 0) {
+				 
+				 System.out.println("ENTRO IF  ");
 				 return false;
 			 }else {
+				 System.out.println("NO ENTRO IF  ");
 				 return true;
 			 }
-
+			
+			
 		}
 
 	 

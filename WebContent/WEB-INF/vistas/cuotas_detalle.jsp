@@ -11,6 +11,11 @@
   	<%@ page import="utn.frgp.edu.ar.*" %>
 		<%@ page import="utn.frgp.edu.ar.entidad.*" %>
     <container>
+   
+ <c:if test="${msjCuota != null}">
+<script>alert("${msjCuota}");</script>
+ </c:if>  
+   
     <%@ include file="nav.html"%>
     <div class="container">
     
@@ -29,7 +34,6 @@
 					<div class="form-group">
 						    <label for="cuentaDestino"></label>
 						    <select class="form-control" id="PagarDesde" name="PagarDesde">
-						      <option value='-1'>[ Seleccione desde donde pagar:  ]</option>
 						     <c:forEach var="cuenta" items="${ cuentas }">
 						      <option value="${cuenta.idCuenta}">  ${cuenta.nroCta} - Saldo: $ ${cuenta.saldo} </option>
 						    </c:forEach>
@@ -38,6 +42,7 @@
 					</div>
 					</div>
 					<hr>
+
 
 
  			<div class="card-body">

@@ -1,7 +1,13 @@
 package utn.frgp.edu.ar.dao;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -44,7 +50,7 @@ public class cuotasService {
 	 @SuppressWarnings("unchecked")
 		public static Cuotas CuotasByIdCuota(Integer idCuota){
 		 	session = ConfigHibernet.abrirConexion(); 	
-		 	Query q = session.createQuery("FROM Cuotas where idPrestamo ='" + idCuota +"'  order by idCuota asc" );		 	  
+		 	Query q = session.createQuery("FROM Cuotas where idCuota ='" + idCuota +"'  order by idCuota asc" );		 	  
 		 	  cuota = (Cuotas) q.uniqueResult();
 			 System.out.println("CUOTASS-------------------" + cuotas);
 			 ConfigHibernet.commitSession(session);
@@ -65,23 +71,32 @@ public class cuotasService {
 	 @SuppressWarnings("unchecked")
 		public static Boolean PagarCuota(Cuentas cuenta, Double importe, Integer idCuota){
 
-		 concepto.setDescripcion("3");
+		 concepto = conceptosService.getConceptosById(3);
 		 
-		 cuota = CuotasByIdCuota(idCuota);
-		 cuota.setFecha_pago(Calendar.getInstance().getTime());
+		 
+		
+	        //Aquí obtienes el formato que deseas
+	
+		 
+		 
+			System.out.println("ID CUOTA "+ idCuota);
+		 Cuotas cuota1 = CuotasByIdCuota(idCuota);
+		 cuota1.setFecha_pago(Calendar.getInstance().getTime());
 		 
 			mov.setFecha(Calendar.getInstance().getTime());
 			mov.setIdConcepto(concepto);
 			mov.setIdCuenta( cuenta );
 			mov.setImporte( Double.parseDouble("-"+importe) );
 		 
-			System.out.println("LINEA 78 ANTES TRY ");
+		
 			try {
 				System.out.println("LINEA 80 ENTRO AL TRY ");
 				session = ConfigHibernet.abrirConexion();
 
-				session.update(cuota);
-				session.flush();
+				darDeBajaCuotaPorId(idCuota);
+				
+			
+				
 				session.merge(mov);
 				
 				session.getTransaction().commit();
@@ -93,5 +108,29 @@ public class cuotasService {
 				return false;
 			}
 	}
+	 
+	 
+	 
+	 public static boolean darDeBajaCuotaPorId( Integer idCuota) {
+		 System.out.println("idcuota al principio"+ idCuota);
+		 cuota= CuotasByIdCuota(idCuota);
+			 System.out.println("cuota al principio"+ cuota);
+			cuota.setFecha_pago(Calendar.getInstance().getTime());
+			System.out.println(" FECHA"+ Calendar.getInstance().getTime());
+			System.out.println("SET FECHA"+ cuota.getFecha_pago());
+		    System.out.println("cuota antes de try"+ cuota);
+		    try {
+				session = ConfigHibernet.abrirConexion();
+		        session.update(cuota);
+		        session.flush();
+		        
+		      //  ConfigHibernet.commitSession(session);
+		       	return true;
+			}catch(Exception E) {
+				System.out.println( E.getMessage() );
+				ConfigHibernet.rollbackSession(session);
+				return false;
+			}
+		}
 
 }

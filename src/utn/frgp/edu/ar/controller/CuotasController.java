@@ -24,7 +24,7 @@ public class CuotasController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("redireccionar_cuotas_detalle.html")
-	public String eventoRedireccionar_cuentascl(ModelMap modelMap, Integer idPrestamo) {
+	public String eventoRedireccionar_cuotas_detalle(ModelMap modelMap, Integer idPrestamo) {
 		
 		System.out.println("LINEA 18 ACAAA  PRESTAMOS id "+ idPrestamo);
 		modelMap.addAttribute("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
@@ -58,7 +58,14 @@ public class CuotasController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("redireccionar_pagoCuota.html")
-	public String redireccionar_pagoCuota(ModelMap modelMap, Integer idCuota, Integer PagarDesde, Double montoCuota ) {
+	public String redireccionar_pagoCuota(ModelMap modelMap, Integer idCuota, Integer PagarDesde, Double montoCuota, Integer idPrestamo ) {
+		
+		modelMap.addAttribute("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
+		modelMap.addAttribute("idPrestamo",idPrestamo);
+		modelMap.addAttribute("cuotas", cuotasService.CuotasByIdPrestamo(idPrestamo));
+		
+		modelMap.addAttribute("monto_cuota", cuotasService.MontoCuotasByIdPrestamo(idPrestamo));
+		
 		
 		Cuentas cuenta= cuentasService.cuentaById(PagarDesde);
 		System.out.println("ANTES IF ----------- "+ montoCuota);
