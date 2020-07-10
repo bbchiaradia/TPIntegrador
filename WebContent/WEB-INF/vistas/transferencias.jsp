@@ -127,7 +127,7 @@
 					 	</div>
 					 	<div class="row justify-content-end px-4">
 					 	<button class="btn btn-sm btn-primary" role="button" id="btn-transfer-otras"
-					 	onclick="confirmarTransferenciaOtros();">Transferir</button>
+					 	onclick="confirmarTransferenciaOtros();" disabled>Transferir</button>
 					 	</div>
 					  </div>
 					</div>
@@ -153,12 +153,17 @@
     
 
     function confirmarTransferencia(  ){
+    	let o = document.getElementById('cuentaOrigenProp').value;
+    	let d = document.getElementById('cuentaOrigenProp').value;
     	if(document.getElementById('montoTransfer').value == null || document.getElementById('montoTransfer').value =='' || document.getElementById('montoTransfer').value == 0){
     		alert('Indique el monto a transferir');
     		return;
     	}
     	else if(document.getElementById('montoTransfer').value < 0 ){
     		alert('El monto no puede ser negativo');
+    		return;
+    	}else if( document.getElementById('cuentaDestinoProp').value == document.getElementById('cuentaOrigenProp').value ){
+    		alert("La cuenta de origen y destino no pueden ser iguales.");
     		return;
     	}
  	   let c = confirm(" Desea realizar la transferencia por el monto de $"+ document.getElementById('montoTransfer').value +"? ");
@@ -174,7 +179,14 @@
 		        	monto: document.getElementById('montoTransfer').value
 		        },
 		        success: function (data) {
-					console.log(data);
+		        	data = JSON.parse(data);
+		        	if(data == true){
+						alert("La transferencia se ha efectuado satisfactoriamente.");
+						location.reload();
+					}else{
+						alert("Ha ocurrido un error al realizar la transferencia. Intente nuevamente en unos minutos.");
+						location.reload();
+					}
 		        }
 		      });
  		   
@@ -204,7 +216,14 @@
 		        	monto: document.getElementById('montoTransferOtros').value
 		        },
 		        success: function (data) {
-					console.log(data);
+		        	data = JSON.parse(data);
+					if(data == true){
+						alert("La transferencia se ha efectuado satisfactoriamente.");
+						location.reload();
+					}else{
+						alert("Ha ocurrido un error al realizar la transferencia. Intente nuevamente en unos minutos.");
+						location.reload();
+					}
 		        }
 		      });
  		   
@@ -242,6 +261,8 @@
     	      	  }
     	        }
     	      });
+    	}else{
+    		document.getElementById("btn-transfer-otras").disabled = true;
     	}
     	
     }
