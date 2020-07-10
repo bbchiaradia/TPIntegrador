@@ -25,7 +25,7 @@
     <div class="container">
     
     <!-- detalle de cuenta -->
-    <container>
+    <container class="mb-4">
     <div class="row animate__animated animate__fadeIn">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
@@ -78,13 +78,13 @@
     </container>
     
     
-    <div class="row mt-3 px-4 justify-content-end">
+    <!-- <div class="row mt-3 px-4 justify-content-end">
     <button class="btn btn-sm btn-primary" role="button" onclick="verMovimientos()">Ver movimientos</button>
-    </div>
+    </div> -->
     
     
      <!-- movimientos de cuenta -->
-    <div class="row" id="movimientos">
+  <!--   <div class="row" id="movimientos">
     	   <div class="col-md-12">
     	   <div class="card mt-4">
         	 <div class="card-header">
@@ -134,11 +134,50 @@
 				
  			 </div> 
     	   </div>
-    </div>
+    </div> -->
+    
+    <h5 class="mt-4" style="color:grey; border-bottom:1px solid #673ab7;">Movimientos de cuenta</h5>
+    <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Concepto</th>
+                  <th>Importe</th>
+                </tr>
+                </thead>
+                <tbody>
+                	 <c:forEach var="movimientos" items="${ movimientos }"> 
+					<div class="row">
+					<tr>
+					<td>${ movimientos.fecha }</td>
+					<td>
+					<c:forEach var="conceptos" items="${ conceptos }">
+				     <c:if test="${movimientos.getIdConcepto().getIdConcepto() == conceptos.idConcepto }">
+				     <div class="col-md-4">${conceptos.descripcion}</div>
+				     </c:if>
+				     </c:forEach>
+					</td>
+					<td>${ movimientos.importe }</td>
+					</tr>
+					
+					</c:forEach>
+                </tbody>
+              </table>
     
     </div>
     </container>
 
 <%@ include file="foot.html"%>
+<script>
+$(function() {
+	$('#datatables').DataTable({
+		'paging' : true,
+		'lengthChange' : false,
+		'searching' : true,
+		'ordering' : true,
+		'info' : true,
+		'autoWidth' : true
+	})
+})</script>
   </body>
 </html>
