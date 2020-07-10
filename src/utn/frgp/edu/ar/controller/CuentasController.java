@@ -59,8 +59,11 @@ public class CuentasController {
       List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
       modelMap.addAttribute("tiposcuenta",tp);
       
+      if(movimientosService.MovimientoByIdCuenta(id).size() == 0) {
+    	  modelMap.addAttribute("sin_mov", "La cuenta aun NO posee MOVIMIENTOS");
+      }else {
       modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
-      
+      }
       
       modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
