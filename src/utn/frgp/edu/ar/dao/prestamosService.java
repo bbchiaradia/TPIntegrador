@@ -100,8 +100,8 @@ public class prestamosService {
 		}
 	 
 		 
-			public static boolean aprobarPrestamoPorId( Prestamos prestamo) {
-				estado.setDescripcion("1");
+			public static boolean aprobarPrestamoPorId( Prestamos prestamo, Integer cuentaDestino) {
+				estado = estadosService.getEstadoById(1);
 				prestamo.setIdEstado(estado);
 				try {
 					//FALTA GENERAR MOVIMIENTOY ACREDITAR PLATA EN LA CUENTA
@@ -109,6 +109,10 @@ public class prestamosService {
 			        session.update(prestamo);
 			        session.flush();
 			        ConfigHibernet.commitSession(session);
+			        Cuentas ctad = cuentasService.cuentaById(cuentaDestino);
+			        ctad.setSaldo( ctad.getSaldo() + prestamo.getImporte() );
+			        cuentasService.modificarCuenta(ctad);
+
 			       	return true;
 				}catch(Exception E) {
 					System.out.println( E.getMessage() );

@@ -17,7 +17,9 @@
     <%@ include file="nav.html"%>
     <div class="container">
    
-    
+    <c:if test="${ msj  } ">
+    <p> ${msj} </p> 
+    </c:if>
 	    <!-- historial de prestamos -->
 	    <container>
 	    <div class="row animate__animated animate__fadeIn">
@@ -48,7 +50,9 @@
 							  
 							  
 							  <tbody>
+							  
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
+							    <form method="post" class="frmBoton" action="aprobarPrestamo.html">
 							    <tr>
 							      
 							       <c:forEach var="cliente" items="${ cliente }">
@@ -93,7 +97,7 @@
 							     
 
 							      <td>
-							     <form method="post" class="frmBoton" action="aprobarPrestamo.html">
+							     
 						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
 										<button class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="top" title="Aprobar">
 										<i class="fas fa-thumbs-up" aria-hidden="true"> </i> Aprobar

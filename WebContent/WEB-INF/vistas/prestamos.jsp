@@ -205,8 +205,13 @@
 		            cuentadestino :cuentaDestino
 		          },
 		          success: function (data) {
-		        	  console.log(data);
-		        	  
+		        	  data = JSON.parse(data);
+		        	  if(data == true){
+		        		  alert("El préstamo ha sido solicitado");
+		        		  location.reload();
+		        	  }else{
+		        		  alert("Ocurrió un error al solicitar el préstamo");
+		        	  }
 		            return false;
 		          }
 		        });

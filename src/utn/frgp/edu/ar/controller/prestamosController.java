@@ -90,16 +90,23 @@ public class prestamosController {
 	
 	
 	@RequestMapping( value= "aprobarPrestamo", method = RequestMethod.POST )
-	@ResponseBody
-	public String aprobarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo ) {
+	public String aprobarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo, Integer cuentaDestino ) {
+		System.out.println("DESTINO " + cuentaDestino);
 		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 		System.out.println("PRESTAMO A APROBAR ----------- "+ idPrestamo);
 		
 		Prestamos pres = prestamosService.prestamoById(idPrestamo);	
-		boolean result = prestamosService.aprobarPrestamoPorId(pres);
-		if(result) { return "true"; }
-		else{ return "false"; }
+		boolean result = prestamosService.aprobarPrestamoPorId(pres, cuentaDestino);
+		
+		if(result) {
+			modelMap.addAttribute("msj", "El préstamo ha sido aprobado exitosamente");
+			System.out.println("PRESTAMO APROBADO");
+		}else {
+			modelMap.addAttribute("msj", "Ocurrió un error al aprobar el préstamo");
+			System.out.println("PRESTAMO DENEGADO");
+		}
+		return "prestamosAdmin";
 		
 	}
 	

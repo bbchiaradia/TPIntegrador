@@ -60,19 +60,10 @@ public class cuentasService {
 	 @SuppressWarnings("unchecked")
 		public static Boolean verificaMontoCuenta(Integer idCuenta, Double monto){
 		 session = ConfigHibernet.abrirConexion();
+		 Cuentas  c = (Cuentas) session.byId(Cuentas.class).getReference(idCuenta);
+		 System.out.print(c);
 		 
-		 System.out.println("ANTES CONSULTA ----------- "+ monto);
-			
-		    Query q = session.createQuery("from Cuentas where idCuenta = " + idCuenta + " and fecha_baja is null");
-			cuentas = q.list();
-			session.getTransaction().commit();
-			 System.out.println("CONSULTA ----------- "+ cuenta);
-			 
-			 if(cuenta.size() == 0) {
-				 return false;
-			 }else {
-				 return true;
-			 }
+		return true;
 
 		}
 
