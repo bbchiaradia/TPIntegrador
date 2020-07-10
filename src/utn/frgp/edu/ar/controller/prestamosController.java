@@ -33,7 +33,15 @@ public class prestamosController {
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
 		MV.addObject("idlogin", clientesService.getClienteLogueado().getIdCliente());
 		MV.addObject("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
-		MV.addObject("prestamos_cliente", prestamosService.PrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		
+		
+		if( prestamosService.PrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ).size()== 0) {
+			MV.addObject("sin_prestamos", "Aún NO posee PRESTAMOS");
+		}else {
+			MV.addObject("prestamos_cliente", prestamosService.PrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
+		}
+		
+		
 		MV.addObject("movimientos_prestamos_cliente", movimientosService.MovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
 		MV.addObject("cuenta_movimientos_prestamos_cliente", cuentasService.CuentasMovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
 		
@@ -60,7 +68,14 @@ public class prestamosController {
 		MV.addObject("cuentas", cuentasService.getCuentas());
 		MV.addObject("cliente",clientesService.getClientes());
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
-		MV.addObject("prestamos_cliente", prestamosService.PrestamosAll());
+		
+		if(prestamosService.PrestamosAll().size()== 0) {
+			MV.addObject("sin_prestamos", "NO TIENE PRESTAMOS PENDIENTES DE APROBACIÓN");
+		}else {
+			MV.addObject("prestamos_cliente", prestamosService.PrestamosAll());
+		}
+		
+		
 		MV.addObject("estado_prestamo", estadosService.getEstados());
 		
 		  MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());

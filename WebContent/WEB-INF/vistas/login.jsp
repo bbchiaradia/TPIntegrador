@@ -52,7 +52,7 @@
 				
 				<div class="input-group mb-3">
 				    <input type="password" class="form-control"  minlength="5" maxlength="20" name="contrasenia" required id="contrasenia" maxlength="70"
-	     			 	placeholder=" Ingrese el nombre usuario">
+	     			 	placeholder=" Ingrese la contraseña">
 	    				<span id="errpass" style="display: none; color:red;font-size:1rem"></span>
 					</div>
 					</div>

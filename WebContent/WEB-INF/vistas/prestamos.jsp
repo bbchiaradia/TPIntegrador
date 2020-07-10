@@ -89,6 +89,14 @@
 	        	 <div class="card-header">
 	   				 Estado de préstamos
 	 			 </div>  
+	 			 
+	 			    <c:if test="${sin_prestamos != null}">
+				  <td>${sin_prestamos}</td>
+			  </c:if>
+								
+	 			   <c:if test="${sin_prestamos == null}">
+	 			 
+	 			 
 	 			 <div class="card-body">
 					<div class="row">
 						<div class="col-md-12">
@@ -161,6 +169,7 @@
 					</div>
 					</div>
 					
+					</c:if>
 		
 					
 	 			 </div> 

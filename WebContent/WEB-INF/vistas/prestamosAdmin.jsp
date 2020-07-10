@@ -28,6 +28,12 @@
 	        	 <div class="card-header">
 	   				 Estado de préstamos
 	 			 </div>  
+	 			 
+	 		   <c:if test="${sin_prestamos != null}">
+				  <td>${sin_prestamos}</td>
+			  </c:if>
+								
+	 			   <c:if test="${sin_prestamos == null}">
 	 			 <div class="card-body">
 					<div class="row">
 						<div class="col-md-12">
@@ -50,16 +56,25 @@
 							  
 							  
 							  <tbody>
+							  	     
+						
 							  
 							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
+							    
+							   
+							    
 							    <form method="post" class="frmBoton" action="aprobarPrestamo.html">
 							    <tr>
+							    
+							    
 							      
 							       <c:forEach var="cliente" items="${ cliente }">
 								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
 								     <td>${cliente.nombre}  ${cliente.apellido}</td>
 								     </c:if>
 								     </c:forEach>
+								     
+							
 
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
@@ -115,6 +130,8 @@
 							      </td>
 							    </tr>
 							    
+							    
+							    
 							      </c:forEach>
 							  </tbody>
 							
@@ -128,6 +145,11 @@
 						</div>
 					</div>
 					</div>
+					</c:if>
+					
+					
+					
+					
 	 			 </div> 
 	    	   </div>
 	    </div>
