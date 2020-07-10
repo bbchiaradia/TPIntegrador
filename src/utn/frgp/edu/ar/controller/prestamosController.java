@@ -106,10 +106,10 @@ public class prestamosController {
 	
 	@RequestMapping( value= "aprobarPrestamo", method = RequestMethod.POST )
 	public String aprobarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo, Integer cuentaDestino ) {
-		System.out.println("DESTINO " + cuentaDestino);
+
 		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
-		System.out.println("PRESTAMO A APROBAR ----------- "+ idPrestamo);
+		
 		
 		Prestamos pres = prestamosService.prestamoById(idPrestamo);	
 		boolean result = prestamosService.aprobarPrestamoPorId(pres, cuentaDestino);
@@ -127,17 +127,21 @@ public class prestamosController {
 	
 	
 	@RequestMapping( value= "rechazarPrestamo", method = RequestMethod.POST )
-	@ResponseBody
 	public String rechazarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo ) {
 		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
-		System.out.println("PRESTAMO A RECHAZAR ----------- "+ idPrestamo);
 		
 		Prestamos pres = prestamosService.prestamoById(idPrestamo);	
 		boolean result = prestamosService.rechazarPrestamoPorId(pres);
-		if(result) { return "true"; }
-		else{ return "false"; }
+		if(result) {
+			modelMap.addAttribute("msj", "El préstamo ha sido rechazado exitosamente");
+			System.out.println("PRESTAMO APROBADO");
+		}else {
+			modelMap.addAttribute("msj", "Ocurrió un error al rechazar el préstamo");
+			System.out.println("PRESTAMO DENEGADO");
+		}
 		
+		return "prestamosAdmin";
 		
 	}
 	

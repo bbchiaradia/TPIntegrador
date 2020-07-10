@@ -35,6 +35,7 @@ public class prestamosService {
 		prestamo.setFecha_alta(Calendar.getInstance().getTime());
 		prestamo.setIdEstado(estadosService.getEstadoById(3));
 		prestamo.setPlazo_meses(plazo);
+		prestamo.setCuotas(plazo);
 
 		Movimientos movimiento = new Movimientos();
 		movimiento.setFecha(Calendar.getInstance().getTime());

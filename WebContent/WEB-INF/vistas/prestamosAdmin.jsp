@@ -17,9 +17,11 @@
     <%@ include file="nav.html"%>
     <div class="container">
    
-    <c:if test="${ msj  } ">
-    <p> ${msj} </p> 
-    </c:if>
+ <c:if test="${msj != null}">
+<script>alert("${msj}");
+</script>
+ </c:if>  
+
 	    <!-- historial de prestamos -->
 	    <container>
 	    <div class="row animate__animated animate__fadeIn">
