@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Estados;
 import utn.frgp.edu.ar.entidad.Movimientos;
 import utn.frgp.edu.ar.entidad.Prestamos;
 
@@ -18,11 +20,12 @@ public class prestamosService {
 	 private static Session session;
 	@Autowired
 	 private static List<Prestamos> prestamos;
-	
 
-	
 	@Autowired
 	 private static Prestamos prestamo = new Prestamos();
+
+	@Autowired
+	 private static Estados estado = new Estados();
 	
 	public static boolean setPrestamo(Integer idcliente, Integer plazo, Integer importe, String cuentaDestino) {
 		
@@ -78,6 +81,51 @@ public class prestamosService {
 			 return prestamos;
 	}
 	 
+	 
+	 
+		public static boolean rechazarPrestamoPorId( Prestamos prestamo) {
+			estado = estadosService.getEstadoById(2);
+			prestamo.setIdEstado(estado);
+			try {
+				session = ConfigHibernet.abrirConexion();
+		        session.update(prestamo);
+		        session.flush();
+		        ConfigHibernet.commitSession(session);
+		       	return true;
+			}catch(Exception E) {
+				System.out.println( E.getMessage() );
+				ConfigHibernet.rollbackSession(session);
+				return false;
+			}
+		}
+	 
+		 
+			public static boolean aprobarPrestamoPorId( Prestamos prestamo) {
+				estado.setDescripcion("1");
+				prestamo.setIdEstado(estado);
+				try {
+					//FALTA GENERAR MOVIMIENTOY ACREDITAR PLATA EN LA CUENTA
+					session = ConfigHibernet.abrirConexion();
+			        session.update(prestamo);
+			        session.flush();
+			        ConfigHibernet.commitSession(session);
+			       	return true;
+				}catch(Exception E) {
+					System.out.println( E.getMessage() );
+					ConfigHibernet.rollbackSession(session);
+					return false;
+				}
+			}
 	
-	
+			
+			
+			public static Prestamos prestamoById(Integer id){
+				session = ConfigHibernet.abrirConexion();
+				//List<Cuentas> cuentas = session.createCriteria(Cuentas.class).add(Restrictions.eq("idCliente", id)).list();
+				 Query q = session.createQuery("from Prestamos where fecha_baja is null and idPrestamo = " + id);
+				 Prestamos prestamo = (Prestamos) q.uniqueResult();
+				 ConfigHibernet.commitSession(session);
+				 return prestamo;
+			}
+			
 }

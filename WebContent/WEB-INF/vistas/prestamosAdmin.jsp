@@ -16,7 +16,6 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
-    <p>${cuentas}</p>
    
     
 	    <!-- historial de prestamos -->
@@ -57,32 +56,27 @@
 								     <td>${cliente.nombre}  ${cliente.apellido}</td>
 								     </c:if>
 								     </c:forEach>
-					
-							   
-							      
-							      
+
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
- 									<td> ${prestamos_cliente.cuotas}</td>
+ 								  <td> ${prestamos_cliente.cuotas}</td>
+ 									
  									
  									
  									 <c:forEach var="cliente" items="${ cliente }">
 								     <c:if test="${prestamos_cliente.getIdCliente().getIdCliente() == cliente.idCliente }">
-								    
 								     <td>
 								     <select class="form-control" id="cuentaDestino" required name="cuentaDestino">
 								     <c:forEach var="cuentas" items="${ cuentas }">
-				  					
-				  					
-				  					<option value="${cuentas.idCuenta}">  ${cuentas.nroCta} - Saldo: $ ${cuentas.saldo} </option>
-				  					
-				 
-									
+								     
+								       <c:if test="${cuentas.getIdCliente().getIdCliente() == cliente.idCliente }">
+				  					 <option value="${cuentas.idCuenta}">  ${cuentas.nroCta} - Saldo: $ ${cuentas.saldo} </option> 
+				  					 </c:if>
+				  					 
+		
 									 </c:forEach> 
 								    </select>
 								    </td>
-								    
-								    
 								     </c:if>
 								     </c:forEach>
  									
@@ -99,8 +93,8 @@
 							     
 
 							      <td>
-							     <form method="get" class="frmBoton" >
-						 			 <input type="hidden" name="idCuota" ">
+							     <form method="post" class="frmBoton" action="aprobarPrestamo.html">
+						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
 										<button class="btn btn-sm btn-success"  data-toggle="tooltip" data-placement="top" title="Aprobar">
 										<i class="fas fa-thumbs-up" aria-hidden="true"> </i> Aprobar
 										</button>
@@ -108,8 +102,8 @@
 							      </td>
 							      
 							        <td>
-							     <form method="get" class="frmBoton" >
-						 			 <input type="hidden" name="idCuota" ">
+							     <form method="post" class="frmBoton" action="rechazarPrestamo.html">
+						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
 										<button class="btn btn-sm btn-danger mr-1"  data-toggle="tooltip" data-placement="top" title="Rechazar">
 										<i class="fas fa-thumbs-down" aria-hidden="true"> </i> Rechazar
 										</button>

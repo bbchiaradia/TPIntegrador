@@ -18,6 +18,7 @@ import utn.frgp.edu.ar.dao.movimientosService;
 import utn.frgp.edu.ar.dao.prestamosService;
 import utn.frgp.edu.ar.dao.usuariosService;
 import utn.frgp.edu.ar.entidad.Cuentas;
+import utn.frgp.edu.ar.entidad.Prestamos;
 import utn.frgp.edu.ar.entidad.TipoCuenta;
 
 @Controller
@@ -52,22 +53,10 @@ public class prestamosController {
 	
 	@RequestMapping("redireccionar_prestamos_admin.html")
 	public ModelAndView eventoRedireccionar_prestamos_admin() {
-		
-		
+
 		
 		ModelAndView MV= new ModelAndView();
 		
-		/*
-		System.out.println( "linea 18" + clientesService.getClienteLogueado());
-		
-		MV.addObject("idlogin", clientesService.getClienteLogueado().getIdCliente());
-		
-	
-		MV.addObject("movimientos_prestamos_cliente", movimientosService.MovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
-		MV.addObject("cuenta_movimientos_prestamos_cliente", cuentasService.CuentasMovimientosPrestamosByIdCliente(clientesService.getClienteLogueado().getIdCliente() ));
-		
-		
-		*/
 		MV.addObject("cuentas", cuentasService.getCuentas());
 		MV.addObject("cliente",clientesService.getClientes());
 		MV.addObject( "tiposcuentas", cuentasService.listarTipoCuentas() );
@@ -100,6 +89,35 @@ public class prestamosController {
 	}
 	
 	
+	@RequestMapping( value= "aprobarPrestamo", method = RequestMethod.POST )
+	@ResponseBody
+	public String aprobarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo ) {
+		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+		System.out.println("PRESTAMO A APROBAR ----------- "+ idPrestamo);
+		
+		Prestamos pres = prestamosService.prestamoById(idPrestamo);	
+		boolean result = prestamosService.aprobarPrestamoPorId(pres);
+		if(result) { return "true"; }
+		else{ return "false"; }
+		
+	}
+	
+	
+	@RequestMapping( value= "rechazarPrestamo", method = RequestMethod.POST )
+	@ResponseBody
+	public String rechazarPrestamo(HttpServletRequest request,ModelMap modelMap, Integer idPrestamo ) {
+		modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
+		System.out.println("PRESTAMO A RECHAZAR ----------- "+ idPrestamo);
+		
+		Prestamos pres = prestamosService.prestamoById(idPrestamo);	
+		boolean result = prestamosService.rechazarPrestamoPorId(pres);
+		if(result) { return "true"; }
+		else{ return "false"; }
+		
+		
+	}
 	
 	
 

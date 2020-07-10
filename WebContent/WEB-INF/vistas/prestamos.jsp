@@ -16,7 +16,6 @@
     <container>
     <%@ include file="nav.html"%>
     <div class="container">
-    <p>${cuentas}</p>
     
     <!-- solicitud de prestamos -->
     <container>
@@ -113,17 +112,20 @@
 							    <tr>
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
-
+                                    
+                                   
 									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
-								     <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
-								    		<c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }">
+								       <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
+								    	 <c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }"> 
+								        
 								            <c:if test="${movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta }">
-								    		   <td>${cuenta_movimientos_prestamos_cliente.nroCta}</td>
-										    </c:if>
-										    </c:forEach>
-								     </c:if>
-								     </c:forEach>
-		
+								    		  <td>  ${cuenta_movimientos_prestamos_cliente.nroCta} </td>
+										     </c:if>
+										    
+									    </c:forEach> 
+								      </c:if>
+								    </c:forEach>
+		                          
 		
 								 <c:forEach var="estado_prestamo" items="${ estado_prestamo }">
 							     <c:if test="${prestamos_cliente.getIdEstado().getIdEstado() == estado_prestamo.idEstado }">
@@ -132,7 +134,8 @@
 							     </c:forEach>
 							     
 
-							      <td>
+							     <c:if test="${prestamos_cliente.getIdEstado().getIdEstado() == 1 }">
+							     <td>
 							     <form method="get" class="frmBoton" action="redireccionar_cuotas_detalle.html">
 						 			 <input type="hidden" name="idPrestamo" value="${prestamos_cliente.idPrestamo}">
 										<button class="btn btn-sm btn-primary mr-1"  data-toggle="tooltip" data-placement="top" title="Revisar Cuotas">
@@ -140,6 +143,8 @@
 										</button>
 								</form>
 							      </td>
+							       </c:if>
+							      
 							    </tr>
 							    
 							      </c:forEach>
@@ -155,6 +160,9 @@
 						</div>
 					</div>
 					</div>
+					
+		
+					
 	 			 </div> 
 	    	   </div>
 	    </div>

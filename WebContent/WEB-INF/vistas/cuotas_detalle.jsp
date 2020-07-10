@@ -50,7 +50,8 @@
 					 </div>
 					 <hr>
 				
-				
+				    <form method="POST" action="redireccionar_pagoCuota.html">
+				  
 				    <c:forEach var="cuotas" items="${ cuotas }">
 					<div class="row">
 				     
@@ -71,22 +72,21 @@
                      </c:if>
                      
             
-                     <c:if test="${cuotas.fecha_pago == null }">
-				     <button class="btn btn-sm btn-danger mr-1 ml-3"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
-					<i class="fa fa-money" aria-hidden="true"> </i> Pagar Cuota
-					</button>
-                     </c:if>
-
-                   
+                     <c:if test="${cuotas.fecha_pago == null }">				  
+				      <input type="hidden" name="idCuota" value="${cuotas.idCuota}">
+					     <button class="btn btn-sm btn-danger mr-1 ml-3"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
+						 <i class="fa fa-money" aria-hidden="true"> </i> Pagar Cuota
+						 </button>
+                  
                    
                     
-				    
-				    
+                    </c:if>
 				     </div>
 				      <hr>
 				
 				     </c:forEach>
-				
+				 </form>
+				 
 					</div>
 					
 					
