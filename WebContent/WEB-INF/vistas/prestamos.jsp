@@ -116,7 +116,7 @@
 							  
 							  
 							  <tbody>
-							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }">
+							    <c:forEach var="prestamos_cliente" items="${ prestamos_cliente }" varStatus="loop">
 							    <tr>
 							      <td>${prestamos_cliente.fecha}</td>
 							      <td>$ ${prestamos_cliente.importe}</td>
@@ -124,11 +124,14 @@
                                    
 									 <c:forEach var="movimientos_prestamos_cliente" items="${ movimientos_prestamos_cliente }">
 								       <c:if test="${prestamos_cliente.getIdMovimiento().getIdMovimiento() == movimientos_prestamos_cliente.idMovimiento }">
-								    	 <c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }"> 
+								    	 <c:forEach var="cuenta_movimientos_prestamos_cliente" items="${ cuenta_movimientos_prestamos_cliente }" varStatus="loop2"> 
 								        
-								            <c:if test="${movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta }">
-								    		  <td>  ${cuenta_movimientos_prestamos_cliente.nroCta} </td>
-										     </c:if>
+								        <c:if test="${
+								        movimientos_prestamos_cliente.getIdCuenta().getIdCuenta() == cuenta_movimientos_prestamos_cliente.idCuenta
+								        && loop.index == loop2.index
+								        }">
+								    	 <td>  ${cuenta_movimientos_prestamos_cliente.nroCta} </td>
+										</c:if >
 										    
 									    </c:forEach> 
 								      </c:if>
@@ -155,7 +158,7 @@
 							      
 							    </tr>
 							    
-							      </c:forEach>
+							      </c:forEach >
 							  </tbody>
 							
 							  
