@@ -113,6 +113,8 @@ public class CuentasController {
 		List<Cuentas> aux2 = cuentasService.cuentasByClientId(Integer.parseInt(request.getParameter("clientePropietario")));
 		if( aux2.size() >= 4 ) {
 			MV.addObject("status", "El cliente no puede poseer mas de 4 cuentas activas");
+			MV.addObject("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
+			MV.addObject("rol", usuariosService.RolUsuarioLogueado());
 			MV.setViewName("AltaCuenta");
 			return MV;
 		}
