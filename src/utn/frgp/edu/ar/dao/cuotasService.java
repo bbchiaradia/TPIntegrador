@@ -76,7 +76,9 @@ public class cuotasService {
 
 		 concepto = conceptosService.getConceptosById(3);
 		 
-		 
+		   
+	        Double saldo  = cuenta.getSaldo() - importe ;
+	        cuenta.setSaldo( saldo );
 		
 		 
 			System.out.println("ID CUOTA "+ idCuota);
@@ -92,9 +94,10 @@ public class cuotasService {
 			try {
 				System.out.println("LINEA 80 ENTRO AL TRY ");
 				session = ConfigHibernet.abrirConexion();
-
+				cuentasService.modificarCuenta(cuenta);
 				session.merge(cuota1);
 				session.flush();
+				
 				
 				session.merge(mov);
 				

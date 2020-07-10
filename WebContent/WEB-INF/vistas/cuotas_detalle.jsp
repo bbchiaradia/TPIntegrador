@@ -13,7 +13,8 @@
     <container>
    
  <c:if test="${msjCuota != null}">
-<script>alert("${msjCuota}");</script>
+<script>alert("${msjCuota}");
+</script>
  </c:if>  
    
     <%@ include file="nav.html"%>

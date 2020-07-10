@@ -29,16 +29,6 @@ public class CuotasController {
 		System.out.println("LINEA 18 ACAAA  PRESTAMOS id "+ idPrestamo);
 		modelMap.addAttribute("cuentas", cuentasService.cuentasByClientId( clientesService.getClienteLogueado().getIdCliente() ));
 		
-	/*	 List <TipoCuenta> tp = cuentasService.listarTipoCuentas();
-	
-		  System.out.println("LINEA 81 ACAAA  CUENTAS "+ cuentas);
-		 
-		    modelMap.addAttribute("tiposcuentacl",tp);
-		    modelMap.addAttribute("cuentas_clientecl",cuentas);
-		
-		modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
-	    modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
-	    */
 		modelMap.addAttribute("idPrestamo",idPrestamo);
 		modelMap.addAttribute("cuotas", cuotasService.CuotasByIdPrestamo(idPrestamo));
 		
@@ -75,6 +65,8 @@ public class CuotasController {
 			
 			if (cuotasService.PagarCuota(cuenta, montoCuota, idCuota)){
 				System.out.println("ENTRO AL IF 68 ----------- ");
+				//Aca descontar plata de la cuenta
+				
 			 modelMap.addAttribute("msjCuota", "Su pago se registró satisfactoriamente.");
 		    }else {
 		    	System.out.println("NO ENTRO AL IF 72 ----------- ");
