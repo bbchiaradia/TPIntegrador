@@ -1,13 +1,9 @@
 package utn.frgp.edu.ar.dao;
 
-<<<<<<< Updated upstream
-
 import java.util.ArrayList;
 
 import java.sql.Date;
 
-=======
->>>>>>> Stashed changes
 import java.util.Calendar;
 import java.util.List;
 import java.text.DecimalFormat;
@@ -82,9 +78,6 @@ public class cuotasService {
 		 
 		 
 		
-	        //Aquí obtienes el formato que deseas
-	
-		 
 		 
 			System.out.println("ID CUOTA "+ idCuota);
 		 Cuotas cuota1 = CuotasByIdCuota(idCuota);
