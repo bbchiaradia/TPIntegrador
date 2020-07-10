@@ -22,20 +22,52 @@
  			 <div class="card-body">
 	           <div class="card-body">
 				<div class="row">
-					<div class="col-md-12">
-					 <c:forEach var="conceptos" items="${ listaconcepto }">
-					<div class="row">
-					<div class="col-md-4">${conceptos.descripcion}</div>					
-					
+					<div class="col-md-12">	
 				
-					<div class="col-md-4">  
-					<a href="redireccionar_detalle_cuenta.html">
-					<button class="btn btn-sm btn-primary" role="button">Detalles</button>
-					</a>
-					</div>
-					</div>
-					<hr>
-					 </c:forEach>
+				
+				<div  class="row">
+				<div class="col-md-12">	
+				<form method="get" class="frmBoton" action="redireccionar_detalle_informe.html">
+				  
+				  <div class="col-md-6">				
+				      <div class="form-group row">
+	    				<label for="datepicker" class="col-md-4 col-form-label">Fecha desde:</label>
+	    				<div class="col-md-8">
+	     			 	<input type="text" required  id="datepicker" required name="fdesde">
+	    				</div> 				 
+	 				 </div>
+				</div>
+				 <hr>
+				 <div class="col-md-6">
+				      <div class="form-group row">
+	    				<label for="datepicker2" class="col-md-4 col-form-label">Fecha hasta:</label>
+	    				<div class="col-md-8">
+	     			 	<input type="text" required  id="datepicker2" required name="fhasta"  >
+	    				</div>
+	 				  </div>	
+	 				</div>				
+						 
+	 				 
+	 			 <hr>		
+
+	                        
+	                 <div class="form-group row">
+	    				<label for="sexo" class="col-sm-2 col-form-label">Conceptos:</label>
+	    				<div class="col-sm-10">
+	     			 	<select required class="form-control"  id="id" required name="id">
+	
+	  					 <c:forEach  var="conceptos" items="${ listaconcepto }">
+	  					<option value= "${ conceptos.idConcepto }">${ conceptos.descripcion }</option>
+						 </c:forEach>	
+						</select>
+	    				</div>
+	 				 </div> 
+	                         <hr>
+	                         
+	                         <button class="btn btn-sm btn-primary" role="button">Detalles</button>
+	
+						</form>
+						</div>
 					</div>
 				</div>
 				</div>
