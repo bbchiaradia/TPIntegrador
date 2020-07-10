@@ -86,9 +86,12 @@
    				 Movimientos de la cuenta
  			 </div>  
  			 
- 			
- 			
- 			 
+ 		  <c:if test="${sin_mov != null}">
+				  <td>${sin_mov}</td>
+			  </c:if>
+								
+	 	 <c:if test="${sin_mov == null}">
+ 		 			 
  			 <div class="card-body">
 				<div class="row text-center">
 					<div class="col-md-12">
@@ -120,7 +123,7 @@
 					</div>
 				</div>
 				</div>
-		     
+		     </c:if>
 				
 				
  			 </div> 

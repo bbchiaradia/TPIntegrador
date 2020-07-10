@@ -46,9 +46,11 @@ public class informeController {
       modelMap.addAttribute("detalleConcepto", conceptosService.getConceptosById(id));	
       modelMap.addAttribute("fechaDesde",  fdesde);	
       modelMap.addAttribute("fechaHasta", fhasta);	
+      modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
+      	
+
+      
      
-     
-     modelMap.addAttribute("movimientos", movimientosService.MovimientoByIdCuenta(id));	
      modelMap.addAttribute("nombreLogin",usuariosService.UsuarioLogueado().getNombreUsuario());
 	  modelMap.addAttribute("rol", usuariosService.RolUsuarioLogueado());
 	  
@@ -58,7 +60,14 @@ public class informeController {
 	  }
 	  System.out.println("SALDO " + suma);
 	  modelMap.addAttribute("saldo", suma);	
-	  modelMap.addAttribute("movimientos",movimientos);
+	  
+      if( movimientos.size() == 0) {
+    	  System.out.println("ENTRA A SIN MOV");
+    	  modelMap.addAttribute("sin_mov", "No existen movimientos");
+      }else {
+      modelMap.addAttribute("movimientos",movimientos);
+      }
+	 
 	  
 	  
 		return "/detalle_informe";
