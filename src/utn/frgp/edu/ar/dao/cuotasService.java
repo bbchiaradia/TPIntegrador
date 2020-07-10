@@ -1,5 +1,6 @@
 package utn.frgp.edu.ar.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -7,7 +8,10 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import utn.frgp.edu.ar.entidad.Conceptos;
+import utn.frgp.edu.ar.entidad.Cuentas;
 import utn.frgp.edu.ar.entidad.Cuotas;
+import utn.frgp.edu.ar.entidad.Movimientos;
 import utn.frgp.edu.ar.entidad.Prestamos;
 
 @Service
@@ -18,9 +22,13 @@ public class cuotasService {
 	@Autowired
 	 private static List<Cuotas> cuotas;
 	@Autowired
-	 private static Cuotas prestamo = new Cuotas();
+	 private static Cuotas cuota = new Cuotas();
+
+	@Autowired
+	 private static Conceptos concepto = new Conceptos();
 	
-	
+	@Autowired
+	 private static Movimientos mov = new Movimientos();
 	
 	
 	 @SuppressWarnings("unchecked")
@@ -33,7 +41,15 @@ public class cuotasService {
 			 return cuotas;
 	}
 	 
-	 
+	 @SuppressWarnings("unchecked")
+		public static Cuotas CuotasByIdCuota(Integer idCuota){
+		 	session = ConfigHibernet.abrirConexion(); 	
+		 	Query q = session.createQuery("FROM Cuotas where idPrestamo ='" + idCuota +"'  order by idCuota asc" );		 	  
+		 	  cuota = (Cuotas) q.uniqueResult();
+			 System.out.println("CUOTASS-------------------" + cuotas);
+			 ConfigHibernet.commitSession(session);
+			 return cuota;
+	}
 	 
 	 @SuppressWarnings("unchecked")
 		public static Double MontoCuotasByIdPrestamo(Integer idPrestamo){
@@ -45,5 +61,37 @@ public class cuotasService {
 			 return valor;
 	}
 	 
+	 
+	 @SuppressWarnings("unchecked")
+		public static Boolean PagarCuota(Cuentas cuenta, Double importe, Integer idCuota){
+
+		 concepto.setDescripcion("3");
+		 
+		 cuota = CuotasByIdCuota(idCuota);
+		 cuota.setFecha_pago(Calendar.getInstance().getTime());
+		 
+			mov.setFecha(Calendar.getInstance().getTime());
+			mov.setIdConcepto(concepto);
+			mov.setIdCuenta( cuenta );
+			mov.setImporte( Double.parseDouble("-"+importe) );
+		 
+			System.out.println("LINEA 78 ANTES TRY ");
+			try {
+				System.out.println("LINEA 80 ENTRO AL TRY ");
+				session = ConfigHibernet.abrirConexion();
+
+				session.update(cuota);
+				session.flush();
+				session.merge(mov);
+				
+				session.getTransaction().commit();
+				session.close();
+				return true;
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+				ConfigHibernet.rollbackSession(session);
+				return false;
+			}
+	}
 
 }

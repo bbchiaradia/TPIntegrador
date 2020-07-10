@@ -55,7 +55,7 @@ public class Cuotas implements Serializable{
 		return fecha_pago;
 	}
 
-	public void setFecha_pago(int fecha_pago) {
+	public void setFecha_pago(Date fecha_pago) {
 		fecha_pago = fecha_pago;
 	}
 

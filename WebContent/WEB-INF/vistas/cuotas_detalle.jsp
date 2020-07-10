@@ -23,11 +23,12 @@
    				 Detalle de Cuotas <b>  </b>
  			 </div>  
  			 
+ 			  <form method="POST" action="redireccionar_pagoCuota.html">
 					<div class="row">
 					<div class="col-md-8 offset-md-2">
 					<div class="form-group">
 						    <label for="cuentaDestino"></label>
-						    <select class="form-control" id="cuentaDestino">
+						    <select class="form-control" id="PagarDesde" name="PagarDesde">
 						      <option value='-1'>[ Seleccione desde donde pagar:  ]</option>
 						     <c:forEach var="cuenta" items="${ cuentas }">
 						      <option value="${cuenta.idCuenta}">  ${cuenta.nroCta} - Saldo: $ ${cuenta.saldo} </option>
@@ -50,7 +51,7 @@
 					 </div>
 					 <hr>
 				
-				    <form method="POST" action="redireccionar_pagoCuota.html">
+				   
 				  
 				    <c:forEach var="cuotas" items="${ cuotas }">
 					<div class="row">
@@ -74,6 +75,8 @@
             
                      <c:if test="${cuotas.fecha_pago == null }">				  
 				      <input type="hidden" name="idCuota" value="${cuotas.idCuota}">
+				       <input type="hidden" name="idPrestamo" value="${idPrestamo}">
+				         <input type="hidden" name="montoCuota" value="${monto_cuota}">
 					     <button class="btn btn-sm btn-danger mr-1 ml-3"  data-toggle="tooltip" data-placement="top" title="Pagar Cuota">
 						 <i class="fa fa-money" aria-hidden="true"> </i> Pagar Cuota
 						 </button>
